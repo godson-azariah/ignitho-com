@@ -1,0 +1,167 @@
+{
+ "bands": [
+  {
+   "hero": true,
+   "title": "Stop ExperimentingStart Implementing",
+   "lead": null,
+   "items": [],
+   "prose": [],
+   "images": []
+  },
+  {
+   "hero": false,
+   "title": "Enterprise AI Shouldn’t Feel Like aResearch Project",
+   "lead": "Most enterprise AI initiatives stall at the proof of concept stage — too generic to automate real workflows, too risky without compliance guardrails, and too slow to deliver value before the next budget cycle",
+   "items": [
+    {
+     "title": "The Problem",
+     "body": "Generic AI tools built for no industry in particular"
+    },
+    {
+     "title": "The Ignitho AI Proposition",
+     "body": "Every new AI tool adds complexity to an already overcrowded stack"
+    }
+   ],
+   "prose": [
+    "AI outputs your teams cannot verify or trust",
+    "AI becoming an expensive investment with no clear return",
+    "Pre-built domain-specific accelerators purpose-built for your exact business function",
+    "Runs on your existing systems — no new infrastructure, no rip and replace",
+    "Governed architecture with built-in hallucination prevention on every output",
+    "The right partner ensures every deployment automates real workflows — not just adds to your cloud bill"
+   ],
+   "images": []
+  },
+  {
+   "hero": false,
+   "title": "Enterprise-Wide Outcomes. Nine AI SuitesTwenty-Seven AI Agents",
+   "lead": "Ignitho AI is built to deliver four outcomes that matter to enterprise leadership — not vanity metrics, not proof of concepts, not technology experiments",
+   "items": [
+    {
+     "title": "RevenueAcceleration",
+     "body": "Automated proposals, lead scoring, and dynamic pricing that shortens your sales cycle and closes more deals"
+    },
+    {
+     "title": "OperationalEfficiency",
+     "body": "Eliminating manual effort and reducing processing time — so your teams focus on work that moves the business forward"
+    },
+    {
+     "title": "RapidDeployment",
+     "body": "Pre-built, pre-tested AI suites that integrate into your existing ERP, CRM, and cloud stack without disruption"
+    },
+    {
+     "title": "CorporateGovernance",
+     "body": "Audit-ready outputs and compliance controls built into every workflow — keeping every decision traceable and defensible"
+    }
+   ],
+   "prose": [],
+   "images": []
+  },
+  {
+   "hero": false,
+   "title": "Three Foundations Every Enterprise NeedsBefore AI Can Scale",
+   "lead": "A connected data pipeline, a trusted and governed data layer, and real-time analytics — the three foundations that every enterprise must have before AI can deliver results at scale",
+   "items": [
+    {
+     "title": "3 Universal Foundations",
+     "body": "Connect Siloed Enterprise Data & Automate Real-Time Reporting"
+    },
+    {
+     "title": "Enterprise DataFoundation Suite",
+     "body": "85% less manual pipeline troubleshooting (IBM)"
+    },
+    {
+     "title": "Data Trust& Governance Suite",
+     "body": "Guaranteed Single Source of Truth for Boardroom Decisions"
+    },
+    {
+     "title": "RapidAnalytics Suite",
+     "body": "70% reduction in data entry requirements (IBM & Deloitte)"
+    }
+   ],
+   "prose": [
+    "Real-Time Dashboards, Predictive Models & Executive Reporting",
+    "63% of enterprise use cases need data processed in minutes (IDC via IBM)"
+   ],
+   "images": []
+  },
+  {
+   "hero": false,
+   "title": "Six Functional Suites Built for Your SectorNot Generic Enterprise Software",
+   "lead": "Every functional suite is purpose-built for the specific workflows, compliance requirements, and operational challenges of that sector — with embedded AI agents ready to deploy from day one",
+   "items": [
+    {
+     "title": "6 Business Accelerators",
+     "body": "Accelerate Sales Close Rates & Customer Lifetime Value"
+    },
+    {
+     "title": "Sales & CustomerGrowth Suite",
+     "body": "30% increase in RFP win rate with AI-generated proposals (McKinsey)"
+    },
+    {
+     "title": "Digital Growth & BrandProtection Suite",
+     "body": "Multiply Content Volume 5x While Safeguarding Brand Compliance"
+    },
+    {
+     "title": "Supply Chain& Procurement Suite",
+     "body": "5-15% increase in marketing productivity from gen AI (McKinsey)"
+    },
+    {
+     "title": "Logistics & FleetOperations Suite",
+     "body": "Predictive Stock Planning & Automated Vendor Negotiations"
+    },
+    {
+     "title": "PharmaceuticalR&D Suite",
+     "body": "12-20% procurement savings identified through AI agents (McKinsey)"
+    },
+    {
+     "title": "Financial& Accounting Suite",
+     "body": "Predictive Maintenance & Dynamic Delivery Optimization"
+    }
+   ],
+   "prose": [
+    "26% increase in fleet technician productivity (IBM)",
+    "Speed Up Clinical Research & Automate Regulatory Filings",
+    "50-60% reduction in clinical data verification time (Deloitte)",
+    "Automate Underwriting, Fraud Prevention & Financial Operations",
+    "50-75% reduction in invoice processing time (Deloitte)"
+   ],
+   "images": []
+  },
+  {
+   "hero": false,
+   "title": "Enterprise-Grade Securityin Every Suite",
+   "lead": "Every Ignitho AI deployment is governed, auditable and compliant from the first sprint — security is built into the architecture, not added after the fact",
+   "items": [
+    {
+     "title": "AI SecurityFirewall",
+     "body": "Blocks prompt injection attacks and prevents unauthorised data access across every Ignitho AI workflow — automatically, continuously"
+    },
+    {
+     "title": "HallucinationPrevention",
+     "body": "Every Ignitho AI output is verified against your real company data before any decision is executed or communicated"
+    },
+    {
+     "title": "ControlledAI Spend",
+     "body": "Every AI task is dynamically routed to the most cost-efficient model — keeping monthly cloud costs predictable and within budget"
+    },
+    {
+     "title": "Model AccuracyMonitoring",
+     "body": "Live Ignitho AI models are continuously monitored and automatically retrained before performance degrades"
+    }
+   ],
+   "prose": [
+    "Security & Compliance"
+   ],
+   "images": []
+  },
+  {
+   "hero": false,
+   "title": "Ready to See Ignitho AIin Action?",
+   "lead": "Book a 30-minute executive briefing. We will show you exactly which Ignitho AI suites map to your business priorities — with a live ROI projection built around your headcount and workflows",
+   "items": [],
+   "prose": [],
+   "images": []
+  }
+ ]
+}

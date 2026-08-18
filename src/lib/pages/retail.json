@@ -1,0 +1,165 @@
+{
+ "bands": [
+  {
+   "hero": true,
+   "title": "Data-Driven Intelligence for Predictive Retail - Sense Demand Before the Buy",
+   "lead": null,
+   "items": [],
+   "prose": [],
+   "images": []
+  },
+  {
+   "hero": false,
+   "title": "Mastering the Velocity of Modern Retail",
+   "lead": "As market leaders move from AI experimentation to scale, the divide is defined by data maturity. A specialist foundation is now the prerequisite for capturing double-digit revenue growth",
+   "items": [],
+   "prose": [
+    "Retail & CPG companies already piloting or using AI (NVIDIA)",
+    "Revenue increase for retailers implementing AI personalisation (McKinsey)",
+    "Surge in retail site traffic via AI assistants between 2024 and 2025 (Adobe)",
+    "Reduction in customer acquisition cost via AI-driven ad targeting (Deloitte)"
+   ],
+   "images": []
+  },
+  {
+   "hero": false,
+   "title": "Retail Data is Everywhere - Intelligence is Not",
+   "lead": "Retailers generate more data than almost any other sector – point-of-sale, web behaviour, supply chain events, social signals, loyalty interactions. But most sits in disconnected systems that don’t surface insight until it’s too late to act",
+   "items": [
+    {
+     "title": "Demand blind spots & overstock",
+     "body": "Rule-based forecasting can’t separate campaign spikes from organic trend, leading to costly overstock cycles and markdown losses that erode margin"
+    },
+    {
+     "title": "Supply chain bottlenecks with no real-time visibility",
+     "body": "Order-to-delivery gaps caused by fragmented supplier data, late event detection, and logistics systems that don’t talk to merchandising platforms"
+    },
+    {
+     "title": "Customer data trapped in silos",
+     "body": "Loyalty, web behaviour, and transaction data sitting in separate platforms – making unified 360° customer profiles and real-time personalisation impossible"
+    },
+    {
+     "title": "Disconnected ERP & CRM data layers",
+     "body": "ERP, CRM, OMS, and eCommerce platforms generating separate data streams – making unified inventory, customer, and revenue insight a months-long integration project"
+    }
+   ],
+   "prose": [],
+   "images": []
+  },
+  {
+   "hero": false,
+   "title": "Demand-Sensing Commerce, End to End",
+   "lead": null,
+   "items": [
+    {
+     "title": "FLAGSHIP SOLUTION",
+     "body": "Every solution is drawn from Ignitho’s Agentic Commerce framework – connecting your existing ERP, CRM, and logistics data into a single intelligence layer that lets your supply chain act on tomorrow’s demand, today"
+    },
+    {
+     "title": "Demand Forecasting & Inventory Intelligence",
+     "body": "Predictive models differentiating campaign-driven spikes from organic baseline demand – enabling teams to right-size inventory weeks ahead. Models self-update daily as sales data flows in. 20% overstock reduction achieved"
+    },
+    {
+     "title": "Supply Chain Optimisation & Real-Time Visibility",
+     "body": "Identify and resolve bottlenecks across supplier, logistics, and fulfilment networks with real-time event detection and optimisation"
+    },
+    {
+     "title": "Customer Analytics & 360° Personalisation",
+     "body": "Unify loyalty, behavioural, and transaction data into governed customer profiles - enabling real-time personalisation and next-best-action"
+    },
+    {
+     "title": "Dynamic Pricing & Promotion Optimisation",
+     "body": "Replace manual pricing rules with models driven by live market signals, competitor data, and elasticity insights - eliminating blind promotion decisions"
+    },
+    {
+     "title": "FLAGSHIP SOLUTION",
+     "body": "Predictive models differentiating campaign-driven spikes from organic baseline demand – enabling teams to right-size inventory weeks ahead. Models self-update daily as sales data flows in. 20% overstock reduction achieved"
+    },
+    {
+     "title": "Demand Forecasting & Inventory Intelligence",
+     "body": "Identify and resolve bottlenecks across supplier, logistics, and fulfilment networks with real-time event detection and optimisation"
+    },
+    {
+     "title": "Supply Chain Optimisation & Real-Time Visibility",
+     "body": "Unify loyalty, behavioural, and transaction data into governed customer profiles - enabling real-time personalisation and next-best-action"
+    },
+    {
+     "title": "Customer Analytics & 360° Personalisation",
+     "body": "Replace manual pricing rules with models driven by live market signals, competitor data, and elasticity insights - eliminating blind promotion decisions"
+    },
+    {
+     "title": "Dynamic Pricing & Promotion Optimisation",
+     "body": null
+    }
+   ],
+   "prose": [],
+   "images": []
+  },
+  {
+   "hero": false,
+   "title": "Non-disruptive by Design - Built for Retail Velocity",
+   "lead": "In retail, speed matters. Slow data projects kill season-critical decisions. Our 7-to-30-day sprint model gets working intelligence into merchandising, buying, and marketing hands within weeks – not after a lengthy transformation programme",
+   "items": [
+    {
+     "title": "7-Day Retail Data Triage & Landscape Audit",
+     "body": "Map your current data estate: ERP, OMS, loyalty platform, eCommerce analytics, and marketing stack. Identify where demand signals are lost, where inventory decisions are made blind, and which customer data is stranded in silos"
+    },
+    {
+     "title": "Unified Data Foundation & Integration Layer",
+     "body": "Build the governed integration layer connecting your ERP, OMS, CRM, and eCommerce platforms without replacing any of them. Establish data contracts, inventory data models, and demand signal pipelines"
+    },
+    {
+     "title": "Iterative Delivery - 7 to 30-Day Sprints",
+     "body": "Specialist POD teams build and deploy in short visible cycles. Each sprint closes with a working deliverable – a forecast model, segmentation dashboard, promotion tool, or attribution model"
+    },
+    {
+     "title": "Embed, Enable & Scale",
+     "body": "Operationalise every model and dashboard into your workflow. Train buying, merchandising, and marketing teams to scale into a full retail intelligence platform"
+    }
+   ],
+   "prose": [],
+   "images": []
+  },
+  {
+   "hero": false,
+   "title": "Why Ignitho",
+   "lead": "Ignitho has delivered for Sainsbury’s, Rue Gilt Group, and other retail leaders – not by replacing their existing platforms, but by building the intelligence layer on top of what they already run",
+   "items": [
+    {
+     "title": "ERP-native integration",
+     "body": "Built on top of your existing ERP, CRM, OMS, and eCommerce platforms. Zero rip-and-replace. Immediate ROI without the disruption of a platform migration"
+    },
+    {
+     "title": "Day-1 productive senior practitioners",
+     "body": "Senior data engineers and data scientists who know Snowflake, Databricks, and AWS. No onboarding theatre. They integrate into your sprint cadence and deliver from week one"
+    },
+    {
+     "title": "Retail-specific demand science",
+     "body": "We understand campaign attribution, seasonal demand curves, and overstock cycles. Forecasting models built for retail rhythms - not generic time-series"
+    },
+    {
+     "title": "Frugal innovation for retail",
+     "body": "Maximum intelligence from your existing data investments. Cloud cost optimisation, pipeline efficiency, and licensing rationalisation built into every engagement"
+    },
+    {
+     "title": "ERP-native integration",
+     "body": "We build on top of your existing ERP, CRM, OMS, and eCommerce platforms. Zero rip-and-replace. Immediate ROI without the disruption of a platform migration"
+    },
+    {
+     "title": "Retail-specific demand science",
+     "body": "We understand campaign attribution, seasonal demand curves, and overstock cycles. Our forecasting models are built for retail rhythms, not generic time-series"
+    },
+    {
+     "title": "Day-1 Productive senior practitioners",
+     "body": "Senior data engineers and data scientists who know Snowflake, Databricks, and AWS. No onboarding theatre. They integrate into your sprint cadence and deliver from week one"
+    },
+    {
+     "title": "Frugal Innovation for retail",
+     "body": "Maximum intelligence from your existing data investments. Cloud cost optimisation, pipeline efficiency, and licensing rationalisation built into every engagement"
+    }
+   ],
+   "prose": [],
+   "images": []
+  }
+ ]
+}

@@ -1,0 +1,63 @@
+{
+ "bands": [
+  {
+   "hero": true,
+   "title": "Come & build what enterprises actually need - as a Specialist",
+   "lead": null,
+   "items": [],
+   "prose": [],
+   "images": []
+  },
+  {
+   "hero": false,
+   "title": "What It's Really Like to Be an Ignitor",
+   "lead": "At Ignitho, you are a Specialist – whether you work in data, analytics, delivery, client engagement, marketing, or operations. Every function at Ignitho contributes to outcomes that matter. You’ll work inside Specialist PODs and cross-functional teams with no management bloat or endless cycles that go nowhere",
+   "items": [],
+   "prose": [
+    "Sometimes words don’t do justice. Watch how our people describe the work, the data craft, the culture, and the growth they’ve experienced at Ignitho"
+   ],
+   "images": []
+  },
+  {
+   "hero": false,
+   "title": "Real Growth. Real Culture. Real Impact. A Career - and a Culture - Built to Match",
+   "lead": "Whether you’re in delivery, client engagement, sales, marketing, or operations, the Ignitho career model is built so the things that actually matter – ownership, autonomy, learning, and integrity – are baked into every role, not bolted on as culture",
+   "items": [
+    {
+     "title": "Ownership That Grows With You",
+     "body": "At Ignitho, roles are designed to evolve with you. You are encouraged to take ownership beyond your core responsibilities, backed by structured coaching & SMART goal frameworks, because people who keep developing always deliver better outcomes for clients and each other"
+    },
+    {
+     "title": "Autonomy, Not Hierarchy",
+     "body": "With focus on outcomes over rigid structures, Ignitho offers flexibility to work in ways that suit you best. Everyone reports to an outcome, not a hierarchy, so there are no approval chains – your team and your goals. Freedom comes with trust, and trust is earned through results"
+    },
+    {
+     "title": "Global Exposure, Data-Led",
+     "body": "Every Ignitor can directly work with BFSI, Pharma, Retail, Media, and Aviation clients across the US, UK, and Europe. That domain breadth, paired with strong data thinking in every engagement, accelerates your expertise faster than any single-industry role ever could"
+    },
+    {
+     "title": "Integrity-Driven Culture",
+     "body": "We operate with transparency, accountability, and responsibility toward our teams, clients, and work every day, building trust through every decision and action. It’s a culture where doing things the right way matters as much as delivering the outcome itself"
+    }
+   ],
+   "prose": [],
+   "images": []
+  },
+  {
+   "hero": false,
+   "title": "Quick Apply",
+   "lead": "Submit your resume and we’ll reach out when there’s a matching opportunity",
+   "items": [],
+   "prose": [],
+   "images": []
+  },
+  {
+   "hero": false,
+   "title": "Work From the World's Leading Data Markets",
+   "lead": "We hire talent globally across all our functions. Our model means you work in a region that fits your life – while contributing to client outcomes across every major market we serve",
+   "items": [],
+   "prose": [],
+   "images": []
+  }
+ ]
+}

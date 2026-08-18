@@ -1,0 +1,190 @@
+{
+ "bands": [
+  {
+   "hero": true,
+   "title": "Where Engineering Excellence Meets Data & AI Specialization",
+   "lead": null,
+   "items": [],
+   "prose": [],
+   "images": []
+  },
+  {
+   "hero": false,
+   "title": "Our Story",
+   "lead": "Ignitho was founded in 2016 with a simple thesis: large enterprises are drowning in technology, not because they lack tools, but because no one is making the tools they already own work together effectively. The large SIs handle the macro strategy. The hyperscalers sell the platforms. Nobody was systematically solving the execution gap – the pipeline reliability, the analytics that never get used, the AI that never leaves the Jupyter notebook. Ignitho was built to own that gap",
+   "items": [
+    {
+     "title": "Scaling Excellence ThroughSpecialist Depth",
+     "body": "Passion"
+    },
+    {
+     "title": "Founded in the UK",
+     "body": "Performance"
+    },
+    {
+     "title": "Strategic US Expansion",
+     "body": "Integrity"
+    },
+    {
+     "title": "Global HQ & US Nearshore",
+     "body": "Passion"
+    },
+    {
+     "title": "Offshore Delivery Expansion",
+     "body": "Performance"
+    },
+    {
+     "title": "ISG Recognition",
+     "body": "Integrity"
+    },
+    {
+     "title": "10 Years",
+     "body": "Launched as a specialist data & analytics firm"
+    }
+   ],
+   "prose": [
+    "Expanded onsite footprint in the US market",
+    "Tampa HQ & Costa Rica center setup",
+    "Strengthened India offshore capability",
+    "Noteworthy Provider in Advanced Analytics and AI",
+    "Completing a Decade of Engineering Excellence"
+   ],
+   "images": []
+  },
+  {
+   "hero": false,
+   "title": "Leadership Team",
+   "lead": "Ignitho is established and led by practitioners from top-tier enterprise technology firms. Our leaders carry real enterprise delivery experience, commercial maturity, and deep ecosystem understanding – not just academic credentials",
+   "items": [
+    {
+     "title": "Joseph Olassa",
+     "body": "Serial tech entrepreneur with 25+ years scaling software businesses from early-stage to multimillion-dollar revenue"
+    },
+    {
+     "title": "Roney Soloman",
+     "body": "Seasoned business leader with 30+ years scaling global markets, building strategic partnerships, and driving sustained growth across industries"
+    },
+    {
+     "title": "Rob Clare",
+     "body": "Chartered banker with 30+ years leading teams, advising businesses on governance, funding strategy, and corporate growth"
+    },
+    {
+     "title": "Chandra P",
+     "body": "Technology and engineering leader driving AI innovation, big data cloud platforms, and scalable enterprise delivery globally"
+    },
+    {
+     "title": "M Riyaz",
+     "body": "Delivery leader driving enterprise AI adoption, solution architecture, and cross-functional engineering excellence"
+    },
+    {
+     "title": "Pablo Douglas",
+     "body": "Experienced leader across portfolio and program management, business and technical architecture, and process efficiency"
+    },
+    {
+     "title": "Mani P",
+     "body": "UK-based specialist in cloud architecture, data engineering, and business-driven data strategy and innovation"
+    },
+    {
+     "title": "Dhana LT",
+     "body": "Deep expertise in Machine Learning, NLP and marketing analytics across e-commerce and risk domains"
+    },
+    {
+     "title": "Anton Joseph",
+     "body": "Sales and business development professional driving revenue growth, go-to-market execution, and market expansion"
+    },
+    {
+     "title": "Srividhya B",
+     "body": "Finance leader with 15+ years experience across banking and tech sectors in accounting, taxation, compliance, and financial reporting"
+    },
+    {
+     "title": "Joseph Thomas",
+     "body": "Entrepreneurial legal advisor with 20+ years experience in US corporate law, specializing in technology enterprises"
+    },
+    {
+     "title": "Darshana S",
+     "body": "Leading end-to-end technology hiring, partnering with stakeholders to build high-performing teams at scale"
+    }
+   ],
+   "prose": [],
+   "images": []
+  },
+  {
+   "hero": false,
+   "title": "Board of Advisors",
+   "lead": null,
+   "items": [
+    {
+     "title": "Jaideep Prabhu",
+     "body": "Professor at University of Cambridge with 30+ years in business strategy and author of award-winning book Frugal Innovation"
+    },
+    {
+     "title": "Emre Serpen",
+     "body": "Extensive experience of driving aviation strategy, digital transformation and process re-engineering programs worldwide"
+    },
+    {
+     "title": "Tanmay Divatia",
+     "body": "Driving large deals & revenue growth for 25+ years with global IT giants like Cognizant, HCL, IBM and Mastek"
+    }
+   ],
+   "prose": [],
+   "images": []
+  },
+  {
+   "hero": false,
+   "title": "Why Ignitho",
+   "lead": null,
+   "items": [
+    {
+     "title": "Non-disruptive by design",
+     "body": "We complement your existing vendors and internal teams. No rip-and-replace. No disruptive change management programs"
+    },
+    {
+     "title": "Day-1 Productive teams",
+     "body": "Senior practitioners who know Snowflake, Databricks, and AWS better than most internal teams. No ramp-up theatre. No hand-holding"
+    },
+    {
+     "title": "Frugal Innovation principle",
+     "body": "Grounded in Cambridge research. Maximum impact from existing investments. No new licensing. No tool bloat. Lower total cost of outcome"
+    },
+    {
+     "title": "Outcomes, not activity",
+     "body": "Measured by business results, not hours billed. Every sprint closes with a deployed, tested, business-ready deliverable"
+    },
+    {
+     "title": "Global delivery, local presence",
+     "body": "US HQ in Tampa. On-the-ground presence in the UK, Sweden, India, and Costa Rica. Flex onshore/offshore/hybrid to match your governance model"
+    },
+    {
+     "title": "Enterprise-grade security",
+     "body": "ISO 27001 certified. SOC 2 compliant. Robust data privacy controls for GDPR and HIPAA regulated environments"
+    },
+    {
+     "title": "Non-disruptive by design",
+     "body": "We complement your existing vendors and internal teams. No rip-and-replace. No disruptive change management programs"
+    },
+    {
+     "title": "Day-1 Productive teams",
+     "body": "Senior practitioners who know Snowflake, Databricks, and AWS better than most internal teams. No ramp-up theatre. No hand-holding"
+    },
+    {
+     "title": "Frugal Innovation principle",
+     "body": "Grounded in Cambridge research. Maximum impact from existing investments. No new licensing. No tool bloat. Lower total cost of outcome"
+    },
+    {
+     "title": "Outcomes, not activity",
+     "body": "Measured by business results, not hours billed. Every sprint closes with a deployed, tested, business-ready deliverable"
+    },
+    {
+     "title": "Global delivery, local presence",
+     "body": "US HQ in Tampa. On-the-ground presence in the UK, Sweden, India, and Costa Rica. Flex onshore/offshore/hybrid to match your governance model"
+    },
+    {
+     "title": "Enterprise-grade security",
+     "body": "ISO 27001 certified. SOC 2 compliant. Robust data privacy controls for GDPR and HIPAA regulated environments"
+    }
+   ],
+   "prose": [],
+   "images": []
+  }
+ ]
+}

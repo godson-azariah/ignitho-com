@@ -1,0 +1,319 @@
+{
+ "bands": [
+  {
+   "hero": true,
+   "title": "Applied AI & Smart Automation that works in production, not just demos",
+   "lead": "Practical AI built around real business cases – Agentic AI, LLMs, NLP, machine learning, and intelligent automation deployed within your existing platforms. No AI for its own sake. No endless proofs-of-concept. Just measurable outcomes, governed and embedded into daily operations",
+   "items": [
+    {
+     "title": "ISG Noteworthy Provider",
+     "body": "Advanced Analytics & AI"
+    },
+    {
+     "title": "A Track record of Excellence",
+     "body": "Since 2016"
+    },
+    {
+     "title": "ISO 27001 Certified",
+     "body": "Global Security Standards"
+    },
+    {
+     "title": "Industry Partnerships",
+     "body": "Databricks, Snowflake, Microsoft"
+    },
+    {
+     "title": "ISG Noteworthy Provider",
+     "body": "Advanced Analytics & AI"
+    },
+    {
+     "title": "A Track record of Excellence",
+     "body": "Since 2016"
+    },
+    {
+     "title": "ISO 27001 Certified",
+     "body": "Global Security Standards"
+    },
+    {
+     "title": "Industry Partnerships",
+     "body": "Databricks, Snowflake, Microsoft"
+    }
+   ],
+   "prose": [],
+   "images": []
+  },
+  {
+   "hero": false,
+   "title": "Most enterprises have AI pilots - almost none have AI in production",
+   "lead": "The gap between ‘AI proof-of-concept’ and ‘AI that runs in daily operations’ is where billions of enterprise investment disappear. Models that work brilliantly in a Jupyter notebook never make it to the hands of the business. The problem isn’t the AI – it’s the adoption gap. Ignitho’s applied AI practice is built specifically to close that gap. We deploy AI within your existing workflows, integrate it into the tools your teams already use, and build explainability in from the first sprint – so adoption is a feature, not an afterthought",
+   "items": [
+    {
+     "title": "Pilots that never reach production",
+     "body": "AI models validated in sandboxes that never get deployed into live systems. The business never sees the value. Engineering gets blamed. The project gets quietly shelved"
+    },
+    {
+     "title": "Black-box models nobody trusts",
+     "body": "AI outputs that a business user can’t interrogate or challenge. When a model fires a risk flag or rejects an application, someone needs to be able to ask why — and get an answer they can act on"
+    },
+    {
+     "title": "Data too messy to start",
+     "body": "The most common blocker: “our data isn’t clean enough for AI.” More than 90% of enterprises say this. That’s exactly where we start. We use AI to fix the data first, then deploy on the clean foundation we built"
+    },
+    {
+     "title": "Governance and compliance gaps",
+     "body": "AI in regulated industries requires audit trails, model explainability, data lineage, and human-in-the-loop controls. Most AI vendors solve the model. Nobody solves the governance. We do both"
+    },
+    {
+     "title": "Pilots that never reach production",
+     "body": "AI models validated in sandboxes that never get deployed into live systems. The business never sees the value. Engineering gets blamed. The project gets quietly shelved"
+    },
+    {
+     "title": "Black-box models nobody trusts",
+     "body": "AI outputs that a business user can’t interrogate or challenge. When a model fires a risk flag or rejects an application, someone needs to be able to ask why — and get an answer they can act on"
+    },
+    {
+     "title": "Data too messy to start",
+     "body": "The most common blocker: “our data isn’t clean enough for AI.” More than 90% of enterprises say this. That’s exactly where we start. We use AI to fix the data first, then deploy on the clean foundation we built"
+    },
+    {
+     "title": "Governance and compliance gaps",
+     "body": "AI in regulated industries requires audit trails, model explainability, data lineage, and human-in-the-loop controls. Most AI vendors solve the model. Nobody solves the governance. We do both"
+    }
+   ],
+   "prose": [],
+   "images": []
+  },
+  {
+   "hero": false,
+   "title": "Practical AI for every layer of the enterprise",
+   "lead": "From Agentic AI that operates autonomously within your workflows, to classical ML and NLP that quietly eliminate manual effort – every capability is deployed with a clear business case, measurable ROI, and governance built in from sprint one",
+   "items": [
+    {
+     "title": "Agentic AI & Autonomous Workflow Automation",
+     "body": "Deploy AI agents that reason, plan, and act autonomously within your enterprise workflows - processing documents, triggering decisions, querying systems, and escalating to humans when necessary. From underwriting agents that turn 8-hour review cycles into 15-minute decisions, to autonomous infrastructure maintenance agents that eliminate 30+ manual engineering roles"
+    },
+    {
+     "title": "NLP Automation & Document Intelligence",
+     "body": "Transform unstructured documents, policies, contracts, and reports into structured, queryable intelligence. NLP rule engines, classification models, and conversational AI that integrate directly into existing workflows — solving the adoption gap by meeting users where they already work"
+    },
+    {
+     "title": "Generative AI & LLM Implementation",
+     "body": "Implement production-grade GenAI solutions built on enterprise-approved LLM foundations — OpenAI, Anthropic, Google Gemini, or open-source models. We handle RAG pipeline design, knowledge base integration, prompt engineering, and the governance layer that makes GenAI safe in regulated environments"
+    },
+    {
+     "title": "Machine Learning & Predictive Modelling",
+     "body": "Production ML models for classification, regression, anomaly detection, demand forecasting, churn prediction, and risk scoring — trained on your data, deployed into your approved infrastructure, and designed to improve with every new data point"
+    },
+    {
+     "title": "Computer Vision & Image Intelligence",
+     "body": "Deploy visual AI for quality inspection, document digitization, inventory monitoring, and operational safety. Computer vision models that run on your existing camera and imaging infrastructure — no new hardware required, with full integration into your operational workflows"
+    },
+    {
+     "title": "Recommendation Systems & Personalization Engines",
+     "body": "Build next-best-action, product recommendation, and personalization models that drive revenue uplift, retention, and engagement — collaborative filtering, content-based, and hybrid approaches deployed into your eCommerce, CRM, or marketing stack"
+    }
+   ],
+   "prose": [],
+   "images": []
+  },
+  {
+   "hero": false,
+   "title": "Why Accelerators",
+   "lead": "Three Pillars Philosophy",
+   "items": [
+    {
+     "title": "From pilot to production in one sprint cycle",
+     "body": "Most enterprises have AI projects that have been ‘almost ready for production’ for over a year. Our accelerators are pre-built, pre-tested, and pre-governed — which means your team spends time deploying value, not re-inventing infrastructure that already exists"
+    },
+    {
+     "title": "Governed and compliant from day one",
+     "body": "Every accelerator ships with enterprise security alignment, audit-ready data lineage, and human-in-the-loop controls. We have deployed these within the most strictly regulated BFSI, Pharma, and insurance environments in the world"
+    },
+    {
+     "title": "Built on what you already own",
+     "body": "No new licensing. No forced platform migrations. Every accelerator deploys within your existing cloud and data stack — AWS, Azure, Snowflake, Databricks, or whichever combination your organisation has already approved"
+    }
+   ],
+   "prose": [],
+   "images": []
+  },
+  {
+   "hero": false,
+   "title": "Four accelerators. One purpose: AI in production",
+   "lead": "Each accelerator addresses a specific failure mode in enterprise AI adoption — from data quality and pipeline debt to SDLC slowness and adoption gaps. All four are deployable within your existing stack, governed from sprint one, and proven in regulated enterprise environments",
+   "items": [
+    {
+     "title": "Intelligent Data Accelerator (IDA)",
+     "body": "An AI layer deployed between your datasets and your data pipelines that catches source changes proactively before they break downstream processes The result is self-healing data infrastructure that frees your engineering team from the maintenance loop"
+    },
+    {
+     "title": "Intelligent Quality Accelerator (IQA)",
+     "body": "IQA rapidly validates your development lifecycle and eliminates the quality assurance stage that is too slow, too manual, enabling faster production deployment"
+    },
+    {
+     "title": "Conversational Agent Accelerator (CQA)",
+     "body": "CQA deploys NLP agents that meet users exactly where they work, integrating into existing tools like Slack and Teams to drive adoption"
+    },
+    {
+     "title": "Customer Data Platform Accelerator (CDP)",
+     "body": "Provides a defined path to ROI before a single sprint is planned, enabling customer intelligence without heavy platform investment"
+    }
+   ],
+   "prose": [],
+   "images": []
+  },
+  {
+   "hero": false,
+   "title": "From messy data to production AI - in sprints",
+   "lead": "We don’t start with models. We start with the business decision the AI needs to improve.Every sprint is scoped backwards from the outcome — what does a business user need to do differently, and how does AI enable that?",
+   "items": [
+    {
+     "title": "7-Day AI Triage & Use Case Qualification",
+     "body": "Map your current AI estate, identify where automation and intelligence create the highest ROI, and qualify the data readiness of each candidate use case. We clear the messy data objection on day one — starting where you are, not where you’d like to be"
+    },
+    {
+     "title": "Data Readiness & AI Foundation Architecture",
+     "body": "Build the data foundation the AI requires — feature engineering, data cleaning and tagging, and model architecture design. Define governance, explainability, and human-in-the-loop controls before the first model trains"
+    },
+    {
+     "title": "Iterative Build & Deployment 7 to 30-Day Sprints",
+     "body": "Train, evaluate, and deploy in short cycles. Every sprint closes with a live model a business user can interact with — not a notebook or demo. Explainability and audit trail built in"
+    },
+    {
+     "title": "MLOps, Monitoring & Continuous Improvement",
+     "body": "Implement pipelines to monitor drift, retrain models, and maintain audit trails. The model improves continuously while your team stays in control"
+    }
+   ],
+   "prose": [],
+   "images": []
+  },
+  {
+   "hero": false,
+   "title": "Specialist PODs-self-contained, outcome-driven, Day-1 productive",
+   "lead": "Ignitho deploys self-contained Specialist PODs: cross-functional delivery units that combine Human Intelligence (senior practitioners), Artificial Intelligence (automation and AI agents), and Technology Intelligence (your existing platforms). Each POD integrates into your existing Agile/Jira workflow on Day 1. There is no ramp-up theatre, no management overhead, and no hand-holding required. Your engineers get time back, not a new team to manage",
+   "items": [
+    {
+     "title": "Single point of accountability",
+     "body": "One POD Leader owns delivery and acts as your primary interface. No diffuse responsibility, no finger-pointing between teams"
+    },
+    {
+     "title": "Agile velocity : 7 to 30-day sprint cycles",
+     "body": "Short, continuous delivery cycles with visible progress at every sprint review. Business stakeholders see outcomes, not activity metrics"
+    },
+    {
+     "title": "Plug-and-play integration",
+     "body": "Works within your existing tools, governance frameworks, and operating models. No disruptive change management. No rip-and-replace mentality"
+    },
+    {
+     "title": "AI-augmented delivery speed",
+     "body": "Automated data quality validation, AI-assisted code review, and accelerator libraries built into the POD reduce delivery time by up to 40%"
+    }
+   ],
+   "prose": [],
+   "images": []
+  },
+  {
+   "hero": false,
+   "title": "Solving your AI problems, big or small",
+   "lead": "From deploying a single AI agent to clear a specific bottleneck, to building a full enterprise AI capability with MLOps, governance, and a team of specialists — Ignitho has a model that fits",
+   "items": [
+    {
+     "title": "Tactical Intervention",
+     "body": "Broken pipelines, dashboard backlogs, urgent board deadlines, or a stalled proof-of-concept that needs rescuing"
+    },
+    {
+     "title": "Agile Scaling",
+     "body": "Accelerated Task Force deployment in days"
+    },
+    {
+     "title": "Most Requested",
+     "body": "No long-term MSA required to start"
+    },
+    {
+     "title": "Strategic Transformation",
+     "body": "Clears technical debt and stalled backlog immediately"
+    },
+    {
+     "title": "Tactical Intervention",
+     "body": "Fixed-scope, fixed-outcome delivery"
+    },
+    {
+     "title": "Agile Scaling",
+     "body": "Ideal for: quick wins before a board or audit event"
+    },
+    {
+     "title": "Most Requested",
+     "body": "Internal teams overwhelmed by maintenance, or facing a 4+ month hiring delay for senior data engineers"
+    },
+    {
+     "title": "Strategic Transformation",
+     "body": "Self-governed Specialist POD embedded in your team"
+    }
+   ],
+   "prose": [
+    "Integrates with your existing Agile/Jira workflow",
+    "Senior practitioners from day one, no ramp-up theatre",
+    "7 to 30-day iterative sprint cycles with visible outcomes",
+    "Ideal for: ongoing data platform delivery at velocity",
+    "Modernizing full data stacks to Snowflake or Databricks, or building an enterprise-wide data strategy and AI readiness programme",
+    "Managed Outcome Partnership with full delivery ownership",
+    "Architecture advisory and platform decision governance",
+    "Multi-POD coordination across workstreams",
+    "Measurable ROI milestones and shared accountability",
+    "Ideal for: CDO/CIO-led transformation programmes",
+    "Broken pipelines, dashboard backlogs, urgent board deadlines, or a stalled proof-of-concept that needs rescuing",
+    "Accelerated Task Force deployment in days",
+    "No long-term MSA required to start",
+    "Clears technical debt and stalled backlog immediately",
+    "Fixed-scope, fixed-outcome delivery",
+    "Ideal for: quick wins before a board or audit event",
+    "Internal teams overwhelmed by maintenance, or facing a 4+ month hiring delay for senior data engineers",
+    "Self-governed Specialist POD embedded in your team",
+    "Integrates with your existing Agile/Jira workflow",
+    "Senior practitioners from day one, no ramp-up theatre",
+    "7 to 30-day iterative sprint cycles with visible outcomes",
+    "Ideal for: ongoing data platform delivery at velocity",
+    "Modernizing full data stacks to Snowflake or Databricks, or building an enterprise-wide data strategy and AI readiness programme",
+    "Managed Outcome Partnership with full delivery ownership",
+    "Architecture advisory and platform decision governance",
+    "Multi-POD coordination across workstreams",
+    "Measurable ROI milestones and shared accountability",
+    "Ideal for: CDO/CIO-led transformation programmes",
+    "*All engagements can begin under a specialist waiver — bypassing PSL bottlenecks for niche, high-velocity data work"
+   ],
+   "images": []
+  },
+  {
+   "hero": false,
+   "title": "Why Ignitho",
+   "lead": null,
+   "items": [
+    {
+     "title": "Production over pilots",
+     "body": "Every AI sprint closes with a deployed, business-user-facing output. Not a notebook. Not a demo. An outcome someone can act on"
+    },
+    {
+     "title": "Governed from sprint one",
+     "body": "Explainability, audit trails, human-in-the-loop controls, and data lineage built into every AI solution — not retrofitted before compliance review"
+    },
+    {
+     "title": "Platform-agnostic deployment",
+     "body": "We deploy on your approved cloud and AI platform stack. AWS Bedrock, Azure OpenAI, or open-source. No new licences. No vendor lock-in"
+    },
+    {
+     "title": "Day-1 Productive AI practitioners",
+     "body": "Senior ML engineers and AI architects who know SageMaker, Databricks, and LLM frameworks. No ramp-up. They integrate and deliver from week one"
+    },
+    {
+     "title": "Regulated-industry experience",
+     "body": "We have deployed AI in insurance, pharma, financial services, and auditing — environments where model explainability, compliance, and audit readiness are non-negotiable"
+    },
+    {
+     "title": "Frugal AI principle",
+     "body": "Maximum AI value from your existing data and platform investments. We use AI to fix data first, deploy on what you own, and measure ROI from sprint one"
+    }
+   ],
+   "prose": [],
+   "images": []
+  }
+ ]
+}

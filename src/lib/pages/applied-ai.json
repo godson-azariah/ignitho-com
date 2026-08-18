@@ -1,0 +1,174 @@
+{
+ "bands": [
+  {
+   "hero": true,
+   "title": "Applied AI & Smart Automation That Works in Production, Not Just Demos",
+   "lead": null,
+   "items": [],
+   "prose": [],
+   "images": []
+  },
+  {
+   "hero": false,
+   "title": "Most Enterprises Have AI Pilots -Almost None Have AI in Production",
+   "lead": null,
+   "items": [
+    {
+     "title": "Pilots that never reach production",
+     "body": "The gap between ‘AI proof-of-concept’ and ‘AI that runs in daily operations’ is where billions of enterprise investment disappear. Models that work brilliantly in a Jupyter notebook never make it to the hands of the business. The problem isn’t the AI – it’s the adoption gap. Ignitho’s applied AI practice is built specifically to close that gap. We deploy AI within your existing workflows, integrate it into the tools your teams already use, and build explainability in from the first sprint – so adoption is a feature, not an afterthought"
+    },
+    {
+     "title": "Black-box models nobody trusts",
+     "body": "AI outputs that a business user can’t interrogate or challenge. When a model fires a risk flag or rejects an application, someone needs to be able to ask why and get an answer they can act on"
+    },
+    {
+     "title": "Data too messy to start",
+     "body": null
+    },
+    {
+     "title": "Governance and compliance gaps",
+     "body": null
+    }
+   ],
+   "prose": [],
+   "images": []
+  },
+  {
+   "hero": false,
+   "title": "Why Accelerators",
+   "lead": null,
+   "items": [
+    {
+     "title": "From pilot to production in one sprint cycle",
+     "body": null
+    },
+    {
+     "title": "Governed and compliant from day one",
+     "body": null
+    },
+    {
+     "title": "Built on what you already own",
+     "body": null
+    }
+   ],
+   "prose": [],
+   "images": []
+  },
+  {
+   "hero": false,
+   "title": "From Messy Data to Production AI - in Sprints",
+   "lead": null,
+   "items": [
+    {
+     "title": "7-Day AI Triage & Use Case Qualification",
+     "body": "Map your current AI estate, identify where automation and intelligence create the highest ROI, and qualify the data readiness of each candidate use case. We clear the messy data objection on day one – starting where you are, not where you’d like to be"
+    },
+    {
+     "title": "Data Readiness & AI Foundation Architecture",
+     "body": "Build the data foundation the AI requires – feature engineering, data cleaning and tagging, and model architecture design. Define governance, explainability, and human-in-the-loop controls before the first model trains"
+    },
+    {
+     "title": "Iterative Build & Deployment 7 to 30-Day Sprints",
+     "body": "Train, evaluate, and deploy in short cycles. Every sprint closes with a live model a business user can interact with – not a notebook or demo. Explainability and audit trail built in"
+    },
+    {
+     "title": "MLOps, Monitoring & Continuous Improvement",
+     "body": "Implement pipelines to monitor drift, retrain models, and maintain audit trails. The model improves continuously while your team stays in control"
+    }
+   ],
+   "prose": [],
+   "images": []
+  },
+  {
+   "hero": false,
+   "title": "Specialist PODs - self-contained, outcome-driven, Day-1 productive",
+   "lead": "Ignitho deploys self-contained Specialist PODs: cross-functional delivery units that combine Human Intelligence (senior practitioners), Artificial Intelligence (automation and AI agents), and Technology Intelligence (your existing platforms). Each POD integrates into your existing Agile/Jira workflow on Day 1. There is no ramp-up theatre, no management overhead, and no hand-holding required. Your engineers get time back, not a new team to manage",
+   "items": [
+    {
+     "title": "Single point of accountability",
+     "body": "One POD Leader owns delivery and acts as your primary interface. No diffuse responsibility, no finger-pointing between teams"
+    },
+    {
+     "title": "Agile velocity: 7 to 30-day sprint cycles",
+     "body": "Short, continuous delivery cycles with visible progress at every sprint review. Business stakeholders see outcomes, not activity metrics"
+    },
+    {
+     "title": "Plug-and-play integration",
+     "body": "Works within your existing tools, governance frameworks, and operating models. No disruptive change management. No rip-and-replace mentality"
+    },
+    {
+     "title": "AI-augmented delivery speed",
+     "body": "Automated data quality validation, AI-assisted code review, and accelerator libraries built into the POD reduce delivery time by up to 40%"
+    },
+    {
+     "title": "Single point of accountability",
+     "body": "One POD Leader owns delivery and acts as your primary interface. No diffuse responsibility, no finger-pointing between teams"
+    },
+    {
+     "title": "Agile velocity: 7 to 30-day sprint cycles",
+     "body": "Short, continuous delivery cycles with visible progress at every sprint review. Business stakeholders see outcomes, not activity metrics"
+    },
+    {
+     "title": "Plug-and-play integration",
+     "body": "Works within your existing tools, governance frameworks, and operating models. No disruptive change management. No rip-and-replace mentality"
+    },
+    {
+     "title": "AI-augmented delivery speed",
+     "body": "Automated data quality validation, AI-assisted code review, and accelerator libraries built into the POD reduce delivery time by up to 40%"
+    }
+   ],
+   "prose": [],
+   "images": []
+  },
+  {
+   "hero": false,
+   "title": "Solving Your AI Problems, Big or Small",
+   "lead": "Accelerated Task Force deployment in days",
+   "items": [
+    {
+     "title": "Tier 1",
+     "body": "No long-term MSA required to start"
+    },
+    {
+     "title": "Tactical Intervention",
+     "body": "Clears technical debt and stalled backlog immediately"
+    },
+    {
+     "title": "The “Quick Win”",
+     "body": "Ideal for: quick wins before a board or audit event"
+    },
+    {
+     "title": "Tier 2",
+     "body": "Self-governed Specialist POD embedded in your team"
+    },
+    {
+     "title": "Agile Scaling",
+     "body": "Integrates with your existing Agile/Jira workflow"
+    },
+    {
+     "title": "The “Velocity Engine”",
+     "body": "Senior practitioners from day one, no ramp-up theatre"
+    },
+    {
+     "title": "Tier 3",
+     "body": "7 to 30-day iterative sprint cycles with visible outcomes"
+    },
+    {
+     "title": "Strategic Transformation",
+     "body": "Ideal for: ongoing data platform delivery at velocity"
+    },
+    {
+     "title": "The “Enterprise Partner”",
+     "body": "Managed Outcome Partnership with full delivery ownership"
+    }
+   ],
+   "prose": [
+    "Architecture advisory and platform decision governance",
+    "Multi-POD coordination across workstreams",
+    "Measurable ROI milestones and shared accountability",
+    "Ideal for: CDO/CIO-led transformation programmes"
+   ],
+   "images": []
+  }
+ ]
+}

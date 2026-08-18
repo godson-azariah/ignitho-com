@@ -1,0 +1,191 @@
+{
+ "bands": [
+  {
+   "hero": true,
+   "title": "Advanced Analytics & Data Science for Insight-Driven Decision",
+   "lead": null,
+   "items": [],
+   "prose": [],
+   "images": []
+  },
+  {
+   "hero": false,
+   "title": "Most enterprises are drowning in data But starving for decisions",
+   "lead": "Dashboards multiply, reports pile up, and the finance team still exports to Excel every Monday morning. The problem is not a shortage of data – it is an excess of noise, a deficit of trust, and analytics tools that serve the data team but not the decision-maker. Ignitho cuts through. We build analytics that leaders actually open, forecasts they trust, and insight workflows that run themselves",
+   "items": [
+    {
+     "title": "Blind spots in reporting - data without context",
+     "body": "Dashboards built for analysts, not decision-makers. KPIs that mask critical gaps"
+    },
+    {
+     "title": "Slow insight cycles that lag behind the business",
+     "body": "Reports arrive too late. Teams spend more time preparing data than analysing it"
+    },
+    {
+     "title": "Spreadsheet dependency & manual processes",
+     "body": "Critical metrics locked in spreadsheets owned by one person"
+    },
+    {
+     "title": "AI Models That Never Reach Production",
+     "body": "Predictive models stay in notebooks instead of driving decisions"
+    }
+   ],
+   "prose": [],
+   "images": []
+  },
+  {
+   "hero": false,
+   "title": "What We Deliver",
+   "lead": "From self-service BI that your CXO actually uses to predictive models embedded in your operational workflows – our analytics practice delivers insight at the speed of the business, not the speed of the data team",
+   "items": [
+    {
+     "title": "Self-Service BI & Visual Dashboards",
+     "body": "Build dashboards that decision-makers open every morning, not data teams. We design and implement self-service BI environments in Power BI, Tableau, and Looker – with governed data models, semantic layers, and role-based access that put the right numbers in front of the right people. No data analyst required to run a report"
+    },
+    {
+     "title": "Predictive Modelling & Forecasting",
+     "body": "Replace gut feel and spreadsheet extrapolation with statistically grounded, self-updating forecast models. We build demand forecasting, revenue projection, churn prediction, and risk scoring models – all calibrated on your actual data and designed to improve continuously"
+    },
+    {
+     "title": "KPI Development & Performance Frameworks",
+     "body": "Define, align, and operationalize the metrics that actually matter. We design KPI hierarchies – from board-level outcomes to operational indicators – and build systems that keep them consistent and trusted"
+    },
+    {
+     "title": "Reporting Automation & Analytics Engineering",
+     "body": "Eliminate the Monday morning spreadsheet panic. We automate reporting pipelines end-to-end – from extraction to delivery. Ensuring every team uses the same definition of revenue, active customer, or EBITDA"
+    },
+    {
+     "title": "Advanced Statistical Analysis & Data Science Advisory",
+     "body": "Hypothesis testing, A/B experiments, cohort analysis, segmentation, anomaly detection, and causal inference – delivered clearly and without black boxes"
+    },
+    {
+     "title": "Data Platform Architecture & Consulting",
+     "body": "Independent advisory for CDOs, CIOs, and Heads of Data Engineering to evaluate architecture, make stack decisions, and build a pragmatic roadmap"
+    }
+   ],
+   "prose": [],
+   "images": []
+  },
+  {
+   "hero": false,
+   "title": "From Discovery to Production - In Weeks, Not Quarters",
+   "lead": null,
+   "items": [
+    {
+     "title": "7-Day Triage & Discovery",
+     "body": "Rapid assessment of your current data stack, pipeline inventory, and key pain points"
+    },
+    {
+     "title": "Sprint Zero - Architecture & Planning",
+     "body": "Production hardening, performance tuning, documentation, and enablement"
+    },
+    {
+     "title": "Iterative Delivery - 7 to 30-Day Sprints",
+     "body": null
+    },
+    {
+     "title": "Stabilize, Optimize & Handover",
+     "body": null
+    }
+   ],
+   "prose": [],
+   "images": []
+  },
+  {
+   "hero": false,
+   "title": "Specialist PODs - self-contained, outcome-driven, Day-1 productive",
+   "lead": "Ignitho deploys self-contained Specialist PODs: cross-functional delivery units that combine Human Intelligence (senior practitioners), Artificial Intelligence (automation and AI agents), and Technology Intelligence (your existing platforms). Each POD integrates into your existing Agile/Jira workflow on Day 1. There is no ramp-up theatre, no management overhead, and no hand-holding required. Your engineers get time back, not a new team to manage",
+   "items": [
+    {
+     "title": "Single point of accountability",
+     "body": "One POD Leader owns delivery and acts as your primary interface. No diffuse responsibility, no finger-pointing between teams"
+    },
+    {
+     "title": "Agile velocity: 7 to 30-day sprint cycles",
+     "body": "Short, continuous delivery cycles with visible progress at every sprint review. Business stakeholders see outcomes, not activity metrics"
+    },
+    {
+     "title": "Plug-and-play integration",
+     "body": "Works within your existing tools, governance frameworks, and operating models. No disruptive change management. No rip-and-replace mentality"
+    },
+    {
+     "title": "AI-augmented delivery speed",
+     "body": "Automated data quality validation, AI-assisted code review, and accelerator libraries built into the POD reduce delivery time by up to 40%"
+    },
+    {
+     "title": "Single point of accountability",
+     "body": "One POD Leader owns delivery and acts as your primary interface. No diffuse responsibility, no finger-pointing between teams"
+    },
+    {
+     "title": "Agile velocity: 7 to 30-day sprint cycles",
+     "body": "Short, continuous delivery cycles with visible progress at every sprint review. Business stakeholders see outcomes, not activity metrics"
+    },
+    {
+     "title": "Plug-and-play integration",
+     "body": "Works within your existing tools, governance frameworks, and operating models. No disruptive change management. No rip-and-replace mentality"
+    },
+    {
+     "title": "AI-augmented delivery speed",
+     "body": "Automated data quality validation, AI-assisted code review, and accelerator libraries built into the POD reduce delivery time by up to 40%"
+    }
+   ],
+   "prose": [],
+   "images": []
+  },
+  {
+   "hero": false,
+   "title": "From discovery to production - big or small",
+   "lead": "From clearing a pipeline backlog in two weeks to running a multi-year modernization programme –Ignitho has an engagement model that fits your urgency, budget, and risk appetite",
+   "items": [
+    {
+     "title": "Tier 1",
+     "body": "Broken pipelines, dashboard backlogs, urgent board deadlines, or a stalled proof-of-concept that needs rescuing"
+    },
+    {
+     "title": "Tactical Intervention",
+     "body": "Accelerated Task Force deployment in days"
+    },
+    {
+     "title": "The “Quick Win”",
+     "body": "No long-term MSA required to start"
+    },
+    {
+     "title": "Tier 2",
+     "body": "Clears technical debt and stalled backlog immediately"
+    },
+    {
+     "title": "Agile Scaling",
+     "body": "Ideal for: quick wins before a board or audit event"
+    },
+    {
+     "title": "The “Velocity Engine”",
+     "body": "Internal teams overwhelmed by maintenance, or facing a 4+ month hiring delay for senior data engineers"
+    },
+    {
+     "title": "Tier 3",
+     "body": "Self-governed Specialist POD embedded in your team"
+    },
+    {
+     "title": "Strategic Transformation",
+     "body": "Integrates with your existing Agile/Jira workflow"
+    },
+    {
+     "title": "The “Enterprise Partner”",
+     "body": "Senior practitioners from day one, no ramp-up theatre"
+    }
+   ],
+   "prose": [
+    "7 to 30-day iterative sprint cycles with visible outcomes",
+    "Ideal for: ongoing data platform delivery at velocity",
+    "Modernizing full data stacks to Snowflake or Databricks, or building an enterprise-wide data strategy and AI readiness programme",
+    "Managed Outcome Partnership with full delivery ownership",
+    "Architecture advisory and platform decision governance",
+    "Multi-POD coordination across workstreams",
+    "Measurable ROI milestones and shared accountability",
+    "Ideal for: CDO/CIO-led transformation programmes",
+    "*All engagements can begin under a specialist waiver — bypassing PSL bottlenecks for niche, high-velocity data work"
+   ],
+   "images": []
+  }
+ ]
+}

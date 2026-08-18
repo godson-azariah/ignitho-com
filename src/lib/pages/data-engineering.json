@@ -1,0 +1,187 @@
+{
+ "bands": [
+  {
+   "hero": true,
+   "title": "Data Engineering & Consulting for Enterprise-Scale Outcomes",
+   "lead": null,
+   "items": [],
+   "prose": [],
+   "images": []
+  },
+  {
+   "hero": false,
+   "title": "Most Enterprises Don’t Lack Data - They Lack the Infrastructure to Use It",
+   "lead": "After years of platform investments, the reality for most mid-to-large enterprises is a fragmented, expensive, and underperforming data landscape. Tools accumulate. Pipelines break. Teams firefight. ROI disappears into complexity. This is the problem Ignitho was built to solve – not by adding more technology, but by applying Frugal Innovation: making what you already own work at its full potential",
+   "items": [
+    {
+     "title": "Manual Bottlenecks & Pipeline Debt",
+     "body": "Complex ETL pipelines requiring extensive manual maintenance, causing IT dependency and delivery delays that block business decisions"
+    },
+    {
+     "title": "Disconnected Data Silos",
+     "body": "Data trapped across cloud APIs, legacy files, and SaaS platforms – fragmented ecosystems that make unified reporting impossible without manual intervention"
+    },
+    {
+     "title": "Data Quality & Decision Risk",
+     "body": "Frequent inconsistencies and errors in source data that cascade into unreliable dashboards, delayed board reporting, and flawed strategic decisions"
+    },
+    {
+     "title": "Cloud Cost Overruns",
+     "body": "Poorly optimized queries, uncompressed data formats, and over-provisioned infrastructure that inflate cloud bills while delivering no additional insight"
+    }
+   ],
+   "prose": [],
+   "images": []
+  },
+  {
+   "hero": false,
+   "title": "Full Data Platform Lifecycle",
+   "lead": null,
+   "items": [
+    {
+     "title": "Real-Time Data Streaming & Pipeline Engineering",
+     "body": "Our data engineering practice covers the full data platform lifecycle – from raw ingestion through to business-ready intelligence layers. Every engagement is anchored to your existing technology investments, not a new vendor stack"
+    },
+    {
+     "title": "Modern Data Warehouse & Lakehouse Design",
+     "body": "Build event-driven, low-latency data pipelines that move, transform, and validate data at speed. We architect streaming infrastructure on Kafka, Kinesis, and Azure Event Hubs – enabling real-time decisioning, fraud detection, and operational intelligence without overhauling your existing landscape"
+    },
+    {
+     "title": "ETL/ELT Pipeline Optimization & Reliability Engineering",
+     "body": "Rescue, stabilize, and optimize broken or inefficient data pipelines. We audit ETL processes, rewrite transformations, remove manual interventions, and implement monitoring"
+    },
+    {
+     "title": "Cloud Migration & Platform Modernization",
+     "body": "Implement data quality frameworks, automated testing, and observability tooling. We build Great Expectations suites, Monte Carlo integrations, and dbt testing layers"
+    },
+    {
+     "title": "Data Quality, Governance & Observability",
+     "body": "Independent advisory for CDOs, CIOs, and Heads of Data Engineering to evaluate architecture, make stack decisions, and build a pragmatic roadmap"
+    },
+    {
+     "title": "Data Platform Architecture & Consulting",
+     "body": null
+    }
+   ],
+   "prose": [],
+   "images": []
+  },
+  {
+   "hero": false,
+   "title": "From Discovery to Production - In Weeks, Not Quarters",
+   "lead": "Ignitho’s delivery model is anchored in short, outcome-focused cycles. We do not run long discovery phases, produce dense architecture documents, and then disappear for six months. Every phase produces a tangible, measurable deliverable",
+   "items": [
+    {
+     "title": "7-Day Triage & Discovery",
+     "body": "Rapid assessment of your current data stack, pipeline inventory, and key pain points"
+    },
+    {
+     "title": "Sprint Zero - Architecture & Planning",
+     "body": "Define the target architecture, data contracts, and delivery milestones"
+    },
+    {
+     "title": "Iterative Delivery - 7 to 30-Day Sprints",
+     "body": "Outcome-driven sprints with continuous feedback and deployed deliverables"
+    },
+    {
+     "title": "Stabilize, Optimize & Handover",
+     "body": "Production hardening, performance tuning, documentation,& enablement"
+    }
+   ],
+   "prose": [],
+   "images": []
+  },
+  {
+   "hero": false,
+   "title": "Specialist PODs - Self-Contained, Outcome-Driven, Day-1 Productive",
+   "lead": "Ignitho deploys self-contained Specialist PODs: cross-functional delivery units that combine Human Intelligence (senior practitioners), Artificial Intelligence (automation and AI agents), and Technology Intelligence (your existing platforms). Each POD integrates into your existing Agile/Jira workflow on Day 1. There is no ramp-up theatre, no management overhead, and no hand-holding required. Your engineers get time back, not a new team to manage",
+   "items": [
+    {
+     "title": "Single point of accountability",
+     "body": "One POD Leader owns delivery and acts as your primary interface. No diffuse responsibility, no finger-pointing between teams"
+    },
+    {
+     "title": "Agile velocity: 7 to 30-day sprint cycles",
+     "body": "Short, continuous delivery cycles with visible progress at every sprint review. Business stakeholders see outcomes, not activity metrics"
+    },
+    {
+     "title": "Plug-and-play integration",
+     "body": "Works within your existing tools, governance frameworks, and operating models. No disruptive change management. No rip-and-replace mentality"
+    },
+    {
+     "title": "AI-augmented delivery speed",
+     "body": "Automated data quality validation, AI-assisted code review, and accelerator libraries built into the POD reduce delivery time by up to 40%"
+    },
+    {
+     "title": "Single point of accountability",
+     "body": "One POD Leader owns delivery and acts as your primary interface. No diffuse responsibility, no finger-pointing between teams"
+    },
+    {
+     "title": "Agile velocity: 7 to 30-day sprint cycles",
+     "body": "Short, continuous delivery cycles with visible progress at every sprint review. Business stakeholders see outcomes, not activity metrics"
+    },
+    {
+     "title": "Plug-and-play integration",
+     "body": "Works within your existing tools, governance frameworks, and operating models. No disruptive change management. No rip-and-replace mentality"
+    },
+    {
+     "title": "AI-augmented delivery speed",
+     "body": "Automated data quality validation, AI-assisted code review, and accelerator libraries built into the POD reduce delivery time by up to 40%"
+    }
+   ],
+   "prose": [],
+   "images": []
+  },
+  {
+   "hero": false,
+   "title": "Solving Your Data Problems, Big or Small",
+   "lead": "From clearing a pipeline backlog in two weeks to running a multi-year modernization programme. Ignitho has an engagement model that fits your urgency, budget, and risk appetite",
+   "items": [
+    {
+     "title": "Tier 1",
+     "body": "Accelerated Task Force deployment in days"
+    },
+    {
+     "title": "Tactical Intervention",
+     "body": "No long-term MSA required to start"
+    },
+    {
+     "title": "The “Quick Win”",
+     "body": "Clears technical debt and stalled backlog immediately"
+    },
+    {
+     "title": "Tier 2",
+     "body": "Ideal for: quick wins before a board or audit event"
+    },
+    {
+     "title": "Agile Scaling",
+     "body": "Self-governed Specialist POD embedded in your team"
+    },
+    {
+     "title": "The “Velocity Engine”",
+     "body": "Integrates with your existing Agile/Jira workflow"
+    },
+    {
+     "title": "Tier 3",
+     "body": "Senior practitioners from day one, no ramp-up theatre"
+    },
+    {
+     "title": "Strategic Transformation",
+     "body": "7 to 30-day iterative sprint cycles with visible outcomes"
+    },
+    {
+     "title": "The “Enterprise Partner”",
+     "body": "Ideal for: ongoing data platform delivery at velocity"
+    }
+   ],
+   "prose": [
+    "Managed Outcome Partnership with full delivery ownership",
+    "Architecture advisory and platform decision governance",
+    "Multi-POD coordination across workstreams",
+    "Measurable ROI milestones and shared accountability",
+    "Ideal for: CDO/CIO-led transformation programmes"
+   ],
+   "images": []
+  }
+ ]
+}

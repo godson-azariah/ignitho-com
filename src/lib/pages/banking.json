@@ -1,0 +1,169 @@
+{
+ "bands": [
+  {
+   "hero": true,
+   "title": "Data-First Intelligence for Scalable Banking Financial Services & Insurance Decisions",
+   "lead": null,
+   "items": [],
+   "prose": [],
+   "images": []
+  },
+  {
+   "hero": false,
+   "title": "Why a Specialist Data Approach is No Longer Optional",
+   "lead": "As the divide between legacy operations and intelligent ecosystems widens, the numbers favour firms that prioritise data engineering as their primary competitive defence",
+   "items": [],
+   "prose": [
+    "BFSI leaders say data silos are their top barrier to digital transformation",
+    "Average time to hire a senior data engineer in financial services",
+    "Revenue increase reported by banks implementing advanced analytics (McKinsey)",
+    "Annual cost of financial crime globally – analytics is the primary defence"
+   ],
+   "images": []
+  },
+  {
+   "hero": false,
+   "title": "Legacy Complexity Blocking the Intelligence Your Business Needs",
+   "lead": "BFSI institutions carry decades of technology debt – disconnected core banking systems, claims platforms, CRM stacks, and regulatory warehouses resulting in slow decisions, compliance risk, and growing operational headcount",
+   "items": [
+    {
+     "title": "Fragmented core systems",
+     "body": "Policy management, claims, CRM, and risk platforms that don’t talk to each other, creating data blind spots at critical decisioning moments"
+    },
+    {
+     "title": "Slow underwriting & claims cycles",
+     "body": "High-value practitioners bogged down in document review and manual data entry instead of risk assessment and relationship decisions"
+    },
+    {
+     "title": "Customer data silos",
+     "body": "360-degree customer view is the aspiration, while disconnected product data, interaction history, and risk profiles make it a multi-year programme rather than a sprint"
+    },
+    {
+     "title": "Portfolio intelligence gaps",
+     "body": "Asset management and investment platforms generating data that isn’t being used for real-time portfolio intelligence or next-best-action decisioning"
+    }
+   ],
+   "prose": [],
+   "images": []
+  },
+  {
+   "hero": false,
+   "title": "From Risk Intelligence to Agentic Operations",
+   "lead": null,
+   "items": [
+    {
+     "title": "FLAGSHIP SOLUTION",
+     "body": "Designed to transition financial institutions from legacy operations to high-velocity intelligent financial ecosystems – built on the platforms you already run"
+    },
+    {
+     "title": "Predictive Risk & Fraud Detection",
+     "body": "AI-powered anomaly detection integrating with existing risk frameworks, identifying fraudulent patterns at submission, not after the event"
+    },
+    {
+     "title": "Regulatory Reporting Automation",
+     "body": "Streamline data calls and regulatory submissions, reducing latency, manual error, and cost across GDPR, Basel III, Solvency II, and IFRS"
+    },
+    {
+     "title": "Asset Management & Investment Platforms",
+     "body": "AI-augmented platforms for real-time portfolio intelligence, decisioning, and performance reporting across banking and insurance products"
+    },
+    {
+     "title": "360° Customer View & Personalisation",
+     "body": "Unify product, interaction, and risk data into a single governed customer profile - driving next-best-action and retention analytics"
+    }
+   ],
+   "prose": [],
+   "images": []
+  },
+  {
+   "hero": false,
+   "title": "Built for regulated environments - Delivered in sprints",
+   "lead": "In BFSI, change management is as complex as the technology. Every engagement integrates into your existing operations, governance frameworks, and vendor ecosystem, without the disruption large-scale transformation programmes routinely deliver",
+   "items": [
+    {
+     "title": "7-Day BFSI Triage & Data Landscape Audit",
+     "body": "Map your current data estate – core systems, data flows, compliance obligations, and the operational bottlenecks costing you the most"
+    },
+    {
+     "title": "Governed Data Foundation & Platform Setup",
+     "body": "Establish data contracts, lineage, access controls, and audit trails within your approved cloud and security stack, not ours"
+    },
+    {
+     "title": "AI & Analytics Deployment in 7-to-30-Day Sprints",
+     "body": "Specialist POD teams deploy in short visible cycles. Every sprint closes with a working dashboard, deployed risk model, or automated reporting pipeline"
+    },
+    {
+     "title": "Stabilize, Enable & Handover",
+     "body": "Production hardening, compliance sign-off support, and team enablement, leaving your institution in full control of a governed, auditable data estate"
+    }
+   ],
+   "prose": [],
+   "images": []
+  },
+  {
+   "hero": false,
+   "title": "Why Ignitho",
+   "lead": null,
+   "items": [
+    {
+     "title": "Non-disruptive by design",
+     "body": "Large SIs manage the macro transformation. We fill the execution gap – the pipeline reliability, the compliance data layer, the underwriting capability that gets deployed rather than staying in a proof of concept"
+    },
+    {
+     "title": "Day-1 Productive senior practitioners",
+     "body": "We integrate into your existing platforms - Azure, AWS, Databricks, Snowflake, or whatever your approved stack is. No rip-and-replace. No displacing your incumbent vendors or internal teams"
+    },
+    {
+     "title": "Regulated-industry experience",
+     "body": "Senior data engineers and data scientists who know Snowflake, Azure, and AWS. We pick up your backlog and deliver - no ramp-up theatre, no management overhead"
+    },
+    {
+     "title": "Frugal Innovation for BFSI",
+     "body": "Passed vendor risk assessments at some of the world's most strictly regulated financial institutions. Compliance built into our delivery model, not bolted on at the end"
+    },
+    {
+     "title": "Non-disruptive by design",
+     "body": "Maximum value from your existing technology investments before recommending anything new"
+    },
+    {
+     "title": "Regulated-industry experience",
+     "body": "We integrate into your existing platforms - Azure, AWS, Databricks, Snowflake, or whatever your approved stack is. No rip-and-replace. No displacing your incumbent vendors or internal teams"
+    },
+    {
+     "title": "Day-1 Productive senior practitioners",
+     "body": "Passed vendor risk assessments at some of the world's most strictly regulated financial institutions. Compliance built into our delivery model, not bolted on at the end"
+    },
+    {
+     "title": "Frugal Innovation for BFSI",
+     "body": "Senior data engineers and data scientists who know Snowflake, Azure, and AWS. We pick up your backlog and deliver - no ramp-up theatre, no management overhead"
+    },
+    {
+     "title": "ISO 27001",
+     "body": "Cloud cost optimisation and licensing rationalisation built into every engagement"
+    },
+    {
+     "title": "SOC 2 Type II",
+     "body": null
+    },
+    {
+     "title": "GDPR Ready",
+     "body": null
+    },
+    {
+     "title": "Basel III",
+     "body": null
+    },
+    {
+     "title": "IFRS Aligned",
+     "body": null
+    },
+    {
+     "title": "Solvency II",
+     "body": null
+    }
+   ],
+   "prose": [],
+   "images": []
+  }
+ ]
+}

@@ -1,0 +1,1192 @@
+@import "tailwindcss";
+
+/*
+  Design tokens for the Ignitho site.
+  Values are lifted verbatim from the live www.ignitho.com stylesheet so that
+  every page built on top of them stays visually identical to production.
+*/
+@theme {
+  --font-sans: var(--font-urbanist), ui-sans-serif, system-ui, sans-serif;
+
+  /* Elementor breakpoints used by the live site (tablet <=1024, desktop >=1025). */
+  --breakpoint-tablet: 768px;
+  --breakpoint-desktop: 1025px;
+  --breakpoint-wide: 1600px;
+
+  /* Primary CTA (teal-green) */
+  --color-ignitho-teal: #00a274;
+  --color-ignitho-teal-hover: #0c8c74;
+  --color-ignitho-teal-border: #00bc6a;
+
+  /* Text & neutrals */
+  --color-ignitho-text: #030303;
+  --color-ignitho-muted: #54595f;
+  --color-ignitho-divider: #b9bbc2;
+
+  /* Hero accent blue (Elementor global "primary") */
+  --color-ignitho-accent-blue: #6ec1e4;
+
+  /* Deep violet gradient family (hero, cards, CTA banner) */
+  --color-ignitho-violet-950: #16063a;
+  --color-ignitho-violet-800: #2c0a78;
+  --color-ignitho-violet-600: #4a12b8;
+  --color-ignitho-violet-500: #5b16c4;
+  --color-ignitho-teal-deep: #123e68;
+  --color-ignitho-teal-deepest: #0a5670;
+
+  /* Light lavender section family */
+  --color-ignitho-lavender-50: #f9f6ff;
+  --color-ignitho-lavender-100: #f5f0ff;
+  --color-ignitho-lavender-200: #f0e8ff;
+  --color-ignitho-purple-ink: #622baa;
+
+  /* Announcement banner */
+  --color-ignitho-banner-accent: #2300b2;
+}
+
+/*
+  Fixed header stack: navbar on top, announcement banner directly under it.
+  Sections that start at the top of the page offset by --header-height.
+*/
+:root {
+  --nav-height: 96.5px;
+  /* Stepped to how many lines the message wraps onto: four on narrow
+     phones, three from 390px, two from tablet up. */
+  --banner-height: 124px;
+  --header-height: calc(var(--nav-height) + var(--banner-height));
+}
+
+@media (min-width: 390px) {
+  :root {
+    --banner-height: 100px;
+  }
+}
+
+@media (min-width: 768px) {
+  :root {
+    --banner-height: 90px;
+  }
+}
+
+@media (min-width: 1025px) {
+  :root {
+    --banner-height: 75px;
+  }
+}
+
+/*
+  Dismissed announcement. Zeroing the height here rather than unmounting the
+  strip means --header-height shrinks with it and the hero slides up on its
+  own. Higher specificity than the :root rules above, so it wins at every
+  breakpoint. Set by the pre-paint script in layout.js and by the close button.
+*/
+html.announcement-dismissed {
+  --banner-height: 0px;
+}
+
+html.announcement-dismissed .announcement-banner {
+  display: none;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: #ffffff;
+  color: var(--color-ignitho-text);
+  font-family: var(--font-sans);
+}
+
+/* ==========================================================================
+   Announcement banner
+   Full-bleed strip under the navbar: pale violet-to-blue wash, faint dot and
+   contour decorations, Chicago skyline anchored bottom-right.
+   ========================================================================== */
+
+.announcement-banner {
+  background: linear-gradient(
+    90deg,
+    #f2ebfe 0%,
+    #f7f5fd 20%,
+    #f7f8fd 55%,
+    #f1f6fe 85%,
+    #dceafd 100%
+  );
+  border-top: 1px solid rgba(99, 60, 190, 0.1);
+}
+
+/* Sitting above the navbar, the hairline belongs on the other edge. */
+.announcement-banner--above {
+  border-top: 0;
+  border-bottom: 1px solid rgba(99, 60, 190, 0.1);
+}
+
+/*
+  The message runs on a single line from desktop up. Its size is derived from
+  the space the row has left over once the megaphone, the two dividers, the
+  CTA and the minimum gaps are accounted for, so it never wraps and never
+  collides with the CTA:  fs = (viewport - 273px) / 56.6
+*/
+.banner-message {
+  font-size: 13.5px;
+  line-height: 20px;
+  text-wrap: pretty;
+}
+
+/*
+  Mobile layout for the strip. Everything below is scoped to max-width 767px,
+  so the desktop row is untouched by construction.
+*/
+@media (max-width: 767px) {
+  /*
+    Copy and CTA share one inline flow, so "Learn More" trails the end of the
+    sentence rather than sitting on a line of its own.
+  */
+  .banner-copy {
+    display: block;
+  }
+
+  /* Reserves just the top-right corner for the close button — the text wraps
+     around it on the first line and reclaims the full width below. */
+  .banner-copy::before {
+    content: "";
+    float: right;
+    width: 34px;
+    height: 20px;
+  }
+
+  .banner-message {
+    display: inline;
+  }
+
+  /*
+    Plain inline box rather than inline-flex: an inline-flex container
+    synthesises its baseline from its first item, which left the label
+    sitting a fraction off the sentence it trails. As a true inline box it
+    shares the line's baseline exactly.
+  */
+  .banner-cta {
+    display: inline;
+    margin-inline-start: 9px;
+  }
+
+  .banner-cta svg {
+    display: inline-block;
+    margin-inline-start: 7px;
+    vertical-align: -1px;
+  }
+}
+
+@media (min-width: 768px) {
+  .banner-message {
+    font-size: 16px;
+    line-height: 23px;
+  }
+}
+
+@media (min-width: 1025px) {
+  .banner-message {
+    white-space: nowrap;
+    font-size: clamp(13px, calc(1.75vw - 5px), 18px);
+    line-height: 26px;
+  }
+}
+
+/*
+  The skyline is pinned to the viewport edge while the CTA is pinned to the
+  1360px column, so on narrower desktops the two share space. Fading the
+  skyline in from the left, and easing its opacity down as the gap closes,
+  keeps it visible everywhere without ever swallowing the CTA.
+*/
+/*
+  Skyline master switch: 0 hides it, 1 brings it back at the tuned strengths
+  below. Everything else about it stays in place, so flipping this one value
+  is all it takes.
+*/
+:root {
+  --banner-skyline-visible: 0;
+}
+
+/*
+  Decorative only, so it stays softened. Below 1700px the row sits on top of
+  it (the skyline is pinned to the viewport edge, the CTA to the 1360px
+  column), so it eases back further there and fades in from the left.
+*/
+.banner-skyline {
+  opacity: calc(0.3 * var(--banner-skyline-visible));
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 70%);
+  mask-image: linear-gradient(to right, transparent 0%, #000 70%);
+}
+
+@media (min-width: 1500px) {
+  .banner-skyline {
+    opacity: calc(0.45 * var(--banner-skyline-visible));
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 50%);
+    mask-image: linear-gradient(to right, transparent 0%, #000 50%);
+  }
+}
+
+/* Past this width the column clears the skyline outright — no fade needed. */
+@media (min-width: 1700px) {
+  .banner-skyline {
+    opacity: calc(0.6 * var(--banner-skyline-visible));
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+}
+
+.banner-deco-dots-left,
+.banner-deco-dots-right {
+  position: absolute;
+  inset-block: 0;
+  pointer-events: none;
+}
+
+/* Both fields run further inward — left toward the megaphone, right toward the
+   Learn More link — and hold at full strength to 60% before fading, so the
+   dots do not start dissolving the moment they leave the edge. */
+.banner-deco-dots-left {
+  left: 0;
+  width: 170px;
+  background-image: radial-gradient(circle, rgba(96, 0, 181, 0.16) 1px, transparent 1px);
+  background-size: 9px 9px;
+  -webkit-mask-image: linear-gradient(to right, #000 0%, #000 60%, transparent 100%);
+  mask-image: linear-gradient(to right, #000 0%, #000 60%, transparent 100%);
+}
+
+.banner-deco-dots-right {
+  right: 0;
+  width: 160px;
+  background-image: radial-gradient(circle, rgba(59, 60, 190, 0.18) 1px, transparent 1px);
+  background-size: 9px 9px;
+  -webkit-mask-image: linear-gradient(to left, #000 0%, #000 60%, transparent 100%);
+  mask-image: linear-gradient(to left, #000 0%, #000 60%, transparent 100%);
+}
+
+/* ==========================================================================
+   Section surfaces
+   Reusable page backgrounds. Add new sections by picking one of these.
+   ========================================================================== */
+
+/* Dark violet hero band with a faint 60px grid overlay. */
+.hero-banner {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse 95% 85% at 22% 18%, rgba(118, 0, 200, 0.55) 0%, transparent 58%),
+    linear-gradient(125deg, #16063a 0%, #2c0a78 28%, #4a12b8 52%, #123e68 86%, #0a5670 100%);
+}
+
+.hero-banner::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+}
+
+.hero-banner > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* Light lavender band with a dot pattern and a faint 56px grid. */
+.second-section {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(160deg, #f9f6ff 0%, #f0e8ff 50%, #f5f0ff 100%);
+}
+
+.second-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(122, 0, 194, 0.10) 1px, transparent 1px);
+  background-size: 28px 28px;
+  pointer-events: none;
+}
+
+.second-section::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(122, 0, 194, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(122, 0, 194, 0.045) 1px, transparent 1px);
+  background-size: 56px 56px;
+  pointer-events: none;
+}
+
+.second-section > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* ==========================================================================
+   Hero: trust badge strip + scroll cue
+   ========================================================================== */
+
+/* The badge row gains extra breathing room on very wide screens. */
+@media (min-width: 1600px) {
+  .isg {
+    padding-top: 100px;
+  }
+}
+
+.scroll-down {
+  display: flex;
+  justify-content: center;
+}
+
+.scroll-down a {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: none;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+  transition: 0.3s;
+}
+
+.scroll-down a:hover {
+  transform: translateY(4px);
+}
+
+.scroll-down svg {
+  width: 20px;
+  height: 20px;
+  fill: #00a274;
+  filter: drop-shadow(0 0 0 #00a274) drop-shadow(2.1px 0 0 #00a274) drop-shadow(-0.4px 0 0 #00a274);
+}
+
+/* ==========================================================================
+   Frugal innovation cards
+   ========================================================================== */
+
+.frugal-cards {
+  margin: auto;
+  display: flex;
+  max-width: 80%;
+  gap: 28px;
+}
+
+.frugal-card {
+  flex: 1;
+  min-height: 180px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 22px;
+  padding: 35px;
+  background:
+    radial-gradient(circle at 78% 15%, rgba(124, 0, 200, 0.35) 0%, transparent 45%),
+    linear-gradient(125deg, #16063a 0%, #2c0a78 30%, #4a12b8 62%, #5b16c4 100%);
+  transition: 0.3s ease;
+}
+
+.frugal-card:hover {
+  transform: translateY(-4px);
+}
+
+/* Highlight sheen along the top edge. */
+.frugal-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0.55),
+    rgba(255, 255, 255, 0.15),
+    transparent
+  );
+  z-index: 1;
+}
+
+/* Blurred violet glow in the top-right corner. */
+.frugal-card::after {
+  content: "";
+  position: absolute;
+  top: -60px;
+  right: -40px;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(154, 77, 245, 0.4) 0%, transparent 70%);
+  filter: blur(40px);
+  pointer-events: none;
+}
+
+.frugal-card-header,
+.frugal-card .solution-divider-frug,
+.frugal-card p {
+  position: relative;
+  z-index: 2;
+}
+
+.frugal-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.frugal-card h3 {
+  flex: 1;
+  margin: 0;
+  color: #fff;
+  font-size: 20px;
+  line-height: 1.3;
+  font-weight: 700;
+}
+
+.frugal-card .icon-wrap {
+  width: 54px;
+  height: 54px;
+  min-width: 54px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(10px);
+  transition: 0.3s ease;
+}
+
+.frugal-card:hover .icon-wrap {
+  transform: scale(1.08) rotate(6deg);
+}
+
+.frugal-card .icon-wrap svg {
+  color: #fff;
+  width: 20px;
+  height: 20px;
+}
+
+.solution-divider-frug {
+  height: 1px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0.18),
+    rgba(255, 255, 255, 0.05),
+    transparent
+  );
+}
+
+.frugal-card p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 18px;
+  line-height: 1.65;
+}
+
+@media (max-width: 1024px) {
+  .frugal-cards {
+    flex-direction: column;
+  }
+
+  .frugal-card {
+    min-height: auto;
+  }
+}
+
+@media (max-width: 767px) {
+  .frugal-card {
+    padding: 26px;
+  }
+
+  .frugal-card-header {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 14px;
+  }
+
+  .frugal-card .icon-wrap {
+    order: -1;
+    width: 48px;
+    height: 48px;
+    min-width: 48px;
+  }
+
+  .frugal-card h3 {
+    font-size: 16px;
+    text-align: center;
+  }
+
+  .frugal-card p {
+    font-size: 16px;
+    text-align: center;
+    text-wrap: pretty;
+  }
+}
+
+/* Tokens and utilities used by the sections the reference implementation
+   does not cover yet: services, industries, impact and the page bands. */
+@theme {
+  --color-ink: #030303;
+  --color-muted: #6b6080;
+  --color-brand: #2300b2;
+  --color-accent: #00a274;
+  --color-accent-dark: #07924f;
+  --color-lavender-50: #f9f6ff;
+  --color-lavender-100: #f0e8ff;
+  --color-lavender-200: #f5f0ff;
+}
+
+@utility bg-brand-gradient {
+  background-image:
+    radial-gradient(95% 85% at 22% 18%, rgba(118, 0, 200, 0.55) 0%, rgba(0, 0, 0, 0) 58%),
+    linear-gradient(125deg, #16063a 0%, #2c0a78 28%, #4a12b8 52%, #123e68 86%, #0a5670 100%);
+}
+
+@utility bg-lavender-gradient {
+  background-image: linear-gradient(160deg, #f9f6ff 0%, #f0e8ff 50%, #f5f0ff 100%);
+}
+
+@utility bg-industry-gradient {
+  background-image: linear-gradient(140deg, #043620 0%, #07924f 52%, #0d8e92 100%);
+}
+
+@utility bg-service-gradient {
+  background-image: linear-gradient(150deg, #2c0a78 0%, #4a12b8 55%, #5b21c9 100%);
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@utility animate-marquee {
+  animation: marquee 40s linear infinite;
+}
+
+/* Flat lavender surface used by Navigating The Data Complexity Trap and
+   Our Industry Focus: #f8f5fe under a 28px dot field and a 56px ruled grid. */
+.trap-section {
+  position: relative;
+  overflow: hidden;
+  background: #f0e8ff;
+}
+
+/* z-index 0 keeps both fields behind the section content. Without it ::after is
+   the last child and paints over the cards. */
+.trap-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-image: radial-gradient(circle, rgba(122, 0, 194, 0.18) 1px, transparent 1px);
+  background-size: 28px 28px;
+  opacity: 0.9;
+  pointer-events: none;
+}
+
+.trap-section::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-image:
+    linear-gradient(rgba(122, 0, 194, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(122, 0, 194, 0.06) 1px, transparent 1px);
+  background-size: 56px 56px;
+  pointer-events: none;
+}
+
+/* Anything inside the band sits above both fields. */
+.trap-section > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Lighter twin of .trap-section — near-white ground, same dot + ruled grid.
+   Used by bands that sit paler than the lavender ones. */
+.trap-section-light {
+  position: relative;
+  overflow: hidden;
+  background: #ffffff;
+}
+
+.trap-section-light::before,
+.trap-section-light::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.trap-section-light::before {
+  background-image: radial-gradient(circle, rgba(122, 0, 194, 0.10) 1px, transparent 1px);
+  background-size: 28px 28px;
+  opacity: 1;
+}
+
+.trap-section-light::after {
+  background-image:
+    linear-gradient(rgba(122, 0, 194, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(122, 0, 194, 0.045) 1px, transparent 1px);
+  background-size: 56px 56px;
+  opacity: 0.62;
+}
+
+.trap-section-light > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* The flagship solution box. It carries the same dot + ruled field as
+   .trap-section, but the original ground is a three-stop lavender gradient
+   rather than the flat #f8f5fe tint - noticeably more saturated at its middle.
+   Must stay after .trap-section: both are single-class selectors, so the later
+   rule is what wins the background. */
+.flagship-card {
+  background: linear-gradient(160deg, #f9f6ff 0%, #f0e8ff 50%, #f5f0ff 100%) #fff;
+}
+
+/* The site's standard patterned surface: a 28px dot field under a 56px ruled
+   grid. Carries no background colour of its own, so it can be dropped onto any
+   element — a full band or an inner card — that already sets its own fill. */
+.grid-surface {
+  position: relative;
+  overflow: hidden;
+  --grid-dot: rgba(122, 0, 194, 0.18);
+  --grid-line: rgba(122, 0, 194, 0.06);
+  --grid-dot-opacity: 0.5;
+}
+
+/* Lines only. The inner cards on the solutions band carry the 56px ruled grid
+   with NO dot field — adding the dots is what makes them read as noise. */
+.grid-surface-lines {
+  --grid-line: rgba(122, 0, 194, 0.07);
+}
+
+.grid-surface-lines::before {
+  display: none;
+}
+
+.grid-surface::before,
+.grid-surface::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.grid-surface::before {
+  background-image: radial-gradient(circle, rgba(122, 0, 194, 0.18) 1px, transparent 1px);
+  background-size: 28px 28px;
+  opacity: 0.5;
+}
+
+.grid-surface::after {
+  background-image:
+    linear-gradient(rgba(122, 0, 194, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(122, 0, 194, 0.06) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+
+.grid-surface > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Industry cards: photo under a green wash, whole card lifts on hover. */
+.industry-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px;
+  border: 1px solid #000;
+  background:
+    linear-gradient(140deg, #043620 0%, #07924f 52%, #0d8e92 100%);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.industry-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 34px rgba(4, 54, 32, 0.28);
+}
+
+/* Our Services reuses .frugal-card as-is and only runs a wider, taller row:
+   3 x 410px cards with 28px gaps, inset 37px inside the container. */
+.frugal-cards.services-cards {
+  max-width: 94.6%;
+}
+
+.frugal-cards.services-cards .frugal-card {
+  min-height: 420px;
+  gap: 18px;
+}
+
+/* ---- Impact stat cards -------------------------------------------------
+   Its own card, not a frugal-card variant: the gradient brightens toward the
+   lower centre rather than running diagonally, and a light arc sweeps the
+   middle of the face. */
+.impact-cards {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.impact-card {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border-radius: 22px;
+  padding: 26px 20px 30px;
+  text-align: center;
+  /* identical to .frugal-card, so every card on the page shares one surface */
+  background:
+    radial-gradient(circle at 78% 15%, rgba(124, 0, 200, 0.35) 0%, transparent 45%),
+    linear-gradient(125deg, #16063a 0%, #2c0a78 30%, #4a12b8 62%, #5b16c4 100%);
+  box-shadow: 0 18px 38px rgba(35, 0, 178, 0.22);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.impact-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 26px 50px rgba(35, 0, 178, 0.3);
+}
+
+/* Highlight sheen along the top edge. */
+.impact-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 3px;
+  z-index: 1;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0.5),
+    rgba(255, 255, 255, 0.12),
+    transparent
+  );
+}
+
+/* Two complete ovals sitting wholly inside the card — not shapes bled past the
+   edges, which would only ever show an arc. Both ellipses close on screen. */
+.impact-card::after,
+.impact-card .stat-wave {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+/* Narrower ellipses, run slightly wider than the card so their left and right
+   tips are clipped by the edges. */
+.impact-card::after {
+  left: -7%;
+  right: -7%;
+  top: 48%;
+  height: 88px;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.impact-card .stat-wave {
+  left: -3%;
+  right: -3%;
+  top: 58%;
+  height: 76px;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.impact-card .stat-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: 11px;
+  padding: 9px 16px;
+  background: rgba(18, 4, 54, 0.55);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #fff;
+}
+
+.impact-card .stat-value {
+  margin-top: 18px;
+  font-size: 64px;
+  font-weight: 800;
+  line-height: 1;
+  color: #fff;
+}
+
+.impact-card .stat-value span {
+  margin-left: 1px;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.impact-card .stat-label {
+  margin-top: 12px;
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 24px;
+  color: #fff;
+}
+
+.impact-card .stat-body {
+  margin-top: 10px;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 25px;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* Headings on this site are bold by default. Reference sections that set their
+   own weight via a class still win, since a class outranks a bare element. */
+@layer base {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-weight: 700;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Specialist POD orbit diagram (Data Engineering page).
+   Transcribed from the original's inline stylesheet: a 420px stage with two
+   dashed rings, a glow, a gradient core and six nodes on a 40s orbit. The
+   nodes counter-rotate at the same rate so the faces stay upright.
+--------------------------------------------------------------------------- */
+.podo {
+  position: relative;
+  width: 420px;
+  height: 420px;
+  margin: auto;
+}
+
+.podo .ring {
+  position: absolute;
+  border: 2px dashed rgba(145, 67, 219, 0.35);
+  border-radius: 50%;
+}
+
+.podo .r1 { inset: 40px; }
+.podo .r2 { inset: 120px; }
+
+.podo .glow {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(168, 85, 247, 0.25), rgba(168, 85, 247, 0.08), transparent 70%);
+}
+
+.podo .core {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #7a00c2, #b100ff);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #fff;
+  box-shadow: 0 0 35px rgba(146, 0, 255, 0.45);
+}
+
+.podo .core svg { width: 36px; height: 36px; }
+.podo .core b { font-size: 20px; line-height: 1.2; font-weight: 700; }
+.podo .core small { font-size: 13px; margin-top: 8px; opacity: 0.95; }
+
+.podo .orbit {
+  position: absolute;
+  inset: 40px;
+  animation: podo-spin 40s linear infinite;
+}
+
+.podo .node {
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  margin: -32px;
+  border-radius: 50%;
+  background: #fff;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  animation: podo-counter 40s linear infinite;
+}
+
+.podo .node img { width: 100%; height: 100%; object-fit: cover; }
+
+.podo .node.ai {
+  background: #14b8a6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.podo .node.ai svg { width: 28px; height: 28px; }
+
+/* six seats, 60 degrees apart */
+.podo .p1 { top: 0;    left: 50%; }
+.podo .p2 { top: 25%;  left: 93.3%; }
+.podo .p3 { top: 75%;  left: 93.3%; }
+.podo .p4 { top: 100%; left: 50%; }
+.podo .p5 { top: 75%;  left: 6.7%; }
+.podo .p6 { top: 25%;  left: 6.7%; }
+
+@keyframes podo-spin { to { transform: rotate(360deg); } }
+@keyframes podo-counter { to { transform: rotate(-360deg); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .podo .orbit,
+  .podo .node { animation: none; }
+}
+
+@media (max-width: 767px) {
+  .podo { width: 340px; height: 340px; }
+  .podo .r1 { inset: 28px; }
+  .podo .r2 { inset: 80px; }
+  .podo .glow { width: 170px; height: 170px; }
+  .podo .core { width: 125px; height: 125px; }
+  .podo .core svg { width: 28px; height: 28px; }
+  .podo .core b { font-size: 17px; }
+  .podo .core small { font-size: 11px; }
+  .podo .node { width: 46px; height: 46px; margin: -23px; }
+  .podo .node.ai svg { width: 22px; height: 22px; }
+  .podo .orbit { inset: 28px; }
+}
+
+/* Data Engineering surfaces, sampled from the original.
+   `brand-panel` is the plain 125deg ramp used by the lifecycle panel, its
+   active tab and the Tier 2 card; the two `de-card` variants add the corner
+   radial that lifts the top-right of the problem cards. */
+@utility bg-brand-panel {
+  background-image: linear-gradient(125deg, #16063a 0%, #2c0a78 30%, #4a12b8 62%, #5b16c4 100%);
+}
+
+@utility bg-de-card-purple {
+  background-image:
+    radial-gradient(circle at 82% 12%, rgba(124, 0, 200, 0.5) 0%, rgba(0, 0, 0, 0) 55%),
+    linear-gradient(125deg, #16063a 0%, #2c0a78 30%, #4a12b8 62%, #5b16c4 100%);
+}
+
+@utility bg-de-card-green {
+  background-image:
+    radial-gradient(circle at 82% 12%, rgba(16, 210, 150, 0.34) 0%, rgba(0, 0, 0, 0) 55%),
+    linear-gradient(140deg, #053d2c 0%, #05a05e 52%, #0f9fa8 100%);
+}
+
+/* No single word left alone on a final line. `pretty` asks the browser to
+   pull the second-to-last word down with it rather than leave a widow, and
+   only affects the last few lines so body copy keeps its normal rhythm. */
+h1, h2, h3, h4, h5, h6, p, li, blockquote {
+  text-wrap: pretty;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Softer field: drops a .grid-surface band's dot + rule layers to 30%.
+   Used by the Leadership band, which sits on a very pale ground where the
+   default strength reads too heavy. */
+.grid-soft::before,
+.grid-soft::after {
+  opacity: 0.3;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ---------------------------------------------------------------------------
+   Ignitho AI page tokens and surfaces, ported from the standalone React app.
+   Namespaced ignitho-* so they cannot collide with the main site scale.
+--------------------------------------------------------------------------- */
+@theme {
+  --color-ignitho-teal: #00a274;
+  --color-ignitho-teal-hover: #0c8c74;
+  --color-ignitho-teal-border: #00bc6a;
+  --color-ignitho-text: #030303;
+  --color-ignitho-divider: #b9bbc2;
+  --color-ignitho-muted: #54595f;
+  --color-ignitho-accent-blue: #6ec1e4;
+  --color-ignitho-violet-950: #16063a;
+  --color-ignitho-violet-800: #2c0a78;
+  --color-ignitho-violet-600: #4a12b8;
+  --color-ignitho-violet-500: #5b16c4;
+  --color-ignitho-teal-deep: #123e68;
+  --color-ignitho-teal-deepest: #0a5670;
+  --color-ignitho-purple-600: #3d08b8;
+  --color-ignitho-purple-700: #5008d0;
+  --color-ignitho-green-950: #043620;
+  --color-ignitho-green-600: #07924f;
+  --color-ignitho-green-500: #0d8e92;
+}
+
+.bg-ignitho-hero {
+  position: relative;
+  background:
+    radial-gradient(ellipse 95% 85% at 22% 18%, rgba(118, 0, 200, 0.55) 0%, transparent 58%),
+    linear-gradient(125deg, #16063a 0%, #2c0a78 28%, #4a12b8 52%, #123e68 86%, #0a5670 100%);
+}
+
+.bg-ignitho-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+}
+
+.bg-ignitho-light-grid {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(160deg, #f9f6ff 0%, #f0e8ff 50%, #f5f0ff 100%);
+}
+
+.bg-ignitho-light-grid::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(122, 0, 194, 0.18) 1px, transparent 1px);
+  background-size: 28px 28px;
+  pointer-events: none;
+}
+
+.bg-ignitho-light-grid::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(122, 0, 194, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(122, 0, 194, 0.06) 1px, transparent 1px);
+  background-size: 56px 56px;
+  pointer-events: none;
+}
+
+.bg-ignitho-light-grid > * {
+  position: relative;
+  z-index: 2;
+}
+
+.bg-ignitho-white-grid {
+  position: relative;
+  overflow: hidden;
+  background: #fbf9ff;
+}
+
+.bg-ignitho-white-grid::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(122, 0, 194, 0.14) 1px, transparent 1px);
+  background-size: 28px 28px;
+  pointer-events: none;
+}
+
+.bg-ignitho-white-grid::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(122, 0, 194, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(122, 0, 194, 0.045) 1px, transparent 1px);
+  background-size: 56px 56px;
+  pointer-events: none;
+}
+
+.bg-ignitho-white-grid > * {
+  position: relative;
+  z-index: 2;
+}
+
+.scrollbar-none {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+
+@keyframes marquee-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+.animate-marquee {
+  animation: marquee-scroll 25s linear infinite;
+}
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+
+
+
+
+
+
+
+
