@@ -16,22 +16,22 @@ export const MEDIA = {
     stats: [
       {
         value: "87%",
-        icon: "users",
+        icon: "pills",
         body: "Media companies investing in audience personalisation (McKinsey)",
       },
       {
         value: "10-15%",
-        icon: "spark",
+        icon: "clipboard",
         body: "Revenue uplift achievable through dynamic content personalisation (Deloitte)",
       },
       {
         value: "28%",
-        icon: "gear",
+        icon: "microchip",
         body: "Cost reduction in reporting and analytics ops through automation",
       },
       {
         value: "35%",
-        icon: "globe",
+        icon: "shieldHalved",
         body: "Audience growth achievable via real-time analytics and hyper-targeted recommendations (Media Analytics benchmark)",
       },
     ],
@@ -44,18 +44,22 @@ export const MEDIA = {
       "Media enterprises generate more audience, content, and monetisation data than almost any other sector. But most sits in disconnected platforms that don’t surface insight fast enough for editorial decisions or revenue optimisation. Ignitho enhances your existing CMS, analytics, and ad platforms – not replace them – to create a real-time content intelligence layer",
     items: [
       {
+        icon: "database",
         title: "Insight lag kills editorial agility",
         body: "Audience data arrives hours or days after publish – too late for editorial teams to adjust stories, trending topics, or content strategy",
       },
       {
+        icon: "calendarClock",
         title: "Data scattered across platforms",
         body: "Web analytics, social signals, streaming data, and subscription metrics in separate systems, making unified profiles and real-time personalisation impossible",
       },
       {
+        icon: "shieldCheck",
         title: "Content performance visibility is weak",
         body: "Editorial teams can’t see which stories, formats, or topics drive engagement, retention, or revenue – leading to repetitive content strategies and missed high-value opportunities",
       },
       {
+        icon: "microscope",
         title: "Monetisation signals remain opaque",
         body: "Ad teams lack real-time visibility into which audiences, content types, and placements drive revenue, leading to sub-optimal pricing and missed growth",
       },
@@ -122,21 +126,24 @@ export const MEDIA = {
     subtitle:
       "Ignitho has delivered for Fluent, Hearst, and other media leaders – not by replacing their CMS or ad platforms, but by building the intelligence layer on top of what they already run. Our media specialists understand editorial velocity, audience signal interpretation, and the real-time demands of newsroom decision-making",
     image: {
-      src: "/images/why-ignitho.webp",
+      src: "/images/why-ignitho-industry.webp",
       alt: "Ignitho consultants working with a media and communications client team",
     },
     left: [
       {
+        icon: "shieldCheck",
         title: "Platform-agnostic editorial integration",
         body: "We build on top of your existing CMS, analytics, and ad platforms. Zero vendor lock-in, zero platform replacement, and immediate ROI without disruption to live editorial operations",
       },
       {
+        icon: "lightbulb",
         title: "Day-1 Productive media practitioners",
         body: "Senior data engineers and analytics specialists who know streaming platforms, ad networks, and CMS architectures. They integrate into your newsroom workflow with no ramp-up time",
       },
     ],
     right: [
       {
+        icon: "rocket",
         title: "Editorial and audience intelligence expertise",
         body: "We understand content performance metrics, audience behaviour patterns, and the difference between viral moments and sustainable trends. Our architects have delivered real-time analytics for major publishers",
       },
@@ -144,6 +151,7 @@ export const MEDIA = {
         // Verbatim from the desktop capture, which still reads "for pharma" —
         // an authoring leftover in the original. The mobile-only copy of this
         // same card reads "Frugal Innovation for media".
+        icon: "target",
         title: "Frugal innovation for pharma",
         body: "Maximum insight from your existing CMS, analytics, and subscription investments, with reporting automation, cost-per-insight optimisation, and team productivity gains built into every engagement",
       },

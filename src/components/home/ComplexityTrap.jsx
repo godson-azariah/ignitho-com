@@ -41,9 +41,11 @@ const ICONS = [
   ],
 ];
 
-function CardIcon({ index }) {
+function CardIcon({ index, className = "" }) {
   return (
-    <span className="flex h-[46px] w-[46px] shrink-0 items-center justify-center rounded-[13px] bg-accent">
+    <span
+      className={`h-[46px] w-[46px] shrink-0 items-center justify-center rounded-[13px] bg-accent ${className}`}
+    >
       <svg
         viewBox="0 0 24 24"
         width="22"
@@ -65,7 +67,7 @@ export default function ComplexityTrap() {
   return (
     // Flat #f8f5fe: the computed style reports a 160deg gradient, but the
     // pixels the original actually paints are effectively flat at this value.
-    <section className="relative overflow-hidden bg-[#f8f5fe] pb-[121px] pt-[124px]">
+    <section className="relative overflow-hidden bg-[#f8f5fe] py-[62px] sm:py-[80px] lg:pb-[121px] lg:pt-[124px]">
       {/* 28px dot grid (original's ::before) */}
       <span
         aria-hidden="true"
@@ -86,26 +88,43 @@ export default function ComplexityTrap() {
           backgroundSize: "56px 56px, 56px 56px",
         }}
       />
-      <div className="relative mx-auto w-full max-w-[1340px] px-5 lg:px-0">
-        <div className="grid gap-12 lg:grid-cols-[650px_1fr] lg:gap-[132px]">
+      <div className="relative mx-auto w-full max-w-[1340px] px-5 xl:px-0">
+        {/* The measured 650 + 132 + 496 column needs 1278px. Held from lg it
+            overflowed the band between 1024 and 1280, so the two columns stay
+            flexible until there is genuinely room for the fixed one. */}
+        <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,380px)] lg:gap-[40px] xl:grid-cols-[650px_1fr] xl:gap-[132px]">
           <div>
-            <h2 className="text-[34px] leading-[1.1] tracking-[-1px] text-ink sm:text-[44px] lg:text-[54px] lg:leading-[59.4px] lg:tracking-[-1.5px]">
+            {/* Centred on phones and tablets, left-aligned once the copy sits
+                beside the illustration. */}
+            <h2 className="text-center text-[40px] leading-[52px] tracking-[-1.5px] text-ink text-pretty tablet:text-[29px] tablet:leading-[1.1em] lg:text-left lg:text-[54px] lg:leading-[59.4px]">
               {COMPLEXITY.title}
             </h2>
 
-            <p className="mt-[5px] max-w-[650px] text-[17px] leading-[26px] text-muted lg:text-[22px] lg:leading-[30px]">
+            <p className="mt-[5px] max-w-[650px] text-center text-[22px] leading-[30px] text-muted text-pretty tablet:text-[18px] lg:text-left lg:text-[22px]">
               {COMPLEXITY.subtitle}
             </p>
 
-            <ul className="mt-[50px] grid gap-x-[40px] gap-y-[40px] sm:grid-cols-[300px_300px]">
+            {/* Two fixed 300px tracks needed 640px of room, which a 640px
+                viewport does not have once the 20px gutters are taken. Flexible
+                tracks below the desktop column, the measured 300px above it. */}
+            <ul className="mt-[36px] grid gap-x-[40px] gap-y-[34px] sm:grid-cols-2 lg:mt-[50px] lg:gap-y-[40px] xl:grid-cols-[300px_300px]">
+              {/* Below the desktop column the icon rides inline with the title
+                  on one centred line and the body runs full width underneath,
+                  which is what the live site does on a phone. */}
               {COMPLEXITY.items.map((item, i) => (
-                <li key={item.title} className="flex gap-[25px]">
-                  <CardIcon index={i} />
+                <li key={item.title} className="lg:flex lg:gap-[25px]">
+                  <h3 className="flex items-center justify-center gap-[12px] text-[20px] font-bold leading-[46px] text-black lg:hidden">
+                    <CardIcon index={i} className="flex" />
+                    {item.title}
+                  </h3>
+
+                  <CardIcon index={i} className="hidden lg:flex" />
+
                   <div className="flex-1">
-                    <h3 className="text-[20px] font-bold leading-[26px] text-black">
+                    <h3 className="hidden text-[20px] font-bold leading-[26px] text-black lg:block">
                       {item.title}
                     </h3>
-                    <p className="mt-[5px] pb-[7px] text-[20px] leading-[33px] text-muted">
+                    <p className="pb-[7px] text-center text-[20px] leading-[30px] text-muted text-pretty lg:mt-[5px] lg:text-left lg:leading-[33px]">
                       {item.body}
                     </p>
                   </div>
@@ -120,8 +139,10 @@ export default function ComplexityTrap() {
               alt={COMPLEXITY.image.alt}
               width={COMPLEXITY.image.width}
               height={COMPLEXITY.image.height}
-              sizes="(max-width: 1024px) 100vw, 496px"
-              className="h-auto w-full lg:h-[496px] lg:w-[496px] lg:object-contain"
+              sizes="(max-width: 1024px) 100vw, (max-width: 1280px) 380px, 496px"
+              /* capped and centred below the desktop column, otherwise it
+                 stretches to the full band width on a tablet */
+              className="mx-auto h-auto w-full max-w-[496px] lg:mx-0 xl:h-[496px] xl:w-[496px] xl:max-w-none xl:object-contain"
             />
           </div>
         </div>

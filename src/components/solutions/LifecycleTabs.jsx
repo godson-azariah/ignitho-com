@@ -14,8 +14,13 @@ import Icon from "@/components/ui/Icon";
  *
  * All six panels render into the same grid cell, so the block takes the height
  * of the tallest and never changes height as you click between them.
+ *
+ * `phoneCompact` shrinks the panel below 640px only. The live Advanced Analytics
+ * page runs this content as small stacked cards there — art 140 tall, an 18/23.4
+ * title and a 14/22.4 body — so our full-size panel came out roughly 2.5x its
+ * height. Everything from sm up is left exactly as it was.
  */
-export default function LifecycleTabs({ items, compact = false }) {
+export default function LifecycleTabs({ items, compact = false, phoneCompact = false }) {
   const [active, setActive] = useState(0);
 
   return (
@@ -64,8 +69,17 @@ export default function LifecycleTabs({ items, compact = false }) {
             <div
               key={panel.title}
               aria-hidden={on ? undefined : "true"}
-              className={`bg-brand-panel col-start-1 row-start-1 flex h-full flex-col overflow-hidden rounded-[20px] border border-[#4a12b8] pb-[30px] text-white ${
-                on ? "" : "invisible"
+              className={`bg-brand-panel col-start-1 row-start-1 flex h-full flex-col overflow-hidden rounded-[20px] border border-[#4a12b8] text-white ${
+                phoneCompact ? "pb-[20px] sm:pb-[30px]" : "pb-[30px]"
+              } ${
+                on
+                  ? ""
+                  : phoneCompact
+                    ? /* on a phone the inactive panels leave the cell entirely, so the
+                         block is only as tall as the open one — keeping them in flow
+                         padded this card out with ~130px of empty purple */
+                      "hidden sm:block sm:invisible"
+                    : "invisible"
               }`}
             >
               <Image
@@ -74,29 +88,76 @@ export default function LifecycleTabs({ items, compact = false }) {
                 width={1244}
                 height={544}
                 sizes="(max-width: 1024px) 100vw, 622px"
-                className={compact ? "h-[248px] w-full object-cover" : "h-[272px] w-full object-cover"}
+                /* every variant spelled out: Tailwind only emits classes it can
+                   read literally in the source, so "sm:" cannot be concatenated */
+                className={`w-full object-cover ${
+                  phoneCompact
+                    ? compact
+                      ? "h-[140px] sm:h-[248px]"
+                      : "h-[140px] sm:h-[272px]"
+                    : compact
+                      ? "h-[248px]"
+                      : "h-[272px]"
+                }`}
               />
 
               <div className="flex flex-1 flex-col px-[21px] pt-[20px]">
-                <div className="flex items-center gap-[15px]">
-                  <span className="flex h-[55px] w-[55px] shrink-0 items-center justify-center rounded-[16px] border border-white/[0.18] bg-white/[0.12]">
-                    <Icon name={panel.icon} className="h-[25px] w-[25px]" />
+                <div className={`flex items-center ${phoneCompact ? "gap-[12px] sm:gap-[15px]" : "gap-[15px]"}`}>
+                  <span
+                    className={`flex shrink-0 items-center justify-center border border-white/[0.18] bg-white/[0.12] ${
+                      phoneCompact
+                        ? "h-[40px] w-[40px] rounded-[12px] sm:h-[55px] sm:w-[55px] sm:rounded-[16px]"
+                        : "h-[55px] w-[55px] rounded-[16px]"
+                    }`}
+                  >
+                    <Icon
+                      name={panel.icon}
+                      className={
+                        phoneCompact
+                          ? "h-[18px] w-[18px] sm:h-[25px] sm:w-[25px]"
+                          : "h-[25px] w-[25px]"
+                      }
+                    />
                   </span>
-                  <h3 className="text-[26px] font-bold leading-[33.8px]">{panel.title}</h3>
+                  <h3
+                    className={`font-bold ${
+                      phoneCompact
+                        ? "text-[18px] leading-[23.4px] sm:text-[26px] sm:leading-[33.8px]"
+                        : "text-[26px] leading-[33.8px]"
+                    }`}
+                  >
+                    {panel.title}
+                  </h3>
                 </div>
 
                 <p
-                  className={`mt-[20px] ${compact ? "text-[16px] leading-[26.4px]" : "text-[17px] leading-[28.05px]"}`}
+                  className={`${phoneCompact ? "mt-[14px] sm:mt-[20px]" : "mt-[20px]"} ${
+                    phoneCompact
+                      ? compact
+                        ? "text-[14px] leading-[22.4px] sm:text-[16px] sm:leading-[26.4px]"
+                        : "text-[14px] leading-[22.4px] sm:text-[17px] sm:leading-[28.05px]"
+                      : compact
+                        ? "text-[16px] leading-[26.4px]"
+                        : "text-[17px] leading-[28.05px]"
+                  }`}
                 >
                   {panel.body}
                 </p>
 
                 {/* tags sit against the bottom, so they line up across tabs */}
-                <ul className={`mt-auto flex flex-wrap gap-[20px] ${compact ? "pt-[12px]" : "pt-[26px]"}`}>
+                <ul
+                  className={`mt-auto flex flex-wrap ${
+                    phoneCompact ? "gap-[8px] sm:gap-[20px]" : "gap-[20px]"
+                  } ${compact ? "pt-[12px]" : "pt-[26px]"}`}
+                >
                   {panel.tags.map((t) => (
                     <li
                       key={t}
-                      className="rounded-[15px] border border-[rgba(125,221,224,0.16)] bg-[rgba(125,221,224,0.16)] px-[10px] py-[10px] text-[15px] font-medium leading-[15px]"
+                      className={`border border-[rgba(125,221,224,0.16)] bg-[rgba(125,221,224,0.16)] px-[10px] font-medium ${
+                        phoneCompact
+                          ? "rounded-[20px] py-[6px] text-[12px] leading-[19.2px] sm:rounded-[15px] sm:py-[10px] sm:text-[15px] sm:leading-[15px]"
+                          : "rounded-[15px] py-[10px] text-[15px] leading-[15px]"
+                      }`}
                     >
                       {t}
                     </li>

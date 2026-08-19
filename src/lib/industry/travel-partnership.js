@@ -24,7 +24,7 @@ export const TRAVEL_PARTNERSHIP = {
   rareTitle: "Why This Combination Is Rare",
   rareCards: [
     {
-      badge: "80+",
+      badge: "55+",
       title: "Countries of real aviation operation",
       body: "TroyAvi has run airline strategy and digital transformation across 70+ airlines and airports worldwide, driving real operational change, not advisory decks",
     },

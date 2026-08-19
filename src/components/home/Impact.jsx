@@ -85,12 +85,17 @@ export default function Impact() {
 
                 <h3 className="stat-label">{s.label}</h3>
 
-                <p className="stat-body">
-                  {(s.bodyLines ?? [s.body]).map((line) => (
-                    <span key={line} className="block">
-                      {line}
-                    </span>
-                  ))}
+                {/* The hard breaks are cut for the narrow four-across card; a
+                    full-width stacked card lets the copy wrap on its own. */}
+                <p className="stat-body text-pretty">
+                  <span className="desktop:hidden">{s.body}</span>
+                  <span className="hidden desktop:block">
+                    {(s.bodyLines ?? [s.body]).map((line) => (
+                      <span key={line} className="block">
+                        {line}
+                      </span>
+                    ))}
+                  </span>
                 </p>
               </article>
             ))}

@@ -20,22 +20,22 @@ export const PHARMA = {
     stats: [
       {
         value: "67%",
-        icon: "users",
+        icon: "pills",
         body: "Of pharma & healthcare execs prioritise AI adoption for clinical operations (Deloitte)",
       },
       {
         value: "35%",
-        icon: "clock",
+        icon: "clipboard",
         body: "Turnaround time reduction for major UK hospital through operational optimisation",
       },
       {
         value: "72%",
-        icon: "gear",
+        icon: "microchip",
         body: "Implementation cost reduction through non-disruptive data architecture",
       },
       {
         value: "50%",
-        icon: "shield",
+        icon: "shieldHalved",
         body: "Patient scheduling and resource allocation efficiency gains achievable via AI-driven models (Healthcare Analytics benchmark)",
       },
     ],
@@ -52,18 +52,22 @@ export const PHARMA = {
     ],
     items: [
       {
+        icon: "database",
         title: "Siloed clinical data fragments decision speed",
         body: "Lab systems, EHR platforms, clinical trial databases, and imaging systems operate in isolation",
       },
       {
+        icon: "calendarClock",
         title: "Patient scheduling chaos drains operational capacity",
         body: "Manual scheduling leads to over-bookings, no-shows, and wasted clinician time",
       },
       {
+        icon: "shieldCheck",
         title: "Compliance constraints lock innovation",
         body: "GxP, HIPAA, and GDPR slow collaboration and delay insight sharing across clinical teams",
       },
       {
+        icon: "microscope",
         title: "R&D data gaps slow clinical trials",
         body: "Legacy systems delay integration of trial data with real-world evidence",
       },
@@ -135,25 +139,29 @@ export const PHARMA = {
     subtitle:
       "Ignitho has delivered for Amgen, American Red Cross, and other pharma and healthcare leaders – not by replacing clinical systems, but by building the intelligence layer on top of what they already run",
     image: {
-      src: "/images/why-ignitho.webp",
+      src: "/images/why-ignitho-industry.webp",
       alt: "Ignitho consultants working with a healthcare client team",
     },
     left: [
       {
+        icon: "shieldCheck",
         title: "GxP and HIPAA-native integration",
         body: "Built on top of your existing ERP, EMR/EHR, and clinical platforms. Zero compliance risk, zero disruption. Governance-ready from day one",
       },
       {
+        icon: "lightbulb",
         title: "Day-1 productive clinical practitioners",
         body: "Senior engineers and scientists who know healthcare data models and compliance. No onboarding theatre",
       },
     ],
     right: [
       {
+        icon: "rocket",
         title: "Pharma-specific intelligence",
         body: "Deep understanding of clinical workflows, patient safety priorities, and regulatory boundaries in highly regulated environments",
       },
       {
+        icon: "target",
         title: "Frugal innovation for pharma",
         body: "Maximum intelligence from existing systems with cloud cost optimisation and pipeline efficiency built in",
       },

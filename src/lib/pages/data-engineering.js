@@ -6,18 +6,38 @@
  */
 export const DATA_ENGINEERING = {
   hero: {
+    // 40/52 on a phone, measured off the live page
+    titleClass: "text-[40px] leading-[52px]",
     line1: "Data Engineering & Consulting",
     line2: "for Enterprise-Scale Outcomes",
   },
 
   problem: {
+    // phone-width values measured off the live page; the sm: halves restore
+    // the desktop geometry this page was originally built to
+    leadSize: "text-[22px]",
+    leadLh: "leading-[36.3px]",
+    rowClass: "max-w-[1172px] gap-5 px-[15px] sm:px-0",
+    cardMinH: "min-h-0 sm:min-h-[308px]",
+    cardClass: "text-center sm:text-left",
+    headClass: "justify-center sm:justify-start",
+    hugTitle: true,
+    // the stat row is inset a further 20px a side on a phone and its label
+    // is centred under the figure
+    statsRowClass: "px-[20px] sm:px-0",
+    statLabelClass: "text-center sm:text-left",
+    // hug the wrapped title so the icon sits beside it and the pair centres
+    titleClass:
+      "w-fit text-[20px] font-bold leading-[26px] sm:w-auto",
+    bodyClass:
+      "mt-[12px] px-[10px] text-[18px] leading-[29.7px] text-white/70 sm:text-[17px] sm:leading-[28.05px]",
     titleTop: "Most Enterprises Don’t Lack Data -",
     titleAccent: "They Lack the Infrastructure to Use It",
     lead: "After years of platform investments, the reality for most mid-to-large enterprises is a fragmented, expensive, and underperforming data landscape. Tools accumulate. Pipelines break. Teams firefight. ROI disappears into complexity. This is the problem Ignitho was built to solve — not by adding more technology, but by applying Frugal Innovation: making what you already own work at its full potential",
     /* cards alternate purple / green across the row */
     cards: [
       {
-        icon: "gear",
+        icon: "hourglass",
         title: "Manual Bottlenecks & Pipeline Debt",
         body: "Complex ETL pipelines requiring extensive manual maintenance, causing IT dependency and delivery delays that block business decisions",
       },
@@ -95,6 +115,16 @@ export const DATA_ENGINEERING = {
   },
 
   delivery: {
+    // phone-width values off the live page: bigger lead, a 20px row inset,
+    // centred card copy and no height floor
+    leadSize: "text-[22px]",
+    leadLh: "leading-[36.3px]",
+    rowClass: "max-w-[1160px] px-[20px] sm:px-0",
+    cardClass:
+      "min-h-[207px] px-[20px] py-[10px] text-center sm:text-left",
+    hugTitle: true,
+    titleClass: "mx-auto mt-[14px] w-fit font-bold sm:mx-0",
+    bodyClass: "mt-[6px] text-[18px] leading-[29.7px]",
     titleTop: "From Discovery to Production -",
     titleAccent: "In Weeks, Not Quarters",
     lead: "Ignitho’s delivery model is anchored in short, outcome-focused cycles. We do not run long discovery phases, produce dense architecture documents, and then disappear for six months. Every phase produces a tangible, measurable deliverable",

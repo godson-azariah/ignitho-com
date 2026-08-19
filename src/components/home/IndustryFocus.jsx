@@ -27,19 +27,29 @@ function ArrowButton() {
 
 export default function IndustryFocus() {
   return (
-    <section className="trap-section py-16 lg:py-20">
+    /* Same lavender ground as the bands either side of it. It was on the flat,
+       more saturated .trap-section, which on the live site is not what this
+       band uses — there it shares the gradient (and a much fainter dot field)
+       with Our Services and Impact. */
+    <section className="second-section flex flex-col px-[10px] py-[50px] tablet:px-10 tablet:py-10 desktop:px-0 desktop:pb-[88px] desktop:pt-20">
       <Container className="relative flex flex-col gap-5">
         <SectionHeading
           title="Our Industry Focus"
           subtitle="Orchestrating industry-specific Data & AI ecosystems to drive measurable enterprise ROI"
         />
 
-        <ul className="grid grid-cols-2 gap-[18px] py-5 lg:grid-cols-5">
+        {/* The live site runs one card, capped at 500px and centred, all the
+            way through the tablet band and only goes five across at desktop.
+            Flex rather than grid so the row centres a card that is alone. */}
+        <ul className="flex flex-wrap justify-center gap-[18px] px-[22px] py-5 tablet:px-0">
           {INDUSTRY_CARDS.map((c) => (
-            <li key={c.href}>
+            <li
+              key={c.href}
+              className="w-full max-w-[500px] desktop:w-[calc(20%-14.4px)] desktop:max-w-none"
+            >
               <Link
                 href={c.href}
-                className="industry-card flex h-full min-h-[272px] flex-col items-center px-5 pb-6 pt-7 text-center text-white"
+                className="industry-card flex h-full min-h-[270px] flex-col items-center px-[20px] pb-[20px] pt-[35px] text-center text-white"
               >
                 {/* photo sits under the green wash; it does not scale on hover */}
                 <Image
@@ -67,19 +77,26 @@ export default function IndustryFocus() {
                   }}
                 />
 
-                <span className="relative block text-[19px] font-bold leading-[26px]">
+                {/* The title keeps its hard breaks everywhere — the live site
+                    stacks "Pharma &" over "Healthcare" on a phone too. The
+                    body's breaks are cut for the narrow desktop card, so below
+                    that width the copy wraps on its own. */}
+                <span className="relative block w-full text-[19px] font-bold leading-[26px]">
                   {(c.titleLines ?? [c.title]).map((line) => (
                     <span key={line} className="block">
                       {line}
                     </span>
                   ))}
                 </span>
-                <span className="relative mt-3 block text-[15px] font-normal leading-[26px] text-white">
-                  {(c.bodyLines ?? [c.body]).map((line) => (
-                    <span key={line} className="block">
-                      {line}
-                    </span>
-                  ))}
+                <span className="relative mt-3 block w-full text-[15.5px] font-normal leading-[24.8px] text-white">
+                  <span className="desktop:hidden">{c.body}</span>
+                  <span className="hidden desktop:block">
+                    {(c.bodyLines ?? [c.body]).map((line) => (
+                      <span key={line} className="block">
+                        {line}
+                      </span>
+                    ))}
+                  </span>
                 </span>
 
                 <span className="relative mt-6">

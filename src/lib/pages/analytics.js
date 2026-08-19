@@ -15,6 +15,15 @@ export const ANALYTICS = {
   },
 
   problem: {
+    // phone-width values off the live page: no height floor, the icon and
+    // title centred as a pair, and the body centred and inset 10px a side
+    cardMinH: "min-h-0 sm:min-h-[190px]",
+    cardClass: "pb-[45px] sm:pb-[20px]",
+    headClass: "justify-center sm:justify-start",
+    hugTitle: true,
+    titleClass: "w-fit text-[17px] font-semibold leading-[22.1px] sm:w-auto",
+    bodyClass:
+      "mt-[11px] px-[10px] text-center text-[14px] leading-[23.1px] text-white/70 sm:px-0 sm:text-left",
     /* shorter, tighter cards than /data-engineering: 210 tall on a
        1180 row with 10px gaps, 17/600 titles and 14/23.1 bodies */
     dense: true,
@@ -47,9 +56,18 @@ export const ANALYTICS = {
   },
 
   lifecycle: {
+    // 40/52 heading and a purple lead with one bold run, per the live page
+    headingBase: "text-[40px] leading-[52px]",
+    leadLh: "leading-[29.7px]",
+    leadColor: "text-[#622baa]",
+    leadBold: "insight at the speed of the business",
     /* 16/26.4 panel body, as the original — keeps the panel from
        outgrowing the tab column beside it */
     compact: true,
+    /* the live page runs this content as small stacked cards on a phone (art 140
+       tall, 18/23.4 title, 14/22.4 body); our panel came out ~2.5x that height.
+       Below 640px only — tablet and desktop keep the panel as it is. */
+    phoneCompact: true,
     title: "What We Deliver",
     lead: "From self-service BI that your CXO actually uses to predictive models embedded in your operational workflows – our analytics practice delivers insight at the speed of the business, not the speed of the data team",
     items: [
@@ -102,6 +120,16 @@ export const ANALYTICS = {
     /* this page runs the step cards tighter than /data-engineering:
        212 tall, 20px padding all round, content centred, 15/24.75 body */
     dense: true,
+    // phone-width values off the live page: 20/33 lead, no height floor and
+    // the heading centred over a centred body
+    leadSize: "text-[20px]",
+    leadLh: "leading-[33px]",
+    cardClass:
+      "flex min-h-[188px] flex-col justify-center p-[20px] text-center sm:min-h-[212px] sm:text-left",
+    // no width cap here: the live headings run on one line and only wrap
+    // when the text genuinely cannot fit the card
+    titleClass: "font-semibold",
+    bodyClass: "mt-[10px] text-center text-[15px] leading-[24.75px] sm:text-left",
     titleTop: "From Discovery to Production -",
     titleAccent: "In Weeks, Not Quarters",
     lead: "Ignitho’s delivery model is anchored in short, outcome-focused cycles. We do not run long discovery phases, produce dense architecture documents, and then disappear for six months. Every phase produces a tangible, measurable deliverable",
@@ -126,6 +154,14 @@ export const ANALYTICS = {
   },
 
   pods: {
+    // 26/33.8 on a phone so the lead-in wraps to two lines, not three
+    headingBase: "text-[26px] leading-[33.8px]",
+    leadSize: "text-[20px]",
+    leadLh: "leading-[33px]",
+    leadColor: "text-white/[0.78]",
+    mobileStack: true,
+    listClass: "px-[20px] sm:px-0 sm:pr-[20px]",
+    tileRadius: "rounded-[20%]",
     titleTop: "Specialist PODs - self-contained, outcome-driven,",
     titleAccent: "Day-1 productive",
     lead: "Ignitho deploys self-contained Specialist PODs: cross-functional delivery units that combine Human Intelligence (senior practitioners), Artificial Intelligence (automation and AI agents), and Technology Intelligence (your existing platforms). Each POD integrates into your existing Agile/Jira workflow on Day 1. There is no ramp-up theatre, no management overhead, and no hand-holding required. Your engineers get time back, not a new team to manage",
@@ -162,6 +198,7 @@ export const ANALYTICS = {
   },
 
   tiers: {
+    centerHead: true,
     /* the live page repeats the delivery band's wording here — reproduced
        as-is rather than corrected to "Solving your data problems" */
     titleTop: "From discovery to production -",

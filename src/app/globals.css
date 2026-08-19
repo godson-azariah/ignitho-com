@@ -499,6 +499,11 @@ body {
   .frugal-card {
     min-height: auto;
   }
+
+  /* Stacked cards no longer need a min-height floor sized for the desktop row. */
+  .frugal-cards.services-cards .frugal-card {
+    min-height: auto;
+  }
 }
 
 @media (max-width: 767px) {
@@ -562,19 +567,6 @@ body {
 
 @utility bg-service-gradient {
   background-image: linear-gradient(150deg, #2c0a78 0%, #4a12b8 55%, #5b21c9 100%);
-}
-
-@keyframes marquee {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
-}
-
-@utility animate-marquee {
-  animation: marquee 40s linear infinite;
 }
 
 /* Flat lavender surface used by Navigating The Data Complexity Trap and
@@ -661,6 +653,39 @@ body {
   background: linear-gradient(160deg, #f9f6ff 0%, #f0e8ff 50%, #f5f0ff 100%) #fff;
 }
 
+/* The outer solutions panel carries the same tint as the flagship card but a
+   fainter dot field (0.7 against the card's 1.0), which is what separates the
+   two surfaces. */
+.flagship-card.flagship-outer::before {
+  opacity: 0.7;
+}
+
+/* The two surfaces swap at the tablet break: on a phone the panel is the
+   tinted one and the card sits white on top of it; from tablet up the panel
+   goes white and the card is the tinted one. */
+@media (min-width: 768px) {
+  .flagship-card.flagship-outer {
+    background: #fff;
+  }
+}
+
+.flagship-card.flagship-plain-mobile::before {
+  opacity: 1;
+}
+
+/* On a phone the live site drops the tint and the dot field from this card
+   and runs it plain white. */
+@media (max-width: 767px) {
+  .flagship-card.flagship-plain-mobile {
+    background: #fff;
+  }
+
+  .flagship-card.flagship-plain-mobile::before,
+  .flagship-card.flagship-plain-mobile::after {
+    display: none;
+  }
+}
+
 /* The site's standard patterned surface: a 28px dot field under a 56px ruled
    grid. Carries no background colour of its own, so it can be dropped onto any
    element — a full band or an inner card — that already sets its own fill. */
@@ -713,7 +738,7 @@ body {
 .industry-card {
   position: relative;
   overflow: hidden;
-  border-radius: 20px;
+  border-radius: 22px;
   border: 1px solid #000;
   background:
     linear-gradient(140deg, #043620 0%, #07924f 52%, #0d8e92 100%);
@@ -734,24 +759,103 @@ body {
 .frugal-cards.services-cards .frugal-card {
   min-height: 420px;
   gap: 18px;
+  /* the live site runs this card at 28px, not the 35px of a frugal card */
+  padding: 28px;
+}
+
+/* 21px at every width — only the plain frugal card drops to 16px on a phone. */
+.frugal-cards.services-cards .frugal-card h3 {
+  font-size: 21px;
+  line-height: 27.3px;
+}
+
+/* Phones: one card inset 32px from the viewport edge (the section supplies
+   10px of it), on a smaller pad and radius than the desktop row. */
+@media (max-width: 767px) {
+  .frugal-cards.services-cards {
+    max-width: 100%;
+    padding-inline: 22px;
+  }
+
+  .frugal-cards.services-cards .frugal-card {
+    padding: 20px;
+    border-radius: 18px;
+    /* the divider's own margins carry the rhythm here, not a flex gap */
+    gap: 0;
+  }
+
+  .frugal-cards.services-cards .frugal-card-header {
+    gap: 5px;
+  }
+
+  .frugal-cards.services-cards .frugal-card .icon-wrap {
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+  }
+
+  /* The live site sits the closing rule further off the bullet list than it
+     does off the title, so the two dividers are not symmetric. */
+  .frugal-cards.services-cards .frugal-card .solution-divider-frug:last-of-type {
+    margin-top: 19px;
+  }
+}
+
+/* Tablets take two across rather than the single stacked column the plain
+   frugal row falls back to. */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .frugal-cards.services-cards {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    max-width: 100%;
+  }
 }
 
 /* ---- Impact stat cards -------------------------------------------------
    Its own card, not a frugal-card variant: the gradient brightens toward the
    lower centre rather than running diagonally, and a light arc sweeps the
    middle of the face. */
+/* Column counts taken off the live site: one card, two from 768, four from
+   1180. Held at four with no query, a 390px screen gave 76px-wide cards and
+   clipped every stat label. */
 .impact-cards {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: minmax(0, 1fr);
   gap: 22px;
+}
+
+/* The live site insets this row 32px from the viewport edge on phones; the
+   section itself already supplies 10px of that. */
+@media (max-width: 767px) {
+  .impact-cards {
+    padding-inline: 22px;
+  }
+}
+
+@media (min-width: 768px) {
+  .impact-cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1180px) {
+  .impact-cards {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  /* the four-across card is taller on the live site */
+  .impact-card {
+    min-height: 298px;
+  }
 }
 
 .impact-card {
   position: relative;
   isolation: isolate;
   overflow: hidden;
-  border-radius: 22px;
-  padding: 26px 20px 30px;
+  border-radius: 28px;
+  padding: 22px;
+  min-height: 280px;
   text-align: center;
   /* identical to .frugal-card, so every card on the page shares one surface */
   background:
@@ -814,42 +918,48 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  border-radius: 11px;
-  padding: 9px 16px;
+  border-radius: 12px;
+  padding: 10px 14px;
   background: rgba(18, 4, 54, 0.55);
-  font-size: 12px;
+  font-size: 14px;
+  line-height: 26px;
   font-weight: 700;
   letter-spacing: 0.08em;
   color: #fff;
 }
 
 .impact-card .stat-value {
+  /* The live site renders this inline, so its box is 51px tall. As a block
+     the line box grows to the 60px glyph metrics (63px) and pushes the label
+     down, so the height is pinned to match. */
+  display: block;
+  height: 51px;
   margin-top: 18px;
-  font-size: 64px;
+  font-size: 60px;
   font-weight: 800;
-  line-height: 1;
+  line-height: 51px;
   color: #fff;
 }
 
 .impact-card .stat-value span {
   margin-left: 1px;
   font-size: 24px;
-  font-weight: 700;
+  font-weight: 800;
 }
 
 .impact-card .stat-label {
-  margin-top: 12px;
-  font-size: 17px;
+  margin-top: 14px;
+  font-size: 18px;
   font-weight: 700;
-  line-height: 24px;
+  line-height: 22.5px;
   color: #fff;
 }
 
 .impact-card .stat-body {
   margin-top: 10px;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 400;
-  line-height: 25px;
+  line-height: 26.4px;
   color: rgba(255, 255, 255, 0.85);
 }
 
@@ -1005,6 +1115,21 @@ body {
    only affects the last few lines so body copy keeps its normal rhythm. */
 h1, h2, h3, h4, h5, h6, p, li, blockquote {
   text-wrap: pretty;
+}
+
+/* `pretty` only rescues the last line, so a two-line heading whose second
+   row holds a single word stays that way. This opts a heading into `balance`,
+   which evens the rows instead. Unlayered like the rule above, so it wins —
+   a Tailwind utility never could. */
+.text-balance-hard {
+  text-wrap: balance;
+}
+
+/* The counterpart: plain greedy wrapping, for a heading whose line breaks
+   are being matched to the original exactly. Same unlayered trick, so it beats
+   the `pretty` rule above. */
+.text-wrap-hard {
+  text-wrap: wrap;
 }
 
 
@@ -1177,9 +1302,6 @@ h1, h2, h3, h4, h5, h6, p, li, blockquote {
 }
 .animate-marquee {
   animation: marquee-scroll 25s linear infinite;
-}
-.animate-marquee:hover {
-  animation-play-state: paused;
 }
 
 

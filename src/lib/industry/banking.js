@@ -19,24 +19,24 @@ export const BANKING = {
     stats: [
       {
         value: "65%",
-        icon: "users",
+        icon: "pills",
         body: "BFSI leaders say data silos are their top barrier to digital transformation",
       },
       {
         // Elementor counter: value 4 with the suffix " Months".
         value: "4 Months",
-        icon: "clock",
+        icon: "clipboard",
         body: "Average time to hire a senior data engineer in financial services",
       },
       {
         value: "20%",
-        icon: "spark",
+        icon: "microchip",
         body: "Revenue increase reported by banks implementing advanced analytics (McKinsey)",
       },
       {
         // Elementor counter: prefix "$", value 4.6, suffix "T".
         value: "$4.6T",
-        icon: "shield",
+        icon: "gear",
         body: "Annual cost of financial crime globally – analytics is the primary defence",
       },
     ],
@@ -49,18 +49,22 @@ export const BANKING = {
       "BFSI institutions carry decades of technology debt – disconnected core banking systems, claims platforms, CRM stacks, and regulatory warehouses resulting in slow decisions, compliance risk, and growing operational headcount",
     items: [
       {
+        icon: "database",
         title: "Fragmented core systems",
         body: "Policy management, claims, CRM, and risk platforms that don’t talk to each other, creating data blind spots at critical decisioning moments",
       },
       {
+        icon: "calendarClock",
         title: "Slow underwriting & claims cycles",
         body: "High-value practitioners bogged down in document review and manual data entry instead of risk assessment and relationship decisions",
       },
       {
+        icon: "shieldCheck",
         title: "Customer data silos",
         body: "360-degree customer view is the aspiration, while disconnected product data, interaction history, and risk profiles make it a multi-year programme rather than a sprint",
       },
       {
+        icon: "microscope",
         title: "Portfolio intelligence gaps",
         body: "Asset management and investment platforms generating data that isn’t being used for real-time portfolio intelligence or next-best-action decisioning",
       },
@@ -126,25 +130,29 @@ export const BANKING = {
     subtitle:
       "Large SIs manage the macro transformation. We fill the execution gap – the pipeline reliability, the compliance data layer, the underwriting capability that gets deployed rather than staying in a proof of concept",
     image: {
-      src: "/images/why-ignitho.webp",
+      src: "/images/why-ignitho-industry.webp",
       alt: "Ignitho consultants working with a banking, financial services and insurance client team",
     },
     left: [
       {
+        icon: "shieldCheck",
         title: "Non-disruptive by design",
         body: "We integrate into your existing platforms - Azure, AWS, Databricks, Snowflake, or whatever your approved stack is. No rip-and-replace. No displacing your incumbent vendors or internal teams",
       },
       {
+        icon: "lightbulb",
         title: "Day-1 Productive senior practitioners",
         body: "Senior data engineers and data scientists who know Snowflake, Azure, and AWS. We pick up your backlog and deliver - no ramp-up theatre, no management overhead",
       },
     ],
     right: [
       {
+        icon: "rocket",
         title: "Regulated-industry experience",
         body: "Passed vendor risk assessments at some of the world's most strictly regulated financial institutions. Compliance built into our delivery model, not bolted on at the end",
       },
       {
+        icon: "target",
         title: "Frugal Innovation for BFSI",
         body: "Maximum value from your existing technology investments before recommending anything new",
       },

@@ -25,8 +25,8 @@ export default function Footer() {
   return (
     <footer className="bg-white">
       <div className="mx-auto w-full max-w-[1440px] px-5 pb-8 pt-[58px] lg:px-[50px]">
-        <div className="grid gap-10 lg:grid-cols-[260px_1fr_auto] lg:gap-8">
-          <div className="flex items-center">
+        <div className="grid gap-10 text-center lg:grid-cols-[260px_1fr_auto] lg:gap-8 lg:text-left">
+          <div className="flex items-center justify-center lg:justify-start">
             <Link href="/" className="inline-block">
               <Image
                 src={LOGO.src}
@@ -38,18 +38,18 @@ export default function Footer() {
             </Link>
           </div>
 
-          <div className="grid gap-10 sm:grid-cols-3">
+          <div className="grid gap-[25px] sm:grid-cols-3 sm:gap-10">
             {FOOTER_COLUMNS.map((col) => (
               <nav key={col.heading} aria-label={col.heading}>
-                <h3 className="text-[17px] font-bold leading-[24px] text-ink">
+                <h3 className="text-[16px] font-bold leading-[20px] text-ink tablet:text-[17px] tablet:leading-[21.25px]">
                   {col.heading}
                 </h3>
-                <ul className="mt-[18px] space-y-[6px]">
+                <ul className="mt-[18px]">
                   {col.links.map((l) => (
                     <li key={`${col.heading}-${l.label}`}>
                       <Link
                         href={l.href}
-                        className="text-[15px] leading-[24px] text-[#622baa] hover:underline"
+                        className="text-[16px] leading-[26.4px] text-[#622baa] hover:underline tablet:text-[15px] tablet:leading-[24.75px]"
                       >
                         {l.label}
                       </Link>
@@ -60,7 +60,7 @@ export default function Footer() {
             ))}
           </div>
 
-          <ul className="flex items-center gap-5 lg:self-center">
+          <ul className="flex items-center justify-center gap-5 lg:self-center">
             {SOCIAL_LINKS.map((s) => (
               <li key={s.label}>
                 <a
@@ -79,12 +79,12 @@ export default function Footer() {
 
         <hr className="mt-[46px] border-black/10" />
 
-        <div className="flex flex-col gap-3 pt-5 sm:flex-row sm:items-center sm:justify-between">
-          <p className="text-[14px] text-ink">
+        <div className="flex flex-col items-center gap-3 pt-5 text-center sm:flex-row sm:items-center sm:justify-between sm:text-left">
+          <p className="text-[12px] leading-[19.8px] text-ink">
             © {new Date().getFullYear()} Ignitho, All Rights Reserved
           </p>
 
-          <p className="text-[14px] text-[#622baa]">
+          <p className="text-[12px] leading-[19.8px] text-[#622baa]">
             {LEGAL_LINKS.map((l, i) => (
               <span key={l.href}>
                 {i > 0 && <span className="px-1.5 text-ink/50">|</span>}

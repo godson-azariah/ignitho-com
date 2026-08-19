@@ -25,7 +25,7 @@ export default function Hero() {
               {HERO.eyebrow}
             </p>
 
-            <h1 className="mt-[10px] text-center text-[41px] font-bold leading-[1.3em] tracking-[-1.5px] text-white tablet:mt-5 tablet:text-left tablet:text-[29px] tablet:leading-[1.1em] desktop:text-[54px]">
+            <h1 className="mt-[10px] text-center text-[40px] font-bold leading-[52px] tracking-[-1.5px] text-white tablet:mt-5 tablet:text-left tablet:text-[29px] tablet:leading-[1.1em] desktop:text-[54px]">
               {HERO.headingLines.map((line) => (
                 <span key={line} className="block">
                   {line}
@@ -33,7 +33,9 @@ export default function Hero() {
               ))}
             </h1>
 
-            <p className="mt-[10px] text-center text-[18px] font-normal leading-[30px] text-[#FFFFFFC2] tablet:mt-0 tablet:text-left desktop:mt-[25px] desktop:text-[22px]">
+            {/* 22/30 on phones, same as desktop — the live site keeps the lead
+                at full size and only drops it in the tablet band. */}
+            <p className="mt-[10px] text-center text-[22px] font-normal leading-[30px] text-[#FFFFFFC2] tablet:mt-0 tablet:text-left tablet:text-[18px] desktop:mt-[25px] desktop:text-[22px]">
               {HERO.body}
             </p>
           </div>

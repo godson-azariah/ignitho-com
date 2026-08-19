@@ -21,6 +21,9 @@ const NAV_ITEM =
   'after:absolute after:inset-x-2 after:bottom-1.5 after:h-[2px] after:origin-left after:scale-x-0 ' +
   'after:bg-[#00A274] after:transition-transform after:duration-200 hover:text-[#00A274] hover:after:scale-x-100'
 
+/* The link row only fits alongside the logo and the CTA from 1025px up —
+   below that it ran underneath both — so the hamburger owns the whole
+   tablet band, which is also where the live site switches. */
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false)
   const pathname = usePathname()
@@ -37,7 +40,7 @@ export default function Navbar() {
   return (
     <header className="relative z-50 bg-white">
       <div className="max-w-[1360px] mx-auto flex items-center justify-between gap-6 px-5 py-5">
-        <div className="md:w-1/3">
+        <div className="desktop:w-1/3">
           <Link href="/" onClick={closeMenu} className="shrink-0 inline-block">
             <Image
               src="/images/logo.png"
@@ -56,7 +59,7 @@ export default function Navbar() {
           lifts the nav above that static sibling in paint order, which is what
           lets the overflowing link receive hover and clicks. No visual change.
         */}
-        <nav className="relative w-1/3 hidden md:flex items-center justify-center gap-4 text-base">
+        <nav className="relative w-1/3 hidden desktop:flex items-center justify-center gap-4 text-base">
           <div className="group relative">
             {/* a button, not a link: the parent only opens the dropdown.
                 It used to point at the live WordPress site. */}
@@ -129,7 +132,7 @@ export default function Navbar() {
           </Link>
         </nav>
 
-        <div className="flex items-center gap-2 md:w-1/3 md:justify-end">
+        <div className="flex items-center gap-2 desktop:w-1/3 desktop:justify-end">
           <a
             href={CONTACT_LINK.href}
             className="inline-flex items-center rounded-full bg-[#00A274] border border-[#00BC6A] text-[#f9f6fe] text-sm font-medium px-[15px] py-[15px] leading-none transition-colors hover:bg-[#0C8C74B5] hover:border-[#0C8C74] hover:text-white"
@@ -139,7 +142,7 @@ export default function Navbar() {
           <button
             onClick={() => setMenuOpen((o) => !o)}
             aria-label={menuOpen ? 'Close menu' : 'Open menu'}
-            className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-slate-200 text-black md:hidden"
+            className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-slate-200 text-black desktop:hidden"
           >
             {menuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
@@ -153,7 +156,7 @@ export default function Navbar() {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.25, ease: 'easeInOut' }}
-            className="overflow-hidden border-t border-slate-100 bg-white md:hidden"
+            className="overflow-hidden border-t border-slate-100 bg-white desktop:hidden"
           >
             <div className="flex flex-col gap-1 px-5 py-4">
               <span className="pt-1 text-xs font-bold tracking-wide text-slate-400">

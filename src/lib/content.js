@@ -83,7 +83,7 @@ export const COMPLEXITY = {
 export const SERVICES = [
   {
     title: "Data Engineering & Consulting",
-    titleLines: ["Data Engineering", "& Consulting"],
+    titleLines: ["Data Engineering &", "Consulting"],
     href: "/data-engineering",
     points: [
       "Modern Data Warehouses & Data Lakes",

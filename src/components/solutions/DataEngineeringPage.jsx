@@ -24,11 +24,28 @@ const Shell = ({ children, className = "" }) => (
 );
 
 /* Band headings hard-break before the accent line, as the original's markup does. */
-function BandHeading({ top, accent, tone = "dark", size = "lg:text-[44px]", lh = "lg:leading-[57.2px]", tracking = "", inline = false }) {
+function BandHeading({
+  top,
+  accent,
+  tone = "dark",
+  size = "lg:text-[44px]",
+  lh = "lg:leading-[57.2px]",
+  tracking = "",
+  inline = false,
+  base = "text-[30px] leading-[1.3]",
+  sm = "sm:text-[38px] sm:leading-[1.3]",
+  /* `wrap` and `box` are for headings whose breaks are being matched to the
+     original word for word: balance moves the breaks, and the measure the
+     original wraps at is often narrower than the band it sits in. */
+  wrap = "text-balance-hard",
+  box = "",
+}) {
   const accentInk = tone === "dark" ? "text-[#7a00c2]" : "text-[#7DDDE0]";
   return (
     <h2
-      className={`text-center text-[30px] font-bold leading-[1.3] sm:text-[38px] ${size} ${lh} ${tracking} ${
+      /* text-balance evens the two lines so no single word is left stranded
+         on a row of its own when the heading wraps on a phone */
+      className={`${wrap} ${box} text-center font-bold ${base} ${sm} ${size} ${lh} ${tracking} ${
         tone === "dark" ? "text-[#1d0f2a]" : "text-white"
       }`}
     >
@@ -46,11 +63,11 @@ function BandHeading({ top, accent, tone = "dark", size = "lg:text-[44px]", lh =
   );
 }
 
-function Lead({ children, tone = "dark", className = "" }) {
+function Lead({ children, tone = "dark", className = "", size = "text-[18px]", lh = "leading-[30px]", color }) {
   return (
     <p
-      className={`mx-auto text-center text-[18px] leading-[30px] lg:text-[22px] lg:leading-[36.3px] ${
-        tone === "dark" ? "text-[#6b6080]" : "text-white"
+      className={`mx-auto text-center ${size} ${lh} lg:text-[22px] lg:leading-[36.3px] ${
+        color || (tone === "dark" ? "text-[#6b6080]" : "text-white")
       } ${className}`}
     >
       {children}
@@ -103,7 +120,13 @@ export default function DataEngineeringPage({ data }) {
       {/* 1 — hero */}
       <section className="bg-brand-gradient py-[48px] text-white lg:py-[68px]">
         <Shell>
-          <h1 className="mx-auto max-w-[1120px] text-center text-[30px] font-bold leading-[1.3] sm:text-[40px] lg:text-[54px] lg:leading-[70.2px] lg:tracking-[-1.5px]">
+          {/* hero.titleClass lets a page set its own phone-width scale; the
+              three solution pages do not share one on the live site */}
+          <h1
+            className={`mx-auto max-w-[1120px] text-center font-bold sm:text-[40px] lg:text-[54px] lg:leading-[70.2px] lg:tracking-[-1.5px] ${
+              hero.titleClass || "text-[30px] leading-[1.3]"
+            }`}
+          >
             <span className="block">{hero.line1}</span>
             <span className="block text-[#7DDDE0]">{hero.line2}</span>
           </h1>
@@ -113,40 +136,70 @@ export default function DataEngineeringPage({ data }) {
       {/* 2 — the problem, then the four proof stats */}
       <section className="trap-section py-[52px] lg:pt-[80px] lg:pb-[70px]">
         <Shell>
-          <div className={problem.dense ? "mx-auto max-w-[948px]" : "mx-auto max-w-[1119px]"}>
+          <div
+            className={
+              problem.boxClass ||
+              (problem.dense ? "mx-auto max-w-[948px]" : "mx-auto max-w-[1119px]")
+            }
+          >
             <BandHeading
               top={problem.titleTop}
               accent={problem.titleAccent}
-              lh={problem.dense ? "lg:leading-[60px]" : "lg:leading-[48.4px]"}
+              base={problem.headingBase || undefined}
+              sm={problem.headingSm || undefined}
+              wrap={problem.headingWrap || undefined}
+              box={problem.headingBox}
+              lh={
+                problem.headingLh ||
+                (problem.dense ? "lg:leading-[60px]" : "lg:leading-[48.4px]")
+              }
               tracking="lg:tracking-[-1.5px]"
             />
-            <Lead className="mt-[10px]">{problem.lead}</Lead>
+            <Lead
+              className={problem.leadClass || "mt-[10px]"}
+              size={problem.leadSize}
+              lh={problem.leadLh}
+            >
+              {problem.lead}
+            </Lead>
           </div>
 
           {/* 4 x 278 on 20px gaps, alternating purple and green */}
           <ul
-            className={`mx-auto mt-[44px] grid grid-cols-1 sm:grid-cols-2 lg:mt-[79px] lg:grid-cols-4 ${
+            className={`mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 ${
+              problem.rowMt || "mt-[44px] lg:mt-[79px]"
+            } ${
               problem.rowClass || (problem.dense ? "max-w-[1180px] gap-[10px]" : "max-w-[1172px] gap-5")
             }`}
           >
             {problem.cards.map((c, i) => (
               <li
                 key={c.title}
-                className={`rounded-[25px] p-[20px] text-white ${problem.cardMinH || (problem.dense ? "min-h-[190px]" : "min-h-[308px]")} ${
+className={`rounded-[25px] p-[20px] text-white ${problem.cardClass || ""} ${problem.cardMinH || (problem.dense ? "min-h-[190px]" : "min-h-[308px]")} ${
                   i % 2 === 0 ? "bg-de-card-purple" : "bg-de-card-green"
                 }`}
               >
-                <div className={`flex items-center ${problem.dense ? "gap-[17px]" : "gap-[14px]"}`}>
-                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-[14px] border border-white/[0.18] bg-white/[0.12]">
+                <div
+                  className={`flex items-center ${problem.headClass || ""} ${
+                    problem.headGap || (problem.dense ? "gap-[17px]" : "gap-[14px]")
+                  }`}
+                >
+                  <span
+                    className={`flex shrink-0 items-center justify-center rounded-[14px] border border-white/[0.18] bg-white/[0.12] ${
+                      problem.tileClass || "h-10 w-10"
+                    }`}
+                  >
                     <Icon name={c.icon} className="h-[22px] w-[22px]" />
                   </span>
                   <h3
-                    className={
+                    className={`${problem.hugTitle ? "max-w-[61%] sm:max-w-none" : ""} ${
+                      problem.titleBox || ""
+                    } ${
                       problem.titleClass ||
                       (problem.dense
                         ? "text-[17px] font-semibold leading-[22.1px]"
                         : "text-[20px] font-bold leading-[26px]")
-                    }
+                    }`}
                   >
                     {c.title}
                   </h3>
@@ -167,7 +220,11 @@ export default function DataEngineeringPage({ data }) {
           </ul>
 
           {problem.stats?.length ? (
-          <ul className="mx-auto mt-[40px] grid max-w-[1172px] grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          <ul
+            className={`mx-auto mt-[40px] grid max-w-[1172px] grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4 ${
+              problem.statsRowClass || ""
+            }`}
+          >
             {problem.stats.map((s) => {
               const stat = parseStat(s.value);
               return (
@@ -185,7 +242,13 @@ export default function DataEngineeringPage({ data }) {
                   ) : (
                     <p className="text-center text-[40px] font-extrabold leading-[40px] text-[#7a00c2]">{s.value}</p>
                   )}
-                  <p className="mt-[10px] text-[16px] leading-[26.4px] text-[#6b6080]">{s.label}</p>
+                  <p
+                    className={`mt-[10px] text-[16px] leading-[26.4px] text-[#6b6080] ${
+                      problem.statLabelClass || ""
+                    }`}
+                  >
+                    {s.label}
+                  </p>
                 </li>
               );
             })}
@@ -222,11 +285,34 @@ export default function DataEngineeringPage({ data }) {
         <Shell>
           <div className="mx-auto max-w-[1132px]">
             {/* this heading alone carries no negative tracking in the original */}
-            <BandHeading top={lifecycle.title} />
-            <Lead className="mt-[14px]">{lifecycle.lead}</Lead>
+            <BandHeading top={lifecycle.title} base={lifecycle.headingBase} />
+            {/* leadBold names a run inside lead to embolden — the live copy sets
+                one phrase in bold rather than the whole sentence */}
+            <Lead
+              className="mt-[14px]"
+              size={lifecycle.leadSize}
+              lh={lifecycle.leadLh}
+              color={lifecycle.leadColor}
+            >
+              {lifecycle.leadBold && lifecycle.lead.includes(lifecycle.leadBold) ? (
+                <>
+                  {lifecycle.lead.slice(0, lifecycle.lead.indexOf(lifecycle.leadBold))}
+                  <strong className="font-bold">{lifecycle.leadBold}</strong>
+                  {lifecycle.lead.slice(
+                    lifecycle.lead.indexOf(lifecycle.leadBold) + lifecycle.leadBold.length
+                  )}
+                </>
+              ) : (
+                lifecycle.lead
+              )}
+            </Lead>
           </div>
 
-          <LifecycleTabs items={lifecycle.items} compact={lifecycle.compact} />
+          <LifecycleTabs
+            items={lifecycle.items}
+            compact={lifecycle.compact}
+            phoneCompact={lifecycle.phoneCompact}
+          />
         </Shell>
       </section>
       </>
@@ -243,7 +329,9 @@ export default function DataEngineeringPage({ data }) {
               size={delivery.dense ? "lg:text-[45px]" : "lg:text-[44px]"}
               lh={delivery.dense ? "lg:leading-[60px]" : "lg:leading-[57.2px]"}
             />
-            <Lead className="mt-[9px]">{delivery.lead}</Lead>
+            <Lead className="mt-[9px]" size={delivery.leadSize} lh={delivery.leadLh}>
+              {delivery.lead}
+            </Lead>
           </div>
 
           <ul
@@ -255,9 +343,10 @@ export default function DataEngineeringPage({ data }) {
               <li
                 key={s.title}
                 className={`bg-industry-gradient relative overflow-hidden rounded-[25px] text-white ${
-                  delivery.dense
+                  delivery.cardClass ||
+                  (delivery.dense
                     ? "flex min-h-[212px] flex-col justify-center p-[20px]"
-                    : delivery.cardClass || "min-h-[207px] px-[20px] py-[10px]"
+                    : "min-h-[207px] px-[20px] py-[10px]")
                 }`}
               >
                 {/* same wave field as the industry approach cards, anchored to
@@ -272,9 +361,15 @@ export default function DataEngineeringPage({ data }) {
                     backgroundRepeat: "no-repeat",
                   }}
                 />
+                {/* the cap lives here, not in the data file: Tailwind only
+                    generates arbitrary values it can see in a scanned source,
+                    and novel ones written in lib/ never make it into the CSS */}
                 <h3
                   className={`relative text-[18px] leading-[23.4px] ${
-                    delivery.dense ? "font-semibold" : "mt-[14px] font-bold"
+                    delivery.hugTitle ? "max-w-[46%] sm:max-w-none" : ""
+                  } ${
+                    delivery.titleClass ||
+                    (delivery.dense ? "font-semibold" : "mt-[14px] font-bold")
                   }`}
                 >
                   {s.title}
@@ -303,28 +398,69 @@ export default function DataEngineeringPage({ data }) {
               top={pods.titleTop}
               accent={pods.titleAccent}
               tone="light"
+              base={pods.headingBase}
               lh="lg:leading-[48.4px]"
               tracking="lg:tracking-[-1.5px]"
             />
-            <Lead tone="light" className="mt-[20px]">{pods.lead}</Lead>
+            <Lead
+              tone="light"
+              className="mt-[20px]"
+              size={pods.leadSize}
+              lh={pods.leadLh}
+              color={pods.leadColor}
+            >
+              {pods.lead}
+            </Lead>
           </div>
 
           <div className="trap-section mx-auto mt-[69px] max-w-[1229px] rounded-[23px] p-[10px]">
             <div className="grid items-center gap-8 lg:grid-cols-[505px_1fr] lg:gap-[20px]">
               <PodDiagram personas={pods.personas} centre={pods.centre} />
 
-              <ul className="space-y-[29px] pt-[20px] pb-[10px] pr-[20px]">
+              <ul
+                className={`space-y-[29px] pt-[20px] pb-[10px] pr-[20px] ${
+                  pods.listClass || ""
+                }`}
+              >
                 {pods.points.map((p) => (
-                  <li key={p.title} className="flex items-start gap-[37px]">
+                  /* pods.mobileStack: the live layout on a phone puts the icon
+                     and title on one centred line with the body full width
+                     beneath, rather than a single indented column */
+                  <li
+                    key={p.title}
+                    className={
+                      pods.mobileStack
+                        ? "flex flex-wrap items-center justify-center gap-x-[10px] gap-y-[6px] text-center sm:flex-nowrap sm:items-start sm:justify-start sm:gap-x-[37px] sm:text-left"
+                        : "flex items-start gap-[37px]"
+                    }
+                  >
                     <span
-                      className="flex h-[48px] w-[48px] shrink-0 items-center justify-center rounded-[14px] text-white"
+                      className={`flex h-[48px] w-[48px] shrink-0 items-center justify-center text-white ${
+                        pods.tileRadius || "rounded-[14px]"
+                      }`}
                       style={{ backgroundImage: "linear-gradient(135deg, #5800c8 0%, rgba(88, 0, 200, 0.52) 100%)" }}
                     >
                       <Icon name={p.icon} className="h-[21px] w-[21px]" />
                     </span>
-                    <div>
-                      <h3 className="text-[18px] font-bold leading-[23.4px] text-[#5800c8]">{p.title}</h3>
-                      <p className="mt-[6px] text-[15px] leading-[24.75px] text-[#1a1a1a]">{p.body}</p>
+                    <div className={pods.mobileStack ? "contents sm:block" : ""}>
+                      <h3
+                        className={`text-[18px] font-bold leading-[23.4px] text-[#5800c8] ${
+                          pods.mobileStack
+                            ? "w-fit max-w-[62%] text-left sm:w-auto sm:max-w-none"
+                            : ""
+                        }`}
+                      >
+                        {p.title}
+                      </h3>
+                      <p
+                        className={`text-[#1a1a1a] ${
+                          pods.mobileStack
+                            ? "w-full text-[16px] leading-[26.4px] sm:mt-[6px] sm:w-auto sm:text-[15px] sm:leading-[24.75px]"
+                            : "mt-[6px] text-[15px] leading-[24.75px]"
+                        }`}
+                      >
+                        {p.body}
+                      </p>
                     </div>
                   </li>
                 ))}
@@ -353,6 +489,8 @@ export default function DataEngineeringPage({ data }) {
           <ul className="mx-auto mt-[44px] grid max-w-[1210px] grid-cols-1 gap-5 lg:mt-[79px] lg:grid-cols-3">
             {tiers.items.map((t) => {
               const on = t.featured;
+              /* label, title, tagline and blurb centre together on a phone */
+              const tierHead = tiers.centerHead ? "text-center sm:text-left" : "";
               return (
                 <li
                   key={t.tier}
@@ -361,22 +499,22 @@ export default function DataEngineeringPage({ data }) {
                   }`}
                 >
                   <p
-                    className={`text-[14px] font-semibold uppercase leading-[18.2px] ${
+                    className={`text-[14px] font-semibold uppercase leading-[18.2px] ${tierHead} ${
                       on ? "text-[#7DDDE0]" : "text-[#622baa]"
                     }`}
                   >
                     {t.tier}
                   </p>
                   <h3
-                    className={`mt-[17px] text-[24px] font-bold leading-[31.2px] ${on ? "text-white" : "text-[#1d0f2a]"}`}
+                    className={`mt-[17px] text-[24px] font-bold leading-[31.2px] ${tierHead} ${on ? "text-white" : "text-[#1d0f2a]"}`}
                   >
                     {t.title}
                   </h3>
-                  <p className={`mt-[14px] text-[14px] font-semibold leading-[18.2px] ${on ? "text-[#7DDDE0]" : "text-[#622baa]"}`}>
+                  <p className={`mt-[14px] text-[14px] font-semibold leading-[18.2px] ${tierHead} ${on ? "text-[#7DDDE0]" : "text-[#622baa]"}`}>
                     {t.tagline}
                   </p>
                   <p
-                    className={`mt-[13px] text-[16px] font-medium leading-[26.4px] ${
+                    className={`mt-[13px] text-[16px] font-medium leading-[26.4px] ${tierHead} ${
                       on ? "text-white/[0.78]" : "text-[#6b6080]"
                     }`}
                   >

@@ -20,12 +20,12 @@ export default function PartnershipBand({ data }) {
   return (
     <section className="trap-section pb-[52px] pt-[48px] lg:pb-[80px] lg:pt-[72px]">
       <div className="mx-auto w-full max-w-[1256px] px-5 lg:px-[38px]">
-        <h2 className="text-center text-[30px] font-bold leading-[1.3] text-[#1d0f2a] sm:text-[38px] lg:text-[44px] lg:leading-[60px]">
+        <h2 className="text-center text-[29px] font-bold leading-[34.8px] text-[#1d0f2a] sm:text-[38px] sm:leading-[1.3] lg:text-[44px] lg:leading-[60px]">
           <span className="block">{titleTop}</span>
           <span className="block text-[#9c1ad4]">{titleAccent}</span>
         </h2>
 
-        <p className="mt-[8px] text-center text-[18px] leading-[30px] text-muted lg:text-[22px] lg:leading-[36.3px]">
+        <p className="mt-[17px] text-center text-[20px] leading-[33px] text-muted lg:mt-[8px] lg:text-[22px] lg:leading-[36.3px]">
           {subtitleLines.map((line) => (
             <span key={line} className="block">
               {line}
@@ -36,16 +36,24 @@ export default function PartnershipBand({ data }) {
         {/* the gap, beside the pull quote: two 550px columns, 60px apart */}
         <div className="mx-auto mt-[56px] grid max-w-[1160px] gap-10 lg:mt-[120px] lg:grid-cols-2 lg:gap-[40px] xl:grid-cols-[550px_550px] xl:gap-[60px]">
           <div>
-            <p className="text-[15px] font-semibold text-[#0f9d58]">{gap.eyebrow}</p>
-            <h3 className="mt-3 text-[20px] font-semibold leading-[28px] text-[#7a00c2] lg:text-[24px] lg:leading-[31.2px]">
+            <p className="text-center text-[18px] font-semibold leading-[21.6px] text-[#00a274] lg:text-left">{gap.eyebrow}</p>
+            <h3 className="mt-3 text-center text-[21.9px] font-semibold leading-[28.45px] text-[#7a00c2] lg:text-left lg:text-[24px] lg:leading-[31.2px]">
               {gap.heading}
             </h3>
-            <p className="mt-[20px] text-[18px] leading-[30px] text-muted lg:text-[22px] lg:leading-[36.3px]">
+            <p className="mt-[20px] text-center text-[20px] leading-[33px] text-muted lg:text-[22px] lg:leading-[36.3px]">
               {gap.body}
             </p>
           </div>
 
-          <blockquote className="self-center rounded-[16px] bg-[#f0e6fd] px-[34px] py-[32px] text-[17px] italic leading-[30px] text-[#3d2a5c] lg:text-[19px] lg:leading-[32px]">
+          <blockquote className="relative self-center rounded-[18px] border border-[rgba(122,0,194,0.35)] bg-[rgba(88,0,200,0.15)] shadow-[0_10px_30px_rgba(0,0,0,0.05)] px-[20px] py-[24px] text-center text-[18px] font-medium italic leading-[32.4px] text-black lg:px-[36px] lg:py-[32px] lg:text-[22px] lg:leading-[41.8px]">
+            {/* the live site hangs this off the box as a ::before — a green
+                opening quote riding above its top-left corner */}
+            <span
+              aria-hidden="true"
+              className="absolute -top-[14px] left-[18px] font-serif text-[58px] font-medium italic leading-[58px] text-[#00a274] lg:-top-[22px] lg:left-[28px] lg:text-[78px] lg:leading-[78px]"
+            >
+              &ldquo;
+            </span>
             {quote}
           </blockquote>
         </div>
@@ -55,13 +63,16 @@ export default function PartnershipBand({ data }) {
             pipe glyph rather than a drawn rule. The two marks do not share a
             centre line — TroyAvi rides 3px above Ignitho's top edge and the
             pipe sits 12px below it. */}
-        <div className="mt-[56px] flex items-start justify-center gap-[10px] sm:gap-[14px] lg:mt-[85px]">
+        {/* Three tracks with the divider in the middle 'auto' column, so the
+            pipe lands on the container's centre line — and therefore the
+            screen's — rather than wherever the two marks happen to meet. */}
+        <div className="mt-[56px] grid grid-cols-[1fr_auto_1fr] items-start lg:mt-[85px]">
           <Image
             src={logos[0].src}
             alt={logos[0].alt}
             width={logos[0].width}
             height={logos[0].height}
-            className="h-[42px] w-auto object-contain sm:h-[60px]"
+            className="h-[55px] w-auto justify-self-end object-contain pr-[10px] sm:h-[60px] sm:pr-[14px]"
           />
           <span aria-hidden="true" className="mt-[8px] text-[26px] leading-none text-[#8d8d8d] sm:mt-[12px] sm:text-[36px]">
             |
@@ -71,7 +82,7 @@ export default function PartnershipBand({ data }) {
             alt={logos[1].alt}
             width={logos[1].width}
             height={logos[1].height}
-            className="-mt-[2px] h-[36px] w-auto object-contain sm:-mt-[3px] sm:h-[51px]"
+            className="-mt-[2px] h-[36px] w-auto justify-self-start object-contain pl-[10px] sm:-mt-[3px] sm:h-[51px] sm:pl-[14px]"
           />
         </div>
 
@@ -79,22 +90,24 @@ export default function PartnershipBand({ data }) {
           {rareTitle}
         </h3>
 
-        <ul className="mx-auto mt-[24px] grid max-w-[1126px] gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <ul className="mx-auto mt-[24px] grid max-w-[1126px] gap-5 px-[10px] sm:grid-cols-2 sm:px-0 lg:grid-cols-3">
           {rareCards.map((c) => (
             <li
               key={c.badge}
-              className="min-h-[289px] rounded-[25px] border border-[#ece5f8] bg-white p-[28px]"
+              className="rounded-[25px] border border-[rgba(122,0,194,0.12)] bg-white px-[20px] pt-[30px] pb-[50px] text-center tablet:min-h-[289px] tablet:p-[20px] tablet:text-left"
             >
-              <div className="flex items-start gap-4">
+              <div className="flex flex-wrap items-center justify-center gap-x-[10px] gap-y-2 tablet:flex-nowrap tablet:items-start tablet:justify-start tablet:gap-4">
                 <span
-                  className="flex h-[42px] min-w-[54px] items-center justify-center rounded-[11px] px-2 text-[13px] font-bold text-white"
-                  style={{ backgroundImage: "linear-gradient(135deg, #a855f7 0%, #6d28d9 100%)" }}
+                  className="flex h-[48px] w-[48px] shrink-0 items-center justify-center rounded-[20%] text-[14px] font-bold text-white"
+                  style={{ backgroundImage: "linear-gradient(135deg, #5800c8, rgba(88, 0, 200, 0.52))" }}
                 >
                   {c.badge}
                 </span>
-                <h4 className="text-[20px] font-bold leading-[26px] text-[#1d0f2a]">{c.title}</h4>
+                <h4 className="w-fit max-w-[56%] text-[18px] font-bold leading-[23.4px] text-[#1d0f2a] tablet:w-auto tablet:max-w-none tablet:text-[20px] tablet:leading-[26px]">
+                  {c.title}
+                </h4>
               </div>
-              <p className="mt-[22px] text-[16px] leading-[26.4px] text-muted">{c.body}</p>
+              <p className="mt-[24px] text-[18px] leading-[29.7px] text-muted tablet:mt-[22px] tablet:text-[16px] tablet:leading-[26.4px]">{c.body}</p>
             </li>
           ))}
         </ul>

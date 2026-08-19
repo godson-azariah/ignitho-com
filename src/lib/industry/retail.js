@@ -16,23 +16,23 @@ export const RETAIL = {
     stats: [
       {
         value: "80%",
-        icon: "users",
+        icon: "pills",
         body: "Retail & CPG companies already piloting or using AI (NVIDIA)",
       },
       {
         value: "10-15%",
-        icon: "spark",
+        icon: "clipboard",
         body: "Revenue increase for retailers implementing AI personalisation (McKinsey)",
       },
       {
         // The original counter renders no suffix here — value shown as "4,700".
         value: "4,700",
-        icon: "globe",
+        icon: "microchip",
         body: "Surge in retail site traffic via AI assistants between 2024 and 2025 (Adobe)",
       },
       {
         value: "25%",
-        icon: "gear",
+        icon: "shieldHalved",
         body: "Reduction in customer acquisition cost via AI-driven ad targeting (Deloitte)",
       },
     ],
@@ -45,18 +45,22 @@ export const RETAIL = {
       "Retailers generate more data than almost any other sector – point-of-sale, web behaviour, supply chain events, social signals, loyalty interactions. But most sits in disconnected systems that don’t surface insight until it’s too late to act",
     items: [
       {
+        icon: "database",
         title: "Demand blind spots & overstock",
         body: "Rule-based forecasting can’t separate campaign spikes from organic trend, leading to costly overstock cycles and markdown losses that erode margin",
       },
       {
+        icon: "calendarClock",
         title: "Supply chain bottlenecks with no real-time visibility",
         body: "Order-to-delivery gaps caused by fragmented supplier data, late event detection, and logistics systems that don’t talk to merchandising platforms",
       },
       {
+        icon: "shieldCheck",
         title: "Customer data trapped in silos",
         body: "Loyalty, web behaviour, and transaction data sitting in separate platforms – making unified 360° customer profiles and real-time personalisation impossible",
       },
       {
+        icon: "microscope",
         title: "Disconnected ERP & CRM data layers",
         body: "ERP, CRM, OMS, and eCommerce platforms generating separate data streams – making unified inventory, customer, and revenue insight a months-long integration project",
       },
@@ -122,25 +126,29 @@ export const RETAIL = {
     subtitle:
       "Ignitho has delivered for Sainsbury’s, Rue Gilt Group, and other retail leaders – not by replacing their existing platforms, but by building the intelligence layer on top of what they already run",
     image: {
-      src: "/images/why-ignitho.webp",
+      src: "/images/why-ignitho-industry.webp",
       alt: "Ignitho consultants working with a retail client team",
     },
     left: [
       {
+        icon: "shieldCheck",
         title: "ERP-native integration",
         body: "Built on top of your existing ERP, CRM, OMS, and eCommerce platforms. Zero rip-and-replace. Immediate ROI without the disruption of a platform migration",
       },
       {
+        icon: "lightbulb",
         title: "Day-1 productive senior practitioners",
         body: "Senior data engineers and data scientists who know Snowflake, Databricks, and AWS. No onboarding theatre. They integrate into your sprint cadence and deliver from week one",
       },
     ],
     right: [
       {
+        icon: "rocket",
         title: "Retail-specific demand science",
         body: "We understand campaign attribution, seasonal demand curves, and overstock cycles. Forecasting models built for retail rhythms - not generic time-series",
       },
       {
+        icon: "target",
         title: "Frugal innovation for retail",
         body: "Maximum intelligence from your existing data investments. Cloud cost optimisation, pipeline efficiency, and licensing rationalisation built into every engagement",
       },

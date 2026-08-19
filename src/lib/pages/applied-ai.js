@@ -18,10 +18,45 @@ export const APPLIED_AI = {
     dense: true,
     /* measured on this page: 288x296 cards on a 1211 row, 18/600 titles
        and 17/28.05 bodies — taller and larger than the analytics variant */
-    cardMinH: "min-h-[296px]",
+    /* The live cards switch treatment at 768: below it they are a centred
+       stack — 48px tile and title centred as a pair, body centred under it at
+       20/33, and no common height (335/335/300/300). From 768 up they are the
+       left-aligned 18/23.4 + 17/28.05 card we already had, so all of this is
+       phone-only. */
+    cardMinH: "min-h-0 sm:min-h-[296px]",
+    cardClass: "flex flex-col items-center gap-[10px] sm:block",
+    headClass: "w-full justify-center sm:w-auto sm:justify-normal",
+    headGap: "gap-[10px] sm:gap-[17px]",
+    tileClass: "h-12 w-12 sm:h-10 sm:w-10",
+    /* 51% of the 332 inner width is the measure the original wraps the title
+       at, which is what puts "Pilots that never / reach production" on two
+       rows with the pair still centred as a block */
+    titleBox: "w-[51%] sm:w-auto",
     rowClass: "max-w-[1211px] gap-[20px]",
-    titleClass: "text-[18px] font-semibold leading-[23.4px]",
-    bodyClass: "mt-[6px] text-[17px] leading-[28.05px] text-white/70",
+    /* This band runs a scale of its own on the live page — 30/33 on a phone
+       and 44/57.2 from tablet up, over a 22/36.3 lead at every width. The
+       heading also wraps at 304, not the full 372 the band gives it, which is
+       what puts "Most Enterprises Have" on the first row instead of breaking
+       after "Enterprises". Greedy wrapping rather than balance, for the same
+       reason: balance moves those breaks. */
+    /* wider than the 948 the dense variant defaults to, which is what keeps
+       the lead at five rows on a desktop instead of six */
+    boxClass: "mx-auto max-w-[1112px]",
+    headingBase: "text-[30px] leading-[33px]",
+    headingSm: "sm:text-[44px] sm:leading-[57.2px]",
+    headingLh: "lg:leading-[57.2px]",
+    headingWrap: "text-wrap-hard",
+    headingBox: "mx-auto max-w-[304px] sm:max-w-none",
+    leadSize: "text-[22px]",
+    leadLh: "leading-[36.3px]",
+    /* text-wrap-hard here too: the global `pretty` rule pulls words back onto
+       the last rows, which moved the closing three lines off the original's */
+    leadClass: "text-wrap-hard mt-[20px] sm:mt-[9px]",
+    rowMt: "mt-[59px] sm:mt-[79px]",
+    titleClass:
+      "text-[20px] font-semibold leading-[26px] sm:text-[18px] sm:leading-[23.4px]",
+    bodyClass:
+      "w-full text-center text-[20px] leading-[33px] text-white/70 sm:mt-[6px] sm:w-auto sm:text-left sm:text-[17px] sm:leading-[28.05px]",
     titleTop: "Most Enterprises Have AI Pilots -",
     titleAccent: "Almost None Have AI in Production",
     lead: "The gap between ‘AI proof-of-concept’ and ‘AI that runs in daily operations’ is where billions of enterprise investment disappear. Models that work brilliantly in a Jupyter notebook never make it to the hands of the business. The problem isn’t the AI – it’s the adoption gap. Ignitho’s applied AI practice is built specifically to close that gap. We deploy AI within your existing workflows, integrate it into the tools your teams already use, and build explainability in from the first sprint – so adoption is a feature, not an afterthought",

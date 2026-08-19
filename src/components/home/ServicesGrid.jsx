@@ -103,8 +103,9 @@ export default function ServicesGrid() {
             {SERVICES.map((s, i) => (
               <article key={s.href} className="frugal-card flex flex-col">
                 <div className="frugal-card-header">
+                  {/* the live site carries these breaks at every width */}
                   <h3>
-                    {(s.titleLines ?? [s.title]).map((line, li) => (
+                    {(s.titleLines ?? [s.title]).map((line) => (
                       <span key={line} className="block">
                         {line}
                       </span>
@@ -117,7 +118,9 @@ export default function ServicesGrid() {
 
                 <div className="solution-divider-frug" />
 
-                <ul className="flex-1 space-y-[10px]">
+                {/* gap rather than space-y: the latter sets its margin through a
+                    zero-specificity :where() rule that the reset was winning */}
+                <ul className="flex flex-1 flex-col gap-[20px] desktop:gap-[10px]">
                   {s.points.map((p) => (
                     <li
                       key={p}
