@@ -60,20 +60,20 @@ export const COMPLEXITY = {
   },
   items: [
     {
-      title: "Disconnected Data",
-      body: "Silos across cloud, APIs and legacy systems fragment your single source of truth",
+      title: "Maximize Existing Investments",
+      body: "Optimize current spend and unlock the latent value of your existing tech stack",
     },
     {
-      title: "Manual Bottlenecks",
-      body: "Fragile ETL pipelines and constant manual intervention create costly IT dependency",
+      title: "Zero Tool Inflation",
+      body: "Deliver outcomes with no new licensing or tool costs - master what you already own",
     },
     {
-      title: "Risk & Compliance",
-      body: "GDPR, HIPAA and evolving regulations expose your data estate to mounting risk",
+      title: "The Efficiency Nexus",
+      body: "Faster, better, economically superior. High velocity delivery without the operational bloat",
     },
     {
-      title: "Data Quality Issues",
-      body: "Inconsistent, incomplete data corrupts analytics, forecasts and AI outputs",
+      title: "Human + Frugal AI Advantage",
+      body: "Amplify expert teams with AI agents to deliver value, faster without adding complexity.",
     },
   ],
 };

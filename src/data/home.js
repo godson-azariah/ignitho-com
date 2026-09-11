@@ -2,11 +2,9 @@
 
 export const HERO = {
   eyebrow: 'The Data & AI Specialists',
-  headingLines: ['Delivering Data,', 'Analytics & AI Services', 'for The Enterprise'],
+  headingLines: ['Your FRIEND in', 'Enterprise Data & AI'],
   body:
-    'Powered by a leadership team from top-tier IT majors and US-headquartered with a global ' +
-    'footprint, Ignitho orchestrates high velocity Data & AI ecosystems for leading enterprises ' +
-    'and Fortune 500 companies, bridging the gap between complex technology and real-world ROI',
+    'Powered by a leadership team from top-tier IT majors and US-headquartered with global footprint, Ignitho is the FRIEND accelerating Data & AI at scale for leading enterprises and Fortune 500 companies through frugal innovation',
   visual: {
     src: '/images/home/hero-visual.png',
     alt: 'Ignitho Data & AI capability wheel',

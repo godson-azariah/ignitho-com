@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import Container from '@/components/layout/Container'
 import { HERO, HERO_BADGES } from '@/data/home'
+import FriendIllustration from './FriendIllustration'
 
 function ScrollCue({ targetId }) {
   return (
@@ -41,14 +42,7 @@ export default function Hero() {
           </div>
 
           <div className="flex flex-col justify-center p-[10px] text-center tablet:w-1/2 desktop:justify-start">
-            <Image
-              src={HERO.visual.src}
-              alt={HERO.visual.alt}
-              width={HERO.visual.width}
-              height={HERO.visual.height}
-              priority
-              className="mx-auto h-[250px] w-full max-w-[350px] tablet:w-auto desktop:h-[430px] desktop:max-w-[550px]"
-            />
+            <FriendIllustration className="mx-auto w-full max-w-[380px] tablet:max-w-none desktop:max-w-[620px]" />
           </div>
         </div>
 
