@@ -20,13 +20,13 @@ export default function Hero() {
     <section className="hero-banner flex min-h-[90vh] flex-col px-[10px] pb-[50px] pt-[calc(100px+var(--header-height))] tablet:px-10 tablet:pb-10 tablet:pt-[calc(40px+var(--header-height))] desktop:px-0 desktop:pb-[70px] desktop:pt-[calc(70px+var(--header-height))]">
       <Container className="flex grow flex-col">
         {/* Copy + visual */}
-        <div className="flex flex-col tablet:flex-row">
-          <div className="flex flex-col gap-5 p-[10px] tablet:w-[45.622%] tablet:shrink-0 tablet:grow-0">
+        <div className="flex flex-col tablet:flex-row tablet:items-center">
+          <div className="flex flex-col gap-5 p-[10px] tablet:w-[48%] tablet:shrink-0 tablet:grow-0">
             <p className="text-center text-[20px] font-semibold leading-none tracking-[-1.5px] text-ignitho-accent-blue tablet:text-left tablet:text-[22px]">
               {HERO.eyebrow}
             </p>
 
-            <h1 className="mt-[10px] text-center text-[40px] font-bold leading-[52px] tracking-[-1.5px] text-white tablet:mt-5 tablet:text-left tablet:text-[29px] tablet:leading-[1.1em] desktop:text-[54px]">
+            <h1 className="mt-[10px] text-center text-[40px] font-bold leading-[52px] tracking-[-1.5px] text-white tablet:mt-5 tablet:text-left tablet:text-[34px] tablet:leading-[1.08em] desktop:text-[66px] desktop:leading-[1.06em]">
               {HERO.headingLines.map((line) => (
                 <span key={line} className="block">
                   {line}
@@ -36,13 +36,13 @@ export default function Hero() {
 
             {/* 22/30 on phones, same as desktop — the live site keeps the lead
                 at full size and only drops it in the tablet band. */}
-            <p className="mt-[10px] text-center text-[22px] font-normal leading-[30px] text-[#FFFFFFC2] tablet:mt-0 tablet:text-left tablet:text-[18px] desktop:mt-[25px] desktop:text-[22px]">
+            <p className="mt-[10px] text-center text-[22px] font-normal leading-[30px] text-[#FFFFFFC2] tablet:mt-0 tablet:text-left tablet:text-[18px] desktop:mt-[28px] desktop:max-w-[600px] desktop:text-[22px] desktop:leading-[34px]">
               {HERO.body}
             </p>
           </div>
 
-          <div className="flex flex-col justify-center p-[10px] text-center tablet:w-1/2 desktop:justify-start">
-            <FriendIllustration className="mx-auto w-full max-w-[380px] tablet:max-w-none desktop:max-w-[620px]" />
+          <div className="flex flex-col justify-center p-[10px] text-center tablet:w-[52%]">
+            <FriendIllustration className="mx-auto w-full max-w-[420px] tablet:max-w-none desktop:max-w-[760px]" />
           </div>
         </div>
 

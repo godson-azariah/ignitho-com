@@ -100,7 +100,7 @@ export default function ComplexityTrap() {
               {COMPLEXITY.title}
             </h2>
 
-            <p className="mt-[5px] max-w-[650px] text-center text-[22px] leading-[30px] text-muted text-pretty tablet:text-[18px] lg:text-left lg:text-[22px]">
+            <p className="mt-[18px] max-w-[650px] text-center text-[22px] leading-[30px] text-muted text-pretty tablet:mt-[14px] tablet:text-[18px] lg:mt-[24px] lg:text-left lg:text-[22px] lg:leading-[34px]">
               {COMPLEXITY.subtitle}
             </p>
 
