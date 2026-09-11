@@ -27,6 +27,17 @@ export const ANALYTICS = {
     /* shorter, tighter cards than /data-engineering: 210 tall on a
        1180 row with 10px gaps, 17/600 titles and 14/23.1 bodies */
     dense: true,
+    /* the live band capitalises the heading in CSS and runs 29/37.7 on a
+       phone, 44/60 from 768; the lead is a 20/33 -> 21/34.65 purple, not the
+       grey the other pages use */
+    headingBase: "capitalize text-[29px] leading-[37.7px]",
+    headingSm: "tablet:text-[44px] tablet:leading-[60px]",
+    leadSize: "text-[20px] tablet:text-[21px]",
+    leadLh: "leading-[33px] tablet:leading-[34.65px]",
+    leadLgSize: "lg:text-[21px]",
+    leadLgLh: "lg:leading-[34.65px]",
+    leadColor: "text-[#622baa]",
+    leadClass: "mt-[13px] tablet:mt-[6px] lg:mt-[12px]",
     titleTop: "Most enterprises are drowning in data",
     titleAccent: "But starving for decisions",
     lead: "Dashboards multiply, reports pile up, and the finance team still exports to Excel every Monday morning. The problem is not a shortage of data – it is an excess of noise, a deficit of trust, and analytics tools that serve the data team but not the decision-maker. Ignitho cuts through. We build analytics that leaders actually open, forecasts they trust, and insight workflows that run themselves",
@@ -199,6 +210,13 @@ export const ANALYTICS = {
 
   tiers: {
     centerHead: true,
+    /* this page runs the tier cards lighter than /data-engineering: a 25/32.5
+       title on a phone and a 15/24.75 weight-400 body and bullet list. Stacked
+       they take their own height; in a row the live cards settle at 600. */
+    cardMinH: "min-h-0 lg:min-h-[600px]",
+    titleClass: "text-[25px] leading-[32.5px] tablet:text-[24px] tablet:leading-[31.2px]",
+    bodyClass: "text-[15px] font-normal leading-[24.75px]",
+    pointClass: "text-[15px] font-normal leading-[25px]",
     /* the live page repeats the delivery band's wording here — reproduced
        as-is rather than corrected to "Solving your data problems" */
     titleTop: "From discovery to production -",

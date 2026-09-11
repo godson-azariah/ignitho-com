@@ -52,11 +52,13 @@ export default function CareerPage({ data }) {
               heading held to 495 so it wraps after "to", body 22/400 lh36.3 */}
           <div className="mx-auto grid max-w-[1340px] items-center gap-10 lg:grid-cols-[660px_660px] lg:gap-[20px]">
             <div>
-              <h2 className="max-w-[495px] text-[30px] font-bold leading-[1.3] text-[#1d0f2a] lg:text-[44px] lg:leading-[57.2px]">
+              {/* the live block centres both the heading and the copy on a
+                  phone and runs the body at 22/36.3 there, not 18/30 */}
+              <h2 className="max-w-[495px] text-center text-[30px] font-bold leading-[39px] text-[#1d0f2a] lg:text-left lg:text-[44px] lg:leading-[57.2px]">
                 {ignitor.titleTop} <span className="text-[#7a00c2]">{ignitor.titleAccent}</span>
               </h2>
               {ignitor.body.map((t) => (
-                <p key={t.slice(0, 24)} className="mt-[22px] max-w-[660px] text-[18px] leading-[30px] text-[#6b6080] lg:text-[22px] lg:leading-[36.3px]">
+                <p key={t.slice(0, 24)} className="mt-[22px] max-w-[660px] text-center text-[22px] leading-[36.3px] text-[#6b6080] lg:text-left">
                   {t}
                 </p>
               ))}

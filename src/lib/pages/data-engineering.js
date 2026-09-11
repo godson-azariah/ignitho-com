@@ -25,6 +25,8 @@ export const DATA_ENGINEERING = {
     // the stat row is inset a further 20px a side on a phone and its label
     // is centred under the figure
     statsRowClass: "px-[20px] sm:px-0",
+    // the live page sets these four numbers in Inter, not Urbanist
+    statFont: "font-inter",
     statLabelClass: "text-center sm:text-left",
     // hug the wrapped title so the icon sits beside it and the pair centres
     titleClass:
@@ -66,6 +68,36 @@ export const DATA_ENGINEERING = {
   },
 
   lifecycle: {
+    /* the band heading runs 31/40.3 up to 768 and 44/57.2 above it, over a
+       22/36.3 lead at every width */
+    /* the live band sits 10 in from the edge on a phone, not the 20 the shell
+       gives every other band — which is what keeps the heading on one line */
+    boxClass: "-mx-[10px] tablet:mx-auto tablet:max-w-[1132px]",
+    headingBase: "text-[31px] leading-[40.3px]",
+    headingSm: "tablet:text-[44px] tablet:leading-[57.2px]",
+    leadSize: "text-[22px]",
+    leadLh: "leading-[36.3px]",
+    leadClass: "mt-[16px] tablet:mt-[14px]",
+    /* The live panel switches treatment at 768. Below it the art keeps its
+       natural 700x346 ratio and the copy centres under a 20/26 title; from 768
+       up the art is pinned to 310 and everything goes left. The 16/26.4 body,
+       the 14px tile radius, the 20px bottom padding and the Inter chips hold
+       at every width. */
+    panel: {
+      pad: "pb-[20px]",
+      /* the live panel is sized by its own tab's copy below the two-column
+         layout, not by the tallest of the six */
+      inactive: "hidden lg:block lg:invisible",
+      art: "aspect-[700/346] h-auto tablet:aspect-auto tablet:h-[310px]",
+      tile: "h-[55px] w-[55px] rounded-[14px]",
+      title: "text-[20px] leading-[26px] tablet:text-[26px] tablet:leading-[33.8px]",
+      body: "text-center text-[16px] leading-[26.4px] tablet:text-left",
+      /* 48 clear under the body on the live panel: a 27px paragraph margin plus
+         the card's own 20px block gap */
+      tags: "justify-center pt-[47px] pb-[10px] tablet:justify-normal",
+      /* px-10 plus our 1px border comes to the same 11 inset the live chip has */
+      tag: "font-inter px-[10px]",
+    },
     title: "Full Data Platform Lifecycle",
     lead: "Our data engineering practice covers the full data platform lifecycle – from raw ingestion through to business-ready intelligence layers. Every engagement is anchored to your existing technology investments, not a new vendor stack",
     items: [
@@ -122,7 +154,8 @@ export const DATA_ENGINEERING = {
     rowClass: "max-w-[1160px] px-[20px] sm:px-0",
     cardClass:
       "min-h-[207px] px-[20px] py-[10px] text-center sm:text-left",
-    hugTitle: true,
+    /* no width cap: the live headings shrink-wrap their own hard breaks, and
+       capping the measure was pushing them onto a third row */
     titleClass: "mx-auto mt-[14px] w-fit font-bold sm:mx-0",
     bodyClass: "mt-[6px] text-[18px] leading-[29.7px]",
     titleTop: "From Discovery to Production -",
@@ -131,24 +164,37 @@ export const DATA_ENGINEERING = {
     steps: [
       {
         title: "7-Day Triage & Discovery",
+        titleLines: ["7-Day Triage & ", "Discovery"],
         body: "Rapid assessment of your current data stack, pipeline inventory, and key pain points",
       },
       {
         title: "Sprint Zero - Architecture & Planning",
+        titleLines: ["Sprint Zero - Architecture ", "& Planning"],
         body: "Define the target architecture, data contracts, and delivery milestones",
       },
       {
         title: "Iterative Delivery - 7 to 30-Day Sprints",
+        titleLines: ["Iterative Delivery - 7 to 30-", "Day Sprints"],
         body: "Outcome-driven sprints with continuous feedback and deployed deliverables",
       },
       {
         title: "Stabilize, Optimize & Handover",
+        titleLines: ["Stabilize, Optimize & ", "Handover"],
         body: "Production hardening, performance tuning, documentation,& enablement",
       },
     ],
   },
 
   pods: {
+    // the live rows sit the icon 10 from its heading, not 37
+    pointGap: "gap-[10px] tablet:gap-[37px]",
+    /* the live heading runs the accent inline, not on its own row, and sets
+       31/34.1 below 768 over a 22/36.3 lead — three rows, not four */
+    inlineTitle: true,
+    headingBase: "text-[31px] leading-[34.1px]",
+    headingSm: "tablet:text-[44px] tablet:leading-[48.4px]",
+    leadSize: "text-[22px]",
+    leadLh: "leading-[36.3px]",
     titleTop: "Specialist PODs - Self-Contained, Outcome-Driven,",
     titleAccent: "Day-1 Productive",
     lead: "Ignitho deploys self-contained Specialist PODs: cross-functional delivery units that combine Human Intelligence (senior practitioners), Artificial Intelligence (automation and AI agents), and Technology Intelligence (your existing platforms). Each POD integrates into your existing Agile/Jira workflow on Day 1. There is no ramp-up theatre, no management overhead, and no hand-holding required. Your engineers get time back, not a new team to manage",
@@ -186,6 +232,19 @@ export const DATA_ENGINEERING = {
   },
 
   tiers: {
+    /* phone-width values off the live band: 10px inset like the lifecycle
+       band, a 31/40.3 heading over a 22/36.3 lead, and card copy centred with
+       a 27/32.4 title. Everything from 768 up is unchanged. */
+    boxClass: "-mx-[10px] tablet:mx-auto tablet:max-w-[1062px]",
+    headingBase: "text-[31px] leading-[40.3px]",
+    headingSm: "tablet:text-[44px] tablet:leading-[57.2px]",
+    leadSize: "text-[22px]",
+    leadLh: "leading-[36.3px]",
+    centerHead: true,
+    /* stacked on a phone the live cards take their own height (495/583/639 on
+       a constant 31 of slack); the floor only matters once they sit in a row */
+    cardMinH: "min-h-0 lg:min-h-[579px]",
+    titleClass: "text-[27px] leading-[32.4px] tablet:text-[24px] tablet:leading-[31.2px]",
     titleTop: "Solving Your Data Problems,",
     titleAccent: "Big or Small",
     lead: "From clearing a pipeline backlog in two weeks to running a multi-year modernization programme. Ignitho has an engagement model that fits your urgency, budget, and risk appetite",

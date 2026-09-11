@@ -1,10 +1,20 @@
-import { Urbanist } from "next/font/google";
+import { Inter, Urbanist } from "next/font/google";
 import "./globals.css";
 
 const urbanist = Urbanist({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700", "800", "900"],
   variable: "--font-urbanist",
+  display: "swap",
+});
+
+/* The live Data Engineering page sets its proof stats (800) and its lifecycle
+   panel chips (500) in Inter rather than Urbanist. Nowhere else uses it, so
+   only those two faces are loaded. */
+const inter = Inter({
+  subsets: ["latin"],
+  weight: ["500", "800"],
+  variable: "--font-inter-src",
   display: "swap",
 });
 
@@ -28,7 +38,11 @@ export default function RootLayout({ children }) {
   return (
     // data-scroll-behavior opts out of smooth scrolling during route
     // transitions, which Next warns about when html has scroll-behavior: smooth
-    <html lang="en" className={urbanist.variable} data-scroll-behavior="smooth">
+    <html
+      lang="en"
+      className={`${urbanist.variable} ${inter.variable}`}
+      data-scroll-behavior="smooth"
+    >
       <body className="font-sans antialiased">
         <script dangerouslySetInnerHTML={{ __html: RESTORE_ANNOUNCEMENT_STATE }} />
         {children}

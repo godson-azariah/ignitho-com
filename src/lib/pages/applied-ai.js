@@ -107,12 +107,23 @@ export const APPLIED_AI = {
   delivery: {
     /* step-card copy runs a size down from the shared default; the
        headings keep theirs */
-    bodyClass: "mt-[6px] text-[16px] leading-[26.4px]",
+    /* phone-width values off the live band: a 30/33 heading over a 22/36.3
+       lead, cards inset to 342 with 20px padding, centred copy at 18/29.7 and
+       no common height. From 640 up this is the card we already had. */
+    boxClass: "mx-auto max-w-[1106px]",
+    headingBase: "text-[30px] leading-[33px]",
+    headingSm: "tablet:text-[44px] tablet:leading-[57.2px]",
+    leadSize: "text-[22px]",
+    leadLh: "leading-[36.3px]",
+    leadClass: "mt-[13px] tablet:mt-[9px] lg:mt-[14px]",
+    titleClass: "mt-[14px] text-center font-semibold sm:text-left",
+    bodyClass:
+      "mt-[6px] text-center text-[18px] leading-[29.7px] sm:text-left sm:text-[16px] sm:leading-[26.4px]",
     /* cards widen 275 -> 300 but the horizontal padding grows by the same
        amount, so the text column stays ~236 and every line breaks where it
        did before */
-    rowClass: "max-w-[1260px]",
-    cardClass: "min-h-[351px] px-[25px] py-[20px]",
+    rowClass: "max-w-[1260px] px-[15px] sm:px-0",
+    cardClass: "min-h-0 px-[20px] py-[20px] sm:min-h-[351px] sm:px-[25px]",
     titleTop: "From Messy Data to Production AI",
     titleAccent: " - in Sprints",
     inlineTitle: true,
@@ -138,6 +149,18 @@ export const APPLIED_AI = {
   },
 
   pods: {
+    // the live rows sit the icon 10 from its heading on a phone, not 37
+    pointGap: "gap-[10px] tablet:gap-[37px]",
+    /* live values: the heading is capitalised in CSS and holds 57.2 leading
+       from 768 up, over a 22/36.3 lead at 78% white rather than solid */
+    boxClass: "mx-auto max-w-[1054px]",
+    headingBox: "mx-auto max-w-[940px]",
+    headingBase: "capitalize text-[30px] leading-[39px]",
+    headingSm: "tablet:text-[44px] tablet:leading-[57.2px]",
+    headingLh: "lg:leading-[57.2px]",
+    leadSize: "text-[22px]",
+    leadLh: "leading-[36.3px]",
+    leadColor: "text-white/[0.78]",
     "titleTop": "Specialist PODs - self-contained, outcome-driven,",
     "titleAccent": "Day-1 productive",
     "lead": "Ignitho deploys self-contained Specialist PODs: cross-functional delivery units that combine Human Intelligence (senior practitioners), Artificial Intelligence (automation and AI agents), and Technology Intelligence (your existing platforms). Each POD integrates into your existing Agile/Jira workflow on Day 1. There is no ramp-up theatre, no management overhead, and no hand-holding required. Your engineers get time back, not a new team to manage",
@@ -177,6 +200,14 @@ export const APPLIED_AI = {
   },
 
   tiers: {
+    /* live values: card copy centres on a phone under a 27/35.1 title, the
+       body and bullets run 15/24.75 at weight 400, and the cards take their
+       own height stacked — 574 once they sit in a row */
+    centerHead: true,
+    cardMinH: "min-h-0 lg:min-h-[574px]",
+    titleClass: "text-[27px] leading-[35.1px] tablet:text-[24px] tablet:leading-[31.2px]",
+    bodyClass: "text-[15px] font-normal leading-[24.75px]",
+    pointClass: "text-[15px] font-normal leading-[25px]",
     titleTop: "Solving Your AI Problems,",
     titleAccent: "Big or Small",
     lead: "From deploying a single AI agent to clear a specific bottleneck, to building a full enterprise AI capability with MLOps, governance, and a team of specialists – Ignitho has a model that fits",

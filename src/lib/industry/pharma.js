@@ -42,6 +42,12 @@ export const PHARMA = {
   },
 
   problems: {
+    /* on a phone the live band runs edge to edge rather than inside the
+       shell inset, which is what keeps the heading on three rows and the
+       lead on three; the cards take their own height there too */
+    headBox: "-mx-[20px] tablet:mx-0",
+    leadClass: "-mx-[20px] mt-[10px] mb-[31.5px] leading-[29.7px] tablet:mx-auto tablet:mt-4 tablet:leading-[30px]",
+    cardMinH: "min-h-0 tablet:min-h-[232px]",
     titleTop: "Clinical Data Is Everywhere -",
     titleAccent: "Actionable Intelligence Is Locked Away",
     subtitle:

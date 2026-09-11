@@ -9,6 +9,10 @@ export const RETAIL = {
   },
 
   trust: {
+    /* the live retail row is inset 10 a side, not 30, giving a 352 card with
+       20px padding — at 312 the McKinsey line ran to a third row */
+    rowInset: "px-[10px] tablet:px-0",
+    cardPad: "px-[20px]",
     titleTop: "Mastering the Velocity of",
     titleAccent: "Modern Retail",
     subtitle:

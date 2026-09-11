@@ -1,5 +1,6 @@
 import SiteHeader from "@/components/layout/SiteHeader";
 import Footer from "@/components/layout/Footer";
+import Chatbot from "@/components/ignitho-ai/Chatbot";
 
 /**
  * Chrome for the main marketing site. The /login and /landing routes will live
@@ -20,6 +21,9 @@ export default function SiteLayout({ children }) {
       <SiteHeader />
       <main id="main">{children}</main>
       <Footer />
+      {/* fixed and self-contained (it carries its own dark panel), so one
+          mount here serves every page rather than /ignitho-ai alone */}
+      <Chatbot />
     </>
   );
 }

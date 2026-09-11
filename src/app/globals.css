@@ -7,6 +7,8 @@
 */
 @theme {
   --font-sans: var(--font-urbanist), ui-sans-serif, system-ui, sans-serif;
+  /* gives the `font-inter` utility; used only by the Data Engineering stats */
+  --font-inter: var(--font-inter-src), ui-sans-serif, system-ui, sans-serif;
 
   /* Elementor breakpoints used by the live site (tablet <=1024, desktop >=1025). */
   --breakpoint-tablet: 768px;
@@ -1130,6 +1132,16 @@ h1, h2, h3, h4, h5, h6, p, li, blockquote {
    the `pretty` rule above. */
 .text-wrap-hard {
   text-wrap: wrap;
+}
+
+/* Sideways-scrolling rows (the About timeline) carry their own affordance —
+   cards visibly cut off at the edge — so the bar itself is noise on a phone. */
+.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
 }
 
 

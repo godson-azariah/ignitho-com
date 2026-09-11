@@ -15,12 +15,12 @@ import { FaGear, FaMicrochip, FaPills, FaRegClipboard, FaShieldHalved } from "re
      lead     22/400  lh 36.3px #622baa  (white/70 on dark bands)
      card h3  18/700  lh 23.4px #5800c8
      card p   16/400  lh 26.4px #6b6080                                    */
-function SplitHeading({ top, accent, tone = "dark", stacked = true, size = "text-[29px] leading-[34.8px] capitalize sm:text-[38px] lg:text-[44px] lg:tracking-[-1.5px]" }) {
+function SplitHeading({ top, accent, tone = "dark", stacked = true, box = "", size = "text-[29px] leading-[34.8px] capitalize sm:text-[38px] lg:text-[44px] lg:tracking-[-1.5px]" }) {
   // Most bands hard-break between the ink line and the accent line. The
   // solutions band does not — it runs inline and wraps naturally.
   if (!stacked) {
     return (
-      <h2 className={`${size} text-center font-bold leading-[1.3] lg:leading-[60px] ${
+      <h2 className={`${box} ${size} text-center font-bold leading-[1.3] lg:leading-[60px] ${
         tone === "dark" ? "text-[#1d0f2a]" : "text-white"}`}>
         {top}{" "}
         <span className={tone === "dark" ? "text-[#9c1ad4]" : "text-[#7DDDE0]"}>{accent}</span>
@@ -28,7 +28,7 @@ function SplitHeading({ top, accent, tone = "dark", stacked = true, size = "text
     );
   }
   return (
-    <h2 className={`${size} text-center font-bold leading-[1.3] lg:leading-[60px] ${
+    <h2 className={`${box} ${size} text-center font-bold leading-[1.3] lg:leading-[60px] ${
       tone === "dark" ? "text-[#1d0f2a]" : "text-white"}`}>
       <span className="block">{top}</span>
       {/* accent sampled from the original render — a vivid violet, noticeably
@@ -50,9 +50,9 @@ const LEAD_TONE = {
   light: "text-white/70",
 };
 
-function Lead({ children, lines, tone = "dark" }) {
+function Lead({ children, lines, tone = "dark", className = "mx-auto mt-4 leading-[30px]" }) {
   return (
-    <p className={`mx-auto mt-4 text-center text-[18px] leading-[30px] lg:text-[22px] lg:leading-[36.3px] ${
+    <p className={`${className} text-center text-[18px] lg:text-[22px] lg:leading-[36.3px] ${
       LEAD_TONE[tone] || LEAD_TONE.dark}`}>
       {lines ? (
         <>
@@ -165,11 +165,17 @@ const SURFACE = { tinted: 'trap-section', light: 'trap-section-light' };
           {/* The live row is one column inset 30px a side right up to the
               tablet band — the card is not a fixed width, it grows with the
               screen, which is what lets the copy settle on two lines. */}
-          <ul className="mx-auto mt-[48px] grid max-w-[1140px] grid-cols-1 gap-5 px-[30px] tablet:grid-cols-2 tablet:px-0 lg:mt-[78px] lg:grid-cols-4">
+          <ul
+            className={`mx-auto mt-[48px] grid max-w-[1140px] grid-cols-1 gap-5 tablet:grid-cols-2 tablet:px-0 lg:mt-[78px] lg:grid-cols-4 ${
+              trust.rowInset || "px-[30px]"
+            }`}
+          >
             {trust.stats.map((s, i) => (
               <li
                 key={s.value + i}
-                className="w-full rounded-[15px] px-[15px] py-[20px] text-center text-white tablet:px-[20px] tablet:pb-0 tablet:text-left lg:min-h-[210px]"
+                className={`w-full rounded-[15px] py-[20px] text-center text-white tablet:px-[20px] tablet:pb-0 tablet:text-left lg:min-h-[210px] ${
+                  trust.cardPad || "px-[15px]"
+                }`}
                 style={{
                   backgroundImage:
                     i % 2 === 0
@@ -214,8 +220,10 @@ const SURFACE = { tinted: 'trap-section', light: 'trap-section-light' };
       {/* 3 — problems */}
       <section className={`${tone("problems", "light")} py-[48px] lg:py-[74px]`}>
         <Shell>
-          <SplitHeading top={problems.titleTop} accent={problems.titleAccent} />
-          <Lead lines={problems.subtitleLines}>{problems.subtitle}</Lead>
+          <SplitHeading top={problems.titleTop} accent={problems.titleAccent} box={problems.headBox} />
+          <Lead lines={problems.subtitleLines} className={problems.leadClass}>
+            {problems.subtitle}
+          </Lead>
 
           {/* Fixed 1324px row: 4 x 316px cards, 20px gaps, hairline border and
               no shadow — the ground is near-white so a shadow would read dirty. */}
@@ -223,7 +231,9 @@ const SURFACE = { tinted: 'trap-section', light: 'trap-section-light' };
             {problems.items.map((it) => (
               <li
                 key={it.title}
-                className="min-h-[232px] rounded-[25px] border border-[rgba(88,0,200,0.52)] bg-white p-[20px] text-center tablet:text-left"
+                className={`${
+                  problems.cardMinH || "min-h-[232px]"
+                } rounded-[25px] border border-[rgba(88,0,200,0.52)] bg-white p-[20px] text-center tablet:text-left`}
               >
                 <div className="flex items-start gap-3">
                   <span

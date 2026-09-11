@@ -26,6 +26,8 @@ const NAV_ITEM =
    tablet band, which is also where the live site switches. */
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false)
+  /* which mobile accordion is expanded: 'solutions' | 'industries' | null */
+  const [openSection, setOpenSection] = useState(null)
   const pathname = usePathname()
 
   /* A link is active on its own page; a dropdown is active when any of its
@@ -35,7 +37,14 @@ export default function Navbar() {
   const navClass = (active) =>
     `${NAV_ITEM} ${active ? 'text-[#00A274] after:scale-x-100' : 'text-black'}`
 
-  const closeMenu = () => setMenuOpen(false)
+  /* Collapse the expanded group too, so the drawer always reopens clean. */
+  const closeMenu = () => {
+    setMenuOpen(false)
+    setOpenSection(null)
+  }
+
+  const toggleSection = (key) =>
+    setOpenSection((current) => (current === key ? null : key))
 
   return (
     <header className="relative z-50 bg-white">
@@ -55,20 +64,28 @@ export default function Navbar() {
 
         {/*
           The link row is wider than the w-1/3 box it sits in, so its last item
-          ("Ignitho AI") overflows underneath the following column. `relative`
-          lifts the nav above that static sibling in paint order, which is what
-          lets the overflowing link receive hover and clicks. No visual change.
+          overflows underneath the following column. `relative` lifts the nav
+          above that static sibling in paint order, which is what lets the
+          overflowing link receive hover and clicks. No visual change.
         */}
         <nav className="relative w-1/3 hidden desktop:flex items-center justify-center gap-4 text-base">
+          {/* Friend AI first */}
+          <Link
+            href={AI_LINK.href}
+            aria-current={isActive(AI_LINK.href) ? 'page' : undefined}
+            className={navClass(isActive(AI_LINK.href))}
+          >
+            Friend AI
+          </Link>
+
           <div className="group relative">
-            {/* a button, not a link: the parent only opens the dropdown.
-                It used to point at the live WordPress site. */}
+            {/* a button, not a link: the parent only opens the dropdown. */}
             <button
               type="button"
               aria-haspopup="true"
               className={navClass(anyActive(SPECIALIST_SOLUTIONS))}
             >
-              Specialist Solutions
+              Solutions
               <ChevronDown className="h-3.5 w-3.5 transition-transform duration-200 group-hover:rotate-180" />
             </button>
             <div className="invisible absolute left-1/2 top-full w-[320px] -translate-x-1/2 rounded-lg bg-white opacity-0 shadow-[0_12px_30px_rgba(0,0,0,0.12)] transition-all duration-200 group-hover:visible group-hover:opacity-100">
@@ -93,7 +110,7 @@ export default function Navbar() {
               aria-haspopup="true"
               className={navClass(anyActive(FOCUS_INDUSTRIES))}
             >
-              Focus Industries
+              Industries
               <ChevronDown className="h-3.5 w-3.5 transition-transform duration-200 group-hover:rotate-180" />
             </button>
             <div className="invisible absolute left-1/2 top-full w-[320px] -translate-x-1/2 rounded-lg bg-white opacity-0 shadow-[0_12px_30px_rgba(0,0,0,0.12)] transition-all duration-200 group-hover:visible group-hover:opacity-100">
@@ -122,14 +139,6 @@ export default function Navbar() {
               {item.label}
             </a>
           ))}
-
-          <Link
-            href={AI_LINK.href}
-            aria-current={isActive(AI_LINK.href) ? 'page' : undefined}
-            className={navClass(isActive(AI_LINK.href))}
-          >
-            {AI_LINK.label}
-          </Link>
         </nav>
 
         <div className="flex items-center gap-2 desktop:w-1/3 desktop:justify-end">
@@ -149,68 +158,175 @@ export default function Navbar() {
         </div>
       </div>
 
+      {/*
+        Mobile / tablet menu: a full-page panel that slides in from the right,
+        over a dimmed backdrop. Desktop is unaffected: both the backdrop and
+        the panel are `desktop:hidden`.
+      */}
       <AnimatePresence>
         {menuOpen && (
-          <motion.nav
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.25, ease: 'easeInOut' }}
-            className="overflow-hidden border-t border-slate-100 bg-white desktop:hidden"
-          >
-            <div className="flex flex-col gap-1 px-5 py-4">
-              <span className="pt-1 text-xs font-bold tracking-wide text-slate-400">
-                Specialist Solutions
-              </span>
-              {SPECIALIST_SOLUTIONS.map((item) => (
-                <a
-                  key={item.label}
-                  href={item.href}
-                  aria-current={isActive(item.href) ? "page" : undefined}
-                  className={`py-2 pl-1 text-sm font-semibold hover:text-[#00A274] ${
-                    isActive(item.href) ? "text-[#00A274]" : "text-black"
-                  }`}
-                >
-                  {item.label}
-                </a>
-              ))}
+          <>
+            {/* tapping anywhere outside the panel closes the menu */}
+            <motion.div
+              key="mobile-backdrop"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.25, ease: 'easeInOut' }}
+              onClick={closeMenu}
+              className="fixed inset-0 z-40 bg-black/40 desktop:hidden"
+            />
 
-              <span className="mt-3 pt-1 text-xs font-bold tracking-wide text-slate-400">
-                Focus Industries
-              </span>
-              {FOCUS_INDUSTRIES.map((item) => (
-                <a
-                  key={item.label}
-                  href={item.href}
-                  aria-current={isActive(item.href) ? "page" : undefined}
-                  className={`py-2 pl-1 text-sm font-semibold hover:text-[#00A274] ${
-                    isActive(item.href) ? "text-[#00A274]" : "text-black"
-                  }`}
-                >
-                  {item.label}
-                </a>
-              ))}
-
-              <div className="mt-3 flex flex-col border-t border-slate-100 pt-3">
-                {PRIMARY_LINKS.map((item) => (
-                  <a
-                    key={item.label}
-                    href={item.href}
-                    className="py-2 text-sm font-bold text-black hover:text-[#00A274]"
-                  >
-                    {item.label}
-                  </a>
-                ))}
-                <Link
-                  href={AI_LINK.href}
+            <motion.nav
+              key="mobile-panel"
+              initial={{ x: '100%' }}
+              animate={{ x: 0 }}
+              exit={{ x: '100%' }}
+              transition={{ duration: 0.3, ease: 'easeInOut' }}
+              className="fixed inset-0 z-50 flex w-full flex-col bg-white desktop:hidden"
+            >
+              <div className="flex items-center justify-end px-5 py-5">
+                <button
                   onClick={closeMenu}
-                  className="py-2 text-left text-sm font-bold text-black hover:text-[#00A274]"
+                  aria-label="Close menu"
+                  className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-slate-200 text-black"
                 >
-                  {AI_LINK.label}
-                </Link>
+                  <X className="h-5 w-5" />
+                </button>
               </div>
-            </div>
-          </motion.nav>
+
+              {/* 
+                Mobile menu content:
+                - The outer container centers a narrow column (max-w-xs) on screen.
+                - Inside that column, each row is `relative` with the label centered.
+                - The chevron sits absolutely at the right edge, so it never
+                  shifts the label off the vertical center line.
+                - pt-[12vh] keeps the block in the upper half of the screen.
+              */}
+              <div className="flex flex-1 flex-col items-center justify-start overflow-y-auto px-6 pt-[12vh] pb-12">
+                <div className="w-full max-w-xs">
+                  {/* Friend AI first — no chevron, plain centered label */}
+                  <Link
+                    href={AI_LINK.href}
+                    onClick={closeMenu}
+                    aria-current={isActive(AI_LINK.href) ? 'page' : undefined}
+                    className={`block py-4 text-center text-2xl font-bold transition-colors duration-200 hover:text-[#00A274] ${
+                      isActive(AI_LINK.href) ? 'text-[#00A274]' : 'text-black'
+                    }`}
+                  >
+                    Friend AI
+                  </Link>
+
+                  {/* Solutions accordion — chevron floats at the right edge */}
+                  <button
+                    type="button"
+                    onClick={() => toggleSection('solutions')}
+                    aria-expanded={openSection === 'solutions'}
+                    aria-haspopup="true"
+                    className={`relative flex w-full items-center justify-center py-4 text-2xl font-bold transition-colors duration-200 hover:text-[#00A274] ${
+                      anyActive(SPECIALIST_SOLUTIONS) ? 'text-[#00A274]' : 'text-black'
+                    }`}
+                  >
+                    Solutions
+                    <ChevronDown
+                      className={`absolute right-0 h-6 w-6 transition-transform duration-200 ${
+                        openSection === 'solutions' ? 'rotate-180' : ''
+                      }`}
+                    />
+                  </button>
+
+                  <AnimatePresence initial={false}>
+                    {openSection === 'solutions' && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: 'auto', opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.25, ease: 'easeInOut' }}
+                        className="overflow-hidden"
+                      >
+                        <div className="flex flex-col pb-2">
+                          {SPECIALIST_SOLUTIONS.map((item) => (
+                            <a
+                              key={item.label}
+                              href={item.href}
+                              onClick={closeMenu}
+                              aria-current={isActive(item.href) ? 'page' : undefined}
+                              className={`block py-3 text-center text-xl font-semibold transition-colors duration-200 hover:text-[#00A274] ${
+                                isActive(item.href) ? 'text-[#00A274]' : 'text-black'
+                              }`}
+                            >
+                              {item.label}
+                            </a>
+                          ))}
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+
+                  {/* Industries accordion — chevron floats at the right edge */}
+                  <button
+                    type="button"
+                    onClick={() => toggleSection('industries')}
+                    aria-expanded={openSection === 'industries'}
+                    aria-haspopup="true"
+                    className={`relative flex w-full items-center justify-center py-4 text-2xl font-bold transition-colors duration-200 hover:text-[#00A274] ${
+                      anyActive(FOCUS_INDUSTRIES) ? 'text-[#00A274]' : 'text-black'
+                    }`}
+                  >
+                    Industries
+                    <ChevronDown
+                      className={`absolute right-0 h-6 w-6 transition-transform duration-200 ${
+                        openSection === 'industries' ? 'rotate-180' : ''
+                      }`}
+                    />
+                  </button>
+
+                  <AnimatePresence initial={false}>
+                    {openSection === 'industries' && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: 'auto', opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.25, ease: 'easeInOut' }}
+                        className="overflow-hidden"
+                      >
+                        <div className="flex flex-col pb-2">
+                          {FOCUS_INDUSTRIES.map((item) => (
+                            <a
+                              key={item.label}
+                              href={item.href}
+                              onClick={closeMenu}
+                              aria-current={isActive(item.href) ? 'page' : undefined}
+                              className={`block py-3 text-center text-xl font-semibold transition-colors duration-200 hover:text-[#00A274] ${
+                                isActive(item.href) ? 'text-[#00A274]' : 'text-black'
+                              }`}
+                            >
+                              {item.label}
+                            </a>
+                          ))}
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+
+                  {/* Primary links — plain centered labels */}
+                  {PRIMARY_LINKS.map((item) => (
+                    <a
+                      key={item.label}
+                      href={item.href}
+                      onClick={closeMenu}
+                      aria-current={isActive(item.href) ? 'page' : undefined}
+                      className={`block py-4 text-center text-2xl font-bold transition-colors duration-200 hover:text-[#00A274] ${
+                        isActive(item.href) ? 'text-[#00A274]' : 'text-black'
+                      }`}
+                    >
+                      {item.label}
+                    </a>
+                  ))}
+                </div>
+              </div>
+            </motion.nav>
+          </>
         )}
       </AnimatePresence>
     </header>

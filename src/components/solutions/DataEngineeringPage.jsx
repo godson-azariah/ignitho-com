@@ -63,10 +63,19 @@ function BandHeading({
   );
 }
 
-function Lead({ children, tone = "dark", className = "", size = "text-[18px]", lh = "leading-[30px]", color }) {
+function Lead({
+  children,
+  tone = "dark",
+  className = "",
+  size = "text-[18px]",
+  lh = "leading-[30px]",
+  lgSize = "lg:text-[22px]",
+  lgLh = "lg:leading-[36.3px]",
+  color,
+}) {
   return (
     <p
-      className={`mx-auto text-center ${size} ${lh} lg:text-[22px] lg:leading-[36.3px] ${
+      className={`mx-auto text-center ${size} ${lh} ${lgSize} ${lgLh} ${
         color || (tone === "dark" ? "text-[#6b6080]" : "text-white")
       } ${className}`}
     >
@@ -159,6 +168,9 @@ export default function DataEngineeringPage({ data }) {
               className={problem.leadClass || "mt-[10px]"}
               size={problem.leadSize}
               lh={problem.leadLh}
+              lgSize={problem.leadLgSize || undefined}
+              lgLh={problem.leadLgLh || undefined}
+              color={problem.leadColor}
             >
               {problem.lead}
             </Lead>
@@ -237,10 +249,18 @@ className={`rounded-[25px] p-[20px] text-white ${problem.cardClass || ""} ${prob
                       decimals={stat.decimals}
                       group={stat.group}
                       duration={1500}
-                      className="text-center text-[40px] font-extrabold leading-[40px] text-[#7a00c2]"
+                      className={`text-center text-[40px] font-extrabold leading-[40px] text-[#7a00c2] ${
+                        problem.statFont || ""
+                      }`}
                     />
                   ) : (
-                    <p className="text-center text-[40px] font-extrabold leading-[40px] text-[#7a00c2]">{s.value}</p>
+                    <p
+                      className={`text-center text-[40px] font-extrabold leading-[40px] text-[#7a00c2] ${
+                        problem.statFont || ""
+                      }`}
+                    >
+                      {s.value}
+                    </p>
                   )}
                   <p
                     className={`mt-[10px] text-[16px] leading-[26.4px] text-[#6b6080] ${
@@ -283,13 +303,17 @@ className={`rounded-[25px] p-[20px] text-white ${problem.cardClass || ""} ${prob
       <>
       <section className="trap-section-light py-[52px] lg:pt-[76px] lg:pb-[60px]">
         <Shell>
-          <div className="mx-auto max-w-[1132px]">
+          <div className={lifecycle.boxClass || "mx-auto max-w-[1132px]"}>
             {/* this heading alone carries no negative tracking in the original */}
-            <BandHeading top={lifecycle.title} base={lifecycle.headingBase} />
+            <BandHeading
+              top={lifecycle.title}
+              base={lifecycle.headingBase}
+              sm={lifecycle.headingSm || undefined}
+            />
             {/* leadBold names a run inside lead to embolden — the live copy sets
                 one phrase in bold rather than the whole sentence */}
             <Lead
-              className="mt-[14px]"
+              className={lifecycle.leadClass || "mt-[14px]"}
               size={lifecycle.leadSize}
               lh={lifecycle.leadLh}
               color={lifecycle.leadColor}
@@ -312,6 +336,7 @@ className={`rounded-[25px] p-[20px] text-white ${problem.cardClass || ""} ${prob
             items={lifecycle.items}
             compact={lifecycle.compact}
             phoneCompact={lifecycle.phoneCompact}
+            panel={lifecycle.panel}
           />
         </Shell>
       </section>
@@ -321,15 +346,21 @@ className={`rounded-[25px] p-[20px] text-white ${problem.cardClass || ""} ${prob
       {/* 4 — delivery model */}
       <section className="trap-section py-[52px] lg:pt-[81px] lg:pb-[70px]">
         <Shell>
-          <div className="mx-auto max-w-[983px]">
+          <div className={delivery.boxClass || "mx-auto max-w-[983px]"}>
             <BandHeading
               top={delivery.titleTop}
               accent={delivery.titleAccent}
               inline={delivery.inlineTitle}
+              base={delivery.headingBase || undefined}
+              sm={delivery.headingSm || undefined}
               size={delivery.dense ? "lg:text-[45px]" : "lg:text-[44px]"}
               lh={delivery.dense ? "lg:leading-[60px]" : "lg:leading-[57.2px]"}
             />
-            <Lead className="mt-[9px]" size={delivery.leadSize} lh={delivery.leadLh}>
+            <Lead
+              className={delivery.leadClass || "mt-[9px]"}
+              size={delivery.leadSize}
+              lh={delivery.leadLh}
+            >
               {delivery.lead}
             </Lead>
           </div>
@@ -372,7 +403,13 @@ className={`rounded-[25px] p-[20px] text-white ${problem.cardClass || ""} ${prob
                     (delivery.dense ? "font-semibold" : "mt-[14px] font-bold")
                   }`}
                 >
-                  {s.title}
+                  {/* the live cards carry hard breaks in these headings, which
+                      is what keeps each on two rows at every width */}
+                  {(s.titleLines || [s.title]).map((line) => (
+                    <span key={line} className="block">
+                      {line}
+                    </span>
+                  ))}
                 </h3>
                 <p
                   className={`relative text-white/70 ${
@@ -393,13 +430,16 @@ className={`rounded-[25px] p-[20px] text-white ${problem.cardClass || ""} ${prob
       {/* 5 — specialist PODs */}
       <section className="bg-brand-gradient py-[52px] text-white lg:pt-[78px] lg:pb-[67px]">
         <Shell>
-          <div className="mx-auto max-w-[1147px]">
+          <div className={pods.boxClass || "mx-auto max-w-[1147px]"}>
             <BandHeading
               top={pods.titleTop}
               accent={pods.titleAccent}
               tone="light"
+              inline={pods.inlineTitle}
               base={pods.headingBase}
-              lh="lg:leading-[48.4px]"
+              sm={pods.headingSm || undefined}
+              box={pods.headingBox}
+              lh={pods.headingLh || "lg:leading-[48.4px]"}
               tracking="lg:tracking-[-1.5px]"
             />
             <Lead
@@ -431,7 +471,7 @@ className={`rounded-[25px] p-[20px] text-white ${problem.cardClass || ""} ${prob
                     className={
                       pods.mobileStack
                         ? "flex flex-wrap items-center justify-center gap-x-[10px] gap-y-[6px] text-center sm:flex-nowrap sm:items-start sm:justify-start sm:gap-x-[37px] sm:text-left"
-                        : "flex items-start gap-[37px]"
+                        : `flex items-start ${pods.pointGap || "gap-[37px]"}`
                     }
                   >
                     <span
@@ -473,16 +513,20 @@ className={`rounded-[25px] p-[20px] text-white ${problem.cardClass || ""} ${prob
       {/* 6 — engagement tiers */}
       <section className="trap-section-light py-[52px] lg:pt-[76px] lg:pb-[60px]">
         <Shell>
-          <div className="mx-auto max-w-[1062px]">
+          <div className={tiers.boxClass || "mx-auto max-w-[1062px]"}>
             <BandHeading
               top={tiers.titleTop}
               accent={tiers.titleAccent}
+              base={tiers.headingBase || undefined}
+              sm={tiers.headingSm || undefined}
               size="lg:text-[54px]"
               lh="lg:leading-[59.4px]"
               tracking="lg:tracking-[-1.5px]"
               inline
             />
-            <Lead className="mt-[14px]">{tiers.lead}</Lead>
+            <Lead className="mt-[14px]" size={tiers.leadSize} lh={tiers.leadLh}>
+              {tiers.lead}
+            </Lead>
           </div>
 
           {/* 3 x 390 on 20px gaps; Tier 2 inverts onto the brand gradient */}
@@ -494,7 +538,9 @@ className={`rounded-[25px] p-[20px] text-white ${problem.cardClass || ""} ${prob
               return (
                 <li
                   key={t.tier}
-                  className={`min-h-[579px] rounded-[25px] border border-[rgba(122,0,194,0.12)] p-[30px] ${
+                  className={`${
+                    tiers.cardMinH || "min-h-[579px]"
+                  } rounded-[25px] border border-[rgba(122,0,194,0.12)] p-[30px] ${
                     on ? "bg-de-card-purple text-white" : "bg-white"
                   }`}
                 >
@@ -506,7 +552,9 @@ className={`rounded-[25px] p-[20px] text-white ${problem.cardClass || ""} ${prob
                     {t.tier}
                   </p>
                   <h3
-                    className={`mt-[17px] text-[24px] font-bold leading-[31.2px] ${tierHead} ${on ? "text-white" : "text-[#1d0f2a]"}`}
+                    className={`mt-[17px] font-bold ${
+                      tiers.titleClass || "text-[24px] leading-[31.2px]"
+                    } ${tierHead} ${on ? "text-white" : "text-[#1d0f2a]"}`}
                   >
                     {t.title}
                   </h3>
@@ -514,7 +562,9 @@ className={`rounded-[25px] p-[20px] text-white ${problem.cardClass || ""} ${prob
                     {t.tagline}
                   </p>
                   <p
-                    className={`mt-[13px] text-[16px] font-medium leading-[26.4px] ${tierHead} ${
+                    className={`mt-[13px] ${
+                      tiers.bodyClass || "text-[16px] font-medium leading-[26.4px]"
+                    } ${tierHead} ${
                       on ? "text-white/[0.78]" : "text-[#6b6080]"
                     }`}
                   >
@@ -534,7 +584,9 @@ className={`rounded-[25px] p-[20px] text-white ${problem.cardClass || ""} ${prob
                           <TierTick className="h-[24px] w-[24px]" />
                         </span>
                         <span
-                          className={`text-[16px] font-medium leading-[25px] ${
+                          className={`${
+                            tiers.pointClass || "text-[16px] font-medium leading-[25px]"
+                          } ${
                             on ? "text-white/[0.85]" : "text-[#54595f]"
                           }`}
                         >

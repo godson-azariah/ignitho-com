@@ -10,7 +10,6 @@ import SecuritySection from "./SecuritySection";
 import CtaBanner from "./CtaBanner";
 import SuiteDetail from "./SuiteDetail";
 import SimulationModal from "./SimulationModal";
-import Chatbot from "./Chatbot";
 import AiFooter from "./Footer";
 import { SUITES } from "@/lib/pages/ai-suites";
 
@@ -102,7 +101,6 @@ export default function IgnithoAiApp() {
         step={simStep}
         onClose={() => setSimAccelerator(null)}
       />
-      <Chatbot />
       <AiFooter />
     </div>
   );

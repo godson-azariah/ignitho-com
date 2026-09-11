@@ -19,8 +19,11 @@ import Icon from "@/components/ui/Icon";
  * page runs this content as small stacked cards there — art 140 tall, an 18/23.4
  * title and a 14/22.4 body — so our full-size panel came out roughly 2.5x its
  * height. Everything from sm up is left exactly as it was.
+ *
+ * `panel` is a per-page override bag for the pages whose live panel runs its
+ * own scale. Anything it does not set falls through to the behaviour above.
  */
-export default function LifecycleTabs({ items, compact = false, phoneCompact = false }) {
+export default function LifecycleTabs({ items, compact = false, phoneCompact = false, panel: sx = {} }) {
   const [active, setActive] = useState(0);
 
   return (
@@ -70,16 +73,17 @@ export default function LifecycleTabs({ items, compact = false, phoneCompact = f
               key={panel.title}
               aria-hidden={on ? undefined : "true"}
               className={`bg-brand-panel col-start-1 row-start-1 flex h-full flex-col overflow-hidden rounded-[20px] border border-[#4a12b8] text-white ${
-                phoneCompact ? "pb-[20px] sm:pb-[30px]" : "pb-[30px]"
+                sx.pad || (phoneCompact ? "pb-[20px] sm:pb-[30px]" : "pb-[30px]")
               } ${
                 on
                   ? ""
-                  : phoneCompact
-                    ? /* on a phone the inactive panels leave the cell entirely, so the
-                         block is only as tall as the open one — keeping them in flow
-                         padded this card out with ~130px of empty purple */
-                      "hidden sm:block sm:invisible"
-                    : "invisible"
+                  : sx.inactive ||
+                    (phoneCompact
+                      ? /* on a phone the inactive panels leave the cell entirely, so the
+                           block is only as tall as the open one — keeping them in flow
+                           padded this card out with ~130px of empty purple */
+                        "hidden sm:block sm:invisible"
+                      : "invisible")
               }`}
             >
               <Image
@@ -91,13 +95,14 @@ export default function LifecycleTabs({ items, compact = false, phoneCompact = f
                 /* every variant spelled out: Tailwind only emits classes it can
                    read literally in the source, so "sm:" cannot be concatenated */
                 className={`w-full object-cover ${
-                  phoneCompact
+                  sx.art ||
+                  (phoneCompact
                     ? compact
                       ? "h-[140px] sm:h-[248px]"
                       : "h-[140px] sm:h-[272px]"
                     : compact
                       ? "h-[248px]"
-                      : "h-[272px]"
+                      : "h-[272px]")
                 }`}
               />
 
@@ -105,9 +110,10 @@ export default function LifecycleTabs({ items, compact = false, phoneCompact = f
                 <div className={`flex items-center ${phoneCompact ? "gap-[12px] sm:gap-[15px]" : "gap-[15px]"}`}>
                   <span
                     className={`flex shrink-0 items-center justify-center border border-white/[0.18] bg-white/[0.12] ${
-                      phoneCompact
+                      sx.tile ||
+                      (phoneCompact
                         ? "h-[40px] w-[40px] rounded-[12px] sm:h-[55px] sm:w-[55px] sm:rounded-[16px]"
-                        : "h-[55px] w-[55px] rounded-[16px]"
+                        : "h-[55px] w-[55px] rounded-[16px]")
                     }`}
                   >
                     <Icon
@@ -121,9 +127,10 @@ export default function LifecycleTabs({ items, compact = false, phoneCompact = f
                   </span>
                   <h3
                     className={`font-bold ${
-                      phoneCompact
+                      sx.title ||
+                      (phoneCompact
                         ? "text-[18px] leading-[23.4px] sm:text-[26px] sm:leading-[33.8px]"
-                        : "text-[26px] leading-[33.8px]"
+                        : "text-[26px] leading-[33.8px]")
                     }`}
                   >
                     {panel.title}
@@ -132,13 +139,14 @@ export default function LifecycleTabs({ items, compact = false, phoneCompact = f
 
                 <p
                   className={`${phoneCompact ? "mt-[14px] sm:mt-[20px]" : "mt-[20px]"} ${
-                    phoneCompact
+                    sx.body ||
+                    (phoneCompact
                       ? compact
                         ? "text-[14px] leading-[22.4px] sm:text-[16px] sm:leading-[26.4px]"
                         : "text-[14px] leading-[22.4px] sm:text-[17px] sm:leading-[28.05px]"
                       : compact
                         ? "text-[16px] leading-[26.4px]"
-                        : "text-[17px] leading-[28.05px]"
+                        : "text-[17px] leading-[28.05px]")
                   }`}
                 >
                   {panel.body}
@@ -148,12 +156,12 @@ export default function LifecycleTabs({ items, compact = false, phoneCompact = f
                 <ul
                   className={`mt-auto flex flex-wrap ${
                     phoneCompact ? "gap-[8px] sm:gap-[20px]" : "gap-[20px]"
-                  } ${compact ? "pt-[12px]" : "pt-[26px]"}`}
+                  } ${sx.tags || (compact ? "pt-[12px]" : "pt-[26px]")}`}
                 >
                   {panel.tags.map((t) => (
                     <li
                       key={t}
-                      className={`border border-[rgba(125,221,224,0.16)] bg-[rgba(125,221,224,0.16)] px-[10px] font-medium ${
+                      className={`border border-[rgba(125,221,224,0.16)] bg-[rgba(125,221,224,0.16)] font-medium ${sx.tag || "px-[10px]"} ${
                         phoneCompact
                           ? "rounded-[20px] py-[6px] text-[12px] leading-[19.2px] sm:rounded-[15px] sm:py-[10px] sm:text-[15px] sm:leading-[15px]"
                           : "rounded-[15px] py-[10px] text-[15px] leading-[15px]"
