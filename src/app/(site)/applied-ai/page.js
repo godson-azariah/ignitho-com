@@ -2,7 +2,7 @@ import DataEngineeringPage from "@/components/solutions/DataEngineeringPage";
 import { APPLIED_AI } from "@/lib/pages/applied-ai";
 
 export const metadata = {
-  title: "Applied AI & Smart Automation",
+  title: "Frugal AI Enablement",
   description:
     "AI that works in production, not just demos — governed, explainable and deployed on the stack you already own.",
   alternates: { canonical: "/applied-ai" },

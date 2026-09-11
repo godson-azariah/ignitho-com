@@ -10,7 +10,7 @@
  */
 export const APPLIED_AI = {
   hero: {
-    line1: "Applied AI & Smart Automation",
+    line1: "Frugal AI Enablement",
     line2: "That Works in Production, Not Just Demos",
   },
 

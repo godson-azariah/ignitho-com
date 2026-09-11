@@ -13,18 +13,18 @@
 export const SPECIALIST_SOLUTIONS = [
   { label: 'Data Engineering & Consulting', href: '/data-engineering' },
   { label: 'Advanced Analytics & Data Science', href: '/analytics' },
-  { label: 'Applied AI & Smart Automation', href: '/applied-ai' },
+  { label: 'Frugal AI Enablement', href: '/applied-ai' },
 ]
 
 export const FOCUS_INDUSTRIES = [
-  { label: 'Pharma & Healthcare', href: '/pharma' },
-  { label: 'Retail & Ecommerce', href: '/retail' },
+  { label: 'Travel and logistics', href: '/travel' },
+  { label: 'Healthcare and life sciences', href: '/pharma' },
+  { label: 'Media and communications', href: '/media' },
+  { label: 'Retail, CPG and manufacturing', href: '/retail' },
   {
-    label: 'Banking Financial Services & Insurance',
+    label: 'Banking, financial services and insurance',
     href: '/banking',
   },
-  { label: 'Media & Communications', href: '/media' },
-  { label: 'Travel Transport & Logistics', href: '/travel' },
 ]
 
 export const PRIMARY_LINKS = [

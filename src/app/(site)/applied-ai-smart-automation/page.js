@@ -3,7 +3,7 @@ import ContactCta from "@/components/sections/ContactCta";
 import data from "@/lib/pages/applied-ai-smart-automation.json";
 
 export const metadata = {
-  title: "Applied AI & Smart Automation",
+  title: "Frugal AI Enablement",
   description: "Four accelerators that take enterprise AI from pilot to production.",
   alternates: { canonical: "/applied-ai-smart-automation" },
 };

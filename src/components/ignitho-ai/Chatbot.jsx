@@ -112,13 +112,13 @@ function buildResponse(query, fallbackCount) {
     return "Our Advanced Analytics & Data Science pillar covers self-service BI (Power BI, Tableau, Looker), predictive modeling and forecasting, KPI development and reporting automation, and advanced statistical analysis and data science advisory."
   }
   if (q.includes('automation') || q.includes('rpa') || q.includes('robotic') || q.includes('agentic') || q.includes('agent')) {
-    return "Our Applied AI & Smart Automation pillar covers Machine Learning, Deep Learning, NLP, Computer Vision, Recommendation Systems, RPA, and our flagship Agentic AI suite - Ignitho AI. Pre-built, multi-agent accelerators that automate complex business workflows securely."
+    return "Our Frugal AI Enablement pillar covers Machine Learning, Deep Learning, NLP, Computer Vision, Recommendation Systems, RPA, and our flagship Agentic AI suite - Ignitho AI. Pre-built, multi-agent accelerators that automate complex business workflows securely."
   }
   if (q.includes('ignitho ai') || q.includes('ai agent') || q.includes('ai product') || q.includes('ai platform')) {
     return "Ignitho AI is our flagship Agentic AI suite - pre-built, multi-agent accelerators that automate complex business workflows securely. It is SOC 2 Type II compliant with our Fortress security firewall preventing data leaks, prompt attacks, and PII violations automatically."
   }
   if (q.includes('service') || q.includes('offering') || q.includes('what do you offer') || q.includes('solution')) {
-    return "Ignitho's three service pillars: (1) Data Engineering & Consulting, (2) Advanced Analytics & Data Science, and (3) Applied AI & Smart Automation (including our Agentic AI suite, Ignitho AI). All delivered via cross-functional Specialist PODs alongside AI Agents."
+    return "Ignitho's three service pillars: (1) Data Engineering & Consulting, (2) Advanced Analytics & Data Science, and (3) Frugal AI Enablement (including our Agentic AI suite, Ignitho AI). All delivered via cross-functional Specialist PODs alongside AI Agents."
   }
 
   if (q.includes('technolog') || q.includes('tech stack') || q.includes('stack') || q.includes('tools') || q.includes('platform')) {

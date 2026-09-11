@@ -104,8 +104,8 @@ export const SERVICES = [
     ],
   },
   {
-    title: "Applied AI & Smart Automation",
-    titleLines: ["Applied AI &", "Smart Automation"],
+    title: "Frugal AI Enablement",
+    titleLines: ["Frugal AI", "Enablement"],
     href: "/applied-ai",
     points: [
       "Machine Learning & Deep Learning",
@@ -117,11 +117,27 @@ export const SERVICES = [
 ];
 
 /* `titleLines` / `bodyLines` pin every line break to the original's, including
-   its mid-word hyphen breaks. `title` and `body` stay as plain strings. */
+   its mid-word hyphen breaks. `title` and `body` stay as plain strings.
+
+   Order and labels updated: each card keeps its original href, image and body
+   (so the tile still links to the same page and uses the same photo) — only
+   the sequence and the display text changed. */
 export const INDUSTRY_CARDS = [
   {
-    title: "Pharma & Healthcare",
-    titleLines: ["Pharma &", "Healthcare"],
+    title: "Travel and logistics",
+    titleLines: ["Travel and", "Logistics"],
+    body: "Optimize operations with real-time tracking and data intelligence",
+    bodyLines: [
+      "Optimize operations with real-",
+      "time tracking and data",
+      "intelligence",
+    ],
+    href: "/travel",
+    image: "/images/ind-travel.webp",
+  },
+  {
+    title: "Healthcare and life sciences",
+    titleLines: ["Healthcare and", "Life Sciences"],
     body: "Improve patient outcomes with secure, scalable data platforms and analytics",
     bodyLines: [
       "Improve patient outcomes with",
@@ -132,32 +148,8 @@ export const INDUSTRY_CARDS = [
     image: "/images/ind-pharma.webp",
   },
   {
-    title: "Retail & Ecommerce",
-    titleLines: ["Retail &", "Ecommerce"],
-    body: "Deliver personalized shopping experiences with data-driven insights",
-    bodyLines: [
-      "Deliver personalized shopping",
-      "experiences with data-",
-      "driven insights",
-    ],
-    href: "/retail",
-    image: "/images/ind-retail.webp",
-  },
-  {
-    title: "Banking, Financial Services & Insurance",
-    titleLines: ["Banking, Financial", "Services & Insurance"],
-    body: "Enhance decision-making with real-time financial data platforms",
-    bodyLines: [
-      "Enhance decision-making",
-      "with real-time financial",
-      "data platforms",
-    ],
-    href: "/banking",
-    image: "/images/ind-bfsi.webp",
-  },
-  {
-    title: "Media & Communications",
-    titleLines: ["Media &", "Communications"],
+    title: "Media and communications",
+    titleLines: ["Media and", "Communications"],
     body: "Power content delivery and audience insights with modern data stacks",
     bodyLines: [
       "Power content delivery and",
@@ -168,16 +160,28 @@ export const INDUSTRY_CARDS = [
     image: "/images/ind-media.webp",
   },
   {
-    title: "Travel, Transport & Logistics",
-    titleLines: ["Travel,Transport &", "Logistics"],
-    body: "Optimize operations with real-time tracking and data intelligence",
+    title: "Retail, CPG and manufacturing",
+    titleLines: ["Retail, CPG", "and Manufacturing"],
+    body: "Deliver personalized shopping experiences with data-driven insights",
     bodyLines: [
-      "Optimize operations with real-",
-      "time tracking and data",
-      "intelligence",
+      "Deliver personalized shopping",
+      "experiences with data-",
+      "driven insights",
     ],
-    href: "/travel",
-    image: "/images/ind-travel.webp",
+    href: "/retail",
+    image: "/images/ind-retail.webp",
+  },
+  {
+    title: "Banking, financial services and insurance",
+    titleLines: ["Banking, Financial", "Services and", "Insurance"],
+    body: "Enhance decision-making with real-time financial data platforms",
+    bodyLines: [
+      "Enhance decision-making",
+      "with real-time financial",
+      "data platforms",
+    ],
+    href: "/banking",
+    image: "/images/ind-bfsi.webp",
   },
 ];
 

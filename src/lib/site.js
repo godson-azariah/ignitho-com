@@ -7,7 +7,7 @@
 export const SOLUTIONS = [
   { label: "Data Engineering & Consulting", href: "/data-engineering" },
   { label: "Advanced Analytics & Data Science", href: "/analytics" },
-  { label: "Applied AI & Smart Automation", href: "/applied-ai" },
+  { label: "Frugal AI Enablement", href: "/applied-ai" },
 ];
 
 export const INDUSTRIES = [
