@@ -11,7 +11,7 @@ import { motion, useInView, useReducedMotion, useScroll, useTransform } from 'fr
   transparent, drawn wider than the viewBox so it reaches the edges on wide
   screens and parallaxing gently with scroll), then the word FRIEND standing
   on the ridge as deep violet 3D letters with a picture inside each letter
-  group - hands stacking coins for FR, a drawn glowing bulb for I, glass
+  group - a jar of coins for FR, a drawn glowing bulb for I, glass
   corporate towers for EN, an analytics dashboard for D (the photos are
   Unsplash, free licence, graded with one violet-to-blue overlay so they read
   as a set) - then white ground dots, arrows down to purple pill labels and a
@@ -50,8 +50,8 @@ const LETTERS = [
 
 // pictures inside the letters, one per group
 const PHOTOS = [
-  // placed by hand so the coin stacks and hands land inside F and R
-  { key: 'FR', src: '/images/friend/fr-saving.webp', x: 58, y: 50, w: 570, h: 380, fit: 'xMidYMid meet' },
+  // placed by hand so the jar and its coins sit inside F and R
+  { key: 'FR', src: '/images/friend/fr-jar.webp', x: 40, y: 120, w: 600, h: 400, fit: 'xMidYMid meet' },
   { key: 'EN', src: '/images/friend/en-towers.webp', x: 629, y: 150, w: 404, h: 520 },
   { key: 'D', src: '/images/friend/d-dash.webp', x: 1033, y: 150, w: 260, h: 520 },
 ]
@@ -59,7 +59,7 @@ const PHOTOS = [
 // Without JavaScript the inline initial styles would hide the word, so the
 // finished scene is forced. framer's inline styles lose to !important rules.
 const NOSCRIPT_STYLES =
-  '<style>.friend-reveal [style],.friend-reveal .friend-word{opacity:1!important;transform:none!important}.friend-reveal path{stroke-dashoffset:0!important}</style>'
+  '<style>.friend-reveal [style]{opacity:1!important;transform:none!important}.friend-reveal .friend-word{opacity:1!important;transform:translateY(48px)!important}.friend-reveal path{stroke-dashoffset:0!important}</style>'
 
 export default function FriendReveal({ friend }) {
   const ref = useRef(null)
@@ -129,7 +129,8 @@ export default function FriendReveal({ friend }) {
 
           {/* the word: each letter rises out of the ground in turn - 3D extrusion,
               then its group's picture clipped inside it */}
-          <g className={'friend-word' + (reduce || inView ? ' is-in' : '')} transform="translate(0 48)">
+          {/* the 48-unit drop onto the ridge lives in the CSS transform (see .friend-word) */}
+          <g className={'friend-word' + (reduce || inView ? ' is-in' : '')}>
             {LETTERS.map((l, i) => {
               const photo = PHOTOS.find((p) => p.key === l.group)
               return (
