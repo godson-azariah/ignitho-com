@@ -9,12 +9,15 @@ export default function FrugalInnovation() {
   return (
     <section
       id="frug-sec"
-      className="second-section flex flex-col px-[10px] py-[50px] tablet:px-10 tablet:py-10 desktop:px-0 desktop:pb-[96px] desktop:pt-20"
+      className="second-section flex flex-col px-[10px] pb-0 pt-[50px] tablet:px-10 tablet:pb-0 tablet:pt-10 desktop:px-0 desktop:pb-0 desktop:pt-20"
     >
       <Container className="flex flex-col gap-5">
         <SectionHeading title={title} subtitle={subtitle} />
-        <FriendReveal friend={friend} />
       </Container>
+      {/* The scene runs edge to edge and down to the section's bottom. */}
+      <div className="-mx-[10px] tablet:-mx-10 desktop:mx-0">
+        <FriendReveal friend={friend} />
+      </div>
     </section>
   )
 }

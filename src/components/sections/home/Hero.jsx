@@ -3,6 +3,10 @@ import Container from '@/components/layout/Container'
 import { HERO, HERO_BADGES } from '@/data/home'
 import FriendIllustration from './FriendIllustration'
 
+// 'image' shows public/images/hero-image-new-av-tr.png; 'svg' brings back the
+// animated FriendIllustration. Flip this one value to switch.
+const HERO_VISUAL = 'svg'
+
 function ScrollCue({ targetId }) {
   return (
     <div className="scroll-down absolute bottom-2 left-1/2 -translate-x-1/2 desktop:bottom-3">
@@ -42,7 +46,19 @@ export default function Hero() {
           </div>
 
           <div className="flex flex-col justify-center p-[10px] text-center tablet:w-[52%]">
-            <FriendIllustration className="mx-auto w-full max-w-[420px] tablet:max-w-none desktop:max-w-[760px]" />
+            {HERO_VISUAL === 'svg' ? (
+              <FriendIllustration className="mx-auto w-full max-w-[420px] tablet:max-w-none desktop:max-w-[760px]" />
+            ) : (
+              <Image
+                src="/images/hero-image-new-av-tr.png"
+                alt="A person and a robot fist-bumping over the FRIEND framework"
+                width={1536}
+                height={1024}
+                priority
+                sizes="(max-width: 767px) 420px, (max-width: 1024px) 52vw, 760px"
+                className="mx-auto h-auto w-full max-w-[420px] tablet:max-w-none desktop:max-w-[760px]"
+              />
+            )}
           </div>
         </div>
 

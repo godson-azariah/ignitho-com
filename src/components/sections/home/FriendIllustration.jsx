@@ -142,8 +142,8 @@ export default function FriendIllustration({ className = '' }) {
       <g className="word">
         <rect x="566" y="508" width="404" height="178" rx="16" fill="#fff"/>
         {/* FRIEND-logo.png is 2000x2000 with its artwork in a 1727x633 box at (190,621);
-            this placement puts that box 360px wide, centred at x=768, y 530-662. */}
-        <image href="/images/FRIEND-logo.png" x="548.4" y="400.5" width="417" height="417" />
+            this placement puts that box 288px wide, centred at x=768, y 543-649. */}
+        <image href="/images/FRIEND-logo.png" x="592.3" y="439.6" width="333.5" height="333.5" />
         <text x="768" y="734" textAnchor="middle" fontSize="26" fontWeight="600" fill="#fff">Human <tspan fill="#2FD3A0" fontWeight="800">+</tspan> Frugal AI</text>
       </g>
     </svg>

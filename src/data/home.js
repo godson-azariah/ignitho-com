@@ -41,6 +41,10 @@ export const FRUGAL_INNOVATION = {
       ['EN', 'terprise'],
       ['D', 'ata & AI'],
     ],
+    /** One meaning per letter group, set under the letters in the scene. */
+    labels: ['Frugal', 'Innovation', 'Enterprise', 'Data & AI'],
+    /** One line under each label, split where it wraps. */
+    notes: [['Do more', 'with less'], ['Creative solutions', 'for real impact'], ['Applied and scaled', 'across the enterprise'], ['Turning data and AI', 'into measurable value']],
     /** Plain-text form, read out to assistive tech in place of the animation. */
     expansion: 'Frugal Innovation in Enterprise Data & AI',
     /**
