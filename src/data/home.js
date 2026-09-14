@@ -29,21 +29,28 @@ export const FRUGAL_INNOVATION = {
   title: 'Applying the Frugal Innovation Principle',
   subtitle:
     'The Art of Doing More with Less: A methodology co-developed with the University of Cambridge',
-  cards: [
-    {
-      icon: 'coins',
-      title: 'Maximize Existing Investments',
-      body: 'Optimize current spend and unlock the latent value of your existing tech stack',
-    },
-    {
-      icon: 'tools',
-      title: 'Zero Tool Inflation',
-      body: 'Deliver outcomes with no new licensing or tool costs – master what you already own',
-    },
-    {
-      icon: 'chart',
-      title: 'The Efficiency Nexus',
-      body: 'Faster, better, economically superior. High-velocity delivery without the operational bloat',
-    },
-  ],
+  friend: {
+    /**
+     * [highlighted letters, hidden remainder]. Read down the first column the
+     * letters spell FRIEND; read across they form the full phrase. The block
+     * shows the letters alone first, then unfolds the remainders in place.
+     */
+    segments: [
+      ['FR', 'ugal'],
+      ['I', 'nnovation in'],
+      ['EN', 'terprise'],
+      ['D', 'ata & AI'],
+    ],
+    /** Plain-text form, read out to assistive tech in place of the animation. */
+    expansion: 'Frugal Innovation in Enterprise Data & AI',
+    /**
+     * Tightened from the site's original copy, which restated "frugal
+     * innovation" and "Data & AI" - both already spelled out in the heading
+     * above - a third and second time. This keeps the same claims (the
+     * Human + Frugal AI positioning, the 10+ year track record) without
+     * repeating the words the acronym just unfolded.
+     */
+    description:
+      "Industry-first Human + Frugal AI services: human expertise paired with AI agents to deliver measurable outcomes at enterprise scale, proven with clients for 10+ years",
+  },
 }

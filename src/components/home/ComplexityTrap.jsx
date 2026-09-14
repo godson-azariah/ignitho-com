@@ -92,7 +92,7 @@ export default function ComplexityTrap() {
         {/* The measured 650 + 132 + 496 column needs 1278px. Held from lg it
             overflowed the band between 1024 and 1280, so the two columns stay
             flexible until there is genuinely room for the fixed one. */}
-        <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,380px)] lg:gap-[40px] xl:grid-cols-[650px_1fr] xl:gap-[132px]">
+        <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,380px)] lg:gap-[40px] xl:grid-cols-[720px_1fr] xl:gap-[62px]">
           <div>
             {/* Centred on phones and tablets, left-aligned once the copy sits
                 beside the illustration. */}
@@ -107,7 +107,7 @@ export default function ComplexityTrap() {
             {/* Two fixed 300px tracks needed 640px of room, which a 640px
                 viewport does not have once the 20px gutters are taken. Flexible
                 tracks below the desktop column, the measured 300px above it. */}
-            <ul className="mt-[36px] grid gap-x-[40px] gap-y-[34px] sm:grid-cols-2 lg:mt-[50px] lg:gap-y-[40px] xl:grid-cols-[300px_300px]">
+            <ul className="mt-[36px] grid gap-x-[40px] gap-y-[34px] sm:grid-cols-2 lg:mt-[50px] lg:gap-y-[40px] xl:grid-cols-2">
               {/* Below the desktop column the icon rides inline with the title
                   on one centred line and the body runs full width underneath,
                   which is what the live site does on a phone. */}
@@ -121,10 +121,10 @@ export default function ComplexityTrap() {
                   <CardIcon index={i} className="hidden lg:flex" />
 
                   <div className="flex-1">
-                    <h3 className="hidden text-[20px] font-bold leading-[26px] text-black lg:block">
+                    <h3 className="hidden text-[20px] font-bold leading-[26px] text-black lg:flex lg:min-h-[52px] lg:items-start">
                       {item.title}
                     </h3>
-                    <p className="pb-[7px] text-center text-[20px] leading-[30px] text-muted text-pretty lg:mt-[5px] lg:text-left lg:leading-[33px]">
+                    <p className="pb-[7px] text-center text-[20px] leading-[30px] text-muted text-pretty lg:mt-[5px] lg:text-left lg:leading-[30px]">
                       {item.body}
                     </p>
                   </div>
@@ -133,7 +133,9 @@ export default function ComplexityTrap() {
             </ul>
           </div>
 
-          <div className="lg:pt-[72px]">
+          {/* From lg the image fills the column: top edge on the heading, bottom
+              edge on the last item's text. */}
+          <div className="relative">
             <Image
               src={COMPLEXITY.image.src}
               alt={COMPLEXITY.image.alt}
@@ -142,7 +144,7 @@ export default function ComplexityTrap() {
               sizes="(max-width: 1024px) 100vw, (max-width: 1280px) 380px, 496px"
               /* capped and centred below the desktop column, otherwise it
                  stretches to the full band width on a tablet */
-              className="mx-auto h-auto w-full max-w-[496px] lg:mx-0 xl:h-[496px] xl:w-[496px] xl:max-w-none xl:object-contain"
+              className="mx-auto h-auto w-full max-w-[496px] rounded-[16px] lg:absolute lg:inset-0 lg:mx-0 lg:h-full lg:w-full lg:max-w-none lg:object-cover"
             />
           </div>
         </div>

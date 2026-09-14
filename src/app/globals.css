@@ -333,16 +333,14 @@ body {
    Hero: trust badge strip + scroll cue
    ========================================================================== */
 
-/* The badge row gains extra breathing room on very wide screens. */
-@media (min-width: 1600px) {
-  .isg {
-    padding-top: 100px;
-  }
-}
-
 .scroll-down {
   display: flex;
   justify-content: center;
+}
+
+/* Sits in the hero's bottom padding; `.hero-banner > *` would otherwise pin it relative. */
+.hero-banner > .scroll-down {
+  position: absolute;
 }
 
 .scroll-down a {
@@ -537,6 +535,224 @@ body {
     font-size: 16px;
     text-align: center;
     text-wrap: pretty;
+  }
+}
+
+/* ==========================================================================
+   FRIEND reveal (home: Applying the Frugal Innovation Principle)
+   The acronym is server-rendered compact - "FRIEND" - and unfolds into
+   "FRugal Innovation in ENterprise Data & AI" once the block scrolls into
+   view (FriendReveal.jsx flips data-state). Each segment is a two-track grid:
+   the letters sit in an auto track, the hidden remainder in a track that
+   transitions 0fr -> 1fr, so the browser resolves the final width from the
+   loaded font and nothing is measured. The remainder needs min-width: 0 plus
+   clipping, or the track refuses to shrink below its text.
+   ========================================================================== */
+
+.friend-reveal {
+  --friend-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --friend-start: 80ms; /* the built word is held by FriendReveal.jsx before this */
+  --friend-step: 60ms; /* stagger between the four segments - a word-level
+    cascade reads best around 60-90ms per item; award-site text reveals keep
+    the whole sequence well under a second, so the grid/text durations below
+    are tightened to match rather than the slower ~1.4s this used to add up
+    to. */
+}
+
+/* Reserves the compact word's height so the caption never jumps when the
+   line eases down to its expanded size. */
+.friend-stage {
+  --cap: clamp(30px, 4vw, 58px); /* the settled line; compact is this scaled x2.6 */
+  --cap-scale: 2.6;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: calc(var(--cap) * 1.05 * var(--cap-scale));
+}
+
+.friend-glow {
+  display: none;
+}
+
+.friend-word {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: center;
+  row-gap: 0.12em;
+  font-size: var(--cap);
+  line-height: 1.05;
+  letter-spacing: -0.045em;
+  transform: scale(var(--cap-scale));
+  transform-origin: center;
+  transition: transform 720ms var(--friend-ease) var(--friend-start);
+  will-change: transform;
+}
+
+.friend-reveal[data-state="expanded"] .friend-word {
+  transform: none;
+}
+
+/* The FR / I / EN / D groups. clip-path (not overflow) does the clipping so
+   the inline-block keeps a text baseline for the grid to align on. */
+.friend-cap-mark {
+  display: inline-block;
+  font-weight: 800;
+  clip-path: inset(-0.2em 0 0 0);
+}
+
+/* Each capital lifts out of the baseline, expo-out, staggered by --l. The
+   gradient is clipped per letter: a text-clipped background on the parent
+   line cannot be painted through a child that is mid-transform or
+   mid-filter (it gets its own compositing layer), so the letters would
+   vanish while moving. */
+.friend-letter {
+  display: inline-block;
+  background: linear-gradient(150deg, var(--color-ignitho-purple-ink) 0%, #6d2ee0 60%, #4d3fd8 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  transform: translateY(112%);
+  opacity: 0;
+  transition:
+    transform 680ms var(--friend-ease),
+    opacity 260ms ease-out;
+  transition-delay: calc(var(--l, 0) * 50ms);
+}
+
+.friend-reveal:not([data-state="compact"]) .friend-letter {
+  transform: none;
+  opacity: 1;
+}
+
+
+.friend-caption {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  margin-top: 26px;
+  max-width: 54ch;
+  text-align: center;
+  font-size: 18px;
+  line-height: 1.65;
+  color: var(--color-ignitho-muted);
+  text-wrap: pretty;
+}
+
+.friend-rule {
+  width: 44px;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--color-ignitho-teal);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 700ms var(--friend-ease) calc(var(--d, 0ms) + 220ms);
+}
+
+.friend-reveal[data-state="expanded"] .friend-rule {
+  transform: scaleX(1);
+}
+
+.friend-seg {
+  display: grid;
+  grid-template-columns: auto 0fr;
+  align-items: baseline;
+  transition: grid-template-columns 460ms var(--friend-ease);
+  transition-delay: calc(var(--friend-start) + var(--i, 0) * var(--friend-step));
+}
+
+/* Clip the x axis only, so descenders (the g in "ugal") are never cut. */
+.friend-rest {
+  min-width: 0;
+  overflow-x: clip;
+  overflow-y: visible;
+  white-space: nowrap;
+}
+
+/* The hidden remainder resolves from blurred + offset to sharp + in-place as
+   each segment opens - the word-reveal pattern used across current
+   scroll-triggered sites (fade-up combined with a short blur-to-focus, never
+   blur alone: it is GPU-heavier than opacity/transform, so it only runs once
+   per segment and clears quickly). */
+.friend-rest-in {
+  display: inline-block;
+  font-weight: 600;
+  color: #1b1140;
+  opacity: 0;
+  transform: translateX(-0.2em);
+  transition:
+    opacity 320ms ease-out,
+    transform 420ms var(--friend-ease);
+  transition-delay: calc(var(--friend-start) + var(--i, 0) * var(--friend-step) + 70ms);
+}
+
+.friend-reveal[data-state="expanded"] .friend-seg {
+  grid-template-columns: auto 1fr;
+}
+
+.friend-reveal[data-state="expanded"] .friend-rest-in {
+  opacity: 1;
+  transform: none;
+}
+
+/* The caption rises in behind the word. */
+.friend-rise {
+  opacity: 0;
+  transform: translateY(12px);
+  transition:
+    opacity 560ms ease-out,
+    transform 680ms var(--friend-ease);
+  transition-delay: var(--d, 0ms);
+}
+
+.friend-reveal[data-state="expanded"] .friend-rise {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .friend-seg,
+  .friend-rest-in,
+  .friend-rise,
+  .friend-letter,
+  .friend-rule,
+  .friend-glow,
+  .friend-word {
+    transition: none;
+    animation: none;
+  }
+
+  .friend-letter,
+  .friend-glow {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+
+  .friend-glow {
+    transform: translate(-50%, -50%);
+  }
+
+  .friend-rule,
+  .friend-word {
+    transform: none;
+  }
+
+  .friend-seg {
+    grid-template-columns: auto 1fr;
+  }
+
+  .friend-rest-in,
+  .friend-rise {
+    opacity: 1;
+    transform: none;
+  }
+
+  .friend-rest-in {
+    filter: none;
   }
 }
 

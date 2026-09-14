@@ -5,7 +5,7 @@ import FriendIllustration from './FriendIllustration'
 
 function ScrollCue({ targetId }) {
   return (
-    <div className="scroll-down">
+    <div className="scroll-down absolute bottom-2 left-1/2 -translate-x-1/2 desktop:bottom-3">
       <a href={`#${targetId}`} aria-label="Scroll Down">
         <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
           <path d="M31.582 8.495c-.578-.613-1.544-.635-2.153-.059L16 21.159 2.571 8.436c-.61-.578-1.574-.553-2.153.059-.579.611-.553 1.576.058 2.155l14.477 13.715c.293.277.67.418 1.047.418s.756-.14 1.048-.418L31.524 10.65c.611-.579.637-1.544.058-2.155z" />
@@ -17,8 +17,8 @@ function ScrollCue({ targetId }) {
 
 export default function Hero() {
   return (
-    <section className="hero-banner flex min-h-[90vh] flex-col px-[10px] pb-[50px] pt-[calc(100px+var(--header-height))] tablet:px-10 tablet:pb-10 tablet:pt-[calc(40px+var(--header-height))] desktop:px-0 desktop:pb-[70px] desktop:pt-[calc(70px+var(--header-height))]">
-      <Container className="flex grow flex-col">
+    <section className="hero-banner relative flex flex-col px-[10px] pb-12 pt-[calc(100px+var(--header-height))] tablet:px-10 tablet:pb-12 tablet:pt-[calc(40px+var(--header-height))] desktop:px-0 desktop:pb-[54px] desktop:pt-[calc(70px+var(--header-height))]">
+      <Container className="flex flex-col">
         {/* Copy + visual */}
         <div className="flex flex-col tablet:flex-row tablet:items-center">
           <div className="flex flex-col gap-5 p-[10px] tablet:w-[48%] tablet:shrink-0 tablet:grow-0">
@@ -47,7 +47,7 @@ export default function Hero() {
         </div>
 
         {/* Trust badges */}
-        <div className="isg flex flex-wrap items-start justify-center tablet:items-center desktop:pt-[30px]">
+        <div className="isg mt-2 flex flex-wrap items-start justify-center tablet:mt-4 tablet:items-center desktop:mt-6">
           {HERO_BADGES.map((badge) => (
             <div key={badge.src} className="flex w-1/2 flex-col p-[10px] tablet:w-1/5">
               <Image
@@ -60,9 +60,9 @@ export default function Hero() {
             </div>
           ))}
         </div>
-
-        <ScrollCue targetId={HERO.scrollTargetId} />
       </Container>
+
+      <ScrollCue targetId={HERO.scrollTargetId} />
     </section>
   )
 }
