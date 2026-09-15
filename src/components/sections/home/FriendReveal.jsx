@@ -2,7 +2,6 @@
 
 import { useRef } from 'react'
 import { motion, useInView, useReducedMotion } from 'framer-motion'
-import Image from 'next/image'
 
 /*
   The acronym read out of its own sentence.
@@ -22,16 +21,12 @@ import Image from 'next/image'
   the real separator: the headings are all geometric sans, so the difference
   reads before you have read a word of either.
 
-  The plate behind it is the supplied artwork, cropped to its own alpha bounds -
-  the file ships with a transparent margin - and the card is a little taller
-  than the plate, which is pinned to its floor, so the extra height becomes sky
-  for the lockup to sit in. The crop is written out under the source file's
-  hash: Next caches optimised images by path, so reusing one filename serves the
-  previous artwork even after the source is replaced.
+  It no longer carries its own plate - the artwork is the whole section's
+  backdrop now, and this just sits on it (see FrugalInnovation).
 
-  Motion: the card is still; only the line moves, pulling into focus out of a
-  blur. The letters used to arrive one at a time, which drew the eye to the
-  animation rather than to the phrase.
+  Motion: only the line moves, pulling into focus out of a blur. The letters
+  used to arrive one at a time, which drew the eye to the animation rather than
+  to the phrase.
 */
 
 const EASE_OUT = [0.16, 1, 0.3, 1]
@@ -44,44 +39,25 @@ export default function FriendReveal({ friend }) {
 
   return (
     <div ref={ref} className="friend-reveal">
-      <div className="friend-scene">
-        <div className="friend-land" aria-hidden="true">
-          <Image
-            src="/images/abbrivation-plate-3003637b.png"
-            alt=""
-            fill
-            sizes="(max-width: 1024px) 100vw, 960px"
-            priority={false}
-            className="object-cover object-center"
-          />
-        </div>
-
-        {/* a veil between the plate and the type: a pool of light under the
-            line, and a soft darkening at the edges to hold the card together */}
-        <span className="friend-veil" aria-hidden="true" />
-
-        <div className="friend-stack">
-          <motion.p
-            className="friend-line"
-            initial={reduce ? false : { opacity: 0, filter: 'blur(12px)', scale: 1.03 }}
-            animate={on(
-              { opacity: 1, filter: 'blur(0px)', scale: 1 },
-              { opacity: 0, filter: 'blur(12px)', scale: 1.03 },
-            )}
-            transition={{ duration: 0.95, ease: EASE_OUT }}
-          >
-            {/* each segment is its acronym letters plus the rest of its word, so
-                the sentence and the acronym are the same string of characters */}
-            {friend.segments.map(([caps, rest], i) => (
-              <span key={caps}>
-                {i > 0 ? ' ' : null}
-                <b className="friend-caps">{caps}</b>
-                {rest}
-              </span>
-            ))}
-          </motion.p>
-        </div>
-      </div>
+      <motion.p
+        className="friend-line"
+        initial={reduce ? false : { opacity: 0, filter: 'blur(12px)', scale: 1.03 }}
+        animate={on(
+          { opacity: 1, filter: 'blur(0px)', scale: 1 },
+          { opacity: 0, filter: 'blur(12px)', scale: 1.03 },
+        )}
+        transition={{ duration: 0.95, ease: EASE_OUT }}
+      >
+        {/* each segment is its acronym letters plus the rest of its word, so the
+            sentence and the acronym are the same string of characters */}
+        {friend.segments.map(([caps, rest], i) => (
+          <span key={caps}>
+            {i > 0 ? ' ' : null}
+            <b className="friend-caps">{caps}</b>
+            {rest}
+          </span>
+        ))}
+      </motion.p>
 
       <h3 className="sr-only">{'FRIEND: ' + friend.expansion}</h3>
     </div>

@@ -22,7 +22,7 @@ export default function FriendSuites() {
   const foundations = SUITES.filter((suite) => suite.type === 'foundation')
 
   return (
-    <div className="flex flex-col pt-10 tablet:pt-12">
+    <div className="flex flex-col pt-[clamp(24px,4vw,72px)]">
       <div className="frugal-cards friend-suite-cards">
         {foundations.map((suite) => {
           const [line1, line2] = TITLE_LINES[suite.name] ?? [suite.name, '']

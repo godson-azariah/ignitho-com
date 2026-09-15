@@ -543,70 +543,148 @@ body {
    Motion is framer-motion; this is sizing, the phone legend and the caption.
    ========================================================================== */
 
-/* The scene reads as a piece of artwork dropped into the band: its own edges,
-   its own corner radius, its own shadow, with the landscape filling it and the
-   line sitting on top. */
-.friend-scene {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: clamp(22px, 2.6vw, 42px) auto 0;
-  /* even top and bottom: the line is the only thing on the panel now, so the
-     tall foot the old illustration needed is just a gap */
-  padding: 0 clamp(22px, 4vw, 54px);
-  overflow: hidden;
-  border-radius: clamp(18px, 1.9vw, 30px);
-  /* held to the width of the row below it, so the two read as one block, and
-     to the plate's own aspect so the art is never cropped */
-  max-width: 960px;
-  aspect-ratio: 2097 / 445;
-  /* sampled off the plate's own top edge, so the sky it is extended with is
-     the sky it already had */
-  background: linear-gradient(
-    90deg,
-    #b0b2fb 0%,
-    #c6c7fc 18%,
-    #e1e1fb 50%,
-    #c4c4fb 80%,
-    #a2a2fc 100%
-  );
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.55),
-    inset 0 0 0 1px rgba(91, 22, 196, 0.12),
-    0 6px 14px -6px rgba(22, 6, 58, 0.22),
-    0 22px 40px -18px rgba(22, 6, 58, 0.3),
-    0 44px 80px -30px rgba(22, 6, 58, 0.34);
+/* The band the artwork sits on: the pale of the artwork's own sky, so above
+   and below the picture the section simply carries on as sky. */
+/* The artwork is this band's ground, so the grid the other sections draw is
+   dropped here - it was showing through the sky above the picture and breaking
+   the join. */
+#frug-sec::before,
+#frug-sec::after {
+  display: none;
 }
 
-/* Drawn past the card on both sides so the scroll drift never pulls an edge
-   into view. */
-.friend-land {
+/* Behind the picture, and below where it ends: the colours of its own bottom
+   row, climbing back to the pale of its sky by the section's floor so the band
+   never finishes on a flat strip. */
+.frug-backdrop {
   position: absolute;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  aspect-ratio: 2097 / 389;
+  inset: 0;
+  z-index: -2;
   pointer-events: none;
-  /* the plate and the sky it is extended with are close but not identical, so
-     its top edge is faded out rather than butted against the card */
-  -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 16%);
-  mask-image: linear-gradient(180deg, transparent 0%, #000 16%);
+  background:
+    /* pale at both ends: the artwork's mask fades its own top and foot, and
+       without this the violet beneath showed through at the section's edges */
+    linear-gradient(
+      180deg,
+      #efedfd 0%,
+      rgba(238, 236, 253, 0.82) 9%,
+      rgba(238, 236, 253, 0) 26%,
+      rgba(238, 236, 253, 0) 38%,
+      rgba(238, 236, 253, 0.55) 68%,
+      rgba(238, 236, 253, 0.9) 88%,
+      #efedfd 100%
+    ),
+    linear-gradient(
+      90deg,
+      #9a92e9 0%,
+      #9591f1 18%,
+      #bab5fb 38%,
+      #bbb4f9 50%,
+      #d2cbfb 66%,
+      #9c97f0 84%,
+      #a39bed 100%
+    );
 }
 
+/* A zero-height marker, sat in the flow directly under the lockup. Everything
+   about the artwork's position is measured from here. */
+.frug-sun-anchor {
+  position: relative;
+  height: 0;
+}
 
+/* The sun sits at 70.2% of the artwork's height - measured by warmth, since the
+   scene is violet and the sun is the only warm thing in it; ranking by
+   brightness finds the pale sky instead. The artwork is 2.92:1, so from its own
+   top edge the sun is always 0.702 / 2.92 = 0.2404 of its width down.
+   Offsetting the picture up by that much, less the gap wanted, lands the sun
+   just below the line whatever the viewport does.
 
-/* The suites under the FRIEND card. Same card, but sized for three short
-   entries rather than the tall Our Services row - no 420px floor to fill, and
-   more padding inside so nothing sits against an edge. */
-/* Narrowed so the three come out square rather than as wide bars: at this
-   width each card is about 330 across, and the aspect ratio does the rest. */
-/* Narrow enough that a title and one line of copy fill a near-square card on
-   their own - forcing an aspect ratio instead just opened a gap above and
-   below them. */
+   The file is far wider than the band wants to be, so below desktop it is drawn
+   wider than the viewport - at 2.92:1 a viewport-width render is a strip a few
+   dozen pixels tall while the copy on it stays the same height. */
+.frug-art {
+  --art-width: 100vw;
+  --sun-gap: clamp(16px, 2.2vw, 44px);
+
+  position: absolute;
+  top: calc(var(--sun-gap) - var(--art-width) * 0.2404);
+  left: 50%;
+  z-index: -1;
+  width: var(--art-width);
+  aspect-ratio: 2143 / 734;
+  transform: translateX(-50%);
+  pointer-events: none;
+  /* both ends fade, so the picture dissolves into the band rather than being
+     cut off above the heading and below the cards */
+  -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 9%, #000 74%, transparent 100%);
+  mask-image: linear-gradient(180deg, transparent 0%, #000 9%, #000 74%, transparent 100%);
+}
+
+@media (max-width: 1024px) {
+  .frug-art {
+    --art-width: 130vw;
+  }
+}
+
+@media (max-width: 767px) {
+  .frug-art {
+    --art-width: 190vw;
+  }
+}
+
+/* Lifts the artwork: on its own it is deeper than the pale grid the sections
+   either side of it use. */
+.frug-art-wash {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.5) 0%,
+    rgba(255, 255, 255, 0.4) 34%,
+    rgba(255, 255, 255, 0.48) 72%,
+    rgba(255, 255, 255, 0.6) 100%
+  );
+}
+
+/* The phrase, with the letters that spell FRIEND left in place inside it. */
+.friend-reveal {
+  position: relative;
+  z-index: 1;
+  margin-top: clamp(6px, 1.2vw, 24px);
+  text-align: center;
+}
+
+.friend-line {
+  margin: 0 auto;
+  max-width: 1080px;
+  text-wrap: balance;
+  /* A display face used nowhere else on the site, set at medium: lighter
+     weights disappeared against a plate this soft. */
+  font-family: var(--font-display), ui-sans-serif, "Segoe UI", sans-serif;
+  font-size: clamp(16px, 2.15vw, 32px);
+  line-height: 1.45;
+  font-weight: 500;
+  letter-spacing: -0.3px;
+  color: #2b2060;
+}
+
+.friend-caps {
+  font-weight: 700;
+  font-size: 1.32em;
+  letter-spacing: -0.02em;
+  /* the deepest tone in the artwork's own hills, so the marked letters read as
+     part of it rather than laid on top */
+  color: #4318c9;
+}
+
+/* The suites under the artwork. Same card as Our Services further down the
+   page, but sized for three short entries rather than that tall row - no
+   height floor to fill, and more padding inside so nothing sits against an
+   edge. */
 .frugal-cards.friend-suite-cards {
-  max-width: 960px;
-  gap: 24px;
+  max-width: 1180px;
+  gap: 26px;
 }
 
 .frugal-cards.friend-suite-cards .frugal-card {
@@ -633,125 +711,9 @@ body {
   min-width: 44px;
 }
 
-/* The figure sits on its own light panel in the middle of the square. The
-   colours need this much specificity: .frugal-card p whitens every paragraph in
-   the card, and a utility class alone loses to it. */
-.frugal-card .friend-roi {
-  position: relative;
-  z-index: 2;
-  border-radius: 12px;
-  border-left: 3px solid #5b16c4;
-  background: #f1ebff;
-  padding: 14px 16px;
-}
-
-.frugal-card .friend-roi p {
-  margin: 0;
-  font-size: 15px;
-  line-height: 23px;
-  color: var(--color-ignitho-text);
-}
-
-.frugal-card .friend-roi .friend-roi-label {
-  margin-bottom: 6px;
-  font-size: 11.5px;
-  line-height: 16px;
-  font-weight: 700;
-  color: #5b16c4;
-}
-
-/* Stacked below desktop, where a square would be as tall as the viewport. */
 @media (max-width: 767px) {
   .frugal-cards.friend-suite-cards .frugal-card {
     padding: 22px 22px 24px;
-  }
-}
-
-/* Weather. Everything is a soft radial so nothing has an outline, and it all
-   stays well under the line that sits on top of it. */
-/* Sits over the plate and under the type. Four layers, painted front to back:
-   a pool of light where the line falls, a hint of a wash that lifts the plate -
-   weighted to the foot, where the hills are darkest - and a vignette holding
-   its pale corners against the band behind the card. */
-.friend-veil {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background:
-    radial-gradient(42% 26% at 50% 38%, rgba(252, 251, 255, 0.55) 0%, rgba(252, 251, 255, 0) 100%),
-    linear-gradient(
-      180deg,
-      rgba(255, 255, 255, 0.26) 0%,
-      rgba(255, 255, 255, 0.3) 46%,
-      rgba(255, 255, 255, 0.4) 100%
-    ),
-    radial-gradient(120% 140% at 50% 46%, rgba(70, 30, 150, 0) 68%, rgba(70, 30, 150, 0.05) 100%);
-}
-
-/* Grain: fractal noise the browser generates - no raster, tiles at any size -
-   which stops the artwork's wide flat washes from banding. */
-.friend-veil::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)'/%3E%3C/svg%3E");
-  opacity: 0.08;
-  mix-blend-mode: multiply;
-  pointer-events: none;
-}
-
-/* Parked on the frame drawn into the plate rather than on the card's centre:
-   with the plate pinned to the card's floor, the clear band reaches past the
-   card's own middle - so the lockup simply centres. */
-.friend-stack {
-  position: absolute;
-  top: 50%;
-  right: 0;
-  left: 0;
-  z-index: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 0 clamp(22px, 4vw, 54px);
-  transform: translateY(-50%);
-}
-
-/* The phrase, with the letters that spell FRIEND left in place inside it. */
-.friend-line {
-  position: relative;
-  z-index: 1;
-  margin: 0 auto;
-  max-width: 1080px;
-  text-align: center;
-  text-wrap: balance;
-  /* A display face used nowhere else on the site, set at medium: lighter
-     weights disappeared against a plate this soft. */
-  font-family: var(--font-display), ui-sans-serif, "Segoe UI", sans-serif;
-  font-size: clamp(16px, 2.15vw, 32px);
-  line-height: 1.45;
-  font-weight: 500;
-  letter-spacing: -0.3px;
-  color: #2b2060;
-}
-
-/* The loud half. Same cut as the words they sit in - Syne's heavy weights are
-   an extended design that reads as a second typeface - so size and colour do
-   all of the picking out. */
-.friend-caps {
-  font-weight: 700;
-  font-size: 1.32em;
-  letter-spacing: -0.02em;
-  /* the deepest tone in the plate's own hills, so the marked letters read as
-     part of the artwork rather than laid on top of it */
-  color: #4318c9;
-}
-
-@media (max-width: 767px) {
-  .friend-scene {
-    /* taller on a phone, where the line wraps to two */
-    aspect-ratio: 2097 / 700;
-    min-height: 0;
-    padding: 0 18px;
   }
 }
 

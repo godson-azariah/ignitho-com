@@ -69,13 +69,13 @@ export default function Navbar() {
           overflowing link receive hover and clicks. No visual change.
         */}
         <nav className="relative w-1/3 hidden desktop:flex items-center justify-center gap-4 text-base">
-          {/* Friend AI first */}
+          {/* FRIEND first */}
           <Link
             href={AI_LINK.href}
             aria-current={isActive(AI_LINK.href) ? 'page' : undefined}
             className={navClass(isActive(AI_LINK.href))}
           >
-            Friend AI
+            FRIEND
           </Link>
 
           <div className="group relative">
@@ -205,7 +205,7 @@ export default function Navbar() {
               */}
               <div className="flex flex-1 flex-col items-center justify-start overflow-y-auto px-6 pt-[12vh] pb-12">
                 <div className="w-full max-w-xs">
-                  {/* Friend AI first — no chevron, plain centered label */}
+                  {/* FRIEND first — no chevron, plain centered label */}
                   <Link
                     href={AI_LINK.href}
                     onClick={closeMenu}
@@ -214,7 +214,7 @@ export default function Navbar() {
                       isActive(AI_LINK.href) ? 'text-[#00A274]' : 'text-black'
                     }`}
                   >
-                    Friend AI
+                    FRIEND
                   </Link>
 
                   {/* Solutions accordion — chevron floats at the right edge */}

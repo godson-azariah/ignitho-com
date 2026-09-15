@@ -49,7 +49,7 @@ export const FRUGAL = {
 };
 
 export const COMPLEXITY = {
-  title: "Foundation Pillars of FRIEND AI",
+  title: "Foundation Pillars of FRIEND",
   subtitle:
     "We navigate the risks of fragmented data and governance, ensuring your growth is never stalled by legacy limitations & technological complexity",
   image: {
