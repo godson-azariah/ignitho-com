@@ -58,21 +58,27 @@ export const COMPLEXITY = {
     width: 1024,
     height: 1024,
   },
+  /* `titleLines` fixes where each heading breaks, so all four sit on two rows
+     whatever the column width does. `title` stays the plain string for keys. */
   items: [
     {
       title: "Maximize Existing Investments",
+      titleLines: ["Maximize Existing", "Investments"],
       body: "Optimize current spend and unlock the latent value of your existing tech stack",
     },
     {
-      title: "Zero Tool Inflation",
+      title: "Zero New Tool Inflation",
+      titleLines: ["Zero New", "Tool Inflation"],
       body: "Deliver outcomes with no new licensing or tool costs - master what you already own",
     },
     {
-      title: "The Efficiency Nexus",
+      title: "The Operational Efficiency Nexus",
+      titleLines: ["The Operational", "Efficiency Nexus"],
       body: "Faster, better, economically superior. High velocity delivery without the operational bloat",
     },
     {
-      title: "Amplifying Expertise",
+      title: "Amplifying Existing Team Expertise",
+      titleLines: ["Amplifying Existing", "Team Expertise"],
       body: "Amplify expert teams with AI agents to deliver value, faster without adding complexity.",
     },
   ],

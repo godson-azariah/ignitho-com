@@ -95,33 +95,44 @@ export default function ComplexityTrap() {
           <div>
             {/* Centred on phones and tablets, left-aligned once the copy sits
                 beside the illustration. */}
-            <h2 className="text-center text-[40px] leading-[52px] tracking-[-1.5px] text-ink text-pretty tablet:text-[29px] tablet:leading-[1.1em] lg:text-left lg:text-[54px] lg:leading-[59.4px]">
+            <h2 className="text-center text-[31px] leading-[40px] tracking-[-1px] text-ink text-pretty sm:text-[40px] sm:leading-[52px] sm:tracking-[-1.5px] tablet:text-[29px] tablet:leading-[1.1em] lg:text-left lg:text-[54px] lg:leading-[59.4px]">
               {COMPLEXITY.title}
             </h2>
 
-            <p className="mt-[18px] max-w-[650px] text-center text-[22px] leading-[30px] text-muted text-pretty tablet:mt-[14px] tablet:text-[18px] lg:mt-[24px] lg:text-left lg:text-[22px] lg:leading-[34px]">
+            <p className="mt-[12px] max-w-[650px] text-center text-[16px] leading-[26px] text-muted text-pretty sm:mt-[18px] sm:text-[22px] sm:leading-[30px] tablet:mt-[14px] tablet:text-[18px] lg:mt-[24px] lg:text-left lg:text-[22px] lg:leading-[34px]">
               {COMPLEXITY.subtitle}
             </p>
 
             {/* Two fixed 300px tracks needed 640px of room, which a 640px
                 viewport does not have once the 20px gutters are taken. Flexible
                 tracks below the desktop column, the measured 300px above it. */}
-            <ul className="mt-[36px] grid gap-x-[40px] gap-y-[34px] px-3 sm:grid-cols-2 sm:px-0 lg:mt-[50px] lg:gap-y-[40px] xl:grid-cols-2">
-              {/* Below the desktop column the icon rides inline with the title
-                  on one centred line and the body runs full width underneath,
-                  which is what the live site does on a phone. */}
-              {COMPLEXITY.items.map((item, i) => (
-                <li key={item.title} className="flex gap-[14px] lg:gap-[25px]">
-                  <CardIcon index={i} className="flex self-start" />
+            <ul className="mt-[26px] grid gap-x-[40px] gap-y-[34px] sm:grid-cols-2 sm:px-0 sm:gap-y-[34px] lg:mt-[50px] lg:gap-y-[40px] xl:grid-cols-2">
+              {/* A grid rather than nested flex, so one set of children can sit
+                  two ways. On a phone the icon rides inline with the heading on
+                  a single centred line and the body runs underneath, centred to
+                  a readable measure. From the two-column breakpoint the icon
+                  moves to its own column beside the copy, which ranges left.
 
-                  <div className="flex-1">
-                    <h3 className="text-center text-[20px] font-bold leading-[30px] text-black lg:flex lg:min-h-[52px] lg:items-start lg:text-left lg:leading-[26px]">
-                      {item.title}
-                    </h3>
-                    <p className="mt-[6px] pb-[7px] text-center text-[20px] leading-[30px] text-muted text-pretty lg:mt-[5px] lg:text-left lg:leading-[30px]">
-                      {item.body}
-                    </p>
-                  </div>
+                  The forced two-line headings are for the narrow desktop
+                  columns, so they only take effect from that breakpoint too. */}
+              {COMPLEXITY.items.map((item, i) => (
+                <li
+                  key={item.title}
+                  className="grid grid-cols-[auto_auto] items-center justify-center gap-x-[12px] text-center sm:grid-cols-[auto_minmax(0,1fr)] sm:items-start sm:justify-start sm:gap-x-[14px] sm:text-left lg:gap-x-[25px]"
+                >
+                  <CardIcon index={i} className="flex shrink-0" />
+
+                  <h3 className="text-[18px] font-bold leading-[26px] text-black sm:text-[20px] sm:leading-[30px] lg:min-h-[52px] lg:leading-[26px]">
+                    {(item.titleLines ?? [item.title]).map((line) => (
+                      <span key={line} className="sm:block">
+                        {line}{' '}
+                      </span>
+                    ))}
+                  </h3>
+
+                  <p className="col-span-2 mx-auto mt-[9px] max-w-[34ch] text-[15.5px] leading-[26px] text-muted text-pretty sm:col-span-1 sm:col-start-2 sm:mx-0 sm:mt-[6px] sm:max-w-none sm:pb-[7px] sm:text-[20px] sm:leading-[30px] lg:mt-[5px] lg:leading-[30px]">
+                    {item.body}
+                  </p>
                 </li>
               ))}
             </ul>
