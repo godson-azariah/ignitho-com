@@ -49,7 +49,7 @@ export const FRUGAL = {
 };
 
 export const COMPLEXITY = {
-  title: "Navigating The Data Complexity Trap",
+  title: "Foundation Pillars of FRIEND AI",
   subtitle:
     "We navigate the risks of fragmented data and governance, ensuring your growth is never stalled by legacy limitations & technological complexity",
   image: {
@@ -72,7 +72,7 @@ export const COMPLEXITY = {
       body: "Faster, better, economically superior. High velocity delivery without the operational bloat",
     },
     {
-      title: "Human + Frugal AI Advantage",
+      title: "Amplifying Expertise",
       body: "Amplify expert teams with AI agents to deliver value, faster without adding complexity.",
     },
   ],

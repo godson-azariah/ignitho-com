@@ -81,7 +81,7 @@ export default function IndustryFocus() {
                     stacks "Pharma &" over "Healthcare" on a phone too. The
                     body's breaks are cut for the narrow desktop card, so below
                     that width the copy wraps on its own. */}
-                <span className="relative block w-full text-[19px] font-bold leading-[26px]">
+                <span className="relative block w-full text-[19px] font-bold leading-[26px] desktop:flex desktop:min-h-[78px] desktop:flex-col desktop:justify-center">
                   {(c.titleLines ?? [c.title]).map((line) => (
                     <span key={line} className="block">
                       {line}
@@ -99,7 +99,7 @@ export default function IndustryFocus() {
                   </span>
                 </span>
 
-                <span className="relative mt-6">
+                <span className="relative mt-6 desktop:mt-auto desktop:pt-6">
                   <ArrowButton />
                 </span>
               </Link>

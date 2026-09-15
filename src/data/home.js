@@ -41,8 +41,10 @@ export const FRUGAL_INNOVATION = {
       ['EN', 'terprise'],
       ['D', 'ata & AI'],
     ],
-    /** One meaning per letter group, set under the letters in the scene. */
-    labels: ['Frugal', 'Innovation', 'Enterprise', 'Data & AI'],
+    /** One meaning per letter group, set under the letters in the scene. A
+     *  label may carry a `lead` - the joining word the acronym does not spell,
+     *  set in normal weight ahead of the bold meaning. */
+    labels: ['Frugal', 'Innovation', { lead: 'in ', text: 'Enterprise' }, 'Data & AI'],
     /** Plain-text form, read out to assistive tech in place of the animation. */
     expansion: 'Frugal Innovation in Enterprise Data & AI',
     /** The section's closing line, under the acronym. */

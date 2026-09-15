@@ -42,6 +42,17 @@ const GROUPS = [
 const NOSCRIPT_STYLES =
   '<style>.friend-reveal [style]{opacity:1!important;transform:none!important}.friend-reveal .friend-word{opacity:1!important;transform:translateY(48px)!important}.friend-reveal path{stroke-dashoffset:0!important}</style>'
 
+/* A label is either the meaning on its own, or a {lead, text} pair where the
+   lead is the joining word the acronym does not spell - set lighter. */
+const labelLead = (label) => (typeof label === 'string' ? '' : label.lead)
+const labelText = (label) => (typeof label === 'string' ? label : label.text)
+
+/* The meaning is what has to line up pill to pill, so it keeps the centre and
+   the lead hangs off its left edge. This is half the meaning's advance width
+   plus a word space: 0.459 is the average glyph advance in this face, measured
+   off the rendered pill rather than guessed. */
+const leadOffset = (text, fontSize) => (text.length * fontSize * 0.459) / 2 + 7
+
 export default function FriendReveal({ friend }) {
   const ref = useRef(null)
   const reduce = useReducedMotion()
@@ -87,12 +98,12 @@ export default function FriendReveal({ friend }) {
 
           {/* ground dots, arrows, pills, descriptors */}
           {GROUPS.map((g, i) => {
-            const at = 1.35 + i * 0.16
+            const at = 0.75 + i * 0.1
             const merged = g.dots.length > 1
             return (
               <g key={g.key} className="friend-art-label">
                 {g.dots.map((dx, di) => (
-                  <motion.circle key={di} cx={dx} cy="500" r="9" fill="#fff" stroke="#7c3aed" strokeWidth="3" initial={reduce ? false : { scale: 0, opacity: 0 }} animate={on({ scale: 1, opacity: 1 }, { scale: 0, opacity: 0 })} transition={{ duration: 0.4, delay: at, ease: EASE_OUT }} style={{ transformOrigin: dx + 'px 500px' }} />
+                  <motion.circle key={di} cx={dx} cy="500" r="9" fill="#fff" stroke="#7c3aed" strokeWidth="3" initial={reduce ? false : { scale: 0, opacity: 0 }} animate={on({ scale: 1, opacity: 1 }, { scale: 0, opacity: 0 })} transition={{ duration: 0.3, delay: at, ease: EASE_OUT }} style={{ transformOrigin: dx + 'px 500px' }} />
                 ))}
                 <motion.path
                   d={merged ? 'M' + g.dots[0] + ' 509 V538 Q' + g.dots[0] + ' 554 ' + (g.dots[0] + 16) + ' 554 H' + (g.cx - 8) + ' M' + g.dots[1] + ' 509 V538 Q' + g.dots[1] + ' 554 ' + (g.dots[1] - 16) + ' 554 H' + (g.cx + 8) + ' M' + g.cx + ' 554 V584' : 'M' + g.dots[0] + ' 509 V532 C' + g.dots[0] + ' 556 ' + g.cx + ' 556 ' + g.cx + ' 572 V584'}
@@ -103,13 +114,27 @@ export default function FriendReveal({ friend }) {
                   strokeLinejoin="round"
                   initial={reduce ? false : { pathLength: 0, opacity: 0 }}
                   animate={on({ pathLength: 1, opacity: 1 }, { pathLength: 0, opacity: 0 })}
-                  transition={{ pathLength: { duration: 0.6, delay: at + 0.25, ease: [0.4, 0, 0.2, 1] }, opacity: { duration: 0.2, delay: at + 0.25 } }}
+                  transition={{ pathLength: { duration: 0.38, delay: at + 0.16, ease: [0.4, 0, 0.2, 1] }, opacity: { duration: 0.14, delay: at + 0.16 } }}
                 />
-                <motion.path d={'M' + (g.cx - 8) + ' 578 L' + g.cx + ' 589 L' + (g.cx + 8) + ' 578'} fill="none" stroke="#5b21c9" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" initial={reduce ? false : { opacity: 0 }} animate={on({ opacity: 1 }, { opacity: 0 })} transition={{ duration: 0.3, delay: at + 0.75 }} />
-                <motion.g initial={reduce ? false : { opacity: 0, y: 10 }} animate={on({ opacity: 1, y: 0 }, { opacity: 0, y: 10 })} transition={{ duration: 0.6, delay: at + 0.8, ease: EASE_OUT }}>
+                <motion.path d={'M' + (g.cx - 8) + ' 578 L' + g.cx + ' 589 L' + (g.cx + 8) + ' 578'} fill="none" stroke="#5b21c9" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" initial={reduce ? false : { opacity: 0 }} animate={on({ opacity: 1 }, { opacity: 0 })} transition={{ duration: 0.2, delay: at + 0.46 }} />
+                <motion.g initial={reduce ? false : { opacity: 0, y: 10 }} animate={on({ opacity: 1, y: 0 }, { opacity: 0, y: 10 })} transition={{ duration: 0.42, delay: at + 0.5, ease: EASE_OUT }}>
                   <rect x={g.cx - 116} y="598" width="232" height="54" rx="27" fill="#5a1fd0" filter="url(#friendPillShadow)" />
+                  {labelLead(friend.labels[i]) ? (
+                    <text
+                      x={g.cx - leadOffset(labelText(friend.labels[i]), 27)}
+                      y="633"
+                      textAnchor="end"
+                      fontFamily={FONT}
+                      fontWeight="400"
+                      fontSize="20"
+                      fill="#fff"
+                      fillOpacity="0.85"
+                    >
+                      {labelLead(friend.labels[i]).trim()}
+                    </text>
+                  ) : null}
                   <text x={g.cx} y="634" textAnchor="middle" fontFamily={FONT} fontWeight="700" fontSize="27" fill="#fff">
-                    {friend.labels[i]}
+                    {labelText(friend.labels[i])}
                   </text>
                 </motion.g>
               </g>
@@ -118,16 +143,18 @@ export default function FriendReveal({ friend }) {
         </svg>
 
         {/* Phones: the in-scene labels are too small, so a legend takes over. */}
-        <motion.ul className="friend-legend" aria-hidden="true" initial={reduce ? false : { y: 10, opacity: 0 }} animate={on({ y: 0, opacity: 1 }, { y: 10, opacity: 0 })} transition={{ duration: 0.7, delay: 1.0, ease: EASE_OUT }}>
+        <motion.ul className="friend-legend" aria-hidden="true" initial={reduce ? false : { y: 10, opacity: 0 }} animate={on({ y: 0, opacity: 1 }, { y: 10, opacity: 0 })} transition={{ duration: 0.5, delay: 0.65, ease: EASE_OUT }}>
           {friend.labels.map((label, i) => {
             // the acronym's own remainder carries the joining words ("nnovation in"),
             // so the label is split at the cap length instead
             const caps = friend.segments[i][0]
+            const text = labelText(label)
             return (
-              <li key={label}>
+              <li key={text}>
                 <span className="friend-legend-pill">
+                  {labelLead(label) ? <i>{labelLead(label)}</i> : null}
                   <b>{caps}</b>
-                  {label.slice(caps.length)}
+                  {text.slice(caps.length)}
                 </span>
               </li>
             )
@@ -136,7 +163,7 @@ export default function FriendReveal({ friend }) {
 
         <h3 className="sr-only">{'FRIEND: ' + friend.expansion}</h3>
 
-        <motion.div className="friend-caption" initial={reduce ? false : { y: 14, opacity: 0 }} animate={on({ y: 0, opacity: 1 }, { y: 14, opacity: 0 })} transition={{ duration: 0.9, delay: 1.2, ease: EASE_OUT }}>
+        <motion.div className="friend-caption" initial={reduce ? false : { y: 14, opacity: 0 }} animate={on({ y: 0, opacity: 1 }, { y: 14, opacity: 0 })} transition={{ duration: 0.6, delay: 0.8, ease: EASE_OUT }}>
           <span className="friend-rule" aria-hidden="true" />
           <p>{friend.description}</p>
         </motion.div>

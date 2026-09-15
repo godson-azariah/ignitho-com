@@ -1,6 +1,8 @@
 import SiteHeader from "@/components/layout/SiteHeader";
 import Footer from "@/components/layout/Footer";
-import Chatbot from "@/components/ignitho-ai/Chatbot";
+import BackToTop from "@/components/layout/BackToTop";
+// Chatbot is parked, not retired - see the note above BackToTop below.
+// import Chatbot from "@/components/ignitho-ai/Chatbot";
 
 /**
  * Chrome for the main marketing site. The /login and /landing routes will live
@@ -19,11 +21,17 @@ export default function SiteLayout({ children }) {
         Skip to content
       </a>
       <SiteHeader />
-      <main id="main">{children}</main>
+      {/* tabIndex lets the skip link and the back-to-top button move focus
+          here; the outline is suppressed because it is a programmatic target,
+          not something the user tabs to */}
+      <main id="main" tabIndex={-1} className="outline-none">
+        {children}
+      </main>
       <Footer />
-      {/* fixed and self-contained (it carries its own dark panel), so one
-          mount here serves every page rather than /ignitho-ai alone */}
-      <Chatbot />
+      {/* Fixed and self-contained, so one mount here serves every page.
+          The chatbot used to sit in this slot and may come back to it - its
+          component is left intact, only unmounted. */}
+      <BackToTop />
     </>
   );
 }

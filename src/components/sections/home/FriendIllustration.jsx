@@ -12,7 +12,8 @@ import { FIGURES, FIGURE_WHITE } from './friendFigures'
   margins.
 
   Motion: the figures slide in from either side and breathe; the chips drop
-  in and bob; the connectors draw themselves; the word wipes in; then every
+  in and bob; the connectors draw themselves; the word plate pulls into focus
+  out of a blur; then every
   seven seconds the two arms nudge into a fist bump while the spark flashes.
   Each arm is its own layer pivoting at the shoulder, drawn beneath its body
   layer so the overlap never shows a seam. Reduced motion renders the final
@@ -55,7 +56,7 @@ export default function FriendIllustration({ className = '' }) {
         .fr .lines path{stroke-dasharray:260;stroke-dashoffset:260;animation:frDraw 1s ease-out 1.6s forwards}
         .fr .lines .lineT{stroke-dasharray:80;stroke-dashoffset:80;animation-duration:.5s}
         .fr .dots circle{transform-box:fill-box;transform-origin:center;opacity:0;animation:frPop .5s cubic-bezier(.2,.9,.3,1.4) 2.4s forwards}
-        .fr .word rect:first-child,.fr .word image{clip-path:inset(0 100% 0 0);animation:frWipe .9s cubic-bezier(.3,.8,.2,1) 1.5s forwards}
+        .fr .word .plate{transform-box:fill-box;transform-origin:center;opacity:0;animation:frFocus 1.25s cubic-bezier(.22,1,.36,1) 1.35s forwards}
         .fr .word text{opacity:0;animation:frRise .7s ease-out forwards}
         .fr .word text{animation-delay:2.2s}
         .fr .eye{transform-box:fill-box;transform-origin:center;animation:frBlink 4s ease-in-out 2s infinite}
@@ -65,7 +66,7 @@ export default function FriendIllustration({ className = '' }) {
         @keyframes frPop{from{opacity:0;transform:scale(.3)}to{opacity:1;transform:scale(1)}}
         @keyframes frGround{to{opacity:1}}
         @keyframes frRise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
-        @keyframes frWipe{to{clip-path:inset(0 -2% 0 0)}}
+        @keyframes frFocus{from{opacity:0;filter:blur(22px);transform:scale(1.06)}55%{opacity:1}to{opacity:1;filter:blur(0);transform:scale(1)}}
         @keyframes frDraw{to{stroke-dashoffset:0}}
         @keyframes frBlobIn{from{opacity:0;transform:scale(.9)}to{opacity:1;transform:scale(1)}}
         @keyframes frDrift{0%,100%{transform:translateX(0)}50%{transform:translateX(6px)}}
@@ -76,7 +77,7 @@ export default function FriendIllustration({ className = '' }) {
         @keyframes frBumpH{0%,82%,100%{transform:rotate(0)}86%{transform:rotate(3deg)}90%{transform:rotate(-1.5deg)}}
         @keyframes frBumpR{0%,82%,100%{transform:rotate(0)}86%{transform:rotate(-3deg)}90%{transform:rotate(1.5deg)}}
         @keyframes frBlink{0%,90%,100%{transform:scaleY(1)}95%{transform:scaleY(.15)}}
-        @media (prefers-reduced-motion:reduce){.fr *{animation:none!important;opacity:1!important;transform:none!important;stroke-dashoffset:0!important;clip-path:none!important}}
+        @media (prefers-reduced-motion:reduce){.fr *{animation:none!important;opacity:1!important;transform:none!important;stroke-dashoffset:0!important;clip-path:none!important;filter:none!important}}
       `}</style>
       <defs>
         <filter id="soft" x="-20%" y="-200%" width="140%" height="500%"><feGaussianBlur stdDeviation="7"/></filter>
@@ -140,14 +141,16 @@ export default function FriendIllustration({ className = '' }) {
       </g>
 
       <g className="word">
-        <rect x="598" y="525" width="340" height="142" rx="14" fill="#fff"/>
+        <g className="plate">
+          <rect x="598" y="525" width="340" height="142" rx="14" fill="#fff"/>
         {/* FRIEND-logo.png is 1903x826 with its artwork in a 1723x608 box at (95,130).
             The element is sized to the file's own aspect - a square box would make SVG
             letterbox it and drop the artwork below the plate - so the artwork lands
             288 x 101.6, centred on x=768, inside the plate above with 26 either side
             and 20 top and bottom. */}
-        <image href="/images/FRIEND-logo.png" x="608.1" y="523.5" width="318.1" height="138.1" />
-        <text x="768" y="718" textAnchor="middle" fontSize="26" fontWeight="600" fill="#fff">Human <tspan fill="#2FD3A0" fontWeight="800">+</tspan> Frugal AI</text>
+          <image href="/images/FRIEND-logo.png" x="608.1" y="523.5" width="318.1" height="138.1" />
+        </g>
+        <text x="768" y="726" textAnchor="middle" fontSize="40" fontWeight="700" fill="#fff">Human <tspan fill="#2FD3A0" fontWeight="800">+</tspan> Frugal AI</text>
       </g>
     </svg>
   )

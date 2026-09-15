@@ -1,32 +1,23 @@
 "use client";
 
-import { TrendingUp, Gauge, Clock, ShieldCheck } from 'lucide-react'
+import { Workflow, Network, ShieldCheck } from 'lucide-react'
 import { splitHeading } from './splitHeading'
 
 const PILLARS = [
   {
-    icon: TrendingUp,
-    title: 'Revenue Acceleration',
-    desc: 'Automated proposals, lead scoring, and dynamic pricing that shortens your sales cycle and closes more deals',
-    target: 'Target: 40% Faster Sales Velocity (Gartner)',
+    icon: Workflow,
+    title: 'Governed DAG Architecture',
+    desc: 'Every workflow runs as a directed, deterministic execution graph, not just a chain of LLM calls.',
   },
   {
-    icon: Gauge,
-    title: 'Operational Efficiency',
-    desc: 'Eliminating manual effort and reducing processing time — so your teams focus on work that moves the business forward',
-    target: 'Target: 57% of Work Hours Automatable (McKinsey)',
-  },
-  {
-    icon: Clock,
-    title: 'Rapid Deployment',
-    desc: 'Pre-built, pre-tested AI suites that integrate into your existing ERP, CRM, and cloud stack without disruption',
-    target: 'Target: Live in Days',
+    icon: Network,
+    title: 'Domain Ontology Based Approach',
+    desc: 'AI understands your business through a structured map of its entities, relationships, and domain rules so it reasons in your language',
   },
   {
     icon: ShieldCheck,
-    title: 'Corporate Governance',
-    desc: 'Audit-ready outputs and compliance controls built into every workflow — keeping every decision traceable and defensible',
-    target: 'Target: 3.4x More Effective Governance (Gartner)',
+    title: 'Hallucination Prevention',
+    desc: 'Every AI output is validated against trusted source-of-truth data before it reaches you.',
   },
 ]
 
@@ -35,16 +26,16 @@ export default function Pillars() {
     <section className="py-16 md:py-20 px-5 max-w-[1360px] mx-auto">
       <div className="text-center mb-12 max-w-6xl mx-auto">
         <h2 className="text-3xl sm:text-4xl md:text-[42px] lg:text-[48px] font-bold text-ignitho-text tracking-[-0.5px] leading-[1.15]">
-          <span className="block">Enterprise-Wide Outcomes. Nine AI Suites</span>
-          <span className="block text-[#7a00c2]">Twenty-Seven AI Agents</span>
+          <span className="block">Built for Trust.</span>
+          <span className="block text-[#7a00c2]">Engineered for Enterprise.</span>
         </h2>
         <p className="mt-5 text-lg md:text-2xl text-[#7a00c2] leading-relaxed">
-          Ignitho AI is built to deliver four outcomes that matter to enterprise leadership — not vanity
-          metrics, not proof of concepts, not technology experiments
+          The architecture behind FRIEND Agents ensures every AI-driven workflow is grounded in your
+          business context, governed by deterministic execution, and validated against trusted data
         </p>
       </div>
 
-      <div className="grid grid-cols-1 gap-6 px-3 sm:grid-cols-2 sm:px-0 lg:grid-cols-4">
+      <div className="mx-auto grid max-w-[1160px] grid-cols-1 gap-6 px-3 sm:px-0 lg:grid-cols-3">
         {PILLARS.map((p) => {
           const [line1, line2] = splitHeading(p.title)
           return (
@@ -57,17 +48,14 @@ export default function Pillars() {
                 <p.icon className="w-5 h-5 text-white" />
               </div>
               <h3 className="text-center text-xl font-bold text-white lg:text-2xl">
-                <span className="block whitespace-nowrap">{line1}</span>
-                <span className="block whitespace-nowrap">{line2}</span>
+                <span className="block">{line1}</span>
+                <span className="block">{line2}</span>
               </h3>
               <div className="invisible shrink-0 p-2" aria-hidden="true">
                 <p.icon className="w-5 h-5" />
               </div>
             </div>
             <p className="mt-3 text-base text-white/90 leading-relaxed flex-1">{p.desc}</p>
-            <div className="mt-2 pt-4 border-t border-white/15 min-h-[3.5rem] text-center text-sm font-bold text-ignitho-accent-blue">
-              {p.target}
-            </div>
           </div>
           )
         })}

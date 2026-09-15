@@ -2,9 +2,9 @@
 
 import { useEffect, useMemo, useState } from "react";
 import Hero from "./Hero";
-import ProblemFix from "./ProblemFix";
 import Pillars from "./Pillars";
-import SuitesSummary from "./SuitesSummary";
+import FoundationSuites from "./FoundationSuites";
+import Architecture from "./Architecture";
 import AllSuitesPage from "./AllSuitesPage";
 import SecuritySection from "./SecuritySection";
 import CtaBanner from "./CtaBanner";
@@ -82,14 +82,12 @@ export default function IgnithoAiApp() {
       ) : (
         <>
           <Hero />
-          <div className="bg-ignitho-light-grid">
-            <ProblemFix />
-          </div>
+          <FoundationSuites onOpenSuite={setActiveSuiteId} />
           <div className="bg-ignitho-white-grid">
             <Pillars />
           </div>
-          <SuitesSummary onOpenSuite={setActiveSuiteId} />
-          <div className="bg-ignitho-light-grid">
+          <Architecture />
+          <div className="bg-ignitho-white-grid">
             <SecuritySection />
           </div>
           <CtaBanner />

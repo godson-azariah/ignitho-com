@@ -111,19 +111,14 @@ export default function ComplexityTrap() {
                   on one centred line and the body runs full width underneath,
                   which is what the live site does on a phone. */}
               {COMPLEXITY.items.map((item, i) => (
-                <li key={item.title} className="lg:flex lg:gap-[25px]">
-                  <h3 className="flex items-start justify-center gap-[10px] text-[20px] font-bold leading-[46px] text-black lg:hidden">
-                    <CardIcon index={i} className="mt-[8px] flex" />
-                    {item.title}
-                  </h3>
-
-                  <CardIcon index={i} className="hidden lg:flex" />
+                <li key={item.title} className="flex gap-[14px] lg:gap-[25px]">
+                  <CardIcon index={i} className="flex self-start" />
 
                   <div className="flex-1">
-                    <h3 className="hidden text-[20px] font-bold leading-[26px] text-black lg:flex lg:min-h-[52px] lg:items-start">
+                    <h3 className="text-center text-[20px] font-bold leading-[30px] text-black lg:flex lg:min-h-[52px] lg:items-start lg:text-left lg:leading-[26px]">
                       {item.title}
                     </h3>
-                    <p className="pb-[7px] text-center text-[20px] leading-[30px] text-muted text-pretty lg:mt-[5px] lg:text-left lg:leading-[30px]">
+                    <p className="mt-[6px] pb-[7px] text-center text-[20px] leading-[30px] text-muted text-pretty lg:mt-[5px] lg:text-left lg:leading-[30px]">
                       {item.body}
                     </p>
                   </div>
