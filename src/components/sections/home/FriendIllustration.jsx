@@ -140,11 +140,14 @@ export default function FriendIllustration({ className = '' }) {
       </g>
 
       <g className="word">
-        <rect x="566" y="508" width="404" height="178" rx="16" fill="#fff"/>
-        {/* FRIEND-logo.png is 2000x2000 with its artwork in a 1727x633 box at (190,621);
-            this placement puts that box 288px wide, centred at x=768, y 543-649. */}
-        <image href="/images/FRIEND-logo.png" x="592.3" y="439.6" width="333.5" height="333.5" />
-        <text x="768" y="734" textAnchor="middle" fontSize="26" fontWeight="600" fill="#fff">Human <tspan fill="#2FD3A0" fontWeight="800">+</tspan> Frugal AI</text>
+        <rect x="598" y="525" width="340" height="142" rx="14" fill="#fff"/>
+        {/* FRIEND-logo.png is 1903x826 with its artwork in a 1723x608 box at (95,130).
+            The element is sized to the file's own aspect - a square box would make SVG
+            letterbox it and drop the artwork below the plate - so the artwork lands
+            288 x 101.6, centred on x=768, inside the plate above with 26 either side
+            and 20 top and bottom. */}
+        <image href="/images/FRIEND-logo.png" x="608.1" y="523.5" width="318.1" height="138.1" />
+        <text x="768" y="718" textAnchor="middle" fontSize="26" fontWeight="600" fill="#fff">Human <tspan fill="#2FD3A0" fontWeight="800">+</tspan> Frugal AI</text>
       </g>
     </svg>
   )

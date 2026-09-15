@@ -549,7 +549,6 @@ body {
   position: relative;
   width: 100%;
   overflow: hidden; /* the landscape is drawn past the viewBox to reach the edges */
-  padding-bottom: clamp(36px, 4.5vw, 64px);
 }
 
 /* The word fades up as one piece: a short rise on a long ease-out. */
@@ -582,7 +581,7 @@ body {
 .friend-art {
   display: block;
   width: 100%;
-  height: clamp(0px, 37.7vw, 543px);
+  height: clamp(0px, 33.9vw, 488px);
   overflow: visible;
 }
 
@@ -592,67 +591,10 @@ body {
     overflow: hidden;
   }
 
-  .friend-scene {
-    padding-bottom: 30px;
-  }
-
   .friend-caption {
     margin-top: 22px;
     font-size: 16px;
     line-height: 27px;
-  }
-}
-
-/* Phones: each meaning is a pill with its note under it, two to a row. */
-.friend-legend {
-  display: none;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 22px 14px;
-  margin: 18px 20px 0;
-  padding: 0;
-  list-style: none;
-}
-
-.friend-legend li {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 9px;
-  text-align: center;
-}
-
-.friend-legend-pill {
-  display: block;
-  width: 100%;
-  padding: 9px 0;
-  border-radius: 999px;
-  background: #5a1fd0;
-  box-shadow: 0 4px 10px rgba(59, 29, 149, 0.2);
-  /* the rest of the word is quieter, so the FRIEND letters read out of it */
-  color: rgba(255, 255, 255, 0.74);
-  font-size: 15px;
-  font-weight: 600;
-}
-
-.friend-legend-pill b {
-  color: #fff;
-  font-weight: 800;
-}
-
-.friend-legend-note {
-  font-size: 14px;
-  line-height: 1.45;
-  color: #3d3659;
-  text-wrap: balance;
-}
-
-@media (max-width: 767px) {
-  .friend-art-label {
-    display: none;
-  }
-
-  .friend-legend {
-    display: grid;
   }
 }
 
@@ -684,6 +626,51 @@ body {
   .friend-caption {
     font-size: 22px;
     line-height: 34px;
+  }
+}
+
+/* Phones: the meanings become pills, two to a row. */
+.friend-legend {
+  display: none;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 22px 14px;
+  margin: 18px 20px 0;
+  padding: 0;
+  list-style: none;
+}
+
+.friend-legend li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.friend-legend-pill {
+  display: block;
+  width: 100%;
+  padding: 9px 0;
+  border-radius: 999px;
+  background: #5a1fd0;
+  box-shadow: 0 4px 10px rgba(59, 29, 149, 0.2);
+  /* the rest of the word is quieter, so the FRIEND letters read out of it */
+  color: rgba(255, 255, 255, 0.74);
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.friend-legend-pill b {
+  color: #fff;
+  font-weight: 800;
+}
+
+@media (max-width: 767px) {
+  .friend-art-label {
+    display: none;
+  }
+
+  .friend-legend {
+    display: grid;
   }
 }
 

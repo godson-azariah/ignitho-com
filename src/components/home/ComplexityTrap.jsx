@@ -44,12 +44,11 @@ const ICONS = [
 function CardIcon({ index, className = "" }) {
   return (
     <span
-      className={`h-[46px] w-[46px] shrink-0 items-center justify-center rounded-[13px] bg-accent ${className}`}
+      className={`h-[30px] w-[30px] shrink-0 items-center justify-center rounded-[9px] bg-accent lg:h-[46px] lg:w-[46px] lg:rounded-[13px] ${className}`}
     >
       <svg
         viewBox="0 0 24 24"
-        width="22"
-        height="22"
+        className="h-[16px] w-[16px] lg:h-[22px] lg:w-[22px]"
         fill="none"
         stroke="#fff"
         strokeWidth="2"
@@ -107,14 +106,14 @@ export default function ComplexityTrap() {
             {/* Two fixed 300px tracks needed 640px of room, which a 640px
                 viewport does not have once the 20px gutters are taken. Flexible
                 tracks below the desktop column, the measured 300px above it. */}
-            <ul className="mt-[36px] grid gap-x-[40px] gap-y-[34px] sm:grid-cols-2 lg:mt-[50px] lg:gap-y-[40px] xl:grid-cols-2">
+            <ul className="mt-[36px] grid gap-x-[40px] gap-y-[34px] px-3 sm:grid-cols-2 sm:px-0 lg:mt-[50px] lg:gap-y-[40px] xl:grid-cols-2">
               {/* Below the desktop column the icon rides inline with the title
                   on one centred line and the body runs full width underneath,
                   which is what the live site does on a phone. */}
               {COMPLEXITY.items.map((item, i) => (
                 <li key={item.title} className="lg:flex lg:gap-[25px]">
-                  <h3 className="flex items-center justify-center gap-[12px] text-[20px] font-bold leading-[46px] text-black lg:hidden">
-                    <CardIcon index={i} className="flex" />
+                  <h3 className="flex items-start justify-center gap-[10px] text-[20px] font-bold leading-[46px] text-black lg:hidden">
+                    <CardIcon index={i} className="mt-[8px] flex" />
                     {item.title}
                   </h3>
 

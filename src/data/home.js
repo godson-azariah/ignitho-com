@@ -28,7 +28,7 @@ export const HERO_BADGES = [
 export const FRUGAL_INNOVATION = {
   title: 'Applying the Frugal Innovation Principle',
   subtitle:
-    'The Art of Doing More with Less: A methodology co-developed with the University of Cambridge',
+    'The Art of Doing Better with Less: A methodology co-developed with the University of Cambridge',
   friend: {
     /**
      * [highlighted letters, hidden remainder]. Read down the first column the
@@ -43,18 +43,10 @@ export const FRUGAL_INNOVATION = {
     ],
     /** One meaning per letter group, set under the letters in the scene. */
     labels: ['Frugal', 'Innovation', 'Enterprise', 'Data & AI'],
-    /** One line under each label, split where it wraps. */
-    notes: [['Do more', 'with less'], ['Creative solutions', 'for real impact'], ['Applied and scaled', 'across the enterprise'], ['Turning data and AI', 'into measurable value']],
     /** Plain-text form, read out to assistive tech in place of the animation. */
     expansion: 'Frugal Innovation in Enterprise Data & AI',
-    /**
-     * Tightened from the site's original copy, which restated "frugal
-     * innovation" and "Data & AI" - both already spelled out in the heading
-     * above - a third and second time. This keeps the same claims (the
-     * Human + Frugal AI positioning, the 10+ year track record) without
-     * repeating the words the acronym just unfolded.
-     */
+    /** The section's closing line, under the acronym. */
     description:
-      "Industry-first Human + Frugal AI services: human expertise paired with AI agents to deliver measurable outcomes at enterprise scale, proven with clients for 10+ years",
+      'Industry-first Human + Frugal AI services: human expertise paired with AI agents to deliver measurable outcomes at enterprise scale, proven with clients for 10+ years',
   },
 }
