@@ -628,9 +628,15 @@ body {
   border-radius: 999px;
   background: #5a1fd0;
   box-shadow: 0 4px 10px rgba(59, 29, 149, 0.2);
-  color: #fff;
+  /* the rest of the word is quieter, so the FRIEND letters read out of it */
+  color: rgba(255, 255, 255, 0.74);
   font-size: 15px;
-  font-weight: 700;
+  font-weight: 600;
+}
+
+.friend-legend-pill b {
+  color: #fff;
+  font-weight: 800;
 }
 
 .friend-legend-note {

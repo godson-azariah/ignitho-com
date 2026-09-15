@@ -11,11 +11,13 @@ import { motion, useInView, useReducedMotion, useScroll, useTransform } from 'fr
   transparent, drawn wider than the viewBox so it reaches the edges on wide
   screens and parallaxing gently with scroll), then the word FRIEND standing
   on the ridge as deep violet 3D letters with a picture inside each letter
-  group - a jar of coins for FR, a drawn glowing bulb for I, glass
+  group - a spread of banknotes for FR, a drawn glowing bulb for I, glass
   corporate towers for EN, an analytics dashboard for D (the photos are
   Unsplash, free licence, graded with one violet-to-blue overlay so they read
   as a set) - then white ground dots, arrows down to purple pill labels and a
-  one-line descriptor each. The caption follows in HTML.
+  one-line descriptor each. The caption follows in HTML. On phones there are no
+  arrows, so the legend spells each meaning out of its letters instead -
+  "FRugal", "Innovation" - with the letters that spell FRIEND picked out.
 
   Motion: the finished word fades up as one piece (a short rise on a long
   ease-out, driven by a CSS transition on the .friend-word layer), then dots
@@ -50,7 +52,8 @@ const LETTERS = [
 
 // pictures inside the letters, one per group
 const PHOTOS = [
-  { key: 'FR', src: '/images/friend/fr-money.webp', x: 130, y: 150, w: 407, h: 520 },
+  // tint: shifts the photo's hue toward the scene's blue while keeping its detail
+  { key: 'FR', src: '/images/friend/fr-notes.webp', x: 130, y: 150, w: 407, h: 520, tint: 0.62 },
   { key: 'EN', src: '/images/friend/en-towers.webp', x: 629, y: 150, w: 404, h: 520 },
   { key: 'D', src: '/images/friend/d-dash.webp', x: 1033, y: 150, w: 260, h: 520 },
 ]
@@ -144,6 +147,9 @@ export default function FriendReveal({ friend }) {
                     {photo ? (
                       <g>
                         <image href={photo.src} x={photo.x} y={photo.y} width={photo.w} height={photo.h} preserveAspectRatio={photo.fit || 'xMidYMid slice'} />
+                        {photo.tint ? (
+                          <rect x={photo.x} y={photo.y} width={photo.w} height={photo.h} fill="#3f63e0" opacity={photo.tint} style={{ mixBlendMode: 'color' }} />
+                        ) : null}
                         <rect x={photo.x} y="214" width={photo.w} height="216" fill="url(#friendGrade)" style={{ mixBlendMode: 'color' }} />
                         <rect x={photo.x} y="214" width={photo.w} height="216" fill="url(#friendDepth)" style={{ mixBlendMode: 'multiply' }} />
                       </g>
@@ -203,12 +209,20 @@ export default function FriendReveal({ friend }) {
 
         {/* Phones: the in-scene labels are too small, so a legend takes over. */}
         <motion.ul className="friend-legend" aria-hidden="true" initial={reduce ? false : { y: 10, opacity: 0 }} animate={on({ y: 0, opacity: 1 }, { y: 10, opacity: 0 })} transition={{ duration: 0.7, delay: 1.0, ease: EASE_OUT }}>
-          {friend.labels.map((label, i) => (
-            <li key={label}>
-              <span className="friend-legend-pill">{label}</span>
-              <span className="friend-legend-note">{friend.notes[i].join(' ')}</span>
-            </li>
-          ))}
+          {friend.labels.map((label, i) => {
+            // the acronym's own remainder carries the joining words ("nnovation in"),
+            // so the label is split at the cap length instead
+            const caps = friend.segments[i][0]
+            return (
+              <li key={label}>
+                <span className="friend-legend-pill">
+                  <b>{caps}</b>
+                  {label.slice(caps.length)}
+                </span>
+                <span className="friend-legend-note">{friend.notes[i].join(' ')}</span>
+              </li>
+            )
+          })}
         </motion.ul>
 
         <h3 className="sr-only">{'FRIEND: ' + friend.expansion}</h3>
