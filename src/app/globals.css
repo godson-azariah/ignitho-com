@@ -554,16 +554,13 @@ body {
 }
 
 /* Behind the picture, and below where it ends: the colours of its own bottom
-   row, climbing back to the pale of its sky by the section's floor so the band
-   never finishes on a flat strip. */
+   row, pale at both ends so the artwork's fades never reveal violet. */
 .frug-backdrop {
   position: absolute;
   inset: 0;
   z-index: -2;
   pointer-events: none;
   background:
-    /* pale at both ends: the artwork's mask fades its own top and foot, and
-       without this the violet beneath showed through at the section's edges */
     linear-gradient(
       180deg,
       #efedfd 0%,
@@ -613,10 +610,12 @@ body {
    dozen pixels tall while the copy on it stays the same height. */
 .frug-art {
   --art-width: 100vw;
-  --sun-gap: clamp(36px, 3.6vw, 64px);
+  --sun-gap: clamp(2px, 0.6vw, 12px);
+  /* raises the picture on its own - nothing else in the band moves with it */
+  --art-lift: clamp(44px, 5.2vw, 96px);
 
   position: absolute;
-  top: calc(var(--sun-gap) - var(--art-width) * 0.2404);
+  top: calc(var(--sun-gap) - var(--art-lift) - var(--art-width) * 0.2404);
   left: 50%;
   z-index: -1;
   width: var(--art-width);
@@ -659,11 +658,13 @@ body {
 .friend-reveal {
   position: relative;
   z-index: 1;
-  margin-top: clamp(22px, 2.4vw, 44px);
+  margin-top: clamp(10px, 1.3vw, 24px);
   text-align: center;
 }
 
 .friend-line {
+  position: relative;
+  width: fit-content;
   margin: 0 auto;
   max-width: 1320px;
   text-wrap: balance;
@@ -672,11 +673,11 @@ body {
   font-family: var(--font-display), ui-sans-serif, "Segoe UI", sans-serif;
   /* The section heading's own scale, breakpoint for breakpoint (see
      SectionHeading), divided by the step the acronym letters take above it - so
-     those letters land on exactly the heading's size rather than half again
-     over it, which is what made this line look bigger than the heading. */
+     those letters land a little over the heading's size - at the full 1.32 step
+     they ran half again over it and the line read as the larger of the two. */
   --heading-size: 40px;
 
-  font-size: calc(var(--heading-size) / 1.32);
+  font-size: calc(var(--heading-size) / 1.18);
   line-height: 1.45;
   font-weight: 500;
   letter-spacing: -0.3px;
@@ -693,6 +694,19 @@ body {
   .friend-line {
     --heading-size: 54px;
   }
+}
+
+/* A whisper of a panel behind the lockup. It is drawn by a pseudo-element on
+   its own layer, with negative insets in em, so it costs the line no padding
+   and nothing in the band moves by a pixel. */
+.friend-line::before {
+  content: "";
+  position: absolute;
+  inset: -0.36em -0.72em;
+  z-index: -1;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: inset 0 0 0 1px rgba(91, 22, 196, 0.07);
 }
 
 .friend-caps {
