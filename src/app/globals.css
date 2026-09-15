@@ -593,39 +593,51 @@ body {
   }
 
   .friend-scene {
-    padding-bottom: 28px;
+    padding-bottom: 30px;
+  }
+
+  .friend-caption {
+    margin-top: 22px;
+    font-size: 16px;
+    line-height: 27px;
   }
 }
 
+/* Phones: each meaning is a pill with its note under it, two to a row. */
 .friend-legend {
   display: none;
-  margin: 6px 16px 0;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 22px 14px;
+  margin: 18px 20px 0;
   padding: 0;
   list-style: none;
-  gap: 12px;
 }
 
 .friend-legend li {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 12px;
+  gap: 9px;
+  text-align: center;
 }
 
 .friend-legend-pill {
-  flex: 0 0 116px;
-  padding: 7px 0;
+  display: block;
+  width: 100%;
+  padding: 9px 0;
   border-radius: 999px;
-  background: #5b21c9;
+  background: #5a1fd0;
+  box-shadow: 0 4px 10px rgba(59, 29, 149, 0.2);
   color: #fff;
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 700;
-  text-align: center;
 }
 
 .friend-legend-note {
   font-size: 14px;
-  line-height: 1.4;
-  color: #3b2a6e;
+  line-height: 1.45;
+  color: #3d3659;
+  text-wrap: balance;
 }
 
 @media (max-width: 767px) {

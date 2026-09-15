@@ -33,8 +33,8 @@ const FONT = 'var(--font-urbanist), Urbanist, ui-sans-serif, system-ui, sans-ser
 // letter groups along the 150-1250 word span: dot positions and label centre
 const GROUPS = [
   { key: 'FR', dots: [242, 436], cx: 338 },
-  { key: 'I', dots: [583], cx: 583 },
-  { key: 'EN', dots: [831], cx: 831 },
+  { key: 'I', dots: [583], cx: 606 },
+  { key: 'EN', dots: [831], cx: 874 },
   { key: 'D', dots: [1142], cx: 1142 },
 ]
 
@@ -50,8 +50,7 @@ const LETTERS = [
 
 // pictures inside the letters, one per group
 const PHOTOS = [
-  // placed by hand so the jar and its coins sit inside F and R
-  { key: 'FR', src: '/images/friend/fr-jar.webp', x: 40, y: 120, w: 600, h: 400, fit: 'xMidYMid meet' },
+  { key: 'FR', src: '/images/friend/fr-money.webp', x: 130, y: 150, w: 407, h: 520 },
   { key: 'EN', src: '/images/friend/en-towers.webp', x: 629, y: 150, w: 404, h: 520 },
   { key: 'D', src: '/images/friend/d-dash.webp', x: 1033, y: 150, w: 260, h: 520 },
 ]
@@ -84,7 +83,7 @@ export default function FriendReveal({ friend }) {
       <noscript dangerouslySetInnerHTML={{ __html: NOSCRIPT_STYLES }} />
 
       <div className="friend-scene">
-        <svg className="friend-art" viewBox={narrow ? '120 226 1160 380' : '0 196 1400 528'} preserveAspectRatio="xMidYMax meet" aria-hidden="true">
+        <svg className="friend-art" viewBox={narrow ? '30 210 1360 450' : '0 196 1400 528'} preserveAspectRatio="xMidYMax meet" aria-hidden="true">
           <defs>
             {LETTERS.map((l, i) => (
               <clipPath key={i} id={'friendL' + i}>
@@ -176,7 +175,7 @@ export default function FriendReveal({ friend }) {
                   <motion.circle key={di} cx={dx} cy="500" r="9" fill="#fff" stroke="#7c3aed" strokeWidth="3" initial={reduce ? false : { scale: 0, opacity: 0 }} animate={on({ scale: 1, opacity: 1 }, { scale: 0, opacity: 0 })} transition={{ duration: 0.4, delay: at, ease: EASE_OUT }} style={{ transformOrigin: dx + 'px 500px' }} />
                 ))}
                 <motion.path
-                  d={merged ? 'M' + g.dots[0] + ' 509 V538 Q' + g.dots[0] + ' 554 ' + (g.dots[0] + 16) + ' 554 H' + (g.cx - 8) + ' M' + g.dots[1] + ' 509 V538 Q' + g.dots[1] + ' 554 ' + (g.dots[1] - 16) + ' 554 H' + (g.cx + 8) + ' M' + g.cx + ' 554 V584' : 'M' + g.cx + ' 509 V584'}
+                  d={merged ? 'M' + g.dots[0] + ' 509 V538 Q' + g.dots[0] + ' 554 ' + (g.dots[0] + 16) + ' 554 H' + (g.cx - 8) + ' M' + g.dots[1] + ' 509 V538 Q' + g.dots[1] + ' 554 ' + (g.dots[1] - 16) + ' 554 H' + (g.cx + 8) + ' M' + g.cx + ' 554 V584' : 'M' + g.dots[0] + ' 509 V532 C' + g.dots[0] + ' 556 ' + g.cx + ' 556 ' + g.cx + ' 572 V584'}
                   fill="none"
                   stroke="#5b21c9"
                   strokeWidth="2.5"
