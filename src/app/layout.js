@@ -1,4 +1,4 @@
-import { Inter, Urbanist } from "next/font/google";
+import { Bricolage_Grotesque, Inter, Urbanist } from "next/font/google";
 import "./globals.css";
 
 const urbanist = Urbanist({
@@ -15,6 +15,18 @@ const inter = Inter({
   subsets: ["latin"],
   weight: ["500", "800"],
   variable: "--font-inter-src",
+  display: "swap",
+});
+
+/* The FRIEND lockup and nothing else. Bricolage Grotesque is deliberately
+   irregular - it mixes French and British grotesque forms, so the letters do
+   not quite agree with each other, which is what stops it reading as another
+   neutral sans. It holds its shape from medium through to bold, unlike Syne,
+   whose weights change design as they thicken. */
+const bricolage = Bricolage_Grotesque({
+  subsets: ["latin"],
+  weight: ["500", "600", "700"],
+  variable: "--font-display",
   display: "swap",
 });
 
@@ -40,7 +52,7 @@ export default function RootLayout({ children }) {
     // transitions, which Next warns about when html has scroll-behavior: smooth
     <html
       lang="en"
-      className={`${urbanist.variable} ${inter.variable}`}
+      className={`${urbanist.variable} ${inter.variable} ${bricolage.variable}`}
       data-scroll-behavior="smooth"
     >
       <body className="font-sans antialiased">

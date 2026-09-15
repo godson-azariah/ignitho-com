@@ -23,7 +23,7 @@ export default function FoundationSuites({ onOpenSuite }) {
         </div>
 
         <div className="mx-auto max-w-[1160px]">
-          <h3 className="mb-6 text-center text-2xl font-bold text-ignitho-text">3 Universal Foundations</h3>
+          <h3 className="mb-6 text-center text-2xl font-bold text-ignitho-text">Universal Foundations</h3>
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {foundations.map((suite) => <SuiteCard key={suite.id} suite={suite} onOpen={onOpenSuite} />)}
           </div>
