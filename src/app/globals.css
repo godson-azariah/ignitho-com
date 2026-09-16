@@ -1665,164 +1665,157 @@ h1, h2, h3, h4, h5, h6, p, li, blockquote {
 
 
 /* ==========================================================================
-   Ignitho AI — architecture map
-   Four stations threaded on one spine. The spine draws itself down its own
-   column and each station lights as the spine reaches it, on a single looping
-   cycle: CYCLE = stations x STEP, and each station is delayed by its index.
-   Stilled under prefers-reduced-motion.
+   Ignitho AI — architecture scene
+   Decoration, not documentation. Three soft fields of colour drifting past one
+   another with their marks floating on them - no rows, rules, numbers or
+   boxes, because every structured version of this ended up reading as a table.
+   The copy beside it carries the meaning.
    ========================================================================== */
 
-.arch-map {
+.arch-scene {
   position: relative;
+  height: 100%;
+  min-height: clamp(340px, 34vw, 460px);
   overflow: hidden;
-  border-radius: 28px;
-  padding: 1.75rem 1.5rem 1.25rem;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.66) 100%);
-  border: 1px solid rgba(91, 22, 196, 0.1);
-  box-shadow: 0 2px 4px rgba(22, 6, 58, 0.04), 0 28px 60px -34px rgba(22, 6, 58, 0.4);
-  backdrop-filter: blur(8px);
 }
 
-.arch-track {
-  position: relative;
-  display: grid;
-  gap: 1.25rem;
-}
-
-/* the resting track the spine draws over */
-.arch-track::before {
-  content: "";
+.arch-tier {
   position: absolute;
-  left: 35px;
-  top: 34px;
-  bottom: 34px;
-  width: 2px;
-  border-radius: 2px;
-  background: rgba(91, 22, 196, 0.12);
+  inset: 0;
+  pointer-events: none;
 }
 
-.arch-spine {
+/* the field: one soft bloom of the tier's colour, blurred past having an edge
+   and drifting on a long, slow cycle */
+.arch-tier-field {
   position: absolute;
-  left: 35px;
-  top: 34px;
-  bottom: 34px;
-  width: 2px;
-  border-radius: 2px;
-  background: linear-gradient(180deg, #2f7bd8 0%, #ff9900 34%, #5b16c4 68%, #00a274 100%);
-  transform-origin: top;
-  animation: archSpine 6.4s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--arch-accent) 0%, transparent 68%);
+  opacity: 0.2;
+  filter: blur(26px);
+  animation: archDrift 22s ease-in-out infinite;
 }
 
-.arch-spine-still {
-  animation: none;
+.arch-tier:nth-child(1) .arch-tier-field {
+  inset: -6% 34% 58% -10%;
 }
 
-@keyframes archSpine {
-  0% { transform: scaleY(0); opacity: 1; }
-  78% { transform: scaleY(1); opacity: 1; }
-  94% { transform: scaleY(1); opacity: 0; }
-  100% { transform: scaleY(0); opacity: 0; }
+.arch-tier:nth-child(2) .arch-tier-field {
+  inset: 26% -12% 26% 30%;
+  animation-delay: -7s;
+  animation-duration: 26s;
 }
 
-.arch-station {
-  position: relative;
-  display: grid;
-  grid-template-columns: 44px minmax(0, 1fr);
-  align-items: start;
-  gap: 0.875rem;
-  border-radius: 20px;
-  padding: 0.75rem 0.875rem;
-  background: transparent;
-  animation: archStation 6.4s ease-in-out infinite;
-  animation-delay: var(--arch-delay, 0s);
+.arch-tier:nth-child(3) .arch-tier-field {
+  inset: 56% 28% -8% -4%;
+  animation-delay: -14s;
+  animation-duration: 30s;
 }
 
-.arch-station-still {
-  animation: none;
-  background: rgba(255, 255, 255, 0.7);
-  box-shadow: inset 0 0 0 1px rgba(91, 22, 196, 0.08);
-}
-
-@keyframes archStation {
-  0%, 100% {
-    background: rgba(255, 255, 255, 0);
-    box-shadow: inset 0 0 0 1px rgba(91, 22, 196, 0);
+@keyframes archDrift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
   }
-  4%, 22% {
-    background: color-mix(in srgb, var(--arch-accent, #5b16c4) 7%, #fff);
-    box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--arch-accent, #5b16c4) 24%, transparent);
-  }
-  34% {
-    background: rgba(255, 255, 255, 0);
-    box-shadow: inset 0 0 0 1px rgba(91, 22, 196, 0);
+  50% {
+    transform: translate3d(3%, -4%, 0) scale(1.08);
   }
 }
 
-.arch-station-dot {
-  position: relative;
-  z-index: 1;
-  display: grid;
-  place-items: center;
-  width: 44px;
-  height: 44px;
-  border-radius: 999px;
-  background: #fff;
-  border: 1.5px solid color-mix(in srgb, var(--arch-accent, #5b16c4) 30%, transparent);
-  color: var(--arch-accent, #5b16c4);
-  font-size: 12px;
+/* the only words in the scene */
+.arch-tier-name {
+  position: absolute;
+  font-size: 11px;
   font-weight: 800;
-  letter-spacing: 0.04em;
-  font-variant-numeric: tabular-nums;
-  animation: archDot 6.4s ease-in-out infinite;
-  animation-delay: var(--arch-delay, 0s);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--arch-accent) 72%, #16063a);
+  opacity: 0.62;
+  white-space: nowrap;
 }
 
-.arch-station-still .arch-station-dot {
-  animation: none;
+.arch-tier:nth-child(1) .arch-tier-name {
+  top: 10%;
+  left: 6%;
 }
 
-@keyframes archDot {
-  0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 transparent; }
-  4%, 22% {
-    transform: scale(1.09);
-    box-shadow: 0 0 0 6px color-mix(in srgb, var(--arch-accent, #5b16c4) 12%, transparent);
-  }
-  34% { transform: scale(1); box-shadow: 0 0 0 0 transparent; }
+.arch-tier:nth-child(2) .arch-tier-name {
+  top: 45%;
+  left: 40%;
 }
 
-/* the two or three marks that make a station recognisable */
-.arch-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.375rem;
-  border-radius: 999px;
-  padding: 0.25rem 0.625rem 0.25rem 0.4375rem;
-  background: #fff;
-  border: 1px solid rgba(22, 6, 58, 0.08);
-  font-size: 11.5px;
-  font-weight: 600;
-  color: #16063a;
+.arch-tier:nth-child(3) .arch-tier-name {
+  top: 79%;
+  left: 12%;
 }
 
-.arch-map-foot {
+/* the marks float on their field, each on its own cycle so the group never
+   settles into a row */
+.arch-tier-marks {
+  position: absolute;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: center;
-  gap: 0.5rem 1.25rem;
-  margin-top: 1.25rem;
-  border-top: 1px solid rgba(91, 22, 196, 0.1);
-  padding-top: 0.875rem;
+  gap: clamp(14px, 1.6vw, 24px);
+}
+
+.arch-tier:nth-child(1) .arch-tier-marks {
+  top: 18%;
+  left: 7%;
+}
+
+.arch-tier:nth-child(2) .arch-tier-marks {
+  top: 53%;
+  left: 41%;
+}
+
+.arch-tier:nth-child(3) .arch-tier-marks {
+  top: 87%;
+  left: 13%;
+}
+
+.arch-tier-marks > span,
+.arch-scene-runs > span {
+  display: block;
+  filter: drop-shadow(0 4px 10px rgba(22, 6, 58, 0.16));
+  animation: archFloat 9s ease-in-out infinite;
+  animation-delay: calc(var(--m, 0) * -1.7s);
+}
+
+@keyframes archFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-7px);
+  }
+}
+
+.arch-scene-runs {
+  position: absolute;
+  right: 4%;
+  bottom: 4%;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  opacity: 0.5;
+}
+
+@media (max-width: 767px) {
+  .arch-scene {
+    min-height: 320px;
+  }
+
+  .arch-tier-marks {
+    gap: 14px;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .arch-spine,
-  .arch-station,
-  .arch-station-dot {
+  .arch-tier-field,
+  .arch-tier-marks > span,
+  .arch-scene-runs > span {
     animation: none;
-  }
-
-  .arch-spine {
-    transform: scaleY(1);
   }
 }

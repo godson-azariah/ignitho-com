@@ -7,8 +7,7 @@ import { ARCHITECTURE } from '@/lib/pages/ai-architecture'
 /*
   Copy on the left, the map on the right - the same shape as the careers band.
 
-  The map is the glance version of the stack: four stations threaded on one
-  spine, read top to bottom in the order a request meets them. Only the spine
+  The map is the glance version of the stack: three tiers threaded on one spine, read top to bottom in the order a request meets them. Only the spine
   connects anything, and it runs down its own column, so it never crosses a
   station.
 
@@ -65,8 +64,8 @@ export default function Architecture() {
             className="text-3xl font-bold leading-[1.15] tracking-[-0.5px] text-ignitho-text sm:text-4xl md:text-[42px] lg:text-[46px]"
             {...rise()}
           >
-            The Trust Architecture behind{' '}
-            <span className="text-[#7a00c2]">FRIEND Agents</span>
+            Trust Architecture behind{' '}
+            <span className="text-[#7a00c2]">FRIEND Agentic Suites</span>
           </motion.h2>
 
           {lead.map((para, i) => (
@@ -91,44 +90,37 @@ export default function Architecture() {
           </motion.ul>
         </div>
 
-        <motion.div className="arch-map" aria-label={heading} {...rise(0.12)}>
-          <ol className="arch-track">
-            <span aria-hidden="true" className={`arch-spine ${reduce ? 'arch-spine-still' : ''}`} />
+        <motion.div
+          className="arch-scene"
+          aria-hidden="true"
+          initial={reduce ? false : { opacity: 0, filter: 'blur(16px)', scale: 1.02 }}
+          whileInView={{ opacity: 1, filter: 'blur(0px)', scale: 1 }}
+          viewport={{ once: true, margin: '0px 0px -12% 0px' }}
+          transition={{ duration: 1.1, ease: EASE }}
+        >
+          {stations.map((station, i) => (
+            <div key={station.id} className="arch-tier" style={{ '--arch-accent': station.accent }}>
+              <span className="arch-tier-field" />
 
-            {stations.map((station, i) => (
-              <li
-                key={station.id}
-                className={`arch-station ${reduce ? 'arch-station-still' : ''}`}
-                style={{ '--arch-accent': station.accent, '--arch-delay': `${i * 1.6}s` }}
-              >
-                <span aria-hidden="true" className="arch-station-dot">{station.step}</span>
+              <span className="arch-tier-name">{station.label}</span>
 
-                <div className="min-w-0">
-                  <p className="text-[15px] font-bold tracking-[-0.2px] text-ignitho-text md:text-base">{station.label}</p>
-                  <p className="mt-1 text-[13px] leading-snug text-ignitho-muted">{station.caption}</p>
+              <div className="arch-tier-marks">
+                {station.marks.map((mark, m) => (
+                  <span key={mark.name} style={{ '--m': m }}>
+                    <Mark node={mark} size={22} />
+                  </span>
+                ))}
+              </div>
+            </div>
+          ))}
 
-                  <ul className="mt-3 flex flex-wrap gap-1.5">
-                    {station.marks.map((mark) => (
-                      <li key={mark.name} className="arch-pill">
-                        <Mark node={mark} size={15} />
-                        <span>{mark.name}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </li>
-            ))}
-          </ol>
-
-          <div className="arch-map-foot">
-            <span className="text-[10.5px] font-bold uppercase tracking-[0.18em] text-[#5B16C4]/60">{lifecycle.label}</span>
-            {lifecycle.nodes.map((node) => (
-              <span key={node.name} className="flex items-center gap-1.5 text-[11.5px] font-semibold text-[#16063A]/75">
-                <Mark node={node} size={13} />
-                {node.name}
+          <span className="arch-scene-runs">
+            {lifecycle.nodes.map((node, m) => (
+              <span key={node.name} style={{ '--m': m }}>
+                <Mark node={node} size={15} />
               </span>
             ))}
-          </div>
+          </span>
         </motion.div>
       </div>
     </section>

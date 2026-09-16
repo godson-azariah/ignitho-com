@@ -1,13 +1,13 @@
-/* The Ignitho AI architecture, reduced to the four stations a request passes
-   through. This is the glance version - the point is the path, not the parts
-   list, so each station names only the two or three marks that make it
-   recognisable.
+/* The Ignitho AI architecture as the deck's three tiers: ingress, the
+   Kubernetes platform, then the data and model tier. This is the glance
+   version - the point is the shape, not the parts list, so a tier names what it
+   is and lets its marks say what it is built from.
 
    `brand` names an SVG in /images/arch (Simple Icons) drawn in `color`;
    `lucide` falls back to a glyph where a component has no brand mark. */
 
 export const ARCHITECTURE = {
-  heading: 'The Trust Architecture behind FRIEND Agents',
+  heading: 'Trust Architecture behind FRIEND Agentic Suites',
 
   lead: [
     'Every FRIEND request travels the same governed path. It enters through an authenticated, filtered edge, identifiers are stripped before anything reaches a model, and the work runs as a deterministic graph rather than a loose chain of prompts.',
@@ -16,53 +16,48 @@ export const ARCHITECTURE = {
 
   badges: ['SOC 2 Type II', 'ISO 27001', 'HIPAA', 'Zero-Trust Mesh', 'mTLS 1.3'],
 
-  /* the map: four stations, top to bottom, in the order a request meets them */
+  /* The deck's three tiers. Each carries its marks and one short line - the
+     deck spells every component out because it is a slide being talked over;
+     here the icons do that work, so only what a tier is gets written down. */
   stations: [
     {
-      id: 'people',
+      id: 'ingress',
       step: '01',
-      label: 'People & Apps',
-      caption: 'Business users and engineers, in one governed workspace',
+      label: 'Stakeholders & Ingress',
+      caption: 'SSO, WAF and rate limiting at the edge',
       accent: '#2F7BD8',
       marks: [
-        { lucide: 'users', color: '#2F7BD8', name: 'Business Users' },
-        { brand: 'nextdotjs', color: '#16063A', name: 'Next.js' },
+        { lucide: 'users', color: '#2F7BD8', name: 'Business Users & Engineers' },
+        { lucide: 'shield', color: '#FF9900', name: 'Ingress & WAF Gateway' },
+        { brand: 'auth0', color: '#EB5424', name: 'SSO / OAuth2' },
       ],
     },
     {
-      id: 'gate',
+      id: 'platform',
       step: '02',
-      label: 'Governed Entry',
-      caption: 'Authenticated at the edge, identifiers stripped before anything moves',
-      accent: '#FF9900',
-      marks: [
-        { lucide: 'shield', color: '#FF9900', name: 'WAF' },
-        { brand: 'auth0', color: '#EB5424', name: 'SSO' },
-        { lucide: 'eyeOff', color: '#C0392B', name: 'PII Anonymizer' },
-      ],
-    },
-    {
-      id: 'engine',
-      step: '03',
-      label: 'Agent Engine',
-      caption: 'A deterministic graph of agents, screened by the AI firewall',
-      accent: '#5B16C4',
-      marks: [
-        { lucide: 'gitBranch', color: '#5B16C4', name: 'DAG Executor' },
-        { lucide: 'bot', color: '#2F7BD8', name: 'Multi-Agent' },
-        { lucide: 'shieldAlert', color: '#C0392B', name: 'AI Firewall' },
-      ],
-    },
-    {
-      id: 'ground',
-      step: '04',
-      label: 'Models & Your Data',
-      caption: 'The cheapest capable model, answering only from your systems of record',
+      label: 'Kubernetes Orchestration',
+      caption: 'EKS, Helm and Terraform managed',
       accent: '#00A274',
       marks: [
-        { brand: 'amazonwebservices', color: '#FF9900', name: 'Bedrock' },
-        { brand: 'mongodb', color: '#47A248', name: 'MongoDB' },
-        { lucide: 'boxes', color: '#DC244C', name: 'Qdrant' },
+        { brand: 'nextdotjs', color: '#16063A', name: 'Next.js Frontend' },
+        { brand: 'nodedotjs', color: '#5FA04E', name: 'Node.js Middleware' },
+        { brand: 'rabbitmq', color: '#FF6600', name: 'RabbitMQ Event Bus' },
+        { brand: 'fastapi', color: '#009688', name: 'FastAPI Agent & RAG Suite' },
+        { brand: 'vault', color: '#FFB800', name: 'Vault Secrets & Keys' },
+      ],
+    },
+    {
+      id: 'data',
+      step: '03',
+      label: 'Datasets, Storage & Models',
+      caption: 'Encrypted at rest, AES-256',
+      accent: '#5B16C4',
+      marks: [
+        { brand: 'mongodb', color: '#47A248', name: 'MongoDB Cluster' },
+        { brand: 'redis', color: '#FF4438', name: 'Redis Cache' },
+        { lucide: 'boxes', color: '#DC244C', name: 'Qdrant Vector Cluster' },
+        { brand: 'amazons3', color: '#569A31', name: 'Amazon S3' },
+        { brand: 'amazonwebservices', color: '#FF9900', name: 'AWS Bedrock' },
       ],
     },
   ],
@@ -71,7 +66,7 @@ export const ARCHITECTURE = {
     label: 'Runs on',
     nodes: [
       { brand: 'terraform', color: '#844FBA', name: 'Terraform' },
-      { brand: 'kubernetes', color: '#326CE5', name: 'Kubernetes' },
+      { brand: 'helm', color: '#0F1689', name: 'Helm' },
       { brand: 'docker', color: '#2496ED', name: 'Docker' },
       { brand: 'github', color: '#181717', name: 'GitOps' },
     ],

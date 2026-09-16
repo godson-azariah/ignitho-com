@@ -4,7 +4,7 @@ export const HERO = {
   eyebrow: 'The Data & AI Specialists',
   headingLines: ['Your FRIEND in', 'Enterprise Data & AI'],
   body:
-    'Powered by a leadership team from top-tier IT majors and US-headquartered with global footprint, Ignitho is the FRIEND accelerating Data & AI at scale for leading enterprises and Fortune 500 companies through frugal innovation',
+    "Powered by a leadership team from top-tier IT majors and US-headquartered with global footprint, Ignitho's industry-first Frugal Innovation FRIEND framework orchestrates high velocity Data & AI ecosystems for leading enterprises and Fortune 500 companies",
   visual: {
     src: '/images/home/hero-visual.png',
     alt: 'Ignitho Data & AI capability wheel',

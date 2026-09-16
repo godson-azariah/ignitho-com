@@ -13,9 +13,9 @@ import { SUITES } from '@/lib/pages/ai-suites'
 
 /* Where the title breaks, so the wrap does not drift with card width. */
 const TITLE_LINES = {
-  'Data Engineering Agentic Suite': ['Data Engineering', 'Agentic Suite'],
-  'Data Analytics Agentic Suite': ['Data Analytics', 'Agentic Suite'],
-  'Trust & Governance Agentic Suite': ['Trust & Governance', 'Agentic Suite'],
+  'Data Engineering Agentic Suite': ['Data Engineering', 'Agentic AI Suite'],
+  'Data Analytics Agentic Suite': ['Data Analytics', 'Agentic AI Suite'],
+  'Trust & Governance Agentic Suite': ['Trust & Governance', 'Agentic AI Suite'],
 }
 
 export default function FriendSuites() {
