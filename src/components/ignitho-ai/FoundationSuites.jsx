@@ -17,7 +17,7 @@ export default function FoundationSuites({ onOpenSuite }) {
             FRIEND Agentic suites
           </h2>
           <p className="mt-5 text-lg md:text-2xl text-[#7a00c2] leading-relaxed">
-            A connected data pipeline, a trusted and governed data layer, and real-time analytics — the
+            A connected data pipeline, a trusted and governed data layer, and real-time analytics: the
             three foundations that every enterprise must have before AI can deliver results at scale
           </p>
         </div>

@@ -140,7 +140,7 @@ export default function SecuritySection() {
           <span className="block text-[#7a00c2]">Governed at Every Step.</span>
         </h2>
         <p className="mt-5 text-lg md:text-2xl text-[#7a00c2] leading-relaxed">
-          Enterprise AI suites that prioritize security, cost efficiency, and operational continuity —
+          Enterprise AI suites that prioritize security, cost efficiency, and operational continuity,
           without unnecessary infrastructure, licensing, or disruption
         </p>
       </div>
@@ -153,8 +153,11 @@ export default function SecuritySection() {
             key={f.title}
             className="group flex h-full flex-col rounded-[24px] p-6 text-white bg-[linear-gradient(160deg,#16063A_0%,#5B16C4_100%)] shadow-[0_18px_46px_rgba(80,8,208,0.25)] border border-white/10 transition-transform duration-300 ease-out hover:-translate-y-1"
           >
-            <div className="mb-4 flex min-h-[3.5rem] items-start justify-between gap-3 lg:min-h-[4rem]">
-              <h3 className="text-left text-[20px] font-bold leading-[26px] text-white">
+            <div className="mb-4 flex min-h-[3.5rem] items-center justify-between gap-3 max-lg:items-center lg:min-h-[4rem] lg:items-start">
+              <div className="invisible shrink-0 rounded-xl p-2.5 lg:hidden" aria-hidden="true">
+                <f.icon className="h-5 w-5" />
+              </div>
+              <h3 className="text-[20px] font-bold leading-[26px] text-white max-lg:text-center lg:text-left">
                 <span className="block">{line1}</span>
                 <span className="block">{line2}</span>
               </h3>
@@ -162,7 +165,7 @@ export default function SecuritySection() {
                 <f.icon className="h-5 w-5 text-white" />
               </div>
             </div>
-            <p className="mt-2 flex-1 border-t border-white/15 pt-5 text-left text-[18px] leading-[1.65] text-white/[0.82]">{f.desc}</p>
+            <p className="mt-2 flex-1 border-t border-white/15 pt-5 text-[18px] leading-[1.65] text-white/[0.82] max-lg:text-center lg:text-left">{f.desc}</p>
           </div>
           )
         })}
@@ -179,26 +182,39 @@ export default function SecuritySection() {
           sitting inside this page instead of on top of it. */}
       <div className="mt-14 md:mt-16">
         <div className="flex flex-col lg:flex-row lg:items-end">
-          <div className="pb-8 lg:w-[470px] lg:shrink-0 lg:pb-7 lg:pr-10">
+          <div className="pb-8 max-lg:text-center lg:w-[470px] lg:shrink-0 lg:pb-7 lg:pr-10">
             <h3 className="text-[28px] font-bold leading-[1.1] tracking-[-0.6px] text-[#2b2060] md:text-[31px]">
               <span className="block">Enterprise-grade security</span>
               <span className="block text-ignitho-muted/70">in every suite</span>
             </h3>
-            <p className="mt-4 max-w-[44ch] text-[14px] leading-relaxed text-ignitho-muted md:text-[15px]">
-              Governed, auditable and compliant from the first sprint &mdash; built into the architecture, not added after
+            <p className="mt-4 max-w-[44ch] text-[14px] leading-relaxed text-ignitho-muted max-lg:mx-auto md:text-[15px]">
+              Governed, auditable and compliant from the first sprint. Built into the architecture, not added after
             </p>
           </div>
 
-          <div className="grid grid-cols-5 lg:flex-1">
+          <div className="grid grid-cols-5 max-lg:hidden lg:flex-1">
             {COMPLIANCE.map((item) => (
               <div key={item.label} className="flex items-center justify-center px-1 pb-6 lg:px-3">
                 <item.seal />
               </div>
             ))}
           </div>
+
+          {/* Phones read it as five separate marks rather than as a row over a
+              rail, so each one carries its own name and they wrap three up. */}
+          <div className="flex flex-wrap justify-center gap-x-6 gap-y-7 border-t border-[#5B16C4]/[0.10] pt-8 lg:hidden">
+            {COMPLIANCE.map((item) => (
+              <div key={item.label} className="flex w-[92px] flex-col items-center gap-2.5 text-center">
+                <item.seal />
+                <span className="text-[12.5px] font-semibold leading-[1.35] text-ignitho-muted">
+                  {item.short}
+                </span>
+              </div>
+            ))}
+          </div>
         </div>
 
-        <div className="flex flex-col border-t border-[#5B16C4]/[0.10] lg:flex-row lg:items-center">
+        <div className="flex border-t border-[#5B16C4]/[0.10] max-lg:hidden lg:flex-row lg:items-center">
           <div className="flex items-center gap-2 py-4 lg:w-[470px] lg:shrink-0 lg:pr-10">
             <Globe className="h-[15px] w-[15px] text-ignitho-muted" strokeWidth={1.7} aria-hidden="true" />
             <span className="text-[13.5px] font-semibold text-ignitho-muted">Governed at every step</span>
@@ -213,6 +229,11 @@ export default function SecuritySection() {
               </div>
             ))}
           </div>
+        </div>
+
+        <div className="mt-8 flex items-center justify-center gap-2 border-t border-[#5B16C4]/[0.10] pt-4 lg:hidden">
+          <Globe className="h-[15px] w-[15px] text-ignitho-muted" strokeWidth={1.7} aria-hidden="true" />
+          <span className="text-[13px] font-semibold text-ignitho-muted">Governed at every step</span>
         </div>
       </div>
 

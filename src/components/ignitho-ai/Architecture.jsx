@@ -61,7 +61,7 @@ export default function Architecture() {
       <div className="mx-auto grid max-w-[1320px] items-stretch gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.02fr)] lg:gap-16">
         <div className="flex flex-col justify-center">
           <motion.h2
-            className="text-3xl font-bold leading-[1.15] tracking-[-0.5px] text-ignitho-text sm:text-4xl md:text-[42px] lg:text-[46px]"
+            className="text-3xl font-bold leading-[1.15] tracking-[-0.5px] text-ignitho-text max-lg:text-center sm:text-4xl md:text-[42px] lg:text-[46px]"
             {...rise()}
           >
             Trust Architecture behind{' '}
@@ -71,7 +71,7 @@ export default function Architecture() {
           {lead.map((para, i) => (
             <motion.p
               key={para.slice(0, 24)}
-              className="mt-6 max-w-[54ch] text-[17px] leading-relaxed text-ignitho-muted md:text-[19px] lg:text-[20px]"
+              className="mt-6 max-w-[54ch] text-[17px] leading-relaxed text-ignitho-muted max-lg:text-center md:text-[19px] lg:text-[20px]"
               {...rise(0.08 + i * 0.08)}
             >
               {para}

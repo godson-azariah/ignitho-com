@@ -12,7 +12,7 @@ export const ARCHITECTURE = {
 
   lead: [
     'Every FRIEND request travels the same governed path. It enters through an authenticated, filtered edge, identifiers are stripped before anything reaches a model, and the work runs as a deterministic graph rather than a loose chain of prompts.',
-    'Answers are grounded in your own systems of record and written to an audit trail on the way back — so what you get is traceable, not just plausible.',
+    'Answers are grounded in your own systems of record and written to an audit trail on the way back, so what you get is traceable, not just plausible.',
   ],
 
 
