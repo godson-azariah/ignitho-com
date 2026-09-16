@@ -144,7 +144,7 @@ export default function Navbar() {
         <div className="flex items-center gap-2 desktop:w-1/3 desktop:justify-end">
           <a
             href={CONTACT_LINK.href}
-            className="inline-flex items-center rounded-full bg-[#00A274] border border-[#00BC6A] text-[#f9f6fe] text-sm font-medium px-[15px] py-[15px] leading-none transition-colors hover:bg-[#0C8C74B5] hover:border-[#0C8C74] hover:text-white"
+            className="hidden desktop:inline-flex items-center rounded-full bg-[#00A274] border border-[#00BC6A] text-[#f9f6fe] text-sm font-medium px-[15px] py-[15px] leading-none transition-colors hover:bg-[#0C8C74B5] hover:border-[#0C8C74] hover:text-white"
           >
             {CONTACT_LINK.label}
           </a>
@@ -323,6 +323,15 @@ export default function Navbar() {
                       {item.label}
                     </a>
                   ))}
+
+                  {/* the bar's call to action, which below desktop lives in here */}
+                  <a
+                    href={CONTACT_LINK.href}
+                    onClick={closeMenu}
+                    className="block py-4 text-center text-2xl font-bold text-black transition-colors duration-200 hover:text-[#00A274]"
+                  >
+                    {CONTACT_LINK.label}
+                  </a>
                 </div>
               </div>
             </motion.nav>
