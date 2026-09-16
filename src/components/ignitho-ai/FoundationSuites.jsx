@@ -10,7 +10,7 @@ export default function FoundationSuites({ onOpenSuite }) {
   const foundations = SUITES.filter((suite) => suite.type === 'foundation')
 
   return (
-    <section id="suites-catalog" className="bg-ignitho-light-grid py-16 md:py-20">
+    <section id="suites-catalog" className="bg-ignitho-white-grid py-16 md:py-20">
       <div className="mx-auto max-w-[1360px] px-5">
         <div className="mx-auto mb-10 max-w-6xl text-center">
           <h2 className="text-3xl sm:text-4xl md:text-[42px] lg:text-[48px] font-bold text-ignitho-text tracking-[-0.5px] leading-[1.15]">

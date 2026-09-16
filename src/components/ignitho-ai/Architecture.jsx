@@ -47,7 +47,7 @@ function Mark({ node, size = 18 }) {
 }
 
 export default function Architecture() {
-  const { heading, lead, badges, stations, lifecycle } = ARCHITECTURE
+  const { heading, lead, stations, lifecycle } = ARCHITECTURE
   const reduce = useReducedMotion()
   const rise = (delay = 0) => ({
     initial: reduce ? false : { opacity: 0, y: 20 },
@@ -57,71 +57,75 @@ export default function Architecture() {
   })
 
   return (
-    <section className="bg-ignitho-light-grid px-5 py-16 md:py-24">
-      <div className="mx-auto grid max-w-[1320px] items-center gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.02fr)] lg:gap-16">
-        <div>
+    <section className="bg-ignitho-white-grid px-5 py-16 md:py-24">
+      <div className="mx-auto grid max-w-[1320px] items-stretch gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.02fr)] lg:gap-16">
+        <div className="flex flex-col justify-center">
           <motion.h2
             className="text-3xl font-bold leading-[1.15] tracking-[-0.5px] text-ignitho-text sm:text-4xl md:text-[42px] lg:text-[46px]"
             {...rise()}
           >
             Trust Architecture behind{' '}
-            <span className="text-[#7a00c2]">FRIEND Agentic Suites</span>
+            <span className="text-[#7a00c2]">FRIEND Agentic AI Suites</span>
           </motion.h2>
 
           {lead.map((para, i) => (
             <motion.p
               key={para.slice(0, 24)}
-              className="mt-5 max-w-[56ch] text-base leading-relaxed text-ignitho-muted md:text-[17px]"
+              className="mt-6 max-w-[54ch] text-[17px] leading-relaxed text-ignitho-muted md:text-[19px] lg:text-[20px]"
               {...rise(0.08 + i * 0.08)}
             >
               {para}
             </motion.p>
           ))}
 
-          <motion.ul className="mt-7 flex flex-wrap gap-2" {...rise(0.26)}>
-            {badges.map((badge) => (
-              <li
-                key={badge}
-                className="rounded-full border border-[#5B16C4]/20 bg-white/70 px-3 py-1 text-[11.5px] font-semibold text-[#3b2a6e] backdrop-blur-sm"
-              >
-                {badge}
-              </li>
-            ))}
-          </motion.ul>
         </div>
 
-        <motion.div
-          className="arch-scene"
-          aria-hidden="true"
-          initial={reduce ? false : { opacity: 0, filter: 'blur(16px)', scale: 1.02 }}
-          whileInView={{ opacity: 1, filter: 'blur(0px)', scale: 1 }}
-          viewport={{ once: true, margin: '0px 0px -12% 0px' }}
-          transition={{ duration: 1.1, ease: EASE }}
-        >
+        <div className="arch-diagram">
           {stations.map((station, i) => (
-            <div key={station.id} className="arch-tier" style={{ '--arch-accent': station.accent }}>
-              <span className="arch-tier-field" />
-
-              <span className="arch-tier-name">{station.label}</span>
-
-              <div className="arch-tier-marks">
-                {station.marks.map((mark, m) => (
-                  <span key={mark.name} style={{ '--m': m }}>
-                    <Mark node={mark} size={22} />
-                  </span>
-                ))}
+            <motion.div
+              key={station.id}
+              className="arch-lane"
+              style={{ '--arch-accent': station.accent }}
+              initial={reduce ? false : { opacity: 0, filter: 'blur(10px)', y: 14 }}
+              whileInView={{ opacity: 1, filter: 'blur(0px)', y: 0 }}
+              viewport={{ once: true, margin: '0px 0px -12% 0px' }}
+              transition={{ duration: 0.8, delay: 0.1 + i * 0.14, ease: EASE }}
+            >
+              <div className="arch-lane-head">
+                <span className="arch-lane-no">{station.step}</span>
+                <span className="arch-lane-name">{station.label}</span>
               </div>
-            </div>
+
+              <ul className="arch-lane-parts">
+                {station.marks.map((mark) => (
+                  <li key={mark.name} title={mark.name}>
+                    <Mark node={mark} size={20} />
+                    <span>{mark.short ?? mark.name}</span>
+                  </li>
+                ))}
+              </ul>
+
+              {/* the descent between one tier and the next */}
+              {i < stations.length - 1 ? <span className="arch-link" aria-hidden="true" /> : null}
+            </motion.div>
           ))}
 
-          <span className="arch-scene-runs">
-            {lifecycle.nodes.map((node, m) => (
-              <span key={node.name} style={{ '--m': m }}>
-                <Mark node={node} size={15} />
+          <motion.div
+            className="arch-runs"
+            initial={reduce ? false : { opacity: 0, filter: 'blur(10px)' }}
+            whileInView={{ opacity: 1, filter: 'blur(0px)' }}
+            viewport={{ once: true, margin: '0px 0px -12% 0px' }}
+            transition={{ duration: 0.8, delay: 0.52, ease: EASE }}
+          >
+            <span className="arch-runs-label">{lifecycle.label}</span>
+            {lifecycle.nodes.map((node) => (
+              <span key={node.name} className="arch-runs-node" title={node.name}>
+                <Mark node={node} size={14} />
+                {node.name}
               </span>
             ))}
-          </span>
-        </motion.div>
+          </motion.div>
+        </div>
       </div>
     </section>
   )

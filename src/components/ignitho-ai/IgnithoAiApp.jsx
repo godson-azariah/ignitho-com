@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import Hero from "./Hero";
+import OneFriend from "./OneFriend";
 import Pillars from "./Pillars";
 import FoundationSuites from "./FoundationSuites";
 import Architecture from "./Architecture";
@@ -82,12 +83,16 @@ export default function IgnithoAiApp() {
       ) : (
         <>
           <Hero />
+          {/* hero, then tinted / white alternating all the way to the CTA */}
+          <div className="bg-ignitho-light-grid">
+            <OneFriend />
+          </div>
           <FoundationSuites onOpenSuite={setActiveSuiteId} />
-          <div className="bg-ignitho-white-grid">
+          <div className="bg-ignitho-light-grid">
             <Pillars />
           </div>
           <Architecture />
-          <div className="bg-ignitho-white-grid">
+          <div className="bg-ignitho-light-grid">
             <SecuritySection />
           </div>
           <CtaBanner />

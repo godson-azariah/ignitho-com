@@ -1,6 +1,6 @@
 "use client";
 
-import { Lock, Route, Plug, Activity, ShieldCheck, HeartPulse, Fingerprint, Workflow } from 'lucide-react'
+import { Lock, Route, Plug, Activity, Globe } from 'lucide-react'
 import { splitHeading } from './splitHeading'
 
 const FEATURES = [
@@ -30,12 +30,105 @@ const FEATURES = [
   },
 ]
 
+/* The marks, drawn rather than iconed.
+
+   Every one is struck on the same disc, at the same size, in the same ink, with
+   its detail knocked out in white - the way a set of certifications is issued.
+   Five different silhouettes at five different widths is what made the row read
+   as scattered odds and ends; one repeated shape makes it a set.
+
+   Solid, never part-opaque: this band carries a dotted grid, and artwork drawn
+   in hairlines over a texture reads as part of the texture. */
+const INK = '#4318c9'
+const SEAL = 'h-[60px] w-[60px]'
+const R = 30 // every disc, same radius
+
+/* one point of the EU ring - twelve of them make the GDPR wreath */
+function starPath(cx, cy, r) {
+  const pts = []
+  for (let i = 0; i < 10; i += 1) {
+    const rad = i % 2 ? r * 0.42 : r
+    const a = (Math.PI / 5) * i - Math.PI / 2
+    pts.push(`${(cx + rad * Math.cos(a)).toFixed(2)},${(cy + rad * Math.sin(a)).toFixed(2)}`)
+  }
+  return `M${pts.join('L')}Z`
+}
+
+const EU_STARS = Array.from({ length: 12 }, (_, i) => {
+  const a = (Math.PI / 6) * i - Math.PI / 2
+  return starPath(30 + 23 * Math.cos(a), 30 + 23 * Math.sin(a), 2.6)
+})
+
+/* the disc itself, plus whatever is struck into it */
+function Disc({ children }) {
+  return (
+    <svg viewBox="0 0 60 60" className={SEAL} fill="none" aria-hidden="true">
+      <circle cx="30" cy="30" r={R} fill={INK} />
+      {children}
+    </svg>
+  )
+}
+
+function SealIso() {
+  return (
+    <Disc>
+      <path d="M24.4 20.6 27.6 23.6 33.8 17.6" stroke="#fff" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+      <text x="30" y="34" textAnchor="middle" fill="#fff" fontSize="9" letterSpacing="1" opacity="0.8">ISO</text>
+      <text x="30" y="46" textAnchor="middle" fill="#fff" fontSize="13" fontWeight="700" letterSpacing="-0.2">27001</text>
+    </Disc>
+  )
+}
+
+function SealSoc2() {
+  return (
+    <Disc>
+      <text x="30" y="26" textAnchor="middle" fill="#fff" fontSize="8" letterSpacing="1.1" opacity="0.8">AICPA</text>
+      <text x="30" y="40" textAnchor="middle" fill="#fff" fontSize="13.5" fontWeight="700" letterSpacing="-0.2">SOC 2</text>
+    </Disc>
+  )
+}
+
+function SealHipaa() {
+  return (
+    <Disc>
+      <path d="M30 14.5 39 17.6v6.9c0 5.3-3.6 9.2-9 11.1-5.4-1.9-9-5.8-9-11.1v-6.9l9-3.1Z" fill="#fff" />
+      <path d="M30 20v10M25.6 25h8.8" stroke={INK} strokeWidth="2" strokeLinecap="round" />
+      <text x="30" y="47" textAnchor="middle" fill="#fff" fontSize="11.5" fontWeight="700" letterSpacing="-0.1">HIPAA</text>
+    </Disc>
+  )
+}
+
+function SealGdpr() {
+  return (
+    <Disc>
+      {EU_STARS.map((d) => (
+        <path key={d} d={d} fill="#fff" />
+      ))}
+      <text x="30" y="35" textAnchor="middle" fill="#fff" fontSize="12.5" fontWeight="700" letterSpacing="-0.2">GDPR</text>
+    </Disc>
+  )
+}
+
+function SealDag() {
+  return (
+    <Disc>
+      <path d="M30 22v5m0 0-8 5m8-5 8 5" stroke="#fff" strokeWidth="2.2" strokeLinecap="round" />
+      <circle cx="30" cy="19.5" r="4.4" fill="#fff" />
+      <circle cx="21" cy="35.5" r="4.4" fill="#fff" />
+      <circle cx="39" cy="35.5" r="4.4" fill="#fff" />
+      <text x="30" y="49" textAnchor="middle" fill="#fff" fontSize="7.5" letterSpacing="0.8" opacity="0.8">DAG</text>
+    </Disc>
+  )
+}
+
+/* `short` is the name as the rail sets it - short enough to hold one line under
+   its own seal. */
 const COMPLIANCE = [
-  { icon: ShieldCheck, label: 'ISO 27001 Certified' },
-  { icon: Lock, label: 'SOC 2 Type II' },
-  { icon: HeartPulse, label: 'HIPAA Compliant' },
-  { icon: Fingerprint, label: 'GDPR Ready' },
-  { icon: Workflow, label: 'Governed DAG Architecture' },
+  { label: 'ISO 27001 Certified', short: 'ISO 27001', seal: SealIso },
+  { label: 'SOC 2 Type II', short: 'SOC 2 Type II', seal: SealSoc2 },
+  { label: 'HIPAA Compliant', short: 'HIPAA', seal: SealHipaa },
+  { label: 'GDPR Ready', short: 'GDPR', seal: SealGdpr },
+  { label: 'Governed DAG Architecture', short: 'Governed DAG', seal: SealDag },
 ]
 
 export default function SecuritySection() {
@@ -60,41 +153,69 @@ export default function SecuritySection() {
             key={f.title}
             className="group flex h-full flex-col rounded-[24px] p-6 text-white bg-[linear-gradient(160deg,#16063A_0%,#5B16C4_100%)] shadow-[0_18px_46px_rgba(80,8,208,0.25)] border border-white/10 transition-transform duration-300 ease-out hover:-translate-y-1"
           >
-            <div className="mb-4 grid grid-cols-[auto_1fr_auto] items-center gap-1.5 min-h-[4.5rem] lg:min-h-[5.75rem]">
-              <div className="shrink-0 p-1.5 bg-white/10 border border-white/15 rounded-xl transition-transform duration-300 ease-out group-hover:scale-[1.08] group-hover:rotate-6">
-                <f.icon className="w-4 h-4 text-white" />
-              </div>
-              <h3 className="text-center text-xl font-bold text-white lg:text-2xl">
+            <div className="mb-4 flex min-h-[3.5rem] items-start justify-between gap-3 lg:min-h-[4rem]">
+              <h3 className="text-left text-[20px] font-bold leading-[26px] text-white">
                 <span className="block">{line1}</span>
                 <span className="block">{line2}</span>
               </h3>
-              <div className="invisible shrink-0 p-1.5" aria-hidden="true">
-                <f.icon className="w-4 h-4" />
+              <div className="shrink-0 rounded-xl border border-white/15 bg-white/10 p-2.5 transition-transform duration-300 ease-out group-hover:scale-[1.08] group-hover:rotate-6">
+                <f.icon className="h-5 w-5 text-white" />
               </div>
             </div>
-            <p className="text-base text-white/90 mt-2 pt-5 border-t border-white/15 leading-relaxed flex-1 text-center">{f.desc}</p>
+            <p className="mt-2 flex-1 border-t border-white/15 pt-5 text-left text-[18px] leading-[1.65] text-white/[0.82]">{f.desc}</p>
           </div>
           )
         })}
       </div>
 
-      <div className="mt-10 md:mt-12">
-        <p className="mb-5 md:mb-6 text-center text-sm font-bold text-ignitho-muted">
-          Security &amp; Compliance
-        </p>
-        <div className="flex flex-wrap items-start justify-center gap-x-2 gap-y-6 md:gap-x-8 md:gap-y-7">
-          {COMPLIANCE.map((item) => (
-            <div key={item.label} className="flex w-[170px] md:w-[232px] flex-col items-center gap-2 md:gap-3">
-              <span className="flex h-9 w-9 md:h-11 md:w-11 items-center justify-center rounded-full border-2 border-[#5B16C4]/20 bg-violet-50 text-[#5B16C4]">
-                <item.icon className="h-4 w-4 md:h-5 md:w-5" strokeWidth={1.6} />
-              </span>
-              <span className="whitespace-nowrap text-center text-[13px] md:text-lg font-bold leading-snug text-ignitho-text">
-                {item.label}
-              </span>
-            </div>
-          ))}
+      {/* The credentials rail.
+
+          Not a feature row - it is the small print that makes the cards above
+          it believable, so it is set the way certification strips are set: flat
+          on the page with no card around it, the marks drawn as monochrome
+          seals rather than as outline icons, each sitting over its own name,
+          with one hairline under the lot. The names are in the site's own face
+          rather than a mono spec-sheet one, which is what keeps the rail
+          sitting inside this page instead of on top of it. */}
+      <div className="mt-14 md:mt-16">
+        <div className="flex flex-col lg:flex-row lg:items-end">
+          <div className="pb-8 lg:w-[470px] lg:shrink-0 lg:pb-7 lg:pr-10">
+            <h3 className="text-[28px] font-bold leading-[1.1] tracking-[-0.6px] text-[#2b2060] md:text-[31px]">
+              <span className="block">Enterprise-grade security</span>
+              <span className="block text-ignitho-muted/70">in every suite</span>
+            </h3>
+            <p className="mt-4 max-w-[44ch] text-[14px] leading-relaxed text-ignitho-muted md:text-[15px]">
+              Governed, auditable and compliant from the first sprint &mdash; built into the architecture, not added after
+            </p>
+          </div>
+
+          <div className="grid grid-cols-5 lg:flex-1">
+            {COMPLIANCE.map((item) => (
+              <div key={item.label} className="flex items-center justify-center px-1 pb-6 lg:px-3">
+                <item.seal />
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="flex flex-col border-t border-[#5B16C4]/[0.10] lg:flex-row lg:items-center">
+          <div className="flex items-center gap-2 py-4 lg:w-[470px] lg:shrink-0 lg:pr-10">
+            <Globe className="h-[15px] w-[15px] text-ignitho-muted" strokeWidth={1.7} aria-hidden="true" />
+            <span className="text-[13.5px] font-semibold text-ignitho-muted">Governed at every step</span>
+          </div>
+
+          <div className="grid grid-cols-5 py-4 lg:flex-1 lg:border-t-0">
+            {COMPLIANCE.map((item) => (
+              <div key={item.label} className="px-1 text-center">
+                <span className="text-[12px] font-semibold leading-[1.4] text-ignitho-muted md:text-[13.5px]">
+                  {item.short}
+                </span>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
+
     </section>
   )
 }
