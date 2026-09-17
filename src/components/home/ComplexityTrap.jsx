@@ -44,11 +44,11 @@ const ICONS = [
 function CardIcon({ index, className = "" }) {
   return (
     <span
-      className={`h-[34px] w-[34px] shrink-0 items-center justify-center rounded-[10px] bg-accent sm:h-[30px] sm:w-[30px] sm:rounded-[9px] lg:h-[46px] lg:w-[46px] lg:rounded-[13px] ${className}`}
+      className={`h-[34px] w-[34px] shrink-0 items-center justify-center rounded-[10px] bg-accent sm:h-[30px] sm:w-[30px] sm:rounded-[9px] lg:h-[36px] lg:w-[36px] lg:rounded-[11px] ${className}`}
     >
       <svg
         viewBox="0 0 24 24"
-        className="h-[18px] w-[18px] sm:h-[16px] sm:w-[16px] lg:h-[22px] lg:w-[22px]"
+        className="h-[18px] w-[18px] sm:h-[16px] sm:w-[16px] lg:h-[18px] lg:w-[18px]"
         fill="none"
         stroke="#fff"
         strokeWidth="2"
@@ -106,7 +106,10 @@ export default function ComplexityTrap() {
             {/* Two fixed 300px tracks needed 640px of room, which a 640px
                 viewport does not have once the 20px gutters are taken. Flexible
                 tracks below the desktop column, the measured 300px above it. */}
-            <ul className="mt-[26px] grid gap-x-[40px] gap-y-[34px] sm:grid-cols-2 sm:gap-y-[34px] sm:px-0 lg:mt-[50px] lg:gap-y-[40px] xl:grid-cols-2">
+            {/* The four pillars in one panel. They are rows inside it, not four
+                separate cards - one box, so the group reads as a set. */}
+            <div className="mt-[26px] rounded-[22px] border border-[#7A00C2]/[0.09] bg-white/55 px-[18px] py-[20px] shadow-[0_0_30px_18px_rgba(248,245,254,0.92),0_22px_48px_-26px_rgba(74,18,184,0.20)] sm:px-[26px] sm:py-[24px] lg:mt-[46px]">
+            <ul className="grid gap-x-[30px] gap-y-[24px] sm:grid-cols-2 sm:gap-y-[34px] sm:px-0 lg:gap-y-[40px] xl:grid-cols-2">
               {/* One shape at every width: the icon tile holds its own column
                   and the heading and body range left beside it, so the tiles
                   line up as a rail down the list. Only the type sizes, the
@@ -115,26 +118,28 @@ export default function ComplexityTrap() {
                   The forced two-line headings are for the narrow desktop
                   columns, so they only take effect from that breakpoint. */}
               {COMPLEXITY.items.map((item, i) => (
-                <li
-                  key={item.title}
-                  className="grid grid-cols-[auto_minmax(0,1fr)] items-start gap-x-[13px] text-left sm:gap-x-[14px] lg:gap-x-[25px]"
-                >
-                  <CardIcon index={i} className="flex shrink-0" />
+                <li key={item.title} className="flex flex-col text-left">
+                  {/* the tile sits immediately after the heading rather than
+                      out at the column edge, so it reads as part of the point */}
+                  <div className="flex items-start justify-between gap-[12px] sm:justify-start sm:gap-[12px]">
+                    <h3 className="text-[18px] font-bold leading-[26px] text-black text-pretty sm:min-w-[178px] sm:text-[20px] sm:leading-[30px] lg:min-h-[52px] lg:leading-[26px]">
+                      {(item.titleLines ?? [item.title]).map((line) => (
+                        <span key={line} className="block">
+                          {line}{' '}
+                        </span>
+                      ))}
+                    </h3>
 
-                  <h3 className="mt-[3px] text-[18px] font-bold leading-[26px] text-black text-pretty sm:mt-0 sm:text-[20px] sm:leading-[30px] lg:min-h-[52px] lg:leading-[26px]">
-                    {(item.titleLines ?? [item.title]).map((line) => (
-                      <span key={line} className="sm:block">
-                        {line}{' '}
-                      </span>
-                    ))}
-                  </h3>
+                    <CardIcon index={i} className="mt-[9px] flex shrink-0 sm:mt-[15px] lg:mt-[8px]" />
+                  </div>
 
-                  <p className="col-start-2 mt-[6px] text-[15.5px] leading-[26px] text-muted text-pretty sm:pb-[7px] sm:text-[20px] sm:leading-[30px] lg:mt-[5px] lg:leading-[30px]">
+                  <p className="mt-[6px] max-w-[335px] text-[15.5px] leading-[26px] text-muted text-pretty sm:pb-[7px] sm:text-[20px] sm:leading-[30px] lg:mt-[5px] lg:leading-[30px]">
                     {item.body}
                   </p>
                 </li>
               ))}
             </ul>
+            </div>
           </div>
 
           {/* From lg the image fills the column: top edge on the heading, bottom
