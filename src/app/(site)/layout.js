@@ -1,6 +1,7 @@
 import SiteHeader from "@/components/layout/SiteHeader";
 import Footer from "@/components/layout/Footer";
 import BackToTop from "@/components/layout/BackToTop";
+import ScrollMemory from "@/components/layout/ScrollMemory";
 // Chatbot is parked, not retired - see the note above BackToTop below.
 // import Chatbot from "@/components/ignitho-ai/Chatbot";
 
@@ -32,6 +33,8 @@ export default function SiteLayout({ children }) {
           The chatbot used to sit in this slot and may come back to it - its
           component is left intact, only unmounted. */}
       <BackToTop />
+      {/* keeps your place across a reload - sessionStorage, no cookie */}
+      <ScrollMemory />
     </>
   );
 }

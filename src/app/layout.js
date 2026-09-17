@@ -61,6 +61,16 @@ export const metadata = {
 */
 const RESTORE_ANNOUNCEMENT_STATE = `try{if(sessionStorage.getItem('ignitho:announcement-dismissed')==='1'){document.documentElement.classList.add('announcement-dismissed')}}catch(e){}`;
 
+/*
+  Reload only. Reads the stored position before the document has a scrollbar,
+  because the browser's own restore fires a scroll event the moment it lands -
+  and that event would overwrite the very value we are trying to read. Taking
+  scrollRestoration off "auto" for this one case also stops the browser landing
+  short on a page that has not finished growing; ScrollMemory does it properly
+  once the height settles. Any other navigation is left completely alone.
+*/
+const CAPTURE_SCROLL = `try{var n=(performance.getEntriesByType('navigation')[0]||{}).type;if(n==='reload'){history.scrollRestoration='manual';var v=sessionStorage.getItem('ignitho:scroll:'+location.pathname);window.__ignithoScroll=v?parseInt(v,10):0}}catch(e){}`;
+
 export default function RootLayout({ children }) {
   return (
     // data-scroll-behavior opts out of smooth scrolling during route
@@ -72,6 +82,7 @@ export default function RootLayout({ children }) {
     >
       <body className="font-sans antialiased">
         <script dangerouslySetInnerHTML={{ __html: RESTORE_ANNOUNCEMENT_STATE }} />
+        <script dangerouslySetInnerHTML={{ __html: CAPTURE_SCROLL }} />
         {children}
       </body>
     </html>

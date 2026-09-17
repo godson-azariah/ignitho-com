@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import Hero from "./Hero";
 import OneFriend from "./OneFriend";
 import Pillars from "./Pillars";
@@ -33,7 +33,14 @@ export default function IgnithoAiApp() {
   const [simAccelerator, setSimAccelerator] = useState(null);
   const [simStep, setSimStep] = useState(0);
 
+  /* Swapping view scrolls back to the top - but only when the view actually
+     changes. Counting renders is not enough: React remounts effects in dev, and
+     a reload would then restore the visitor to their place and immediately
+     throw it away. See ScrollMemory in the site layout. */
+  const shown = useRef({ page, activeSuiteId });
   useEffect(() => {
+    if (shown.current.page === page && shown.current.activeSuiteId === activeSuiteId) return;
+    shown.current = { page, activeSuiteId };
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
   }, [activeSuiteId, page]);
 
