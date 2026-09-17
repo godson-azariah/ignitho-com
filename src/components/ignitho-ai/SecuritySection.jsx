@@ -181,15 +181,20 @@ export default function SecuritySection() {
           rather than a mono spec-sheet one, which is what keeps the rail
           sitting inside this page instead of on top of it. */}
       <div className="mt-14 md:mt-16">
-        <div className="flex flex-col lg:flex-row lg:items-end">
-          <div className="pb-8 max-lg:text-center lg:w-[470px] lg:shrink-0 lg:pb-7 lg:pr-10">
-            <h3 className="text-[28px] font-bold leading-[1.1] tracking-[-0.6px] text-[#2b2060] md:text-[31px]">
-              <span className="block">Enterprise-grade security</span>
-              <span className="block text-ignitho-muted/70">in every suite</span>
+        <div className="flex flex-col lg:flex-row lg:items-center">
+          {/* Sized to the seals, not to itself: an eyebrow over one line comes to
+              about 44px, which centres cleanly against a 60px disc. The band
+              already carries the big statement at the top, so this only has to
+              name what the row is. */}
+          <div className="pb-8 max-lg:text-center lg:w-[470px] lg:shrink-0 lg:pb-6 lg:pr-10">
+            <h3>
+              <span className="block text-[11px] font-bold uppercase tracking-[0.18em] text-[#7a00c2]/55">
+                Certifications
+              </span>
+              <span className="mt-[6px] block text-[17px] font-bold leading-[1.3] tracking-[-0.2px] text-[#2b2060] md:text-[18px]">
+                Every suite ships under the same controls
+              </span>
             </h3>
-            <p className="mt-4 max-w-[44ch] text-[14px] leading-relaxed text-ignitho-muted max-lg:mx-auto md:text-[15px]">
-              Governed, auditable and compliant from the first sprint. Built into the architecture, not added after
-            </p>
           </div>
 
           <div className="grid grid-cols-5 max-lg:hidden lg:flex-1">
