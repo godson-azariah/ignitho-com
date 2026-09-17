@@ -30,7 +30,7 @@ export default function FrugalInnovation() {
         <div className="frug-sun-anchor" aria-hidden="true">
           <div className="frug-art">
             <Image
-              src="/images/2nd-section-background.png"
+              src="/images/new-second-section-background.png"
               alt=""
               fill
               sizes="(max-width: 767px) 190vw, (max-width: 1024px) 130vw, 100vw"

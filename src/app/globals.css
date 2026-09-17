@@ -602,34 +602,36 @@ body {
   margin-top: -20px;
 }
 
-/* The sun sits at 70.2% of the artwork's height - measured by warmth, since the
-   scene is violet and the sun is the only warm thing in it; ranking by
-   brightness finds the pale sky instead. The artwork is 2.92:1, so from its own
-   top edge the sun is always 0.702 / 2.92 = 0.2404 of its width down.
-   Offsetting the picture up by that much, less the gap wanted, lands the sun
-   just below the line whatever the viewport does.
+/* The artwork carries its own FRIEND, and that word is what the picture is
+   hung off: its middle sits at 50.1% of the artwork's height, so from the top
+   edge it is always 0.501 / 2.92 = 0.1716 of the picture's width down. Pull the
+   picture up by that much, then down again by half the lockup, and the word
+   lands behind the line that spells it out. Anchoring by the sun instead put
+   the word up behind the heading, which is what made the band read as two
+   pictures fighting.
 
    The file is far wider than the band wants to be, so below desktop it is drawn
    wider than the viewport - at 2.92:1 a viewport-width render is a strip a few
    dozen pixels tall while the copy on it stays the same height. */
 .frug-art {
   --art-width: 100vw;
-  --sun-gap: clamp(2px, 0.6vw, 12px);
-  /* raises the picture on its own - nothing else in the band moves with it */
-  --art-lift: clamp(44px, 5.2vw, 96px);
+  /* the lockup's own half-height, so the word centres on the line rather than
+     sitting under it */
+  --lock-rise: clamp(34px, 3.6vw, 62px);
 
   position: absolute;
-  top: calc(var(--sun-gap) - var(--art-lift) - var(--art-width) * 0.2404);
+  top: calc(0px - var(--art-width) * 0.1716 - var(--lock-rise));
   left: 50%;
   z-index: -1;
   width: var(--art-width);
   aspect-ratio: 2143 / 734;
   transform: translateX(-50%);
   pointer-events: none;
-  /* both ends fade, so the picture dissolves into the band rather than being
-     cut off above the heading and below the cards */
-  -webkit-mask-image: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.55) 12%, #000 26%, #000 74%, transparent 100%);
-  mask-image: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.55) 12%, #000 26%, #000 74%, transparent 100%);
+  /* Both ends dissolve into the band. The top fade is the longer of the two:
+     it has to carry the sky down from the section's edge, where the picture is
+     at full strength, without a seam. */
+  -webkit-mask-image: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.4) 16%, #000 34%, #000 72%, rgba(0, 0, 0, 0.45) 88%, transparent 100%);
+  mask-image: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.4) 16%, #000 34%, #000 72%, rgba(0, 0, 0, 0.45) 88%, transparent 100%);
 }
 
 @media (max-width: 1024px) {
@@ -651,10 +653,10 @@ body {
   inset: 0;
   background: linear-gradient(
     180deg,
-    rgba(255, 255, 255, 0.5) 0%,
-    rgba(255, 255, 255, 0.4) 34%,
-    rgba(255, 255, 255, 0.48) 72%,
-    rgba(255, 255, 255, 0.6) 100%
+    rgba(255, 255, 255, 0.72) 0%,
+    rgba(255, 255, 255, 0.64) 34%,
+    rgba(255, 255, 255, 0.68) 72%,
+    rgba(255, 255, 255, 0.78) 100%
   );
 }
 
@@ -736,9 +738,9 @@ body {
   font-weight: 700;
   font-size: 1.32em;
   letter-spacing: -0.02em;
-  /* the deepest tone in the artwork's own hills, so the marked letters read as
-     part of it rather than laid on top */
-  color: #4318c9;
+  /* the site's accent green, the same ink the pillar icons and the FRIEND
+     page's outcome marks are struck in */
+  color: #00a274;
 }
 
 /* The suites under the artwork. Same card as Our Services further down the

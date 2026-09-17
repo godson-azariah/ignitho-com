@@ -28,7 +28,7 @@ export const HERO_BADGES = [
 export const FRUGAL_INNOVATION = {
   title: 'Applying the Frugal Innovation Principle',
   subtitle:
-    'The Art of Doing Better with Less: A methodology co-developed with the University of Cambridge',
+    'The Art of Doing Better with Less: a methodology for enterprise data and AI, co-developed with the University of Cambridge and built into every FRIEND suite',
   friend: {
     /**
      * [highlighted letters, hidden remainder]. Read down the first column the

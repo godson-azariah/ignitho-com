@@ -14,7 +14,7 @@ export default function SectionHeading({ title, subtitle }) {
       </div>
 
       {subtitle ? (
-        <p className="text-center text-[22px] font-normal leading-[30px] text-ignitho-purple-ink text-pretty tablet:text-[18px] desktop:text-[22px]">
+        <p className="mx-auto max-w-[76ch] text-center text-[22px] font-normal leading-[30px] text-ignitho-purple-ink text-balance tablet:text-[18px] desktop:text-[22px]">
           {subtitle}
         </p>
       ) : null}
