@@ -44,11 +44,11 @@ const ICONS = [
 function CardIcon({ index, className = "" }) {
   return (
     <span
-      className={`h-[30px] w-[30px] shrink-0 items-center justify-center rounded-[9px] bg-accent lg:h-[46px] lg:w-[46px] lg:rounded-[13px] ${className}`}
+      className={`h-[34px] w-[34px] shrink-0 items-center justify-center rounded-[10px] bg-accent sm:h-[30px] sm:w-[30px] sm:rounded-[9px] lg:h-[46px] lg:w-[46px] lg:rounded-[13px] ${className}`}
     >
       <svg
         viewBox="0 0 24 24"
-        className="h-[16px] w-[16px] lg:h-[22px] lg:w-[22px]"
+        className="h-[18px] w-[18px] sm:h-[16px] sm:w-[16px] lg:h-[22px] lg:w-[22px]"
         fill="none"
         stroke="#fff"
         strokeWidth="2"
@@ -106,23 +106,22 @@ export default function ComplexityTrap() {
             {/* Two fixed 300px tracks needed 640px of room, which a 640px
                 viewport does not have once the 20px gutters are taken. Flexible
                 tracks below the desktop column, the measured 300px above it. */}
-            <ul className="mt-[26px] grid gap-x-[40px] gap-y-[34px] sm:grid-cols-2 sm:px-0 sm:gap-y-[34px] lg:mt-[50px] lg:gap-y-[40px] xl:grid-cols-2">
-              {/* A grid rather than nested flex, so one set of children can sit
-                  two ways. On a phone the icon rides inline with the heading on
-                  a single centred line and the body runs underneath, centred to
-                  a readable measure. From the two-column breakpoint the icon
-                  moves to its own column beside the copy, which ranges left.
+            <ul className="mt-[26px] grid gap-x-[40px] gap-y-[34px] sm:grid-cols-2 sm:gap-y-[34px] sm:px-0 lg:mt-[50px] lg:gap-y-[40px] xl:grid-cols-2">
+              {/* One shape at every width: the icon tile holds its own column
+                  and the heading and body range left beside it, so the tiles
+                  line up as a rail down the list. Only the type sizes, the
+                  gutter and the forced heading breaks change by breakpoint.
 
                   The forced two-line headings are for the narrow desktop
-                  columns, so they only take effect from that breakpoint too. */}
+                  columns, so they only take effect from that breakpoint. */}
               {COMPLEXITY.items.map((item, i) => (
                 <li
                   key={item.title}
-                  className="grid grid-cols-[auto_auto] items-center justify-center gap-x-[12px] text-center sm:grid-cols-[auto_minmax(0,1fr)] sm:items-start sm:justify-start sm:gap-x-[14px] sm:text-left lg:gap-x-[25px]"
+                  className="grid grid-cols-[auto_minmax(0,1fr)] items-start gap-x-[13px] text-left sm:gap-x-[14px] lg:gap-x-[25px]"
                 >
                   <CardIcon index={i} className="flex shrink-0" />
 
-                  <h3 className="text-[18px] font-bold leading-[26px] text-black sm:text-[20px] sm:leading-[30px] lg:min-h-[52px] lg:leading-[26px]">
+                  <h3 className="mt-[3px] text-[18px] font-bold leading-[26px] text-black text-pretty sm:mt-0 sm:text-[20px] sm:leading-[30px] lg:min-h-[52px] lg:leading-[26px]">
                     {(item.titleLines ?? [item.title]).map((line) => (
                       <span key={line} className="sm:block">
                         {line}{' '}
@@ -130,7 +129,7 @@ export default function ComplexityTrap() {
                     ))}
                   </h3>
 
-                  <p className="col-span-2 mx-auto mt-[9px] max-w-[34ch] text-[15.5px] leading-[26px] text-muted text-pretty sm:col-span-1 sm:col-start-2 sm:mx-0 sm:mt-[6px] sm:max-w-none sm:pb-[7px] sm:text-[20px] sm:leading-[30px] lg:mt-[5px] lg:leading-[30px]">
+                  <p className="col-start-2 mt-[6px] text-[15.5px] leading-[26px] text-muted text-pretty sm:pb-[7px] sm:text-[20px] sm:leading-[30px] lg:mt-[5px] lg:leading-[30px]">
                     {item.body}
                   </p>
                 </li>
