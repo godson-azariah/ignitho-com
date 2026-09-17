@@ -1655,165 +1655,25 @@ h1, h2, h3, h4, h5, h6, p, li, blockquote {
   animation: marquee-scroll 25s linear infinite;
 }
 
-
-
-
-
-
-
-
-
-
 /* ==========================================================================
-   Ignitho AI — architecture diagram
-   A layered architecture read top to bottom: ingress, platform, data. Each
-   tier is a lane - a wash of its own colour rather than a card, so the thing
-   reads as layers without reading as a stack of boxes - and a beam carries the
-   eye from one lane to the next with a light running down it.
+   Ignitho AI — architecture node graph
+   White tier cards staggered down the column and joined by curved connectors.
+   A card is sized by its content, so only its left offset is set here; the
+   connector spans the gap between two offsets and both of its ends share the
+   same 34px inset, which is why nothing needs measuring.
    ========================================================================== */
 
-.arch-diagram {
-  display: flex;
-  height: 100%;
-  flex-direction: column;
-  gap: clamp(26px, 2.6vw, 38px);
+.tnode-slot { width: 100%; }
+
+@media (min-width: 1024px) {
+  .tnode-slot { margin-left: var(--l); width: auto; }
 }
 
-.arch-lane {
-  position: relative;
-  flex: 1;
-  border-radius: 18px;
-  padding: clamp(16px, 1.7vw, 22px) clamp(16px, 1.8vw, 24px);
-  /* a wash, not a panel: no border and no shadow, so the lane sits in the band
-     rather than on top of it */
-  background: linear-gradient(
-    140deg,
-    color-mix(in srgb, var(--arch-accent) 11%, transparent) 0%,
-    color-mix(in srgb, var(--arch-accent) 4%, transparent) 100%
-  );
+.tnode-card {
+  box-shadow: 0 12px 30px -16px rgba(74, 18, 184, 0.25);
 }
 
-.arch-lane-head {
-  display: flex;
-  align-items: baseline;
-  gap: 10px;
-}
-
-.arch-lane-no {
-  font-size: 11px;
-  font-weight: 800;
-  letter-spacing: 0.14em;
-  font-variant-numeric: tabular-nums;
-  color: var(--arch-accent);
-}
-
-.arch-lane-name {
-  font-size: clamp(14px, 1.15vw, 16px);
-  font-weight: 700;
-  letter-spacing: -0.1px;
-  color: var(--color-ignitho-text);
-}
-
-/* every component named, so the tier is legible as architecture rather than as
-   a row of logos */
-.arch-lane-parts {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 10px clamp(14px, 1.5vw, 22px);
-  margin: clamp(12px, 1.3vw, 16px) 0 0;
-  padding: 0;
-  list-style: none;
-}
-
-.arch-lane-parts li {
-  display: flex;
-  align-items: center;
-  gap: 7px;
-  font-size: 12.5px;
-  font-weight: 600;
-  color: rgba(22, 6, 58, 0.78);
-}
-
-/* The descent. It sits in the gap below its lane, so the beams are evenly
-   spaced however tall the lanes grow. */
-.arch-link {
-  position: absolute;
-  top: 100%;
-  left: clamp(22px, 2.2vw, 30px);
-  width: 2px;
-  height: clamp(26px, 2.6vw, 38px);
-  overflow: hidden;
-  border-radius: 2px;
-  background: linear-gradient(
-    180deg,
-    color-mix(in srgb, var(--arch-accent) 45%, transparent) 0%,
-    rgba(91, 22, 196, 0.12) 100%
-  );
-}
-
-/* the light that runs down it - the direction of flow, shown rather than
-   labelled with an arrowhead */
-.arch-link::after {
-  content: "";
-  position: absolute;
-  inset: -40% 0 auto 0;
-  height: 40%;
-  background: linear-gradient(180deg, transparent 0%, var(--arch-accent) 60%, transparent 100%);
-  animation: archDescend 2.8s cubic-bezier(0.55, 0, 0.45, 1) infinite;
-}
-
-.arch-diagram .arch-lane:nth-child(2) .arch-link::after {
-  animation-delay: 0.5s;
-}
-
-@keyframes archDescend {
-  0% {
-    transform: translateY(0);
-    opacity: 0;
-  }
-  22% {
-    opacity: 1;
-  }
-  78% {
-    opacity: 1;
-  }
-  100% {
-    transform: translateY(350%);
-    opacity: 0;
-  }
-}
-
-.arch-runs {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 8px 18px;
-  padding-top: clamp(4px, 0.6vw, 10px);
-}
-
-.arch-runs-label {
-  font-size: 10.5px;
-  font-weight: 800;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: rgba(91, 22, 196, 0.6);
-}
-
-.arch-runs-node {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 11.5px;
-  font-weight: 600;
-  color: rgba(22, 6, 58, 0.72);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .arch-link::after {
-    animation: none;
-    inset: 0;
-    height: 100%;
-    opacity: 0.5;
-  }
+/* the dot at each end of a connector: lit, with a white pin-light in it */
+.tnode-dot {
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.9), 0 0 0 2px rgba(255, 255, 255, 0.7);
 }
