@@ -22,8 +22,8 @@
 
 const C = 300 // centre, both axes
 
-const BAND = { outer: 282, inner: 210 } // the capabilities
-const RING = { outer: 197, inner: 124 } // the pairing
+const BAND = { outer: 288, inner: 172 } // the capabilities
+const RING = { outer: 160, inner: 108 } // the pairing
 const BAND_MID = (BAND.outer + BAND.inner) / 2
 const RING_MID = (RING.outer + RING.inner) / 2
 
@@ -31,6 +31,20 @@ const GAP = 5 // degrees of daylight between segments
 const SPAN = 120 - GAP
 
 const CAP = (size) => size * 0.72 // cap height, near enough for centring
+
+/* Every segment is divided the same way, so none of it is placed by eye and
+   the three cannot drift apart: the label and its line stack radially, each on
+   its own rail, both spanning the whole segment so both are centred on it.
+
+   The two side segments lean inward, so for them the reading order runs from
+   the inner edge outward - which is why each radius comes as a pair. */
+const PAD = 3 // degrees of clearance inside each end of a segment
+
+const R_LABEL = { out: 249, in: 211 }
+const R_DESC = { out: 208, in: 252 }
+
+const pick = (r, outward) => (outward ? r.out : r.in)
+const span = (centre) => [centre - SPAN / 2 + PAD, centre + SPAN / 2 - PAD]
 
 /* A point on the circle: 0 is twelve o'clock, positive is clockwise. */
 function at(r, deg) {
@@ -70,7 +84,7 @@ const oneLine = (r, size, outward) => (outward ? r - CAP(size) / 2 : r + CAP(siz
    Sizing the element to the file's own aspect and backing those offsets out of
    it lands the artwork 190 wide and centred, rather than letting SVG letterbox
    a square box and drop the logo off the plate. */
-const LOGO = { w: 209.8, h: 91.1, x: 194.5, y: 252.1 }
+const LOGO = { w: 168, h: 72.9, x: 216, y: 261.2 }
 
 /* Light from above: every segment runs its own hue lighter at the top and
    deeper at the foot, which is what gives a flat band its form. */
@@ -80,52 +94,33 @@ const CAPABILITIES = [
     centre: 0,
     lit: '#3E8BE0',
     deep: '#235F9E',
-    label: 'Data & AI Expertise',
+    label: 'Data Engineering Agentic Suite',
+    desc: 'Connect siloed enterprise data',
     outward: true, // the top one reads upright, so its letters stand outward
-    glyph: 'store',
-    glyphAt: 47,
   },
   {
     id: 'execution',
     centre: 120,
     lit: '#6B2BD8',
     deep: '#40109E',
-    label: 'AI Enabled Execution',
+    label: 'Data Analytics Agentic Suite',
+    desc: 'Dashboards & predictive models',
     outward: false,
-    glyph: 'bolt',
-    glyphAt: 167,
   },
   {
     id: 'domain',
     centre: -120,
     lit: '#12B287',
     deep: '#00835C',
-    label: 'Domain & Process Experience',
+    label: 'Trust & Governance Agentic Suite',
+    desc: 'One source of truth for decisions',
     outward: false,
-    glyph: 'flow',
-    glyphAt: -73,
   },
 ]
 
 /* Drawn on a 24-unit box centred on the origin, so a glyph can be dropped
    anywhere on the band and turned to match its label. */
 const GLYPHS = {
-  store: (
-    <>
-      <ellipse cx="0" cy="-7" rx="9" ry="3.4" />
-      <path className="line" d="M-9 -7v13c0 1.9 4 3.4 9 3.4s9-1.5 9-3.4V-7" />
-      <path className="line" d="M-9 -0.5c0 1.9 4 3.4 9 3.4s9-1.5 9-3.4" />
-    </>
-  ),
-  bolt: <path d="M2.5-11-6.5 1.5H0l-2.5 9.5L6.5-1.5H0z" />,
-  flow: (
-    <>
-      <circle cx="-8" cy="-6.5" r="3" />
-      <circle cx="8" cy="-6.5" r="3" />
-      <circle cx="0" cy="8" r="3" />
-      <path className="line" d="M-5-6.5h10M-6.5-4 -1.5 5.5M6.5-4 1.5 5.5" />
-    </>
-  ),
   person: (
     <>
       <circle cx="0" cy="-6" r="4.6" />
@@ -147,14 +142,12 @@ const PAIRING = [
 ]
 
 export default function FriendWheel({ className = '' }) {
-  const inset = SPAN / 2 - 9
-
   return (
     <svg
       viewBox="0 0 600 600"
       className={`fw ${className}`}
       role="img"
-      aria-label="The FRIEND framework: Data and AI expertise, AI enabled execution, and domain and process experience, around Human plus Frugal AI"
+      aria-label="The FRIEND framework: the Data Engineering, Data Analytics and Trust and Governance agentic suites, around Human plus Frugal AI"
       xmlns="http://www.w3.org/2000/svg"
     >
       <style>{`
@@ -164,13 +157,18 @@ export default function FriendWheel({ className = '' }) {
         .fw .seg:nth-of-type(3){animation-delay:.18s}
         .fw .hub{transform-box:view-box;transform-origin:300px 300px;opacity:0;animation:fwHub .9s cubic-bezier(.16,1,.3,1) .28s forwards}
         .fw .label{opacity:0;animation:fwFade .8s ease-out .6s forwards}
-        .fw .pair{font-size:22px;fill:rgba(255,255,255,.88);letter-spacing:.07em}
+        .fw .desc{font-weight:500;fill:rgba(255,255,255,.82);letter-spacing:.008em}
+        .fw .pair{font-size:22px;fill:rgba(255,255,255,.88);letter-spacing:.2em;word-spacing:.16em}
         .fw .plus{fill:#35c79a}
         .fw .glyph{fill:rgba(255,255,255,.17);stroke:rgba(255,255,255,.78);stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
         .fw .glyph .line{fill:none}
         @keyframes fwIn{from{opacity:0;transform:scale(.94)}to{opacity:1;transform:scale(1)}}
         @keyframes fwHub{from{opacity:0;transform:scale(.9)}to{opacity:1;transform:scale(1)}}
         @keyframes fwFade{to{opacity:1}}
+        /* On a phone the wheel is capped at 340px, so the drawing renders at
+           little over half size and this line would land under 11px. The label
+           carries the segment there on its own. */
+        @media (max-width:767px){.fw .desc{display:none}}
         @media (prefers-reduced-motion:reduce){.fw *{animation:none!important;opacity:1!important;transform:none!important}}
       `}</style>
 
@@ -199,12 +197,23 @@ export default function FriendWheel({ className = '' }) {
             id={`fwRail-${c.id}`}
             d={
               c.outward
-                ? arc(oneLine(BAND_MID, 23, true), c.centre - inset, c.centre + inset)
-                : arc(oneLine(BAND_MID, 23, false), c.centre + inset, c.centre - inset, 0)
+                ? arc(oneLine(pick(R_LABEL, true), 22, true), ...span(c.centre))
+                : arc(oneLine(pick(R_LABEL, false), 22, false), ...span(c.centre).reverse(), 0)
             }
           />
         ))}
-        <path id="fwPair" d={arc(oneLine(RING_MID, 22, false), 218, 142, 0)} />
+        {CAPABILITIES.map((c) => (
+          <path
+            key={`d-${c.id}`}
+            id={`fwDesc-${c.id}`}
+            d={
+              c.outward
+                ? arc(oneLine(pick(R_DESC, true), 21, true), ...span(c.centre))
+                : arc(oneLine(pick(R_DESC, false), 21, false), ...span(c.centre).reverse(), 0)
+            }
+          />
+        ))}
+        <path id="fwPair" d={arc(oneLine(RING_MID, 22, false), 236, 124, 0)} />
 
         {/* the texture only has to stay inside its own segment */}
         <pattern id="fwWeave" width="13" height="13" patternUnits="userSpaceOnUse">
@@ -239,12 +248,6 @@ export default function FriendWheel({ className = '' }) {
             stroke="rgba(255,255,255,0.22)"
             strokeWidth="1.5"
           />
-          <g
-            className="glyph"
-            transform={`translate(${at(BAND_MID, c.glyphAt).map((n) => n.toFixed(2)).join(' ')}) rotate(${c.outward ? c.glyphAt : c.glyphAt - 180}) scale(1.35)`}
-          >
-            {GLYPHS[c.glyph]}
-          </g>
         </g>
       ))}
 
@@ -268,15 +271,37 @@ export default function FriendWheel({ className = '' }) {
 
       <g className="label">
         {CAPABILITIES.map((c) => (
-          <text key={c.id} fontSize="23">
-            <textPath href={`#fwRail-${c.id}`} startOffset="50%" textAnchor="middle">
-              {c.label}
-            </textPath>
-          </text>
+          <g key={c.id}>
+            <text fontSize="22">
+              <textPath href={`#fwRail-${c.id}`} startOffset="50%" textAnchor="middle">
+                {c.label}
+              </textPath>
+            </text>
+            <text className="desc" fontSize="21">
+              <textPath href={`#fwDesc-${c.id}`} startOffset="50%" textAnchor="middle">
+                {c.desc}
+              </textPath>
+            </text>
+          </g>
         ))}
+        {/* Set as three runs rather than one centred string: centring the
+            whole phrase puts its midpoint at six o'clock, and because "Human"
+            is shorter than "Frugal AI" that leaves the + sitting left of the
+            wheel's axis. Anchoring each run off the same 50% mark puts the +
+            itself on the axis, under the middle of the wordmark. */}
         <text className="pair">
+          <textPath href="#fwPair" startOffset="45.5%" textAnchor="end">
+            Human
+          </textPath>
+        </text>
+        <text className="pair plus">
           <textPath href="#fwPair" startOffset="50%" textAnchor="middle">
-            Human <tspan className="plus">+</tspan> Frugal AI
+            +
+          </textPath>
+        </text>
+        <text className="pair">
+          <textPath href="#fwPair" startOffset="54.5%" textAnchor="start">
+            Frugal AI
           </textPath>
         </text>
       </g>

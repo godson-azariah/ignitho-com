@@ -57,10 +57,15 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Trust badges */}
-        <div className="isg mt-2 flex flex-wrap items-start justify-center tablet:mt-4 tablet:items-center desktop:mt-6">
+        {/* Trust badges.
+
+            Four equal columns across the same measure the copy and the wheel
+            sit on, rather than a centred huddle 80% as wide: the first badge
+            now starts on the headline's left edge and the last ends on the
+            container's right edge. */}
+        <div className="isg mt-2 flex flex-wrap items-start justify-between tablet:mt-4 tablet:items-center desktop:mt-6">
           {HERO_BADGES.map((badge) => (
-            <div key={badge.src} className="flex w-1/2 flex-col p-[10px] tablet:w-1/5">
+            <div key={badge.src} className="flex w-1/2 flex-col p-[10px] tablet:w-1/4">
               <Image
                 src={badge.src}
                 alt={badge.alt}
