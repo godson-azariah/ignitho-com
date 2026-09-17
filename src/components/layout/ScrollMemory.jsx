@@ -27,6 +27,11 @@ const KEY = "ignitho:scroll:";
    before this the moment the page stops growing */
 const GIVE_UP_MS = 4000;
 const STABLE_MS = 400;
+/* The last stretch of the journey is animated rather than jumped, so the page
+   settles into your place instead of appearing at it. Short on purpose: gliding
+   the whole way from the top would take a second on a long page and read as the
+   page running away from you. */
+const GLIDE = 150;
 
 export default function ScrollMemory() {
   const pathname = usePathname();
@@ -83,6 +88,8 @@ export default function ScrollMemory() {
     const root = document.documentElement;
     const behaviour = root.style.scrollBehavior;
     root.style.scrollBehavior = "auto"; /* the stylesheet sets smooth */
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const park = reduced ? target : Math.max(0, target - GLIDE);
 
     let done = false;
     let frame = 0;
@@ -90,15 +97,26 @@ export default function ScrollMemory() {
     let stableSince = 0;
     const started = performance.now();
 
-    const stop = () => {
+    const stop = (glide) => {
       if (done) return;
       done = true;
-      restoring.current = false;
       cancelAnimationFrame(frame);
       root.style.scrollBehavior = behaviour;
-      window.removeEventListener('wheel', stop);
-      window.removeEventListener('touchstart', stop);
-      window.removeEventListener('keydown', stop);
+      window.removeEventListener("wheel", stop);
+      window.removeEventListener("touchstart", stop);
+      window.removeEventListener("keydown", stop);
+
+      if (glide && !reduced) {
+        const max = Math.max(0, root.scrollHeight - window.innerHeight);
+        window.scrollTo({ top: Math.min(target, max), behavior: "smooth" });
+        /* hold the save off until the glide has finished, or the positions it
+           passes through get written back as the stored one */
+        window.setTimeout(() => {
+          restoring.current = false;
+        }, 700);
+        return;
+      }
+      restoring.current = false;
     };
 
     /* Re-applied every frame because the page is still growing: a late image
@@ -110,29 +128,30 @@ export default function ScrollMemory() {
       const now = performance.now();
       const height = root.scrollHeight;
       const max = Math.max(0, height - window.innerHeight);
-      const to = Math.min(target, max);
+      const to = Math.min(park, max);
       if (Math.abs(window.scrollY - to) > 1) window.scrollTo(0, to);
 
-      const landed = to === target && Math.abs(window.scrollY - target) <= 1;
+      const landed = to === park && Math.abs(window.scrollY - park) <= 1;
       if (landed && height === lastHeight) {
         if (!stableSince) stableSince = now;
-        else if (now - stableSince > STABLE_MS) return stop();
+        else if (now - stableSince > STABLE_MS) return stop(true);
       } else {
         stableSince = 0;
         lastHeight = height;
       }
 
-      if (now - started > GIVE_UP_MS) return stop();
+      if (now - started > GIVE_UP_MS) return stop(true);
       frame = requestAnimationFrame(settle);
     };
 
     /* passive so the listener itself never delays the scroll it is cancelling */
+    /* a touch of the wheel, screen or keyboard ends it where it is - no glide */
     window.addEventListener("wheel", stop, { passive: true });
     window.addEventListener("touchstart", stop, { passive: true });
     window.addEventListener("keydown", stop);
     frame = requestAnimationFrame(settle);
 
-    return stop;
+    return () => stop();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
