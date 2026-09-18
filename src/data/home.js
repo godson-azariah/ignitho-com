@@ -28,7 +28,7 @@ export const HERO_BADGES = [
 export const FRUGAL_INNOVATION = {
   title: 'Applying the Frugal Innovation Principle',
   subtitle:
-    'The Art of Doing Better with Less: a methodology for enterprise data and AI, co-developed with the University of Cambridge and built into every FRIEND suite',
+    'Grounded in frugal innovation and shaped by 10+ years of enterprise experience, Ignitho built the FRIEND Framework, now brought to life through three agentic suites. Together, they deliver Human + Frugal AI: human expertise and intelligent agents working as one, proven to deliver more with less',
   friend: {
     /**
      * [highlighted letters, hidden remainder]. Read down the first column the
