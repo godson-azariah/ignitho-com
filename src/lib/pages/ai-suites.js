@@ -14,7 +14,7 @@ export const SUITES = [
   {
     id: 'data-engineering',
     number: '01',
-    name: 'Data Engineering Agentic Suite',
+    name: 'Data Engineering Agentic AI Suite',
     type: 'foundation',
     icon: Database,
     imageUrl: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1000&q=80',
@@ -39,7 +39,7 @@ export const SUITES = [
   {
     id: 'data-science',
     number: '02',
-    name: 'Data Analytics Agentic Suite',
+    name: 'Data Analytics Agentic AI Suite',
     type: 'foundation',
     icon: LineChart,
     imageUrl: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1000&q=80',
@@ -63,7 +63,7 @@ export const SUITES = [
   {
     id: 'data-quality',
     number: '03',
-    name: 'Trust & Governance Agentic Suite',
+    name: 'Trust & Governance Agentic AI Suite',
     type: 'foundation',
     icon: BarChart3,
     imageUrl: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1000&q=80',

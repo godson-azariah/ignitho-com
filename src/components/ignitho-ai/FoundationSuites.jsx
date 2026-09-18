@@ -14,7 +14,7 @@ export default function FoundationSuites({ onOpenSuite }) {
       <div className="mx-auto max-w-[1360px] px-5">
         <div className="mx-auto mb-10 max-w-6xl text-center">
           <h2 className="text-3xl sm:text-4xl md:text-[42px] lg:text-[48px] font-bold text-ignitho-text tracking-[-0.5px] leading-[1.15]">
-            FRIEND Agentic suites
+            FRIEND Agentic AI suites
           </h2>
           <p className="mt-5 text-lg md:text-2xl text-[#7a00c2] leading-relaxed">
             A connected data pipeline, a trusted and governed data layer, and real-time analytics: the
